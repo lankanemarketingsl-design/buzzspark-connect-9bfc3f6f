@@ -504,5 +504,70 @@ const PageLeaderboard = ({
   );
 };
 
+const TopPagesByType = ({
+  title,
+  subtitle,
+  inquiries,
+  emptyText,
+  onPick,
+}: {
+  title: string;
+  subtitle: string;
+  inquiries: Inquiry[];
+  emptyText: string;
+  onPick: (page: string) => void;
+}) => {
+  const rows = useMemo(() => {
+    const map = new Map<string, { page: string; count: number; last: string }>();
+    inquiries.forEach((i) => {
+      const page = i.source_page || "(unknown)";
+      const cur = map.get(page) || { page, count: 0, last: i.created_at };
+      cur.count += 1;
+      if (new Date(i.created_at) > new Date(cur.last)) cur.last = i.created_at;
+      map.set(page, cur);
+    });
+    return Array.from(map.values()).sort((a, b) => b.count - a.count).slice(0, 8);
+  }, [inquiries]);
+
+  const max = rows[0]?.count || 1;
+
+  return (
+    <div className="border border-border rounded-xl bg-card">
+      <div className="p-4 border-b border-border">
+        <h3 className="text-sm font-semibold">{title}</h3>
+        <p className="text-xs text-muted-foreground">{subtitle}</p>
+      </div>
+      {rows.length === 0 ? (
+        <div className="p-6 text-center text-sm text-muted-foreground">{emptyText}</div>
+      ) : (
+        <ul className="divide-y divide-border">
+          {rows.map((r) => (
+            <li
+              key={r.page}
+              onClick={() => onPick(r.page)}
+              className="p-3 cursor-pointer hover:bg-muted/30"
+            >
+              <div className="flex items-center justify-between gap-3 mb-1">
+                <div className="min-w-0 flex-1">
+                  <div className="font-medium text-sm truncate">{prettyPage(r.page)}</div>
+                  <div className="text-xs text-muted-foreground truncate">{r.page}</div>
+                </div>
+                <div className="text-sm font-bold tabular-nums">{r.count}</div>
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                <div
+                  className="h-full bg-primary"
+                  style={{ width: `${(r.count / max) * 100}%` }}
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
 export default AdminDashboard;
+
 
