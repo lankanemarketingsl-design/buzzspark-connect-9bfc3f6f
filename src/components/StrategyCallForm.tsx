@@ -166,7 +166,7 @@ const StrategyCallForm = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-primary/15 via-background to-accent/10 border border-primary/30 rounded-2xl p-6 md:p-10 shadow-lg">
+    <div ref={formRef} className="bg-gradient-to-br from-primary/15 via-background to-accent/10 border border-primary/30 rounded-2xl p-6 md:p-10 shadow-lg">
       <div className="grid md:grid-cols-2 gap-8 items-start">
         {/* Left: pitch */}
         <div>
