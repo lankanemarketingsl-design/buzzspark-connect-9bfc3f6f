@@ -244,6 +244,11 @@ const AdminDashboard = () => {
           ))}
         </div>
 
+        {/* Top pages leaderboard — best pages for sales */}
+        <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+
+
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4">
           <Input placeholder="Search name, phone, email…" value={search} onChange={(e) => setSearch(e.target.value)} />
           <select className="h-10 rounded-md border border-input bg-background px-3 text-sm" value={serviceFilter} onChange={(e) => setServiceFilter(e.target.value)}>
