@@ -54,6 +54,15 @@ const PAGE_LABELS: Record<string, string> = {
   "/event-marketing": "Event Marketing",
 };
 
+const TYPE_LABELS: Record<string, string> = {
+  form_submission: "Form",
+  whatsapp_click: "WhatsApp",
+  call_click: "Call",
+  email_click: "Email",
+  quote_open: "Quote Open",
+};
+
+
 const prettyPage = (path: string | null): string => {
   if (!path) return "—";
   if (PAGE_LABELS[path]) return PAGE_LABELS[path];
