@@ -119,6 +119,9 @@ import DigitalMarketingCostSriLanka from "./pages/articles/DigitalMarketingCostS
 import DigitalMarketingTrendsSriLanka from "./pages/articles/DigitalMarketingTrendsSriLanka.tsx";
 import HowToAdvertiseBusinessSriLanka from "./pages/articles/HowToAdvertiseBusinessSriLanka.tsx";
 import AdvertisingReachSriLanka from "./pages/articles/AdvertisingReachSriLanka.tsx";
+import EmailMarketingSriLankaComplete2026 from "./pages/articles/EmailMarketingSriLankaComplete2026.tsx";
+import SmsMarketingSriLanka600k2026 from "./pages/articles/SmsMarketingSriLanka600k2026.tsx";
+import SocialMediaMarketingSriLankaComplete2026 from "./pages/articles/SocialMediaMarketingSriLankaComplete2026.tsx";
 import GoogleAdsSriLanka from "./pages/GoogleAdsSriLanka.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import WhyChooseUs from "./pages/WhyChooseUs.tsx";
@@ -310,6 +313,10 @@ const App = () => (
               <Route path="/best-google-ads-agency-sri-lanka" element={<BestGoogleAdsAgency />} />
               <Route path="/best-lead-generation-company-sri-lanka" element={<BestLeadGenerationCompany />} />
               <Route path="/lead-generation-cost-sri-lanka" element={<LeadGenerationCost />} />
+              <Route path="/email-marketing-sri-lanka-complete-guide-2026" element={<EmailMarketingSriLankaComplete2026 />} />
+              <Route path="/sms-marketing-sri-lanka-600000-customers-2026" element={<SmsMarketingSriLanka600k2026 />} />
+              <Route path="/social-media-marketing-sri-lanka-complete-guide-2026" element={<SocialMediaMarketingSriLankaComplete2026 />} />
+              
               
               <Route path="*" element={<NotFound />} />
             </Routes>

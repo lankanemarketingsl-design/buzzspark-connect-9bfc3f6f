@@ -47,6 +47,27 @@ import articleLeadGenAgency from "@/assets/blog/article-lead-gen-agency.webp";
 import articleMultichannelCampaigns from "@/assets/blog/article-multichannel-campaigns.webp";
 const articles = [
   {
+    title: "Email Marketing Sri Lanka: The Complete Guide for Businesses in 2026",
+    date: "Jun 01, 2026",
+    excerpt: "How email marketing works in Sri Lanka in 2026 — 350,000+ verified contacts, campaign types, results to expect, and how to launch your first campaign.",
+    path: "/email-marketing-sri-lanka-complete-guide-2026",
+    image: articleEmailPower,
+  },
+  {
+    title: "SMS Marketing Sri Lanka: How to Reach 600,000 Customers Instantly in 2026",
+    date: "Jun 01, 2026",
+    excerpt: "Bulk SMS Sri Lanka delivers 90%+ open rates in 3 minutes. Campaign types, results, pricing and how to combine SMS with email & WhatsApp for maximum reach.",
+    path: "/sms-marketing-sri-lanka-600000-customers-2026",
+    image: articleSmsEngagement,
+  },
+  {
+    title: "Social Media Marketing Sri Lanka: The Complete 2026 Guide",
+    date: "Jun 01, 2026",
+    excerpt: "Facebook, Instagram, TikTok & LinkedIn in Sri Lanka — paid ad strategy, organic management, costs, and multi-channel results for 2026.",
+    path: "/social-media-marketing-sri-lanka-complete-guide-2026",
+    image: articleSocialMedia,
+  },
+  {
     title: "How to Choose a Digital Marketing Agency in Sri Lanka (2026 Buyer's Guide)",
     date: "May 14, 2026",
     excerpt: "Buyer's checklist, pricing benchmarks and red flags to avoid when choosing a digital marketing agency in Sri Lanka.",
