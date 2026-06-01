@@ -311,8 +311,12 @@ const AdminDashboard = () => {
           <select className="h-10 rounded-md border border-input bg-background px-3 text-sm" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
             <option value="all">All types</option>
             <option value="form_submission">Form Submissions</option>
+            <option value="quote_open">Quote Opens</option>
             <option value="whatsapp_click">WhatsApp Clicks</option>
+            <option value="call_click">Call Clicks</option>
+            <option value="email_click">Email Clicks</option>
           </select>
+
         </div>
 
         <div className="overflow-x-auto border border-border rounded-xl bg-card">
