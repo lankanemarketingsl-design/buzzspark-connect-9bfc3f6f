@@ -149,6 +149,8 @@ const SiteChrome = ({ children }: { children: React.ReactNode }) => {
       <ScrollToTop />
       {!isAdmin && <WhatsAppGlobalTracker />}
       {!isAdmin && <ContactCaptureDialog />}
+      {!isAdmin && <ContactClickTracker />}
+
 
       {!isAdmin && <Navbar />}
       <main className="overflow-x-hidden">{children}</main>
