@@ -26,6 +26,44 @@ type Inquiry = {
   inquiry_type: string;
 };
 
+const PAGE_LABELS: Record<string, string> = {
+  "/": "Home",
+  "/about-us": "About Us",
+  "/contact-us": "Contact Us",
+  "/email-marketing": "Email Marketing",
+  "/sms-marketing": "SMS Marketing",
+  "/whatsapp-marketing": "WhatsApp Marketing",
+  "/social-media-marketing": "Social Media Marketing",
+  "/seo-services": "SEO Services",
+  "/google-ads-sri-lanka": "Google Ads",
+  "/online-advertising": "Online Advertising",
+  "/website-design": "Website Design",
+  "/graphic-design": "Graphic Design",
+  "/lead-generation": "Lead Generation",
+  "/special-packages": "Special Packages",
+  "/why-choose-us": "Why Choose Us",
+  "/careers": "Careers",
+  "/resources": "Resources",
+  "/staff-recruitment": "Staff Recruitment",
+  "/hotel-marketing": "Hotel Marketing",
+  "/restaurant-marketing": "Restaurant Marketing",
+  "/real-estate-marketing": "Real Estate Marketing",
+  "/fashion-marketing": "Fashion Marketing",
+  "/finance-marketing": "Finance Marketing",
+  "/education-marketing": "Education Marketing",
+  "/event-marketing": "Event Marketing",
+};
+
+const prettyPage = (path: string | null): string => {
+  if (!path) return "—";
+  if (PAGE_LABELS[path]) return PAGE_LABELS[path];
+  const last = path.split("/").filter(Boolean).pop() || "Home";
+  return last
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+};
+
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -255,15 +293,36 @@ const AdminDashboard = () => {
                     {i.business && <div className="text-xs text-muted-foreground">{i.business}</div>}
                     {i.message && <div className="text-xs mt-1 max-w-xs whitespace-pre-wrap">{i.message}</div>}
                   </td>
-                  <td className="p-3">{i.service || "—"}</td>
                   <td className="p-3">
-                    <div className="text-xs">{i.source_page || "—"}</div>
-                    {i.placement && <div className="text-xs text-muted-foreground">{i.placement}</div>}
+                    <div className="font-medium">{i.service || "—"}</div>
+                    {i.utm_campaign && (
+                      <div className="text-xs text-muted-foreground">Campaign: {i.utm_campaign}</div>
+                    )}
+                  </td>
+                  <td className="p-3">
+                    <div className="font-medium">{prettyPage(i.source_page)}</div>
+                    {i.source_page && (
+                      <div className="text-xs text-muted-foreground break-all">{i.source_page}</div>
+                    )}
+                    {i.source_url && (
+                      <a
+                        href={i.source_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-primary underline break-all"
+                      >
+                        Open page ↗
+                      </a>
+                    )}
+                    {i.placement && (
+                      <div className="text-xs text-muted-foreground mt-1">Clicked: {i.placement}</div>
+                    )}
                   </td>
                   <td className="p-3 text-xs">
                     {i.utm_source && <div>src: {i.utm_source}</div>}
                     {i.utm_medium && <div>med: {i.utm_medium}</div>}
                     {i.utm_campaign && <div>camp: {i.utm_campaign}</div>}
+                    {!i.utm_source && !i.utm_medium && !i.utm_campaign && <span className="text-muted-foreground">—</span>}
                   </td>
                   <td className="p-3">
                     <button onClick={() => handleStatusToggle(i)} className="text-xs">
