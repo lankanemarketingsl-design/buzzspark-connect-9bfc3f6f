@@ -234,12 +234,24 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
           {[
             { label: "Total", value: stats.total },
             { label: "New", value: stats.new },
             { label: "Form Submissions", value: stats.forms },
+            { label: "Quote Opens", value: stats.quotes },
+          ].map((s) => (
+            <div key={s.label} className="border border-border rounded-xl p-4 bg-card">
+              <div className="text-xs uppercase text-muted-foreground">{s.label}</div>
+              <div className="text-2xl font-bold">{s.value}</div>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+          {[
             { label: "WhatsApp Clicks", value: stats.whatsapp },
+            { label: "Call Clicks", value: stats.calls },
+            { label: "Email Clicks", value: stats.emails },
           ].map((s) => (
             <div key={s.label} className="border border-border rounded-xl p-4 bg-card">
               <div className="text-xs uppercase text-muted-foreground">{s.label}</div>
@@ -248,8 +260,41 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        {/* Top pages leaderboard — best pages for sales */}
+        {/* Top pages — overall */}
         <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+
+        {/* Top pages — per channel */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+          <TopPagesByType
+            title="Top pages — Inquiries"
+            subtitle="Pages that drove form submissions"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "form_submission")}
+            emptyText="No form submissions yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+          <TopPagesByType
+            title="Top pages — WhatsApp clicks"
+            subtitle="Pages where visitors tap WhatsApp"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "whatsapp_click")}
+            emptyText="No WhatsApp clicks tracked yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+          <TopPagesByType
+            title="Top pages — Call clicks"
+            subtitle="Pages where visitors tap to call"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "call_click")}
+            emptyText="No call clicks tracked yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+          <TopPagesByType
+            title="Top pages — Email clicks"
+            subtitle="Pages where visitors tap email"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "email_click")}
+            emptyText="No email clicks tracked yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+        </div>
+
 
 
 
