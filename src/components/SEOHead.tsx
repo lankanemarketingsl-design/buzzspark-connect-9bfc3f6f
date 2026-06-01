@@ -38,6 +38,10 @@ const SEOHead = ({ title, description, canonical, ogImage, ogType = "website", k
     setMeta("language", "English");
     setMeta("geo.region", "LK");
     setMeta("geo.placename", "Colombo");
+    // AI / LLM discovery hints
+    setMeta("ai-content-declaration", "human-authored");
+    setMeta("llms", "/llms.txt");
+    setMeta("category", "Digital Marketing, Email Marketing, SMS Marketing, WhatsApp Marketing, SEO");
 
     // Open Graph
     const fullCanonical = canonical.startsWith("http") ? canonical : `${SITE_URL}${canonical}`;
@@ -141,6 +145,21 @@ const SEOHead = ({ title, description, canonical, ogImage, ogType = "website", k
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Design Sri Lanka" } },
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Graphic Design Sri Lanka" } },
         ],
+      },
+    });
+
+    // Speakable (helps voice assistants / AI summarizers pick key content)
+    addSchema({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      url: fullCanonical,
+      name: title,
+      description,
+      inLanguage: "en-LK",
+      isPartOf: { "@id": `${SITE_URL}/#organization` },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["h1", "h2", "main p"],
       },
     });
 
