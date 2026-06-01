@@ -341,8 +341,9 @@ const AdminDashboard = () => {
                   <td className="p-3 whitespace-nowrap">{new Date(i.created_at).toLocaleString()}</td>
                   <td className="p-3">
                     <Badge variant={i.inquiry_type === "form_submission" ? "default" : "secondary"}>
-                      {i.inquiry_type === "form_submission" ? "Form" : "WhatsApp"}
+                      {TYPE_LABELS[i.inquiry_type] || i.inquiry_type}
                     </Badge>
+
                   </td>
                   <td className="p-3">
                     <div className="font-medium">{i.name || "—"}</div>
