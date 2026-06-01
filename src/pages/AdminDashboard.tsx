@@ -54,6 +54,15 @@ const PAGE_LABELS: Record<string, string> = {
   "/event-marketing": "Event Marketing",
 };
 
+const TYPE_LABELS: Record<string, string> = {
+  form_submission: "Form",
+  whatsapp_click: "WhatsApp",
+  call_click: "Call",
+  email_click: "Email",
+  quote_open: "Quote Open",
+};
+
+
 const prettyPage = (path: string | null): string => {
   if (!path) return "—";
   if (PAGE_LABELS[path]) return PAGE_LABELS[path];
@@ -213,7 +222,11 @@ const AdminDashboard = () => {
     new: inquiries.filter((i) => i.status === "new").length,
     forms: inquiries.filter((i) => i.inquiry_type === "form_submission").length,
     whatsapp: inquiries.filter((i) => i.inquiry_type === "whatsapp_click").length,
+    calls: inquiries.filter((i) => i.inquiry_type === "call_click").length,
+    emails: inquiries.filter((i) => i.inquiry_type === "email_click").length,
+    quotes: inquiries.filter((i) => i.inquiry_type === "quote_open").length,
   };
+
 
   return (
     <div className="min-h-screen bg-background px-4 py-8">
@@ -230,12 +243,24 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
           {[
             { label: "Total", value: stats.total },
             { label: "New", value: stats.new },
             { label: "Form Submissions", value: stats.forms },
+            { label: "Quote Opens", value: stats.quotes },
+          ].map((s) => (
+            <div key={s.label} className="border border-border rounded-xl p-4 bg-card">
+              <div className="text-xs uppercase text-muted-foreground">{s.label}</div>
+              <div className="text-2xl font-bold">{s.value}</div>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+          {[
             { label: "WhatsApp Clicks", value: stats.whatsapp },
+            { label: "Call Clicks", value: stats.calls },
+            { label: "Email Clicks", value: stats.emails },
           ].map((s) => (
             <div key={s.label} className="border border-border rounded-xl p-4 bg-card">
               <div className="text-xs uppercase text-muted-foreground">{s.label}</div>
@@ -244,8 +269,41 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        {/* Top pages leaderboard — best pages for sales */}
+        {/* Top pages — overall */}
         <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+
+        {/* Top pages — per channel */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+          <TopPagesByType
+            title="Top pages — Inquiries"
+            subtitle="Pages that drove form submissions"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "form_submission")}
+            emptyText="No form submissions yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+          <TopPagesByType
+            title="Top pages — WhatsApp clicks"
+            subtitle="Pages where visitors tap WhatsApp"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "whatsapp_click")}
+            emptyText="No WhatsApp clicks tracked yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+          <TopPagesByType
+            title="Top pages — Call clicks"
+            subtitle="Pages where visitors tap to call"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "call_click")}
+            emptyText="No call clicks tracked yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+          <TopPagesByType
+            title="Top pages — Email clicks"
+            subtitle="Pages where visitors tap email"
+            inquiries={inquiries.filter((i) => i.inquiry_type === "email_click")}
+            emptyText="No email clicks tracked yet."
+            onPick={(p) => setPageFilter(p)}
+          />
+        </div>
+
 
 
 
@@ -262,8 +320,12 @@ const AdminDashboard = () => {
           <select className="h-10 rounded-md border border-input bg-background px-3 text-sm" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
             <option value="all">All types</option>
             <option value="form_submission">Form Submissions</option>
+            <option value="quote_open">Quote Opens</option>
             <option value="whatsapp_click">WhatsApp Clicks</option>
+            <option value="call_click">Call Clicks</option>
+            <option value="email_click">Email Clicks</option>
           </select>
+
         </div>
 
         <div className="overflow-x-auto border border-border rounded-xl bg-card">
@@ -288,8 +350,9 @@ const AdminDashboard = () => {
                   <td className="p-3 whitespace-nowrap">{new Date(i.created_at).toLocaleString()}</td>
                   <td className="p-3">
                     <Badge variant={i.inquiry_type === "form_submission" ? "default" : "secondary"}>
-                      {i.inquiry_type === "form_submission" ? "Form" : "WhatsApp"}
+                      {TYPE_LABELS[i.inquiry_type] || i.inquiry_type}
                     </Badge>
+
                   </td>
                   <td className="p-3">
                     <div className="font-medium">{i.name || "—"}</div>
@@ -441,5 +504,70 @@ const PageLeaderboard = ({
   );
 };
 
+const TopPagesByType = ({
+  title,
+  subtitle,
+  inquiries,
+  emptyText,
+  onPick,
+}: {
+  title: string;
+  subtitle: string;
+  inquiries: Inquiry[];
+  emptyText: string;
+  onPick: (page: string) => void;
+}) => {
+  const rows = useMemo(() => {
+    const map = new Map<string, { page: string; count: number; last: string }>();
+    inquiries.forEach((i) => {
+      const page = i.source_page || "(unknown)";
+      const cur = map.get(page) || { page, count: 0, last: i.created_at };
+      cur.count += 1;
+      if (new Date(i.created_at) > new Date(cur.last)) cur.last = i.created_at;
+      map.set(page, cur);
+    });
+    return Array.from(map.values()).sort((a, b) => b.count - a.count).slice(0, 8);
+  }, [inquiries]);
+
+  const max = rows[0]?.count || 1;
+
+  return (
+    <div className="border border-border rounded-xl bg-card">
+      <div className="p-4 border-b border-border">
+        <h3 className="text-sm font-semibold">{title}</h3>
+        <p className="text-xs text-muted-foreground">{subtitle}</p>
+      </div>
+      {rows.length === 0 ? (
+        <div className="p-6 text-center text-sm text-muted-foreground">{emptyText}</div>
+      ) : (
+        <ul className="divide-y divide-border">
+          {rows.map((r) => (
+            <li
+              key={r.page}
+              onClick={() => onPick(r.page)}
+              className="p-3 cursor-pointer hover:bg-muted/30"
+            >
+              <div className="flex items-center justify-between gap-3 mb-1">
+                <div className="min-w-0 flex-1">
+                  <div className="font-medium text-sm truncate">{prettyPage(r.page)}</div>
+                  <div className="text-xs text-muted-foreground truncate">{r.page}</div>
+                </div>
+                <div className="text-sm font-bold tabular-nums">{r.count}</div>
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                <div
+                  className="h-full bg-primary"
+                  style={{ width: `${(r.count / max) * 100}%` }}
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
 export default AdminDashboard;
+
 

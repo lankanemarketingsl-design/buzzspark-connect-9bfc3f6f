@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
@@ -37,6 +37,39 @@ const StrategyCallForm = () => {
   const { pathname } = useLocation();
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const loggedOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (!formRef.current) return;
+    const key = `bc_quote_open_${pathname}`;
+    if (sessionStorage.getItem(key)) {
+      loggedOpenRef.current = true;
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !loggedOpenRef.current) {
+            loggedOpenRef.current = true;
+            sessionStorage.setItem(key, "1");
+            logInquiry({
+              inquiry_type: "quote_open",
+              service: getServiceName(pathname),
+              source_page: pathname,
+              source_url: typeof window !== "undefined" ? window.location.href : "",
+              placement: "strategy_form",
+            });
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    obs.observe(formRef.current);
+    return () => obs.disconnect();
+  }, [pathname]);
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -133,7 +166,7 @@ const StrategyCallForm = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-primary/15 via-background to-accent/10 border border-primary/30 rounded-2xl p-6 md:p-10 shadow-lg">
+    <div ref={formRef} className="bg-gradient-to-br from-primary/15 via-background to-accent/10 border border-primary/30 rounded-2xl p-6 md:p-10 shadow-lg">
       <div className="grid md:grid-cols-2 gap-8 items-start">
         {/* Left: pitch */}
         <div>

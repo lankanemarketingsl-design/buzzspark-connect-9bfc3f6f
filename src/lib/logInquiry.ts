@@ -17,7 +17,7 @@ export interface InquiryPayload {
   utm_campaign?: string;
   utm_content?: string;
   utm_term?: string;
-  inquiry_type?: "form_submission" | "whatsapp_click";
+  inquiry_type?: "form_submission" | "whatsapp_click" | "call_click" | "email_click" | "quote_open";
 }
 
 export const logInquiry = async (payload: InquiryPayload) => {
