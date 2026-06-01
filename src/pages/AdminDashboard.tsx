@@ -26,6 +26,44 @@ type Inquiry = {
   inquiry_type: string;
 };
 
+const PAGE_LABELS: Record<string, string> = {
+  "/": "Home",
+  "/about-us": "About Us",
+  "/contact-us": "Contact Us",
+  "/email-marketing": "Email Marketing",
+  "/sms-marketing": "SMS Marketing",
+  "/whatsapp-marketing": "WhatsApp Marketing",
+  "/social-media-marketing": "Social Media Marketing",
+  "/seo-services": "SEO Services",
+  "/google-ads-sri-lanka": "Google Ads",
+  "/online-advertising": "Online Advertising",
+  "/website-design": "Website Design",
+  "/graphic-design": "Graphic Design",
+  "/lead-generation": "Lead Generation",
+  "/special-packages": "Special Packages",
+  "/why-choose-us": "Why Choose Us",
+  "/careers": "Careers",
+  "/resources": "Resources",
+  "/staff-recruitment": "Staff Recruitment",
+  "/hotel-marketing": "Hotel Marketing",
+  "/restaurant-marketing": "Restaurant Marketing",
+  "/real-estate-marketing": "Real Estate Marketing",
+  "/fashion-marketing": "Fashion Marketing",
+  "/finance-marketing": "Finance Marketing",
+  "/education-marketing": "Education Marketing",
+  "/event-marketing": "Event Marketing",
+};
+
+const prettyPage = (path: string | null): string => {
+  if (!path) return "—";
+  if (PAGE_LABELS[path]) return PAGE_LABELS[path];
+  const last = path.split("/").filter(Boolean).pop() || "Home";
+  return last
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+};
+
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
