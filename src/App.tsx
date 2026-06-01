@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 import WhatsAppGlobalTracker from "@/components/WhatsAppGlobalTracker";
 import ContactCaptureDialog from "@/components/ContactCaptureDialog";
+import ContactClickTracker from "@/components/ContactClickTracker";
+
 
 import ScrollToTop from "@/components/ScrollToTop";
 import AdminLogin from "./pages/AdminLogin.tsx";
