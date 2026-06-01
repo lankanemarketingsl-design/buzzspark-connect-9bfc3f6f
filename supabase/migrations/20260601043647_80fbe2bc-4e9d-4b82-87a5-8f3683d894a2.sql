@@ -1,0 +1,1 @@
+UPDATE auth.users SET email_confirmed_at = now() WHERE email = 'vimashi@findit.lk' AND email_confirmed_at IS NULL;
