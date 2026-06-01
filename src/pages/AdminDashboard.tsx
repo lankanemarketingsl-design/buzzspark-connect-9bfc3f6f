@@ -213,7 +213,11 @@ const AdminDashboard = () => {
     new: inquiries.filter((i) => i.status === "new").length,
     forms: inquiries.filter((i) => i.inquiry_type === "form_submission").length,
     whatsapp: inquiries.filter((i) => i.inquiry_type === "whatsapp_click").length,
+    calls: inquiries.filter((i) => i.inquiry_type === "call_click").length,
+    emails: inquiries.filter((i) => i.inquiry_type === "email_click").length,
+    quotes: inquiries.filter((i) => i.inquiry_type === "quote_open").length,
   };
+
 
   return (
     <div className="min-h-screen bg-background px-4 py-8">
