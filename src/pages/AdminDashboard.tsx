@@ -349,4 +349,97 @@ const AdminDashboard = () => {
   );
 };
 
+type PageStat = {
+  page: string;
+  total: number;
+  whatsapp: number;
+  forms: number;
+  last: string;
+};
+
+const PageLeaderboard = ({
+  inquiries,
+  onPick,
+}: {
+  inquiries: Inquiry[];
+  onPick: (page: string) => void;
+}) => {
+  const rows = useMemo<PageStat[]>(() => {
+    const map = new Map<string, PageStat>();
+    inquiries.forEach((i) => {
+      const page = i.source_page || "(unknown)";
+      const cur = map.get(page) || { page, total: 0, whatsapp: 0, forms: 0, last: i.created_at };
+      cur.total += 1;
+      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
+      if (i.inquiry_type === "form_submission") cur.forms += 1;
+      if (new Date(i.created_at) > new Date(cur.last)) cur.last = i.created_at;
+      map.set(page, cur);
+    });
+    return Array.from(map.values()).sort((a, b) => b.total - a.total);
+  }, [inquiries]);
+
+  if (rows.length === 0) return null;
+
+  const max = rows[0].total || 1;
+
+  return (
+    <div className="border border-border rounded-xl bg-card mb-6">
+      <div className="p-4 border-b border-border flex items-center justify-between">
+        <div>
+          <h2 className="text-base font-semibold">Top Pages for Sales</h2>
+          <p className="text-xs text-muted-foreground">
+            Total inquiries per page (form submissions + WhatsApp clicks). Click a row to filter.
+          </p>
+        </div>
+        <Badge variant="outline">{rows.length} pages</Badge>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead className="bg-muted/40 text-left">
+            <tr>
+              <th className="p-3">#</th>
+              <th className="p-3">Page</th>
+              <th className="p-3">Total</th>
+              <th className="p-3">WhatsApp</th>
+              <th className="p-3">Forms</th>
+              <th className="p-3 w-48">Share</th>
+              <th className="p-3">Last inquiry</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.slice(0, 15).map((r, idx) => (
+              <tr
+                key={r.page}
+                onClick={() => onPick(r.page)}
+                className="border-t border-border cursor-pointer hover:bg-muted/30"
+              >
+                <td className="p-3 text-muted-foreground">{idx + 1}</td>
+                <td className="p-3">
+                  <div className="font-medium">{prettyPage(r.page)}</div>
+                  <div className="text-xs text-muted-foreground break-all">{r.page}</div>
+                </td>
+                <td className="p-3 font-semibold">{r.total}</td>
+                <td className="p-3">{r.whatsapp}</td>
+                <td className="p-3">{r.forms}</td>
+                <td className="p-3">
+                  <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+                    <div
+                      className="h-full bg-primary"
+                      style={{ width: `${(r.total / max) * 100}%` }}
+                    />
+                  </div>
+                </td>
+                <td className="p-3 whitespace-nowrap text-xs text-muted-foreground">
+                  {new Date(r.last).toLocaleString()}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
 export default AdminDashboard;
+
