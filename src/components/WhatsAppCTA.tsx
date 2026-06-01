@@ -1,11 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import {
-  buildWhatsAppContext,
-  getWhatsAppNumber,
-  trackWhatsAppClick,
-} from "@/lib/whatsappTracking";
-import { logInquiryFromContext } from "@/lib/logInquiry";
+import { buildWhatsAppContext, getWhatsAppNumber } from "@/lib/whatsappTracking";
+
 
 const WhatsAppCTA = () => {
   const { pathname } = useLocation();
@@ -50,25 +46,11 @@ const WhatsAppCTA = () => {
 
   const href = `https://wa.me/${number}?text=${message}&${utmQuery}`;
 
-  const handleClick = () => {
-    trackWhatsAppClick(ctx, number, pageUrl, {
-      placement: "floating_button",
-      selected_service: service,
-    });
-    logInquiryFromContext(ctx, number, {
-      service,
-      placement: "floating_button",
-    });
-  };
-
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={handleClick}
-      onAuxClick={handleClick}
-      data-skip-wa-tracker="true"
       data-wa-placement="floating_button"
       data-analytics-event="whatsapp_cta_click"
       data-service={service}

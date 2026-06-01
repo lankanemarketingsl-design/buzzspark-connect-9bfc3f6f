@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 import WhatsAppGlobalTracker from "@/components/WhatsAppGlobalTracker";
+import ContactCaptureDialog from "@/components/ContactCaptureDialog";
+
 import ScrollToTop from "@/components/ScrollToTop";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
@@ -144,6 +146,8 @@ const SiteChrome = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen overflow-x-hidden bg-background">
       <ScrollToTop />
       {!isAdmin && <WhatsAppGlobalTracker />}
+      {!isAdmin && <ContactCaptureDialog />}
+
       {!isAdmin && <Navbar />}
       <main className="overflow-x-hidden">{children}</main>
       {!isAdmin && <Footer />}
