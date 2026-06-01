@@ -1,11 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import {
-  buildWhatsAppContext,
-  getWhatsAppNumber,
-  trackWhatsAppClick,
-} from "@/lib/whatsappTracking";
-import { logInquiryFromContext } from "@/lib/logInquiry";
+import { buildWhatsAppContext, getWhatsAppNumber } from "@/lib/whatsappTracking";
+
 
 const WhatsAppCTA = () => {
   const { pathname } = useLocation();
