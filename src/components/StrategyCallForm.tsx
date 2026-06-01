@@ -37,6 +37,39 @@ const StrategyCallForm = () => {
   const { pathname } = useLocation();
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const loggedOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (!formRef.current) return;
+    const key = `bc_quote_open_${pathname}`;
+    if (sessionStorage.getItem(key)) {
+      loggedOpenRef.current = true;
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !loggedOpenRef.current) {
+            loggedOpenRef.current = true;
+            sessionStorage.setItem(key, "1");
+            logInquiry({
+              inquiry_type: "quote_open",
+              service: getServiceName(pathname),
+              source_page: pathname,
+              source_url: typeof window !== "undefined" ? window.location.href : "",
+              placement: "strategy_form",
+            });
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    obs.observe(formRef.current);
+    return () => obs.disconnect();
+  }, [pathname]);
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
