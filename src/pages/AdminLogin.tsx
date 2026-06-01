@@ -25,17 +25,21 @@ const AdminLogin = () => {
     setLoading(true);
     try {
       if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+        const { error: signUpError } = await supabase.auth.signUp({
           email,
           password,
           options: { emailRedirectTo: `${window.location.origin}/admin` },
         });
-        if (error) throw error;
-        toast({ title: "Account created", description: "You can sign in now." });
-        setMode("signin");
+        if (signUpError) throw signUpError;
+        // Auto-confirm is on — sign in immediately
+        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+        if (signInError) throw signInError;
+        await supabase.rpc("claim_admin_role");
+        navigate("/admin", { replace: true });
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        await supabase.rpc("claim_admin_role");
         navigate("/admin", { replace: true });
       }
     } catch (err: unknown) {
