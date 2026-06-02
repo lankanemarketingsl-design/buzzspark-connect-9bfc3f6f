@@ -122,6 +122,8 @@ import AdvertisingReachSriLanka from "./pages/articles/AdvertisingReachSriLanka.
 import EmailMarketingSriLankaComplete2026 from "./pages/articles/EmailMarketingSriLankaComplete2026.tsx";
 import SmsMarketingSriLanka600k2026 from "./pages/articles/SmsMarketingSriLanka600k2026.tsx";
 import SocialMediaMarketingSriLankaComplete2026 from "./pages/articles/SocialMediaMarketingSriLankaComplete2026.tsx";
+import LinkedInMarketing from "./pages/LinkedInMarketing.tsx";
+import TikTokMarketing from "./pages/TikTokMarketing.tsx";
 import GoogleAdsSriLanka from "./pages/GoogleAdsSriLanka.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import WhyChooseUs from "./pages/WhyChooseUs.tsx";
@@ -202,6 +204,8 @@ const App = () => (
               <Route path="/website-design-sri-lanka" element={<WebsiteDesign />} />
               <Route path="/lead-generation-sri-lanka" element={<LeadGeneration />} />
               <Route path="/social-media-marketing-sri-lanka" element={<SocialMediaMarketing />} />
+              <Route path="/linkedin-marketing-sri-lanka" element={<LinkedInMarketing />} />
+              <Route path="/tiktok-marketing-sri-lanka" element={<TikTokMarketing />} />
               <Route path="/web-banner-advertising-sri-lanka" element={<WebBannerAdvertising />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/about-us" element={<AboutUs />} />

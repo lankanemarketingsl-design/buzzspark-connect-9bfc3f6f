@@ -35,6 +35,8 @@ const Footer = () => {
               <li><Link to="/whatsapp-marketing" className="hover:text-accent transition-colors">WhatsApp Marketing</Link></li>
               <li><Link to="/lead-generation-sri-lanka" className="hover:text-accent transition-colors">Lead Generation</Link></li>
               <li><Link to="/social-media-marketing-sri-lanka" className="hover:text-accent transition-colors">Social Media Marketing</Link></li>
+              <li><Link to="/linkedin-marketing-sri-lanka" className="hover:text-accent transition-colors">LinkedIn Marketing</Link></li>
+              <li><Link to="/tiktok-marketing-sri-lanka" className="hover:text-accent transition-colors">TikTok Marketing</Link></li>
               <li><Link to="/advertising-sri-lanka" className="hover:text-accent transition-colors">Advertising Sri Lanka</Link></li>
               <li><Link to="/online-advertising-sri-lanka" className="hover:text-accent transition-colors">Online Advertising</Link></li>
               <li><Link to="/seo-sri-lanka" className="hover:text-accent transition-colors">SEO Services</Link></li>
