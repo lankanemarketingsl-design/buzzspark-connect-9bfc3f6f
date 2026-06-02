@@ -126,7 +126,8 @@ const collectRouteSeo = (projectRoot: string): RouteSeoEntry[] => {
 
     // Extract FAQs: pattern { q: "...", a: "..." }
     const faqs: { q: string; a: string }[] = [];
-    const faqRegex = /\{\s*q:\s*"((?:[^"\\]|\\.)*)",\s*a:\s*"((?:[^"\\]|\\.)*)"\s*\}/g;
+    // Allow optional trailing comma + whitespace/newlines before closing brace (multi-line objects)
+    const faqRegex = /\{\s*q:\s*"((?:[^"\\]|\\.)*)"\s*,\s*a:\s*"((?:[^"\\]|\\.)*)"\s*,?\s*\}/g;
     for (const m of pageContent.matchAll(faqRegex)) {
       faqs.push({
         q: m[1].replace(/\\"/g, '"').replace(/\\n/g, " "),
