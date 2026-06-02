@@ -12,7 +12,11 @@ interface RouteSeoEntry {
   description: string;
   canonical: string;
   h1: string;
+  subtitle?: string;
+  faqs?: { q: string; a: string }[];
+  paragraphs?: string[];
 }
+
 
 const extractProp = (block: string, prop: string) => {
   const match = block.match(new RegExp(`${prop}="([^"]+)"`));
