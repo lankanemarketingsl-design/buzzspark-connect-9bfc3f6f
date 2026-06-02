@@ -122,11 +122,37 @@ const collectRouteSeo = (projectRoot: string): RouteSeoEntry[] => {
     const inlineH1 = stripHtml(pageContent.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? "");
     const h1 = serviceLayoutTitle || inlineH1 || title;
 
-    entries.push({ route, title, description, canonical, h1 });
+    const subtitle = pageContent.match(/<ServicePageLayout[\s\S]*?subtitle="([^"]+)"/)?.[1] ?? "";
+
+    // Extract FAQs: pattern { q: "...", a: "..." }
+    const faqs: { q: string; a: string }[] = [];
+    const faqRegex = /\{\s*q:\s*"((?:[^"\\]|\\.)*)",\s*a:\s*"((?:[^"\\]|\\.)*)"\s*\}/g;
+    for (const m of pageContent.matchAll(faqRegex)) {
+      faqs.push({
+        q: m[1].replace(/\\"/g, '"').replace(/\\n/g, " "),
+        a: m[2].replace(/\\"/g, '"').replace(/\\n/g, " "),
+      });
+    }
+
+    // Extract visible paragraph text from JSX <p>...</p>, stripping tags & expressions
+    const paragraphs: string[] = [];
+    const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/g;
+    for (const m of pageContent.matchAll(pRegex)) {
+      const raw = m[1]
+        .replace(/\{[^{}]*\}/g, " ") // strip JSX expressions
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (raw.length >= 40 && /[a-zA-Z]{4,}/.test(raw)) paragraphs.push(raw);
+      if (paragraphs.length >= 12) break;
+    }
+
+    entries.push({ route, title, description, canonical, h1, subtitle, faqs, paragraphs });
   }
 
   return entries;
 };
+
 
 const upsertTag = (html: string, regex: RegExp, replacement: string) =>
   regex.test(html) ? html.replace(regex, replacement) : html.replace("</head>", `  ${replacement}\n  </head>`);
