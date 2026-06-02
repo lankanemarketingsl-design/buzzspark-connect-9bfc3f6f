@@ -184,12 +184,28 @@ const applyRouteSeo = (templateHtml: string, entry: RouteSeoEntry) => {
     `<meta name="twitter:description" content="${escapeHtml(entry.description)}" />`,
   );
 
-  // Inject H1 inside #root so non-JS crawlers see it, but React replaces it on mount
-  const h1Tag = `<h1 style="position:absolute;left:-9999px">${escapeHtml(entry.h1)}</h1>`;
-  html = html.replace('<div id="root"></div>', `<div id="root">${h1Tag}</div>`);
+  // Inject H1 + rich content inside #root so non-JS crawlers see it.
+  // React's createRoot().render() replaces all children of #root on mount,
+  // so visitors never see this block — it exists purely for crawlers/AI tools.
+  const parts: string[] = [];
+  parts.push(`<h1>${escapeHtml(entry.h1)}</h1>`);
+  if (entry.subtitle) parts.push(`<p>${escapeHtml(entry.subtitle)}</p>`);
+  if (entry.description) parts.push(`<p>${escapeHtml(entry.description)}</p>`);
+  if (entry.paragraphs && entry.paragraphs.length) {
+    for (const p of entry.paragraphs) parts.push(`<p>${escapeHtml(p)}</p>`);
+  }
+  if (entry.faqs && entry.faqs.length) {
+    parts.push(`<h2>Frequently Asked Questions</h2>`);
+    for (const f of entry.faqs) {
+      parts.push(`<h3>${escapeHtml(f.q)}</h3><p>${escapeHtml(f.a)}</p>`);
+    }
+  }
+  const seoBlock = `<div id="seo-content" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden">${parts.join("")}</div>`;
+  html = html.replace('<div id="root"></div>', `<div id="root">${seoBlock}</div>`);
 
   return html;
 };
+
 
 const staticRouteSeoPlugin = (): Plugin => ({
   name: "static-route-seo-plugin",
