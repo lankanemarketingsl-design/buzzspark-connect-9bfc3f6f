@@ -109,7 +109,14 @@ const SocialMediaMarketingSriLankaComplete2026 = () => {
           <div className="p-6 rounded-2xl bg-card shadow-card border border-border">
             <h2 className="font-heading text-xl font-bold text-foreground mb-4">TikTok Marketing Sri Lanka: The Fastest-Growing Platform</h2>
             <p className="text-muted-foreground leading-relaxed">
-              TikTok now has 7.2 million users in Sri Lanka — one of the largest social platforms in the country. TikTok's algorithm is uniquely generous with organic reach: a well-made video from a brand-new account can reach tens of thousands of viewers without any paid promotion. For businesses targeting the 15–30 age group — <Link to="/education-marketing-sri-lanka" className="text-accent hover:underline font-semibold">education institutes</Link>, fashion brands, food & beverage, and consumer electronics — TikTok deserves serious investment in 2026.
+              TikTok now has 7.2 million users in Sri Lanka — one of the largest social platforms in the country. TikTok's algorithm is uniquely generous with organic reach: a well-made video from a brand-new account can reach tens of thousands of viewers without any paid promotion. For businesses targeting the 15–30 age group — <Link to="/education-marketing-sri-lanka" className="text-accent hover:underline font-semibold">education institutes</Link>, fashion brands, food & beverage, and consumer electronics — TikTok deserves serious investment in 2026. See our dedicated <Link to="/tiktok-marketing-sri-lanka" className="text-accent hover:underline font-semibold">TikTok marketing Sri Lanka</Link> service for packages and pricing.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-card shadow-card border border-border">
+            <h2 className="font-heading text-xl font-bold text-foreground mb-4">LinkedIn Marketing Sri Lanka: The B2B Channel</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              With 800,000+ Sri Lankan professionals on LinkedIn, it is the highest-quality environment for B2B lead generation, executive branding, and reaching decision-makers at CEO, CFO, HR and IT leadership level. If your customers are other businesses or professionals, <Link to="/linkedin-marketing-sri-lanka" className="text-accent hover:underline font-semibold">LinkedIn marketing Sri Lanka</Link> should be in your channel mix alongside Facebook and email.
             </p>
           </div>
 
