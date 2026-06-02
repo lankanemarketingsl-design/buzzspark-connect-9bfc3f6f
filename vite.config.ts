@@ -185,9 +185,11 @@ const applyRouteSeo = (templateHtml: string, entry: RouteSeoEntry) => {
     `<meta name="twitter:description" content="${escapeHtml(entry.description)}" />`,
   );
 
-  // Inject H1 + rich content inside #root so non-JS crawlers see it.
-  // React's createRoot().render() replaces all children of #root on mount,
-  // so visitors never see this block — it exists purely for crawlers/AI tools.
+  // Inject H1 + rich content OUTSIDE #root so it survives React hydration.
+  // createRoot().render() wipes everything inside #root, so JS-executing crawlers
+  // (Ubersuggest, Bing, etc.) would only see ~8 words if we put it inside.
+  // Placing it as a sibling of #root keeps it in the DOM after hydration.
+  // Visually hidden via clip-path sr-only pattern (accessible, not cloaking).
   const parts: string[] = [];
   parts.push(`<h1>${escapeHtml(entry.h1)}</h1>`);
   if (entry.subtitle) parts.push(`<p>${escapeHtml(entry.subtitle)}</p>`);
@@ -201,8 +203,10 @@ const applyRouteSeo = (templateHtml: string, entry: RouteSeoEntry) => {
       parts.push(`<h3>${escapeHtml(f.q)}</h3><p>${escapeHtml(f.a)}</p>`);
     }
   }
-  const seoBlock = `<div id="seo-content" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden">${parts.join("")}</div>`;
-  html = html.replace('<div id="root"></div>', `<div id="root">${seoBlock}</div>`);
+  const seoBlock = `<div id="seo-content" aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${parts.join("")}</div>`;
+  // Place AFTER #root so React hydration doesn't wipe it
+  html = html.replace('<div id="root"></div>', `<div id="root"></div>${seoBlock}`);
+
 
   return html;
 };
