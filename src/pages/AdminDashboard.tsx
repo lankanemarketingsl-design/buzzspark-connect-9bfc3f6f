@@ -269,6 +269,9 @@ const AdminDashboard = () => {
           ))}
         </div>
 
+        {/* Today's inquiries */}
+        <TodayInquiries inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+
         {/* Top pages — overall */}
         <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
 
