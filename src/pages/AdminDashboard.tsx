@@ -270,7 +270,9 @@ const AdminDashboard = () => {
         </div>
 
         {/* Today's inquiries */}
-        <TodayInquiries inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+        <PeriodInquiries range="today" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+        {/* This week's inquiries */}
+        <PeriodInquiries range="week" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
 
         {/* Top pages — overall */}
         <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
