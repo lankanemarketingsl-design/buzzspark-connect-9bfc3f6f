@@ -270,7 +270,9 @@ const AdminDashboard = () => {
         </div>
 
         {/* Today's inquiries */}
-        <TodayInquiries inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+        <PeriodInquiries range="today" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+        {/* This week's inquiries */}
+        <PeriodInquiries range="week" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
 
         {/* Top pages — overall */}
         <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
@@ -585,20 +587,26 @@ type TodayRow = {
   last: string;
 };
 
-const TodayInquiries = ({
+const PeriodInquiries = ({
+  range,
   inquiries,
   onPick,
 }: {
+  range: "today" | "week";
   inquiries: Inquiry[];
   onPick: (page: string) => void;
 }) => {
-  const { rows, totals } = useMemo(() => {
+  const { rows, totals, label } = useMemo(() => {
     const start = new Date();
     start.setHours(0, 0, 0, 0);
-    const today = inquiries.filter((i) => new Date(i.created_at) >= start);
+    if (range === "week") {
+      // Last 7 days including today
+      start.setDate(start.getDate() - 6);
+    }
+    const scoped = inquiries.filter((i) => new Date(i.created_at) >= start);
 
     const map = new Map<string, TodayRow>();
-    today.forEach((i) => {
+    scoped.forEach((i) => {
       const page = i.source_page || "(unknown)";
       const cur =
         map.get(page) ||
@@ -617,32 +625,38 @@ const TodayInquiries = ({
 
     const rows = Array.from(map.values()).sort((a, b) => b.total - a.total);
     const totals = {
-      total: today.length,
-      forms: today.filter((i) => i.inquiry_type === "form_submission").length,
-      whatsapp: today.filter((i) => i.inquiry_type === "whatsapp_click").length,
-      calls: today.filter((i) => i.inquiry_type === "call_click").length,
-      emails: today.filter((i) => i.inquiry_type === "email_click").length,
-      quotes: today.filter((i) => i.inquiry_type === "quote_open").length,
+      total: scoped.length,
+      forms: scoped.filter((i) => i.inquiry_type === "form_submission").length,
+      whatsapp: scoped.filter((i) => i.inquiry_type === "whatsapp_click").length,
+      calls: scoped.filter((i) => i.inquiry_type === "call_click").length,
+      emails: scoped.filter((i) => i.inquiry_type === "email_click").length,
+      quotes: scoped.filter((i) => i.inquiry_type === "quote_open").length,
     };
-    return { rows, totals };
-  }, [inquiries]);
+    const label =
+      range === "today"
+        ? new Date().toLocaleDateString(undefined, {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        : `${start.toLocaleDateString(undefined, { month: "short", day: "numeric" })} – ${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`;
+    return { rows, totals, label };
+  }, [inquiries, range]);
 
   const max = rows[0]?.total || 1;
-  const todayLabel = new Date().toLocaleDateString(undefined, {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const title = range === "today" ? "Today's Inquiries" : "This Week's Inquiries (last 7 days)";
+  const subtitle =
+    range === "today"
+      ? `${label} — which pages & CTAs are driving leads today`
+      : `${label} — which pages have the most demand this week`;
 
   return (
     <div className="border border-border rounded-xl bg-card mb-6">
       <div className="p-4 border-b border-border flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold">Today's Inquiries</h2>
-          <p className="text-xs text-muted-foreground">
-            {todayLabel} — which pages & CTAs are driving leads today
-          </p>
+          <h2 className="text-base font-semibold">{title}</h2>
+          <p className="text-xs text-muted-foreground">{subtitle}</p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs">
           <Badge variant="default">Total {totals.total}</Badge>
@@ -655,7 +669,7 @@ const TodayInquiries = ({
       </div>
       {rows.length === 0 ? (
         <div className="p-8 text-center text-sm text-muted-foreground">
-          No inquiries yet today. Check back later.
+          No inquiries yet for this period.
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -687,9 +701,9 @@ const TodayInquiries = ({
                     <td className="p-3 font-bold">{r.total}</td>
                     <td className="p-3">
                       <div className="flex flex-wrap gap-1">
-                        {ctaList.map(([label, count]) => (
-                          <Badge key={label} variant="outline" className="text-xs">
-                            {label} · {count}
+                        {ctaList.map(([lab, count]) => (
+                          <Badge key={lab} variant="outline" className="text-xs">
+                            {lab} · {count}
                           </Badge>
                         ))}
                       </div>
@@ -703,7 +717,9 @@ const TodayInquiries = ({
                       </div>
                     </td>
                     <td className="p-3 whitespace-nowrap text-xs text-muted-foreground">
-                      {new Date(r.last).toLocaleTimeString()}
+                      {range === "today"
+                        ? new Date(r.last).toLocaleTimeString()
+                        : new Date(r.last).toLocaleString()}
                     </td>
                   </tr>
                 );
