@@ -573,4 +573,147 @@ const TopPagesByType = ({
 
 export default AdminDashboard;
 
+type TodayRow = {
+  page: string;
+  total: number;
+  forms: number;
+  whatsapp: number;
+  calls: number;
+  emails: number;
+  quotes: number;
+  ctas: Map<string, number>;
+  last: string;
+};
+
+const TodayInquiries = ({
+  inquiries,
+  onPick,
+}: {
+  inquiries: Inquiry[];
+  onPick: (page: string) => void;
+}) => {
+  const { rows, totals } = useMemo(() => {
+    const start = new Date();
+    start.setHours(0, 0, 0, 0);
+    const today = inquiries.filter((i) => new Date(i.created_at) >= start);
+
+    const map = new Map<string, TodayRow>();
+    today.forEach((i) => {
+      const page = i.source_page || "(unknown)";
+      const cur =
+        map.get(page) ||
+        { page, total: 0, forms: 0, whatsapp: 0, calls: 0, emails: 0, quotes: 0, ctas: new Map<string, number>(), last: i.created_at };
+      cur.total += 1;
+      if (i.inquiry_type === "form_submission") cur.forms += 1;
+      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
+      if (i.inquiry_type === "call_click") cur.calls += 1;
+      if (i.inquiry_type === "email_click") cur.emails += 1;
+      if (i.inquiry_type === "quote_open") cur.quotes += 1;
+      const cta = `${TYPE_LABELS[i.inquiry_type] || i.inquiry_type}${i.placement ? ` · ${i.placement}` : ""}`;
+      cur.ctas.set(cta, (cur.ctas.get(cta) || 0) + 1);
+      if (new Date(i.created_at) > new Date(cur.last)) cur.last = i.created_at;
+      map.set(page, cur);
+    });
+
+    const rows = Array.from(map.values()).sort((a, b) => b.total - a.total);
+    const totals = {
+      total: today.length,
+      forms: today.filter((i) => i.inquiry_type === "form_submission").length,
+      whatsapp: today.filter((i) => i.inquiry_type === "whatsapp_click").length,
+      calls: today.filter((i) => i.inquiry_type === "call_click").length,
+      emails: today.filter((i) => i.inquiry_type === "email_click").length,
+      quotes: today.filter((i) => i.inquiry_type === "quote_open").length,
+    };
+    return { rows, totals };
+  }, [inquiries]);
+
+  const max = rows[0]?.total || 1;
+  const todayLabel = new Date().toLocaleDateString(undefined, {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  return (
+    <div className="border border-border rounded-xl bg-card mb-6">
+      <div className="p-4 border-b border-border flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 className="text-base font-semibold">Today's Inquiries</h2>
+          <p className="text-xs text-muted-foreground">
+            {todayLabel} — which pages & CTAs are driving leads today
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2 text-xs">
+          <Badge variant="default">Total {totals.total}</Badge>
+          <Badge variant="secondary">Forms {totals.forms}</Badge>
+          <Badge variant="secondary">WhatsApp {totals.whatsapp}</Badge>
+          <Badge variant="secondary">Calls {totals.calls}</Badge>
+          <Badge variant="secondary">Emails {totals.emails}</Badge>
+          <Badge variant="secondary">Quote Opens {totals.quotes}</Badge>
+        </div>
+      </div>
+      {rows.length === 0 ? (
+        <div className="p-8 text-center text-sm text-muted-foreground">
+          No inquiries yet today. Check back later.
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/40 text-left">
+              <tr>
+                <th className="p-3">#</th>
+                <th className="p-3">Page</th>
+                <th className="p-3">Total</th>
+                <th className="p-3">CTAs used (clicks)</th>
+                <th className="p-3 w-40">Share</th>
+                <th className="p-3">Last</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r, idx) => {
+                const ctaList = Array.from(r.ctas.entries()).sort((a, b) => b[1] - a[1]);
+                return (
+                  <tr
+                    key={r.page}
+                    onClick={() => onPick(r.page)}
+                    className="border-t border-border cursor-pointer hover:bg-muted/30"
+                  >
+                    <td className="p-3 text-muted-foreground">{idx + 1}</td>
+                    <td className="p-3">
+                      <div className="font-medium">{prettyPage(r.page)}</div>
+                      <div className="text-xs text-muted-foreground break-all">{r.page}</div>
+                    </td>
+                    <td className="p-3 font-bold">{r.total}</td>
+                    <td className="p-3">
+                      <div className="flex flex-wrap gap-1">
+                        {ctaList.map(([label, count]) => (
+                          <Badge key={label} variant="outline" className="text-xs">
+                            {label} · {count}
+                          </Badge>
+                        ))}
+                      </div>
+                    </td>
+                    <td className="p-3">
+                      <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+                        <div
+                          className="h-full bg-primary"
+                          style={{ width: `${(r.total / max) * 100}%` }}
+                        />
+                      </div>
+                    </td>
+                    <td className="p-3 whitespace-nowrap text-xs text-muted-foreground">
+                      {new Date(r.last).toLocaleTimeString()}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
+
 
