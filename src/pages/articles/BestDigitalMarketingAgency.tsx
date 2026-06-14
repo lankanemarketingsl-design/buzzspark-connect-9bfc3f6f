@@ -4,6 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import RelatedArticles from "@/components/RelatedArticles";
 import StrategyCallForm from "@/components/StrategyCallForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import ServiceHub from "@/components/ServiceHub";
 
 const BestDigitalMarketingAgency = () => {
   const faqs = [
@@ -350,6 +351,8 @@ const BestDigitalMarketingAgency = () => {
                 </p>
               </div>
             </section>
+
+            <ServiceHub />
 
             <section className="mb-10">
               <h2 className="text-2xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
