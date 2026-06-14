@@ -269,10 +269,19 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        {/* Today's inquiries */}
+        {/* Today */}
         <PeriodInquiries range="today" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
-        {/* This week's inquiries */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+          <PeriodServices range="today" inquiries={inquiries} onPick={(s) => setServiceFilter(s)} />
+          <PeriodSources range="today" inquiries={inquiries} />
+        </div>
+
+        {/* This week */}
         <PeriodInquiries range="week" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+          <PeriodServices range="week" inquiries={inquiries} onPick={(s) => setServiceFilter(s)} />
+          <PeriodSources range="week" inquiries={inquiries} />
+        </div>
 
         {/* Top pages — overall */}
         <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
