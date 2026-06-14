@@ -36,6 +36,46 @@ const BestDigitalMarketingAgency = () => {
       q: "What budget should I allocate to digital marketing in Sri Lanka?",
       a: "Businesses allocating 5–10% of monthly revenue to marketing consistently outperform competitors. For SMEs in Sri Lanka, a starting budget of LKR 25,000–75,000 per month across multiple channels typically delivers strong, measurable returns.",
     },
+    {
+      q: "What does a results-driven digital marketing agency actually track in Sri Lanka?",
+      a: "A truly results-driven agency moves beyond vanity metrics like likes, impressions and follower counts. In Sri Lanka, the best agencies track cost per lead, cost per acquisition, conversion rates by channel, revenue directly attributed to campaigns, and customer lifetime value. These numbers connect marketing activity to actual business outcomes — more sales, more leads, more revenue — which is the only measurement that matters to your bottom line.",
+    },
+    {
+      q: "Why are customers who see your brand on multiple channels 250% more likely to convert?",
+      a: "Conversion rarely happens on the first touchpoint. A customer might see your brand on a Facebook ad, receive an SMS reminder, open an email follow-up, and finally convert after a WhatsApp message. Each additional channel reinforces recognition, builds trust and reduces the friction of that final decision. Studies consistently show that brands reaching customers across three or more channels see conversion rates 250% higher than single-channel campaigns — because the message is consistent, repeated and multi-directional.",
+    },
+    {
+      q: "How important is local Sri Lankan market knowledge when choosing a digital marketing agency?",
+      a: "It is critical. Sri Lanka has a unique digital audience shaped by language preferences across Sinhala, Tamil and English, distinct seasonal buying behaviour tied to local cultural events, and platform usage patterns that differ from Western markets — WhatsApp and Facebook dominate in ways that don't reflect global averages. An agency without deep Sri Lankan market experience will apply generic strategies that underperform. Local knowledge also means understanding trusted platforms like Findit.lk for web banner advertising, which internationally-focused agencies are unlikely to leverage.",
+    },
+    {
+      q: "What is the ROI of email marketing compared to other channels in Sri Lanka?",
+      a: "Email marketing consistently delivers the highest ROI of any digital marketing channel — typically returning LKR 36 for every LKR 1 spent when campaigns are properly segmented and tracked. This compares favourably to Google Ads and social media, where rising competition has increased cost per click significantly. The key to email ROI is audience segmentation by industry, location and behaviour, combined with automation flows that nurture and retain customers without ongoing manual effort.",
+    },
+    {
+      q: "Why does WhatsApp outperform other messaging channels for Sri Lankan businesses?",
+      a: "WhatsApp reaches over 90% of Sri Lankan smartphone users — a penetration rate that no other single platform can match. Unlike email or SMS, WhatsApp enables two-way conversations, making it ideal not just for broadcasting promotions but for personalised lead nurturing, direct customer support and closing sales in real time. Combined with automation, a single WhatsApp campaign can handle broadcast messages, qualify incoming leads and route hot prospects to your sales team — all without manual intervention.",
+    },
+    {
+      q: "What questions should I ask a digital marketing agency before signing?",
+      a: "Four questions cut through the noise. First: how will you generate leads specifically for my business and industry — not a generic answer? Second: which channels will you use and why those over others for my audience? Third: how will success be measured month over month and what KPIs will we agree on upfront? Fourth: what happens if results fall below the agreed benchmark — do you adjust, refund, or just continue billing? Any agency that cannot answer these clearly is not the right partner.",
+    },
+    {
+      q: "How long should I give a digital marketing agency before switching if results are slow?",
+      a: "Switching agencies every three months is one of the most common and costly mistakes Sri Lankan businesses make. Most campaigns — particularly SEO and content-led strategies — need 3 to 6 months before delivering meaningful, measurable results. Changing agencies before that window closes means restarting from zero each time and never seeing compounding returns. The right signal to switch is not slow early results — it is a lack of transparency, no clear strategy, or zero improvement after a full 6-month cycle with honest communication throughout.",
+    },
+    {
+      q: "What are the real benefits of working with one full-service agency versus multiple specialists?",
+      a: "When channels are managed by separate specialists, they operate in silos — your email team doesn't know what your SEO team is doing, and neither knows what your paid ads team is targeting. A unified agency coordinates every channel so your email campaign links to a landing page designed by the same team, retargeted by display ads, and reinforced by Google Ads — all with a consistent message. The result is higher conversion rates, unified reporting you can present to stakeholders, and a growth strategy that compounds over time instead of producing disconnected, inconsistent results.",
+    },
+    {
+      q: "How is AI changing digital marketing for businesses in Sri Lanka in 2026?",
+      a: "AI is transforming campaigns in three practical ways for Sri Lankan businesses right now. Predictive targeting uses AI to identify the highest-value audience segments before a campaign even launches, reducing wasted spend. Dynamic creative automatically adjusts ad copy, images and offers based on who is viewing them, improving click-through rates without manual A/B testing. And marketing automation powered by AI means full customer journeys — from first touchpoint to conversion to retention — run 24 hours a day without manual input. Businesses that adopt these tools early will have a measurable competitive advantage over those still running static, one-size campaigns.",
+    },
+    {
+      q: "Does digital marketing work differently for each industry in Sri Lanka?",
+      a: "Yes — significantly. A hotel needs seasonal multi-channel campaigns targeting international travellers via Google Ads while retaining local guests via email and WhatsApp. A real estate developer needs high-intent lead generation via Google search and SMS follow-ups, not social awareness campaigns. An education provider needs enrolment nurturing automation that guides a student from first inquiry through to registration over weeks or months. The channel mix, message timing, budget allocation and success metrics are different for every sector. This is why choosing an agency with direct experience in your industry matters far more than choosing the agency with the most impressive general portfolio.",
+    },
   ];
 
   const jsonLd = [
