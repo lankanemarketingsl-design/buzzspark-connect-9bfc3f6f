@@ -741,4 +741,137 @@ const PeriodInquiries = ({
   );
 };
 
+const scopeByRange = (inquiries: Inquiry[], range: "today" | "week") => {
+  const start = new Date();
+  start.setHours(0, 0, 0, 0);
+  if (range === "week") start.setDate(start.getDate() - 6);
+  const label =
+    range === "today"
+      ? new Date().toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" })
+      : `${start.toLocaleDateString(undefined, { month: "short", day: "numeric" })} – ${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
+  return { scoped: inquiries.filter((i) => new Date(i.created_at) >= start), label };
+};
+
+const PeriodServices = ({
+  range,
+  inquiries,
+  onPick,
+}: {
+  range: "today" | "week";
+  inquiries: Inquiry[];
+  onPick: (service: string) => void;
+}) => {
+  const { rows, label } = useMemo(() => {
+    const { scoped, label } = scopeByRange(inquiries, range);
+    const map = new Map<string, { service: string; total: number; forms: number; whatsapp: number; calls: number; emails: number }>();
+    scoped.forEach((i) => {
+      const service = i.service || prettyPage(i.source_page) || "(unknown)";
+      const cur = map.get(service) || { service, total: 0, forms: 0, whatsapp: 0, calls: 0, emails: 0 };
+      cur.total += 1;
+      if (i.inquiry_type === "form_submission") cur.forms += 1;
+      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
+      if (i.inquiry_type === "call_click") cur.calls += 1;
+      if (i.inquiry_type === "email_click") cur.emails += 1;
+      map.set(service, cur);
+    });
+    return { rows: Array.from(map.values()).sort((a, b) => b.total - a.total).slice(0, 10), label };
+  }, [inquiries, range]);
+
+  const max = rows[0]?.total || 1;
+  const title = range === "today" ? "Top Services — Today" : "Top Services — This Week";
+
+  return (
+    <div className="border border-border rounded-xl bg-card">
+      <div className="p-4 border-b border-border">
+        <h3 className="text-sm font-semibold">{title}</h3>
+        <p className="text-xs text-muted-foreground">{label} — which services get the most inquiries</p>
+      </div>
+      {rows.length === 0 ? (
+        <div className="p-6 text-center text-sm text-muted-foreground">No service inquiries yet.</div>
+      ) : (
+        <ul className="divide-y divide-border">
+          {rows.map((r) => (
+            <li key={r.service} onClick={() => onPick(r.service)} className="p-3 cursor-pointer hover:bg-muted/30">
+              <div className="flex items-center justify-between gap-3 mb-1">
+                <div className="font-medium text-sm truncate flex-1">{r.service}</div>
+                <div className="text-sm font-bold tabular-nums">{r.total}</div>
+              </div>
+              <div className="flex flex-wrap gap-1 mb-2">
+                {r.forms > 0 && <Badge variant="outline" className="text-xs">Forms · {r.forms}</Badge>}
+                {r.whatsapp > 0 && <Badge variant="outline" className="text-xs">WhatsApp · {r.whatsapp}</Badge>}
+                {r.calls > 0 && <Badge variant="outline" className="text-xs">Calls · {r.calls}</Badge>}
+                {r.emails > 0 && <Badge variant="outline" className="text-xs">Emails · {r.emails}</Badge>}
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                <div className="h-full bg-primary" style={{ width: `${(r.total / max) * 100}%` }} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+const PeriodSources = ({
+  range,
+  inquiries,
+}: {
+  range: "today" | "week";
+  inquiries: Inquiry[];
+}) => {
+  const { rows, label } = useMemo(() => {
+    const { scoped, label } = scopeByRange(inquiries, range);
+    const map = new Map<string, { source: string; total: number; forms: number; whatsapp: number; calls: number; emails: number }>();
+    scoped.forEach((i) => {
+      let source = i.utm_source ? `${i.utm_source}${i.utm_medium ? ` / ${i.utm_medium}` : ""}` : "";
+      if (!source) source = "Direct / Organic";
+      const cur = map.get(source) || { source, total: 0, forms: 0, whatsapp: 0, calls: 0, emails: 0 };
+      cur.total += 1;
+      if (i.inquiry_type === "form_submission") cur.forms += 1;
+      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
+      if (i.inquiry_type === "call_click") cur.calls += 1;
+      if (i.inquiry_type === "email_click") cur.emails += 1;
+      map.set(source, cur);
+    });
+    return { rows: Array.from(map.values()).sort((a, b) => b.total - a.total).slice(0, 10), label };
+  }, [inquiries, range]);
+
+  const max = rows[0]?.total || 1;
+  const title = range === "today" ? "Top Sources — Today" : "Top Sources — This Week";
+
+  return (
+    <div className="border border-border rounded-xl bg-card">
+      <div className="p-4 border-b border-border">
+        <h3 className="text-sm font-semibold">{title}</h3>
+        <p className="text-xs text-muted-foreground">{label} — where inquiry traffic is coming from</p>
+      </div>
+      {rows.length === 0 ? (
+        <div className="p-6 text-center text-sm text-muted-foreground">No source data yet.</div>
+      ) : (
+        <ul className="divide-y divide-border">
+          {rows.map((r) => (
+            <li key={r.source} className="p-3">
+              <div className="flex items-center justify-between gap-3 mb-1">
+                <div className="font-medium text-sm truncate flex-1">{r.source}</div>
+                <div className="text-sm font-bold tabular-nums">{r.total}</div>
+              </div>
+              <div className="flex flex-wrap gap-1 mb-2">
+                {r.forms > 0 && <Badge variant="outline" className="text-xs">Forms · {r.forms}</Badge>}
+                {r.whatsapp > 0 && <Badge variant="outline" className="text-xs">WhatsApp · {r.whatsapp}</Badge>}
+                {r.calls > 0 && <Badge variant="outline" className="text-xs">Calls · {r.calls}</Badge>}
+                {r.emails > 0 && <Badge variant="outline" className="text-xs">Emails · {r.emails}</Badge>}
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                <div className="h-full bg-primary" style={{ width: `${(r.total / max) * 100}%` }} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+
 
