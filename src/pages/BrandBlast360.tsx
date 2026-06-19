@@ -76,7 +76,7 @@ const fbGood = [
 
 const steps = [
   { icon: Upload, n: 1, t: "Submit Promotion", d: "Share your e-flyer, logo and brief. Takes minutes." },
-  { icon: Palette, n: 2, t: "We Create Campaign", d: "We format your artwork for every channel — email HTML, Facebook post, LinkedIn content, Findit.lk listing." },
+  { icon: Palette, n: 2, t: "We Create Campaign", d: "We format your artwork for every channel — email design, Facebook post, LinkedIn content, Findit.lk listing." },
   { icon: Radio, n: 3, t: "Multi-Channel Distribution", d: "All 5 channels go live simultaneously within 48 hours." },
   { icon: TrendingUp, n: 4, t: "Brand Awareness Generated", d: "Customers see you everywhere. Trust builds. Enquiries and sales follow. Full report at end." },
 ];
@@ -196,15 +196,15 @@ const BrandBlast360 = () => {
                 Brand Blast 360 — Buzz Connect
               </div>
               <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mb-5">
-                Your Brand.
-                <span className="block bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">Everywhere.</span>
+                Get Seen by 988,000+
+                <span className="block bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">Customers in 48 Hours.</span>
               </h1>
               <p className="text-base sm:text-lg text-primary-foreground/85 mb-6 max-w-xl">
-                Reach <b className="text-white">professionals, consumers & decision-makers</b> across Sri Lanka — in just 48 hours.
+                One fixed price. Five channels. Zero guesswork. <b className="text-white">LKR 15,000</b> reaches more buyers than any single Facebook campaign — and your phone starts ringing the same week.
               </p>
 
               <div className="bg-red-500/15 border border-red-300/30 rounded-xl p-4 mb-6 text-sm text-primary-foreground/90">
-                Running email only? <b className="text-white">You're missing 91% of your potential audience.</b> Customers need to see your brand 5–7 times before they act. One channel can't do that.
+                Running email or Facebook alone? <b className="text-white">You're leaving 90% of buyers untouched.</b> Customers need to see your brand 5–7 times before they act. Brand Blast 360 does that in one campaign.
               </div>
 
               <div className="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-4 mb-7">
@@ -213,24 +213,24 @@ const BrandBlast360 = () => {
                 </div>
                 <div className="w-px h-12 bg-white/20" />
                 <div className="text-sm">
-                  <div className="font-bold text-white mb-0.5">Verified Reach</div>
+                  <div className="font-bold text-white mb-0.5">Verified Reach · LKR 0.015 per person</div>
                   <div className="text-primary-foreground/70 text-xs">Email · Facebook · LinkedIn · Remarketing + Findit.lk featured</div>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <a href="#packages" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105">
-                  <Rocket className="w-4 h-4" /> Launch Brand Blast 360
+                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps and pricing.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero_whatsapp" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105 shadow-lg shadow-accent/30">
+                  <MessageCircle className="w-4 h-4" /> WhatsApp Us — Launch in 48h
                 </a>
-                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 — please share details.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
-                  <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+                <a href="#packages" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+                  <Rocket className="w-4 h-4" /> See Pricing
                 </a>
               </div>
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-6 text-xs text-primary-foreground/70">
-                <span className="inline-flex items-center gap-1.5"><Users className="w-3.5 h-3.5" /> 1,500+ businesses</span>
-                <span className="inline-flex items-center gap-1.5"><Star className="w-3.5 h-3.5" /> 10+ years in Sri Lanka</span>
-                <span className="inline-flex items-center gap-1.5"><Bolt className="w-3.5 h-3.5" /> 20,000+ campaigns</span>
+                <span className="inline-flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-accent" /> Fixed price · no contract</span>
+                <span className="inline-flex items-center gap-1.5"><Bolt className="w-3.5 h-3.5 text-accent" /> Live in 48 hours</span>
+                <span className="inline-flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-accent" /> 1,500+ businesses trust us</span>
               </div>
             </motion.div>
 
@@ -419,11 +419,11 @@ const BrandBlast360 = () => {
 
         {/* Mid-page CTA */}
         <div className="bg-gradient-to-r from-accent via-amber-500 to-accent text-accent-foreground py-10 px-4 text-center">
-          <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Ready to be seen by 988,000+ people?</h3>
-          <p className="text-sm sm:text-base opacity-90 mb-5">Launch your first Brand Blast 360 campaign today. Live in 48 hours.</p>
+          <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Your next 100 customers are 48 hours away.</h3>
+          <p className="text-sm sm:text-base opacity-90 mb-5">Send us your offer on WhatsApp — we'll have all 5 channels live within 2 working days. Fixed price. No contract.</p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_mid_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3 rounded-xl text-sm">
-              <MessageCircle className="w-4 h-4" /> Launch on WhatsApp
+            <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_mid_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3 rounded-xl text-sm shadow-lg">
+              <MessageCircle className="w-4 h-4" /> WhatsApp Us Now
             </a>
             <a href="#packages" className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 border border-accent-foreground/20 text-accent-foreground font-semibold px-6 py-3 rounded-xl text-sm">
               See packages & pricing
@@ -450,7 +450,7 @@ const BrandBlast360 = () => {
                 <div className="text-4xl font-heading font-black text-indigo-500 my-2">750,000</div>
                 <div className="text-sm text-muted-foreground mb-3">verified opt-in subscribers — Sri Lanka's largest email database</div>
                 <div className="flex flex-wrap gap-2">
-                  {["Largest opt-in list in SL", "Western Province focused", "Segmented by profession", "Rich HTML e-flyer"].map((t) => (
+                  {["Largest opt-in list in SL", "Western Province focused", "Segmented by profession", "Designed e-flyer included"].map((t) => (
                     <span key={t} className="text-[11px] font-semibold bg-indigo-500/10 text-indigo-500 px-2.5 py-1 rounded-full">{t}</span>
                   ))}
                 </div>
@@ -600,6 +600,18 @@ const BrandBlast360 = () => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-10 bg-card border border-border rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-5">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+                <span className="inline-flex items-center gap-2 font-semibold"><ShieldCheck className="w-4 h-4 text-emerald-600" /> Fixed price · no surprises</span>
+                <span className="inline-flex items-center gap-2 font-semibold"><Bolt className="w-4 h-4 text-amber-500" /> 48-hour launch promise</span>
+                <span className="inline-flex items-center gap-2 font-semibold"><FileBarChart className="w-4 h-4 text-primary" /> Full report included</span>
+                <span className="inline-flex items-center gap-2 font-semibold"><Headset className="w-4 h-4 text-sky-500" /> Local WhatsApp support</span>
+              </div>
+              <a href={wa("Hi Buzz Connect, I'm ready to book a Brand Blast 360 package. Please help me choose the right one.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_pricing_guarantee_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-5 py-3 rounded-xl text-sm whitespace-nowrap">
+                <MessageCircle className="w-4 h-4" /> Talk to us on WhatsApp
+              </a>
             </div>
           </div>
         </section>
