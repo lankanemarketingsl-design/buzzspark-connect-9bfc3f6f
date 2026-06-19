@@ -76,7 +76,7 @@ const fbGood = [
 
 const steps = [
   { icon: Upload, n: 1, t: "Submit Promotion", d: "Share your e-flyer, logo and brief. Takes minutes." },
-  { icon: Palette, n: 2, t: "We Create Campaign", d: "We format your artwork for every channel — email HTML, Facebook post, LinkedIn content, Findit.lk listing." },
+  { icon: Palette, n: 2, t: "We Create Campaign", d: "We format your artwork for every channel — email design, Facebook post, LinkedIn content, Findit.lk listing." },
   { icon: Radio, n: 3, t: "Multi-Channel Distribution", d: "All 5 channels go live simultaneously within 48 hours." },
   { icon: TrendingUp, n: 4, t: "Brand Awareness Generated", d: "Customers see you everywhere. Trust builds. Enquiries and sales follow. Full report at end." },
 ];
