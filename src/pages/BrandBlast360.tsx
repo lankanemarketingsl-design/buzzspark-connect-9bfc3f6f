@@ -196,15 +196,15 @@ const BrandBlast360 = () => {
                 Brand Blast 360 — Buzz Connect
               </div>
               <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mb-5">
-                Your Brand.
-                <span className="block bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">Everywhere.</span>
+                Get Seen by 988,000+
+                <span className="block bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">Customers in 48 Hours.</span>
               </h1>
               <p className="text-base sm:text-lg text-primary-foreground/85 mb-6 max-w-xl">
-                Reach <b className="text-white">professionals, consumers & decision-makers</b> across Sri Lanka — in just 48 hours.
+                One fixed price. Five channels. Zero guesswork. <b className="text-white">LKR 15,000</b> reaches more buyers than any single Facebook campaign — and your phone starts ringing the same week.
               </p>
 
               <div className="bg-red-500/15 border border-red-300/30 rounded-xl p-4 mb-6 text-sm text-primary-foreground/90">
-                Running email only? <b className="text-white">You're missing 91% of your potential audience.</b> Customers need to see your brand 5–7 times before they act. One channel can't do that.
+                Running email or Facebook alone? <b className="text-white">You're leaving 90% of buyers untouched.</b> Customers need to see your brand 5–7 times before they act. Brand Blast 360 does that in one campaign.
               </div>
 
               <div className="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-4 mb-7">
@@ -213,24 +213,24 @@ const BrandBlast360 = () => {
                 </div>
                 <div className="w-px h-12 bg-white/20" />
                 <div className="text-sm">
-                  <div className="font-bold text-white mb-0.5">Verified Reach</div>
+                  <div className="font-bold text-white mb-0.5">Verified Reach · LKR 0.015 per person</div>
                   <div className="text-primary-foreground/70 text-xs">Email · Facebook · LinkedIn · Remarketing + Findit.lk featured</div>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <a href="#packages" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105">
-                  <Rocket className="w-4 h-4" /> Launch Brand Blast 360
+                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps and pricing.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero_whatsapp" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105 shadow-lg shadow-accent/30">
+                  <MessageCircle className="w-4 h-4" /> WhatsApp Us — Launch in 48h
                 </a>
-                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 — please share details.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
-                  <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+                <a href="#packages" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+                  <Rocket className="w-4 h-4" /> See Pricing
                 </a>
               </div>
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-6 text-xs text-primary-foreground/70">
-                <span className="inline-flex items-center gap-1.5"><Users className="w-3.5 h-3.5" /> 1,500+ businesses</span>
-                <span className="inline-flex items-center gap-1.5"><Star className="w-3.5 h-3.5" /> 10+ years in Sri Lanka</span>
-                <span className="inline-flex items-center gap-1.5"><Bolt className="w-3.5 h-3.5" /> 20,000+ campaigns</span>
+                <span className="inline-flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-accent" /> Fixed price · no contract</span>
+                <span className="inline-flex items-center gap-1.5"><Bolt className="w-3.5 h-3.5 text-accent" /> Live in 48 hours</span>
+                <span className="inline-flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-accent" /> 1,500+ businesses trust us</span>
               </div>
             </motion.div>
 
