@@ -49,7 +49,7 @@ const wa = (msg: string) =>
 const channels = [
   { icon: Mail, name: "Email Blast", num: "750,000", sub: "Verified opt-in subscribers", color: "text-indigo-500", bg: "bg-indigo-500/10" },
   { icon: Target, name: "Facebook Remarketing", num: "100,000", sub: "Warm leads retargeted", color: "text-pink-500", bg: "bg-pink-500/10" },
-  { icon: Search, name: "Findit.lk Listing", num: "100,000", sub: "Featured directory placement", color: "text-amber-500", bg: "bg-amber-500/10" },
+  { icon: Search, name: "Findit.lk Advertisement", num: "100,000", sub: "No.1 Offer Finder in Sri Lanka", color: "text-amber-500", bg: "bg-amber-500/10" },
   { icon: Facebook, name: "Facebook Exposure", num: "30,000+", sub: "Findit.lk audience network", color: "text-blue-500", bg: "bg-blue-500/10" },
   { icon: Linkedin, name: "LinkedIn", num: "8,000+", sub: "Business owners & managers", color: "text-sky-500", bg: "bg-sky-500/10" },
 ];
@@ -237,7 +237,10 @@ const BrandBlast360 = () => {
             {/* Live channel dashboard */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="bg-white/95 backdrop-blur rounded-2xl shadow-2xl p-5 sm:p-6 text-foreground">
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-border">
-                <div className="text-sm font-bold">Your Brand Blast 360 — live channels</div>
+                <div>
+                  <div className="text-sm font-bold">Your Brand Blast 360 — live channels</div>
+                  <div className="text-[11px] text-muted-foreground">Each channel works as its own touchpoint</div>
+                </div>
                 <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> All active
                 </div>
@@ -277,7 +280,7 @@ const BrandBlast360 = () => {
             {[
               { ic: Mail, n: "750,000+", l: "Email Reach", s: "Verified opt-in subscribers", c: "text-indigo-500", bg: "bg-indigo-500/10" },
               { ic: Target, n: "100,000", l: "Remarketing", s: "Warm leads retargeted", c: "text-pink-500", bg: "bg-pink-500/10" },
-              { ic: Search, n: "100,000", l: "Findit.lk Reach", s: "Featured directory placement", c: "text-amber-500", bg: "bg-amber-500/10" },
+              { ic: Search, n: "100,000", l: "Findit.lk Advertisement", s: "No.1 Offer Finder in Sri Lanka", c: "text-amber-500", bg: "bg-amber-500/10" },
               { ic: Facebook, n: "30,000+", l: "Facebook Exposure", s: "Findit.lk audience network", c: "text-blue-500", bg: "bg-blue-500/10" },
               { ic: Linkedin, n: "8,000+", l: "LinkedIn Pros", s: "Owners, managers & decision-makers", c: "text-sky-500", bg: "bg-sky-500/10" },
               { ic: Radio, n: "988K+", l: "Total Reach", s: "Verified reach across all 5 channels", c: "text-primary", bg: "bg-primary/10" },
@@ -459,7 +462,7 @@ const BrandBlast360 = () => {
                 { ic: Facebook, ey: "Channel 2 — Social amplification", nm: "Facebook Exposure", big: "30,000+", lbl: "Findit.lk Facebook followers", pts: ["Pushed across Findit.lk pages", "Organic social amplification", "Brand visibility on feeds"], c: "blue-500" },
                 { ic: Target, ey: "Channel 3 — Highest converter", nm: "Facebook Remarketing", big: "100,000", lbl: "warm leads retargeted on Facebook", pts: ["Re-engages people who clicked", "Lifts conversions up to 70%", "Keeps brand top of mind"], c: "pink-500" },
                 { ic: Linkedin, ey: "Channel 4 — Professional network", nm: "LinkedIn", big: "8,000+", lbl: "business owners & decision-makers", pts: ["Managers, executives & owners", "Best for B2B & wholesale", "Builds professional credibility"], c: "sky-500" },
-                { ic: Search, ey: "Channel 5 — Always-on organic", nm: "Findit.lk Listing", big: "100,000", lbl: "estimated monthly directory visitors", pts: ["Sri Lanka's #1 business directory", "Featured premium placement", "Ongoing organic discovery"], c: "amber-500" },
+                { ic: Search, ey: "Channel 5 — Always-on organic", nm: "Findit.lk Advertisement", big: "100,000", lbl: "estimated monthly directory visitors", pts: ["Sri Lanka's #1 business directory", "Featured premium placement", "Ongoing organic discovery"], c: "amber-500" },
               ].map((c) => (
                 <div key={c.nm} className="bg-card border border-border rounded-2xl p-6">
                   <div className={`w-12 h-12 rounded-xl bg-${c.c}/10 text-${c.c} flex items-center justify-center mb-3`}>
