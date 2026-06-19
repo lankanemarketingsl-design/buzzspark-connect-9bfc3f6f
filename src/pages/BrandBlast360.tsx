@@ -230,7 +230,7 @@ const BrandBlast360 = () => {
                 <a href="#packages" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105">
                   <Rocket className="w-4 h-4" /> Launch Brand Blast 360
                 </a>
-                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 — please share details.")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 — please share details.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
                   <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
                 </a>
               </div>
