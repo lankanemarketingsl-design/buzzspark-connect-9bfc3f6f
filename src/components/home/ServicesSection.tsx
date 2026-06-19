@@ -4,6 +4,14 @@ import { Mail, MessageSquare, Smartphone, Globe, Search, PenTool, Monitor, Packa
 
 const services = [
   {
+    icon: Zap,
+    title: "Brand Blast 360",
+    bullets: ["750,000 email subscribers", "Facebook + LinkedIn exposure", "Findit.lk featured ads", "Remarketing 100K reach", "988,000+ total verified reach"],
+    description: "One campaign. Five channels. Maximum reach. Starting LKR 15,000.",
+    path: "/brand-blast-360",
+    highlight: true,
+  },
+  {
     icon: Mail,
     title: "Email Marketing",
     bullets: ["350,000+ active email database", "50,000+ VIP audience reach", "10,000+ highly targeted databases", "Bulk email campaigns"],
