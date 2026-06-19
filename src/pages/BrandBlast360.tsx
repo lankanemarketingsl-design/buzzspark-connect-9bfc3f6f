@@ -230,7 +230,7 @@ const BrandBlast360 = () => {
                 <a href="#packages" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105">
                   <Rocket className="w-4 h-4" /> Launch Brand Blast 360
                 </a>
-                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 — please share details.")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+                <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 — please share details.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
                   <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
                 </a>
               </div>
@@ -425,7 +425,7 @@ const BrandBlast360 = () => {
           <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Ready to be seen by 988,000+ people?</h3>
           <p className="text-sm sm:text-base opacity-90 mb-5">Launch your first Brand Blast 360 campaign today. Live in 48 hours.</p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps.")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3 rounded-xl text-sm">
+            <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_mid_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3 rounded-xl text-sm">
               <MessageCircle className="w-4 h-4" /> Launch on WhatsApp
             </a>
             <a href="#packages" className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 border border-accent-foreground/20 text-accent-foreground font-semibold px-6 py-3 rounded-xl text-sm">
@@ -590,6 +590,11 @@ const BrandBlast360 = () => {
                       href={wa(`Hi Buzz Connect, I want the ${p.name} package (Brand Blast 360 — ${p.count} ${p.label}, ${p.price}). Please share next steps.`)}
                       target="_blank"
                       rel="noopener"
+                      data-wa-placement={`brandblast360_pricing_${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
+                      data-selected-service={`Brand Blast 360 — ${p.name}`}
+                      data-service="Brand Blast 360"
+                      data-pricing-tier={p.name}
+                      data-pricing-price={p.price}
                       className={`mt-6 inline-flex items-center justify-center gap-2 font-bold px-4 py-3 rounded-xl text-sm transition-colors ${p.popular ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-accent text-accent-foreground hover:bg-accent/90"}`}
                     >
                       {p.name === "Market Dominator" ? <Crown className="w-4 h-4" /> : <Rocket className="w-4 h-4" />}
@@ -642,10 +647,10 @@ const BrandBlast360 = () => {
               <Clock className="w-3.5 h-3.5" /> Bundle discount: Save up to 25% — this month only
             </div>
             <div className="flex flex-wrap gap-3 justify-center mb-6">
-              <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps.")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-7 py-4 rounded-xl">
+              <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_launch" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-7 py-4 rounded-xl">
                 <Rocket className="w-4 h-4" /> Launch Brand Blast 360
               </a>
-              <a href={wa("Hi Buzz Connect, I have a question about Brand Blast 360.")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-7 py-4 rounded-xl">
+              <a href={wa("Hi Buzz Connect, I have a question about Brand Blast 360.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_question" data-selected-service="Brand Blast 360 — Question" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-7 py-4 rounded-xl">
                 <MessageCircle className="w-4 h-4" /> Ask on WhatsApp
               </a>
             </div>
