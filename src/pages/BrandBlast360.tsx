@@ -376,7 +376,7 @@ const BrandBlast360 = () => {
                       </div>
                       <div className="col-span-2 bg-pink-500/8 border border-pink-500/15 rounded-lg p-2 text-center">
                         <div className="text-[10px] font-bold text-pink-500 uppercase tracking-wider">Remarketing</div>
-                        <div className="text-sm font-heading font-black text-foreground">100K warm leads</div>
+                        <div className="text-sm font-heading font-black text-foreground">100K reach via Facebook remarketing</div>
                       </div>
                     </div>
                     <hr className="my-4 border-border" />
