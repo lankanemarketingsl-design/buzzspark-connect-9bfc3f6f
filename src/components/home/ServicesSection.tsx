@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Mail, MessageSquare, Smartphone, Globe, Search, PenTool, Monitor, Package, ArrowRight, Target, Share2 } from "lucide-react";
+import { Mail, MessageSquare, Smartphone, Globe, Search, PenTool, Monitor, Package, ArrowRight, Target, Share2, Zap } from "lucide-react";
 
 const services = [
+  {
+    icon: Zap,
+    title: "Brand Blast 360",
+    bullets: ["750,000 email subscribers", "Facebook + LinkedIn exposure", "Findit.lk featured ads", "Remarketing 100K reach", "988,000+ total verified reach"],
+    description: "One campaign. Five channels. Maximum reach. Starting LKR 15,000.",
+    path: "/brand-blast-360",
+    highlight: true,
+  },
   {
     icon: Mail,
     title: "Email Marketing",
@@ -101,7 +109,7 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Top 4 highlighted */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
           {services.filter(s => s.highlight).map((s, i) => (
             <motion.div
               key={s.title}
