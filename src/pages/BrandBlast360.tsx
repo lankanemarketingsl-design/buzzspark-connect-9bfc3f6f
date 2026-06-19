@@ -186,14 +186,6 @@ const BrandBlast360 = () => {
       />
 
       <div className="pt-14 sm:pt-16 overflow-x-hidden">
-        {/* Top urgency bar */}
-        <div className="bg-gradient-to-r from-pink-600 via-fuchsia-600 to-indigo-600 text-white text-center text-xs sm:text-sm font-semibold py-2.5 px-4">
-          <span className="inline-flex items-center gap-2 flex-wrap justify-center">
-            <Bolt className="w-4 h-4" />
-            Bundle discount: <mark className="bg-white/20 text-white rounded-full px-2.5 py-0.5">Save up to 25%</mark> this month only
-          </span>
-        </div>
-
         {/* HERO */}
         <section className="relative bg-gradient-to-br from-primary/95 via-primary to-primary/90 text-primary-foreground overflow-hidden">
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,hsl(var(--accent)/.4),transparent_50%),radial-gradient(circle_at_80%_60%,hsl(var(--primary-foreground)/.15),transparent_55%)]" />
