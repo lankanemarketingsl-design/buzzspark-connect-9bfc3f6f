@@ -487,27 +487,6 @@ const BrandBlast360 = () => {
                 </div>
               </div>
             </div>
-
-            {/* ROI */}
-            <div className="mt-10 bg-card border border-border rounded-2xl p-6 sm:p-8 grid md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 text-center">
-              <div>
-                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Your investment</div>
-                <div className="text-2xl font-heading font-black text-foreground mt-1">LKR 15,000</div>
-                <div className="text-[11px] text-muted-foreground mt-1">All 5 channels · 30 days · report</div>
-              </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground mx-auto hidden md:block" />
-              <div>
-                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Contacts reached</div>
-                <div className="text-2xl font-heading font-black text-primary mt-1">988,000+</div>
-                <div className="text-[11px] text-muted-foreground mt-1">Email, social, professional, directory</div>
-              </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground mx-auto hidden md:block" />
-              <div>
-                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Cost per impression</div>
-                <div className="text-2xl font-heading font-black text-accent mt-1">LKR 0.015</div>
-                <div className="text-[11px] text-muted-foreground mt-1">Less than 2 cents per person reached</div>
-              </div>
-            </div>
           </div>
         </section>
 
