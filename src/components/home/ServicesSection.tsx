@@ -109,7 +109,7 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Top 4 highlighted */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
           {services.filter(s => s.highlight).map((s, i) => (
             <motion.div
               key={s.title}
