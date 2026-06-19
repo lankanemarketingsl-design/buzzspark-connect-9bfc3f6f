@@ -15,6 +15,7 @@ const SERVICE_MAP: Record<string, string> = {
   "/sms-marketing": "SMS Marketing",
   "/whatsapp-marketing": "WhatsApp Marketing",
   "/multi-channel-marketing-sri-lanka": "Multi-Channel Marketing Packages",
+  "/brand-blast-360": "Brand Blast 360",
   "/online-advertising-sri-lanka": "Online Advertising",
   "/graphic-designing-in-sri-lanka": "Graphic Design",
   "/seo-sri-lanka": "SEO Services",

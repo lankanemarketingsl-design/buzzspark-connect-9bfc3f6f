@@ -44,6 +44,7 @@ const Footer = () => {
               <li><Link to="/graphic-designing-in-sri-lanka" className="hover:text-accent transition-colors">Graphic Design</Link></li>
               <li><Link to="/web-banner-advertising-sri-lanka" className="hover:text-accent transition-colors">Web Banner Advertising</Link></li>
               <li><Link to="/google-ads-sri-lanka" className="hover:text-accent transition-colors">Google Ads</Link></li>
+              <li><Link to="/brand-blast-360" className="hover:text-accent transition-colors font-semibold text-accent">⚡ Brand Blast 360</Link></li>
             </ul>
           </div>
 
