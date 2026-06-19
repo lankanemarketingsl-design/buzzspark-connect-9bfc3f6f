@@ -721,7 +721,21 @@ const BrandBlast360 = () => {
         <RelatedServices currentPath="/brand-blast-360" />
         <LogoCarousel />
         <ContactSection />
+
+        {/* Sticky mobile WhatsApp CTA */}
+        <a
+          href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps and pricing.")}
+          target="_blank"
+          rel="noopener"
+          data-wa-placement="brandblast360_sticky_mobile"
+          data-selected-service="Brand Blast 360"
+          data-service="Brand Blast 360"
+          className="lg:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3.5 rounded-2xl text-sm shadow-2xl shadow-emerald-500/40"
+        >
+          <MessageCircle className="w-5 h-5" /> WhatsApp Us — Reserve a Slot
+        </a>
       </div>
+
     </>
   );
 };
