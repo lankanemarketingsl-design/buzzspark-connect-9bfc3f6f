@@ -297,6 +297,76 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
+        {/* Packages — moved up for conversion */}
+        <section id="packages" className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Brand Blast 360 — Product line</div>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Pick your package · Launch in 48 hours</h2>
+              <p className="text-muted-foreground">Every package activates all 5 channels and 988,000+ verified reach. Bundle more, save more per blast.</p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {packages.map((p) => (
+                <div key={p.name} className={`relative bg-card border-2 rounded-2xl overflow-hidden flex flex-col ${p.popular ? "border-primary shadow-xl shadow-primary/10" : "border-border"}`}>
+                  {p.popular && p.badge && (
+                    <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl">
+                      {p.badge}
+                    </div>
+                  )}
+                  <div className={`h-1.5 bg-gradient-to-r ${p.accent}`} />
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="text-3xl mb-2">{p.emoji}</div>
+                    <div className="font-heading font-black text-xl">{p.name}</div>
+                    <div className="text-xs text-muted-foreground mb-4">{p.tagline}</div>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-4xl font-heading font-black">{p.count}</span>
+                      <span className="text-sm text-muted-foreground">{p.label}</span>
+                    </div>
+                    <div className="text-2xl font-heading font-black text-primary mt-3">{p.price}</div>
+                    {p.was ? <div className="text-sm text-muted-foreground line-through">{p.was}</div> : null}
+                    {p.save ? <div className="text-[11px] font-bold text-emerald-600 mt-0.5">{p.save}</div> : null}
+                    <div className="text-xs text-muted-foreground mt-2">{p.per}</div>
+                    <div className="text-[11px] text-muted-foreground">{p.valid}</div>
+                    <hr className="my-4 border-border" />
+                    <ul className="space-y-2 flex-1">
+                      {p.features.map((f) => (
+                        <li key={f} className="text-sm flex gap-2"><Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" /><span>{f}</span></li>
+                      ))}
+                    </ul>
+                    <a
+                      href={wa(`Hi Buzz Connect, I want the ${p.name} package (Brand Blast 360 — ${p.count} ${p.label}, ${p.price}). Please share next steps.`)}
+                      target="_blank"
+                      rel="noopener"
+                      data-wa-placement={`brandblast360_pricing_${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
+                      data-selected-service={`Brand Blast 360 — ${p.name}`}
+                      data-service="Brand Blast 360"
+                      data-pricing-tier={p.name}
+                      data-pricing-price={p.price}
+                      className={`mt-6 inline-flex items-center justify-center gap-2 font-bold px-4 py-3 rounded-xl text-sm transition-colors ${p.popular ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-accent text-accent-foreground hover:bg-accent/90"}`}
+                    >
+                      {p.name === "Market Dominator" ? <Crown className="w-4 h-4" /> : <Rocket className="w-4 h-4" />}
+                      {p.cta} →
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 bg-card border border-border rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-5">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+                <span className="inline-flex items-center gap-2 font-semibold"><ShieldCheck className="w-4 h-4 text-emerald-600" /> Fixed price · no surprises</span>
+                <span className="inline-flex items-center gap-2 font-semibold"><Bolt className="w-4 h-4 text-amber-500" /> 48-hour launch promise</span>
+                <span className="inline-flex items-center gap-2 font-semibold"><FileBarChart className="w-4 h-4 text-primary" /> Full report included</span>
+                <span className="inline-flex items-center gap-2 font-semibold"><Headset className="w-4 h-4 text-sky-500" /> Local WhatsApp support</span>
+              </div>
+              <a href={wa("Hi Buzz Connect, I'm ready to book a Brand Blast 360 package. Please help me choose the right one.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_pricing_guarantee_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-5 py-3 rounded-xl text-sm whitespace-nowrap">
+                <MessageCircle className="w-4 h-4" /> Talk to us on WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Facebook vs Brand Blast 360 */}
         <section id="compare" className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
@@ -546,75 +616,6 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
-        {/* Packages */}
-        <section id="packages" className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Brand Blast 360 — Product line</div>
-              <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Choose your level of impact</h2>
-              <p className="text-muted-foreground">Every package activates all 5 channels and 988,000+ verified reach. Bundle more, save more per blast.</p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {packages.map((p) => (
-                <div key={p.name} className={`relative bg-card border-2 rounded-2xl overflow-hidden flex flex-col ${p.popular ? "border-primary shadow-xl shadow-primary/10" : "border-border"}`}>
-                  {p.popular && p.badge && (
-                    <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl">
-                      {p.badge}
-                    </div>
-                  )}
-                  <div className={`h-1.5 bg-gradient-to-r ${p.accent}`} />
-                  <div className="p-6 flex flex-col flex-1">
-                    <div className="text-3xl mb-2">{p.emoji}</div>
-                    <div className="font-heading font-black text-xl">{p.name}</div>
-                    <div className="text-xs text-muted-foreground mb-4">{p.tagline}</div>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-4xl font-heading font-black">{p.count}</span>
-                      <span className="text-sm text-muted-foreground">{p.label}</span>
-                    </div>
-                    <div className="text-2xl font-heading font-black text-primary mt-3">{p.price}</div>
-                    {p.was ? <div className="text-sm text-muted-foreground line-through">{p.was}</div> : null}
-                    {p.save ? <div className="text-[11px] font-bold text-emerald-600 mt-0.5">{p.save}</div> : null}
-                    <div className="text-xs text-muted-foreground mt-2">{p.per}</div>
-                    <div className="text-[11px] text-muted-foreground">{p.valid}</div>
-                    <hr className="my-4 border-border" />
-                    <ul className="space-y-2 flex-1">
-                      {p.features.map((f) => (
-                        <li key={f} className="text-sm flex gap-2"><Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" /><span>{f}</span></li>
-                      ))}
-                    </ul>
-                    <a
-                      href={wa(`Hi Buzz Connect, I want the ${p.name} package (Brand Blast 360 — ${p.count} ${p.label}, ${p.price}). Please share next steps.`)}
-                      target="_blank"
-                      rel="noopener"
-                      data-wa-placement={`brandblast360_pricing_${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
-                      data-selected-service={`Brand Blast 360 — ${p.name}`}
-                      data-service="Brand Blast 360"
-                      data-pricing-tier={p.name}
-                      data-pricing-price={p.price}
-                      className={`mt-6 inline-flex items-center justify-center gap-2 font-bold px-4 py-3 rounded-xl text-sm transition-colors ${p.popular ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-accent text-accent-foreground hover:bg-accent/90"}`}
-                    >
-                      {p.name === "Market Dominator" ? <Crown className="w-4 h-4" /> : <Rocket className="w-4 h-4" />}
-                      {p.cta} →
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-10 bg-card border border-border rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-5">
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-                <span className="inline-flex items-center gap-2 font-semibold"><ShieldCheck className="w-4 h-4 text-emerald-600" /> Fixed price · no surprises</span>
-                <span className="inline-flex items-center gap-2 font-semibold"><Bolt className="w-4 h-4 text-amber-500" /> 48-hour launch promise</span>
-                <span className="inline-flex items-center gap-2 font-semibold"><FileBarChart className="w-4 h-4 text-primary" /> Full report included</span>
-                <span className="inline-flex items-center gap-2 font-semibold"><Headset className="w-4 h-4 text-sky-500" /> Local WhatsApp support</span>
-              </div>
-              <a href={wa("Hi Buzz Connect, I'm ready to book a Brand Blast 360 package. Please help me choose the right one.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_pricing_guarantee_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-5 py-3 rounded-xl text-sm whitespace-nowrap">
-                <MessageCircle className="w-4 h-4" /> Talk to us on WhatsApp
-              </a>
-            </div>
-          </div>
-        </section>
 
         {/* FAQ */}
         <section className="py-16 bg-muted/30">
