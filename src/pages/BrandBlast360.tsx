@@ -274,6 +274,31 @@ const BrandBlast360 = () => {
           <span className="font-bold text-primary">Brand Blast 360: LKR 15,000 · 5 channels · 988,000+ reach · same price as Facebook alone.</span>
         </div>
 
+        {/* Urgency / scarcity strip */}
+        <div className="bg-accent/15 border-b border-accent/30 py-3 px-4">
+          <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm text-center">
+            <span className="inline-flex items-center gap-2 font-bold text-foreground">
+              <span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500" /></span>
+              Only 8 campaign slots left this month
+            </span>
+            <span className="hidden sm:inline text-muted-foreground">·</span>
+            <span className="font-semibold text-foreground">Bundle discount up to <b className="text-emerald-600">25% off</b> ends this month</span>
+            <span className="hidden sm:inline text-muted-foreground">·</span>
+            <a href="#packages" className="font-bold text-primary underline underline-offset-2 hover:text-primary/80">Reserve your slot →</a>
+          </div>
+        </div>
+
+        {/* Social proof strip */}
+        <div className="bg-background border-b border-border py-4 px-4">
+          <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm">
+            <span className="inline-flex items-center gap-2"><div className="text-accent text-base">★★★★★</div><span className="font-semibold">4.9/5 from 320+ clients</span></span>
+            <span className="inline-flex items-center gap-2"><Users className="w-4 h-4 text-primary" /><span className="font-semibold">1,500+ Sri Lankan businesses</span></span>
+            <span className="inline-flex items-center gap-2"><Bolt className="w-4 h-4 text-amber-500" /><span className="font-semibold">48-hour launch guarantee</span></span>
+            <span className="inline-flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-emerald-600" /><span className="font-semibold">No contract · Fixed price</span></span>
+          </div>
+        </div>
+
+
         {/* Stats */}
         <section className="py-14 bg-background">
           <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
