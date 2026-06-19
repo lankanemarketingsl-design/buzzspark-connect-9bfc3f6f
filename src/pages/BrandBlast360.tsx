@@ -274,6 +274,31 @@ const BrandBlast360 = () => {
           <span className="font-bold text-primary">Brand Blast 360: LKR 15,000 · 5 channels · 988,000+ reach · same price as Facebook alone.</span>
         </div>
 
+        {/* Urgency / scarcity strip */}
+        <div className="bg-accent/15 border-b border-accent/30 py-3 px-4">
+          <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm text-center">
+            <span className="inline-flex items-center gap-2 font-bold text-foreground">
+              <span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500" /></span>
+              Only 8 campaign slots left this month
+            </span>
+            <span className="hidden sm:inline text-muted-foreground">·</span>
+            <span className="font-semibold text-foreground">Bundle discount up to <b className="text-emerald-600">25% off</b> ends this month</span>
+            <span className="hidden sm:inline text-muted-foreground">·</span>
+            <a href="#packages" className="font-bold text-primary underline underline-offset-2 hover:text-primary/80">Reserve your slot →</a>
+          </div>
+        </div>
+
+        {/* Social proof strip */}
+        <div className="bg-background border-b border-border py-4 px-4">
+          <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm">
+            <span className="inline-flex items-center gap-2"><div className="text-accent text-base">★★★★★</div><span className="font-semibold">4.9/5 from 320+ clients</span></span>
+            <span className="inline-flex items-center gap-2"><Users className="w-4 h-4 text-primary" /><span className="font-semibold">1,500+ Sri Lankan businesses</span></span>
+            <span className="inline-flex items-center gap-2"><Bolt className="w-4 h-4 text-amber-500" /><span className="font-semibold">48-hour launch guarantee</span></span>
+            <span className="inline-flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-emerald-600" /><span className="font-semibold">No contract · Fixed price</span></span>
+          </div>
+        </div>
+
+
         {/* Stats */}
         <section className="py-14 bg-background">
           <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -300,11 +325,15 @@ const BrandBlast360 = () => {
         {/* Packages — moved up for conversion */}
         <section id="packages" className="py-16 bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-8">
+              <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full mb-4">
+                <Bolt className="w-3 h-3" /> Limited launch — save up to 25% this month
+              </div>
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Brand Blast 360 — Product line</div>
               <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Pick your package · Launch in 48 hours</h2>
               <p className="text-muted-foreground">Every package activates all 5 channels and 988,000+ verified reach. Bundle more, save more per blast.</p>
             </div>
+
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {packages.map((p) => (
@@ -385,6 +414,57 @@ const BrandBlast360 = () => {
               <a href={wa("Hi Buzz Connect, I'm ready to book a Brand Blast 360 package. Please help me choose the right one.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_pricing_guarantee_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-5 py-3 rounded-xl text-sm whitespace-nowrap">
                 <MessageCircle className="w-4 h-4" /> Talk to us on WhatsApp
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick lead-capture (1-field WhatsApp shortcut) */}
+        <section className="py-12 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="text-center mb-6">
+              <div className="text-xs font-bold uppercase tracking-wider text-accent mb-2">Not sure which package?</div>
+              <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Get a free 5-minute strategy call</h3>
+              <p className="text-primary-foreground/80 text-sm">Tell us your business type — we'll recommend the best package and send a custom plan on WhatsApp within the hour.</p>
+            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const fd = new FormData(e.currentTarget as HTMLFormElement);
+                const name = (fd.get("name") as string)?.trim() || "there";
+                const biz = (fd.get("biz") as string)?.trim() || "my business";
+                window.open(
+                  wa(`Hi Buzz Connect, I'm ${name} from ${biz}. Please recommend the best Brand Blast 360 package for me and share the next steps.`),
+                  "_blank"
+                );
+              }}
+              className="bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-4 sm:p-5 grid sm:grid-cols-[1fr_1fr_auto] gap-3"
+            >
+              <input
+                required
+                name="name"
+                placeholder="Your name"
+                className="bg-white text-foreground placeholder:text-muted-foreground rounded-xl px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-accent"
+              />
+              <input
+                required
+                name="biz"
+                placeholder="Business / industry"
+                className="bg-white text-foreground placeholder:text-muted-foreground rounded-xl px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-accent"
+              />
+              <button
+                type="submit"
+                data-wa-placement="brandblast360_lead_form"
+                data-selected-service="Brand Blast 360"
+                data-service="Brand Blast 360"
+                className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-5 py-3 rounded-xl text-sm whitespace-nowrap shadow-lg shadow-accent/30"
+              >
+                <MessageCircle className="w-4 h-4" /> Get My Plan
+              </button>
+            </form>
+            <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-1 text-[11px] text-primary-foreground/70">
+              <span>✓ Free · No obligation</span>
+              <span>✓ Reply within 1 hour</span>
+              <span>✓ Custom package recommendation</span>
             </div>
           </div>
         </section>
@@ -696,7 +776,21 @@ const BrandBlast360 = () => {
         <RelatedServices currentPath="/brand-blast-360" />
         <LogoCarousel />
         <ContactSection />
+
+        {/* Sticky mobile WhatsApp CTA */}
+        <a
+          href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps and pricing.")}
+          target="_blank"
+          rel="noopener"
+          data-wa-placement="brandblast360_sticky_mobile"
+          data-selected-service="Brand Blast 360"
+          data-service="Brand Blast 360"
+          className="lg:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3.5 rounded-2xl text-sm shadow-2xl shadow-emerald-500/40"
+        >
+          <MessageCircle className="w-5 h-5" /> WhatsApp Us — Reserve a Slot
+        </a>
       </div>
+
     </>
   );
 };
