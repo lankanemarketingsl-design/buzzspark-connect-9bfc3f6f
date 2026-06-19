@@ -450,7 +450,7 @@ const BrandBlast360 = () => {
                 <div className="text-4xl font-heading font-black text-indigo-500 my-2">750,000</div>
                 <div className="text-sm text-muted-foreground mb-3">verified opt-in subscribers — Sri Lanka's largest email database</div>
                 <div className="flex flex-wrap gap-2">
-                  {["Largest opt-in list in SL", "Western Province focused", "Segmented by profession", "Rich HTML e-flyer"].map((t) => (
+                  {["Largest opt-in list in SL", "Western Province focused", "Segmented by profession", "Designed e-flyer included"].map((t) => (
                     <span key={t} className="text-[11px] font-semibold bg-indigo-500/10 text-indigo-500 px-2.5 py-1 rounded-full">{t}</span>
                   ))}
                 </div>
