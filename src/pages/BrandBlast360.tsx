@@ -425,7 +425,7 @@ const BrandBlast360 = () => {
           <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Ready to be seen by 988,000+ people?</h3>
           <p className="text-sm sm:text-base opacity-90 mb-5">Launch your first Brand Blast 360 campaign today. Live in 48 hours.</p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps.")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3 rounded-xl text-sm">
+            <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_mid_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3 rounded-xl text-sm">
               <MessageCircle className="w-4 h-4" /> Launch on WhatsApp
             </a>
             <a href="#packages" className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 border border-accent-foreground/20 text-accent-foreground font-semibold px-6 py-3 rounded-xl text-sm">
