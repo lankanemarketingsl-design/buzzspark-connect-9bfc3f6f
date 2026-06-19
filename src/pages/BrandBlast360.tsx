@@ -186,14 +186,6 @@ const BrandBlast360 = () => {
       />
 
       <div className="pt-14 sm:pt-16 overflow-x-hidden">
-        {/* Top urgency bar */}
-        <div className="bg-gradient-to-r from-pink-600 via-fuchsia-600 to-indigo-600 text-white text-center text-xs sm:text-sm font-semibold py-2.5 px-4">
-          <span className="inline-flex items-center gap-2 flex-wrap justify-center">
-            <Bolt className="w-4 h-4" />
-            Bundle discount: <mark className="bg-white/20 text-white rounded-full px-2.5 py-0.5">Save up to 25%</mark> this month only
-          </span>
-        </div>
-
         {/* HERO */}
         <section className="relative bg-gradient-to-br from-primary/95 via-primary to-primary/90 text-primary-foreground overflow-hidden">
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,hsl(var(--accent)/.4),transparent_50%),radial-gradient(circle_at_80%_60%,hsl(var(--primary-foreground)/.15),transparent_55%)]" />
@@ -281,12 +273,14 @@ const BrandBlast360 = () => {
 
         {/* Stats */}
         <section className="py-14 bg-background">
-          <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { ic: Mail, n: "750,000+", l: "Email Reach", s: "Sri Lanka's largest verified opt-in list", c: "text-indigo-500", bg: "bg-indigo-500/10" },
-              { ic: Facebook, n: "30,000+", l: "Facebook Followers", s: "Active Findit.lk social network", c: "text-blue-500", bg: "bg-blue-500/10" },
+              { ic: Mail, n: "750,000+", l: "Email Reach", s: "Verified opt-in subscribers", c: "text-indigo-500", bg: "bg-indigo-500/10" },
+              { ic: Target, n: "100,000", l: "Remarketing", s: "Warm leads retargeted", c: "text-pink-500", bg: "bg-pink-500/10" },
+              { ic: Search, n: "100,000", l: "Findit.lk Reach", s: "Featured directory placement", c: "text-amber-500", bg: "bg-amber-500/10" },
+              { ic: Facebook, n: "30,000+", l: "Facebook Exposure", s: "Findit.lk audience network", c: "text-blue-500", bg: "bg-blue-500/10" },
               { ic: Linkedin, n: "8,000+", l: "LinkedIn Pros", s: "Owners, managers & decision-makers", c: "text-sky-500", bg: "bg-sky-500/10" },
-              { ic: Target, n: "988K+", l: "Multi-Channel Reach", s: "Total verified reach across 4 channels", c: "text-primary", bg: "bg-primary/10" },
+              { ic: Radio, n: "988K+", l: "Total Reach", s: "Verified reach across all 5 channels", c: "text-primary", bg: "bg-primary/10" },
             ].map((s) => (
               <div key={s.l} className="bg-card border border-border rounded-2xl p-5 text-center">
                 <div className={`w-12 h-12 rounded-xl ${s.bg} ${s.c} flex items-center justify-center mx-auto mb-3`}>
@@ -643,9 +637,6 @@ const BrandBlast360 = () => {
             <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-6">
               For LKR 15,000 — less than a newspaper ad — your brand reaches 988,000+ verified Sri Lankan contacts plus a Findit.lk featured listing in 30 days. You send the artwork. We handle everything else.
             </p>
-            <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 text-accent text-xs font-bold px-4 py-2 rounded-full mb-7">
-              <Clock className="w-3.5 h-3.5" /> Bundle discount: Save up to 25% — this month only
-            </div>
             <div className="flex flex-wrap gap-3 justify-center mb-6">
               <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_launch" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-7 py-4 rounded-xl">
                 <Rocket className="w-4 h-4" /> Launch Brand Blast 360
