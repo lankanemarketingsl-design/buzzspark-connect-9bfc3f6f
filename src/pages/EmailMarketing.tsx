@@ -11,11 +11,11 @@ import EmailHeroContent from "@/components/email/EmailHeroContent";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 
 const packages = [
-  { name: "One Email Campaign + Findit.lk Web Ad", corp: "LKR 6,000", full: "LKR 8,000", mega: "LKR 12,000", fb: "✔", ig: "✔", li: "✔", webAd: "01", appAd: "01", feed: "✔" },
-  { name: "Two Email Campaigns + Findit.lk Web Ads", corp: "LKR 10,800", full: "LKR 15,000", mega: "LKR 22,000", fb: "✔", ig: "✔", li: "✔", webAd: "02", appAd: "02", feed: "✔" },
-  { name: "Five Email Campaigns (One month period) + Findit.lk Web Ads", corp: "LKR 28,000", full: "LKR 38,000", mega: "LKR 55,000", fb: "✔", ig: "✔", li: "✔", webAd: "05", appAd: "05", feed: "✔" },
-  { name: "Ten Email Campaigns (Two months) + Findit.lk Web Ads", corp: "LKR 54,000", full: "LKR 72,000", mega: "LKR 108,000", fb: "✔", ig: "✔", li: "✔", webAd: "10", appAd: "10", feed: "✔" },
-  { name: "Twenty Email Campaigns + Findit.lk Web Ads", corp: "LKR 108,000", full: "LKR 140,000", mega: "LKR 210,000", fb: "✔", ig: "✔", li: "✔", webAd: "40", appAd: "40", feed: "✔" },
+  { name: "One Email Campaign + Findit.lk Web Ad", corp: "LKR 6,000", full: "LKR 8,000", mega: "LKR 15,000", fb: "✔", ig: "✔", li: "✔", webAd: "01", appAd: "01", feed: "✔" },
+  { name: "Two Email Campaigns + Findit.lk Web Ads", corp: "LKR 10,800", full: "LKR 15,000", mega: "LKR 27,000", fb: "✔", ig: "✔", li: "✔", webAd: "02", appAd: "02", feed: "✔" },
+  { name: "Five Email Campaigns (One month period) + Findit.lk Web Ads", corp: "LKR 28,000", full: "LKR 38,000", mega: "LKR 67,500", fb: "✔", ig: "✔", li: "✔", webAd: "05", appAd: "05", feed: "✔" },
+  { name: "Ten Email Campaigns (Two months) + Findit.lk Web Ads", corp: "LKR 54,000", full: "LKR 72,000", mega: "LKR 112,500", fb: "✔", ig: "✔", li: "✔", webAd: "10", appAd: "10", feed: "✔" },
+  { name: "Twenty Email Campaigns + Findit.lk Web Ads", corp: "LKR 108,000", full: "LKR 140,000", mega: "LKR 225,000", fb: "✔", ig: "✔", li: "✔", webAd: "40", appAd: "40", feed: "✔" },
   { name: "VIP Email Campaign (For 50,000 VIP database)", corp: "LKR 7,500", full: "", mega: "", fb: "✔", ig: "✔", li: "✔", webAd: "01", appAd: "01", feed: "✔" },
 ];
 
