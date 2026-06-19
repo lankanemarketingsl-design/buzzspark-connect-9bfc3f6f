@@ -325,11 +325,15 @@ const BrandBlast360 = () => {
         {/* Packages — moved up for conversion */}
         <section id="packages" className="py-16 bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-8">
+              <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full mb-4">
+                <Bolt className="w-3 h-3" /> Limited launch — save up to 25% this month
+              </div>
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Brand Blast 360 — Product line</div>
               <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Pick your package · Launch in 48 hours</h2>
               <p className="text-muted-foreground">Every package activates all 5 channels and 988,000+ verified reach. Bundle more, save more per blast.</p>
             </div>
+
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {packages.map((p) => (
