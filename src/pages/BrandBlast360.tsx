@@ -389,6 +389,31 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
+        {/* ROI — moved up for conversion */}
+        <section className="py-10 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 grid md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 text-center">
+              <div>
+                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Your investment</div>
+                <div className="text-2xl font-heading font-black text-foreground mt-1">LKR 15,000</div>
+                <div className="text-[11px] text-muted-foreground mt-1">All 5 channels · 30 days · report</div>
+              </div>
+              <ArrowRight className="w-5 h-5 text-muted-foreground mx-auto hidden md:block" />
+              <div>
+                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Contacts reached</div>
+                <div className="text-2xl font-heading font-black text-primary mt-1">988,000+</div>
+                <div className="text-[11px] text-muted-foreground mt-1">Email, social, professional, directory</div>
+              </div>
+              <ArrowRight className="w-5 h-5 text-muted-foreground mx-auto hidden md:block" />
+              <div>
+                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Cost per impression</div>
+                <div className="text-2xl font-heading font-black text-accent mt-1">LKR 0.015</div>
+                <div className="text-[11px] text-muted-foreground mt-1">Less than 2 cents per person reached</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Facebook vs Brand Blast 360 */}
         <section id="compare" className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
@@ -460,27 +485,6 @@ const BrandBlast360 = () => {
                   <div className="text-2xl font-heading font-black text-accent">LKR 15,000</div>
                   <div className="text-[11px] font-semibold text-accent/80 mt-1">all 5 channels · 988,000+ reach · 30 days · fixed price</div>
                 </div>
-              </div>
-            </div>
-
-            {/* ROI */}
-            <div className="mt-10 bg-card border border-border rounded-2xl p-6 sm:p-8 grid md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 text-center">
-              <div>
-                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Your investment</div>
-                <div className="text-2xl font-heading font-black text-foreground mt-1">LKR 15,000</div>
-                <div className="text-[11px] text-muted-foreground mt-1">All 5 channels · 30 days · report</div>
-              </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground mx-auto hidden md:block" />
-              <div>
-                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Contacts reached</div>
-                <div className="text-2xl font-heading font-black text-primary mt-1">988,000+</div>
-                <div className="text-[11px] text-muted-foreground mt-1">Email, social, professional, directory</div>
-              </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground mx-auto hidden md:block" />
-              <div>
-                <div className="text-xs uppercase font-bold text-muted-foreground tracking-wider">Cost per impression</div>
-                <div className="text-2xl font-heading font-black text-accent mt-1">LKR 0.015</div>
-                <div className="text-[11px] text-muted-foreground mt-1">Less than 2 cents per person reached</div>
               </div>
             </div>
           </div>
