@@ -590,6 +590,11 @@ const BrandBlast360 = () => {
                       href={wa(`Hi Buzz Connect, I want the ${p.name} package (Brand Blast 360 — ${p.count} ${p.label}, ${p.price}). Please share next steps.`)}
                       target="_blank"
                       rel="noopener"
+                      data-wa-placement={`brandblast360_pricing_${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
+                      data-selected-service={`Brand Blast 360 — ${p.name}`}
+                      data-service="Brand Blast 360"
+                      data-pricing-tier={p.name}
+                      data-pricing-price={p.price}
                       className={`mt-6 inline-flex items-center justify-center gap-2 font-bold px-4 py-3 rounded-xl text-sm transition-colors ${p.popular ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-accent text-accent-foreground hover:bg-accent/90"}`}
                     >
                       {p.name === "Market Dominator" ? <Crown className="w-4 h-4" /> : <Rocket className="w-4 h-4" />}
