@@ -328,6 +328,28 @@ const BrandBlast360 = () => {
                     {p.save ? <div className="text-[11px] font-bold text-emerald-600 mt-0.5">{p.save}</div> : null}
                     <div className="text-xs text-muted-foreground mt-2">{p.per}</div>
                     <div className="text-[11px] text-muted-foreground">{p.valid}</div>
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      <div className="bg-indigo-500/8 border border-indigo-500/15 rounded-lg p-2 text-center">
+                        <div className="text-[10px] font-bold text-indigo-500 uppercase tracking-wider">Email</div>
+                        <div className="text-sm font-heading font-black text-foreground">750K</div>
+                      </div>
+                      <div className="bg-blue-500/8 border border-blue-500/15 rounded-lg p-2 text-center">
+                        <div className="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Facebook</div>
+                        <div className="text-sm font-heading font-black text-foreground">30K+</div>
+                      </div>
+                      <div className="bg-sky-500/8 border border-sky-500/15 rounded-lg p-2 text-center">
+                        <div className="text-[10px] font-bold text-sky-500 uppercase tracking-wider">LinkedIn</div>
+                        <div className="text-sm font-heading font-black text-foreground">8K+</div>
+                      </div>
+                      <div className="bg-amber-500/8 border border-amber-500/15 rounded-lg p-2 text-center">
+                        <div className="text-[10px] font-bold text-amber-500 uppercase tracking-wider">Findit</div>
+                        <div className="text-sm font-heading font-black text-foreground">100K</div>
+                      </div>
+                      <div className="col-span-2 bg-pink-500/8 border border-pink-500/15 rounded-lg p-2 text-center">
+                        <div className="text-[10px] font-bold text-pink-500 uppercase tracking-wider">Remarketing</div>
+                        <div className="text-sm font-heading font-black text-foreground">100K warm leads</div>
+                      </div>
+                    </div>
                     <hr className="my-4 border-border" />
                     <ul className="space-y-2 flex-1">
                       {p.features.map((f) => (
