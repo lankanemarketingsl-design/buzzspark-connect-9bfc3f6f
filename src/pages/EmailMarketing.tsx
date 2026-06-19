@@ -1,6 +1,6 @@
 import ServicePageLayout from "@/components/ServicePageLayout";
 import { motion } from "framer-motion";
-import { Users, Crown, CheckCircle, Mail, HelpCircle, Smartphone, MessageSquare, Globe, Rocket, ArrowRight } from "lucide-react";
+import { Users, Crown, CheckCircle, Mail, HelpCircle, Smartphone, MessageSquare, Globe, Rocket, ArrowRight, Zap } from "lucide-react";
 import IndustryMarketingSection from "@/components/IndustryMarketingSection";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
@@ -227,6 +227,30 @@ const EmailMarketing = () => {
             ))}
           </div>
           <p className="text-accent font-semibold text-center text-lg">👉 Reach hundreds of thousands to 1M+ audiences within days</p>
+        </Link>
+
+        <Link to="/brand-blast-360" className="block p-8 pt-10 rounded-2xl upsell-highlight mb-8 relative overflow-hidden cursor-pointer hover:scale-[1.01] transition-transform duration-300">
+          <div className="absolute top-0 right-0 px-5 py-2 rounded-bl-xl bg-secondary text-secondary-foreground text-xs font-bold uppercase tracking-wider animate-pulse">🚀 Maximum Reach</div>
+          <h3 className="font-heading text-xl font-bold text-foreground mb-4 flex items-center gap-2">⚡ Brand Blast 360 — 5 Channels, One Campaign</h3>
+          <p className="text-muted-foreground mb-5">Unlock the full power of multi-channel marketing with Brand Blast 360. Reach 988,000+ contacts across:</p>
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
+            {[
+              { icon: Mail, label: "Email 750K" },
+              { icon: Smartphone, label: "Facebook" },
+              { icon: MessageSquare, label: "LinkedIn" },
+              { icon: Globe, label: "Findit.lk" },
+              { icon: Zap, label: "Remarketing" },
+            ].map((ch, i) => (
+              <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-secondary/5 border border-secondary/20 text-center">
+                <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
+                  <ch.icon className="w-5 h-5 text-secondary" />
+                </div>
+                <span className="text-foreground font-medium text-sm">{ch.label}</span>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-secondary font-semibold text-center text-lg">👉 One price · One report · 988,000+ reach starting LKR 15,000</p>
         </Link>
 
         <div className="p-8 rounded-2xl gradient-hero text-center relative overflow-hidden">
