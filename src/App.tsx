@@ -323,6 +323,7 @@ const App = () => (
               <Route path="/email-marketing-sri-lanka-complete-guide-2026" element={<EmailMarketingSriLankaComplete2026 />} />
               <Route path="/sms-marketing-sri-lanka-600000-customers-2026" element={<SmsMarketingSriLanka600k2026 />} />
               <Route path="/social-media-marketing-sri-lanka-complete-guide-2026" element={<SocialMediaMarketingSriLankaComplete2026 />} />
+              <Route path="/brand-blast-360" element={<BrandBlast360 />} />
               
               
               <Route path="*" element={<NotFound />} />
