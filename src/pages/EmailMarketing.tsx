@@ -165,6 +165,7 @@ const EmailMarketing = () => {
                 <th className="text-center p-3 font-heading">350,000 Corporate Database</th>
                 <th className="text-center p-3 font-heading">Findit.lk Featured ad one month</th>
                 <th className="text-center p-3 font-heading">500,000 Corporate Database</th>
+                <th className="text-center p-3 font-heading">750,000 Corporate Database</th>
               </tr>
             </thead>
             <tbody>
@@ -180,6 +181,7 @@ const EmailMarketing = () => {
                   <td className="p-3 text-center font-semibold text-accent">{pkg.corp}</td>
                   <td className="p-3 text-center">✔</td>
                   <td className="p-3 text-center font-semibold text-secondary">{pkg.full}</td>
+                  <td className="p-3 text-center font-semibold text-accent">{pkg.mega}</td>
                 </tr>
               ))}
             </tbody>
