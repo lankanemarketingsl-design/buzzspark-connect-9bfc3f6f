@@ -418,6 +418,57 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
+        {/* Quick lead-capture (1-field WhatsApp shortcut) */}
+        <section className="py-12 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="text-center mb-6">
+              <div className="text-xs font-bold uppercase tracking-wider text-accent mb-2">Not sure which package?</div>
+              <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Get a free 5-minute strategy call</h3>
+              <p className="text-primary-foreground/80 text-sm">Tell us your business type — we'll recommend the best package and send a custom plan on WhatsApp within the hour.</p>
+            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const fd = new FormData(e.currentTarget as HTMLFormElement);
+                const name = (fd.get("name") as string)?.trim() || "there";
+                const biz = (fd.get("biz") as string)?.trim() || "my business";
+                window.open(
+                  wa(`Hi Buzz Connect, I'm ${name} from ${biz}. Please recommend the best Brand Blast 360 package for me and share the next steps.`),
+                  "_blank"
+                );
+              }}
+              className="bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-4 sm:p-5 grid sm:grid-cols-[1fr_1fr_auto] gap-3"
+            >
+              <input
+                required
+                name="name"
+                placeholder="Your name"
+                className="bg-white text-foreground placeholder:text-muted-foreground rounded-xl px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-accent"
+              />
+              <input
+                required
+                name="biz"
+                placeholder="Business / industry"
+                className="bg-white text-foreground placeholder:text-muted-foreground rounded-xl px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-accent"
+              />
+              <button
+                type="submit"
+                data-wa-placement="brandblast360_lead_form"
+                data-selected-service="Brand Blast 360"
+                data-service="Brand Blast 360"
+                className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-5 py-3 rounded-xl text-sm whitespace-nowrap shadow-lg shadow-accent/30"
+              >
+                <MessageCircle className="w-4 h-4" /> Get My Plan
+              </button>
+            </form>
+            <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-1 text-[11px] text-primary-foreground/70">
+              <span>✓ Free · No obligation</span>
+              <span>✓ Reply within 1 hour</span>
+              <span>✓ Custom package recommendation</span>
+            </div>
+          </div>
+        </section>
+
         {/* ROI — moved up for conversion */}
         <section className="py-10 bg-muted/30">
           <div className="container mx-auto px-4">
