@@ -6,11 +6,11 @@ import logo from "@/assets/buzz-logo.webp";
 
 const navItems = [
   { label: "Home", path: "/" },
+  { label: "Brand Blast 360", path: "/brand-blast-360" },
   { label: "Email Marketing", path: "/email-marketing" },
   { label: "SMS Marketing", path: "/sms-marketing" },
   { label: "WhatsApp Marketing", path: "/whatsapp-marketing" },
   { label: "Lead Generation", path: "/lead-generation-sri-lanka" },
-  { label: "Social Media", path: "/social-media-marketing-sri-lanka" },
   { label: "Multi Channel", path: "/multi-channel-marketing-sri-lanka" },
   { label: "SEO", path: "/seo-sri-lanka" },
   { label: "Graphic Design", path: "/graphic-designing-in-sri-lanka" },
