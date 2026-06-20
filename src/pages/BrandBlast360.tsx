@@ -798,6 +798,46 @@ const BrandBlast360 = () => {
         </section>
 
 
+        {/* Client logos — social proof before FAQ */}
+        <LogoCarousel />
+
+        {/* 24-hour Launch Guarantee — conversion booster */}
+        <section className="py-14 bg-background">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="relative bg-gradient-to-br from-emerald-500/10 via-background to-accent/10 border-2 border-emerald-500/30 rounded-3xl p-7 sm:p-10 text-center overflow-hidden">
+              <div className="absolute -top-16 -right-16 w-56 h-56 bg-emerald-500/15 rounded-full blur-3xl" />
+              <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-accent/15 rounded-full blur-3xl" />
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider mb-4">
+                  <ShieldCheck className="w-3.5 h-3.5" /> Our promise to you
+                </div>
+                <h3 className="font-heading font-black text-2xl sm:text-4xl mb-3">24-Hour Launch Guarantee</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto mb-6 text-sm sm:text-base">
+                  Send your artwork and confirm payment today — your Brand Blast 360 campaign goes live across all 5 channels within <b className="text-foreground">24 hours</b>. If we miss, your <b className="text-foreground">next campaign is free</b>. That's a written commitment, not marketing talk.
+                </p>
+                <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-7 text-left">
+                  <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center flex-shrink-0"><Bolt className="w-4 h-4 text-emerald-600" /></div>
+                    <div className="text-xs"><div className="font-bold text-sm mb-0.5">Live in 24 hours</div><div className="text-muted-foreground">From brief to all 5 channels active.</div></div>
+                  </div>
+                  <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
+                    <div className="w-8 h-8 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0"><ShieldCheck className="w-4 h-4 text-amber-600" /></div>
+                    <div className="text-xs"><div className="font-bold text-sm mb-0.5">Or it's on us</div><div className="text-muted-foreground">Miss the deadline = next blast free.</div></div>
+                  </div>
+                  <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
+                    <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0"><FileBarChart className="w-4 h-4 text-primary" /></div>
+                    <div className="text-xs"><div className="font-bold text-sm mb-0.5">Full report</div><div className="text-muted-foreground">Every campaign — open & click data.</div></div>
+                  </div>
+                </div>
+                <a href={wa("Hi Buzz Connect, I want to claim the 24-hour Brand Blast 360 launch guarantee. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_guarantee_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-7 py-3.5 rounded-xl text-sm shadow-lg shadow-emerald-500/30">
+                  <Rocket className="w-4 h-4" /> Claim My 24-Hour Launch
+                </a>
+                <div className="mt-4 text-[11px] text-muted-foreground">★★★★★ 4.9/5 from 320+ Sri Lankan businesses · LKR 15,000 fixed · No contract</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4 max-w-3xl">
@@ -849,7 +889,6 @@ const BrandBlast360 = () => {
         </section>
 
         <RelatedServices currentPath="/brand-blast-360" />
-        <LogoCarousel />
         <ContactSection />
 
         {/* Sticky mobile WhatsApp CTA */}
