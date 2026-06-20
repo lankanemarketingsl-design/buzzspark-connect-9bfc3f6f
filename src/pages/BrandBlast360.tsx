@@ -144,6 +144,7 @@ const faqs = [
 
 const BrandBlast360 = () => {
   const [open, setOpen] = useState<number | null>(0);
+  const [activeIndustry, setActiveIndustry] = useState<string>("all");
 
   const jsonLd = [
     {
