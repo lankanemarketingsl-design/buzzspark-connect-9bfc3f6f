@@ -11,7 +11,7 @@ import IndustryMarketingSection from "@/components/IndustryMarketingSection";
 const faqs = [
   { q: "What is multi-channel marketing?", a: "Multi-channel marketing is a strategy that reaches customers through multiple platforms like email, SMS, WhatsApp, Google Ads, social media ads, and web advertising simultaneously for maximum engagement and conversions." },
   { q: "Why is multi-channel marketing important in Sri Lanka?", a: "Sri Lankan consumers use multiple digital platforms daily. A multi-channel approach ensures your brand stays visible across every touchpoint — from awareness to consideration to conversion — improving recall and conversion rates." },
-  { q: "How does Findit.lk.lk integration help my business?", a: "Findit.lk.lk is one of Sri Lanka's leading online promotion platforms. Integration with Buzz Connect's direct marketing channels amplifies your reach to users actively searching for products and services." },
+  { q: "How does Findit.lk integration help my business?", a: "Findit.lk is one of Sri Lanka's leading online promotion platforms. Integration with Buzz Connect's direct marketing channels amplifies your reach to users actively searching for products and services." },
   { q: "What industries benefit from multi-channel marketing?", a: "Hotels, education institutes, real estate, e-commerce, restaurants, recruitment agencies, healthcare, automotive, finance, fashion, events, and corporate/B2B organizations all benefit from multi-channel marketing strategies in Sri Lanka." },
   { q: "How much does multi-channel marketing cost in Sri Lanka?", a: "Costs vary based on the number of channels, audience size, and campaign duration. Buzz Connect offers customized packages starting from affordable rates. Contact us for a free consultation and campaign plan." },
   { q: "What results can I expect from multi-channel marketing?", a: "Businesses typically see higher conversion rates, stronger brand recall, increased leads, and better ROI compared to single-channel campaigns. Each channel supports the next — ads build awareness, email and WhatsApp drive engagement, and SMS creates urgency." },
@@ -252,7 +252,7 @@ const MultiChannelMarketingSriLanka = () => {
     publisher: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
     datePublished: "2025-03-20",
     dateModified: "2025-06-15",
-    description: "Discover how Buzz Connect's multi-channel marketing strategy combining Email, SMS, WhatsApp, Google Ads, Social Media Ads, and Findit.lk.lk delivers maximum reach and results for Sri Lankan businesses.",
+    description: "Discover how Buzz Connect's multi-channel marketing strategy combining Email, SMS, WhatsApp, Google Ads, Social Media Ads, and Findit.lk delivers maximum reach and results for Sri Lankan businesses.",
   }), []);
 
   return (
@@ -263,7 +263,7 @@ const MultiChannelMarketingSriLanka = () => {
     >
       <SEOHead
         title="Multi Channel Marketing Sri Lanka | Integrated Campaigns | Buzz Connect"
-        description="Multi-channel marketing Sri Lanka — integrated Email, SMS, WhatsApp, Google Ads & Findit.lk.lk campaigns for every industry. Drive awareness, engagement & conversions with Buzz Connect."
+        description="Multi-channel marketing Sri Lanka — integrated Email, SMS, WhatsApp, Google Ads & Findit.lk campaigns for every industry. Drive awareness, engagement & conversions with Buzz Connect."
         canonical="/multi-channel-marketing-in-sri-lanka"
         breadcrumbs={[
           { name: "Home", url: "/" },
@@ -276,7 +276,7 @@ const MultiChannelMarketingSriLanka = () => {
       <article className="max-w-5xl mx-auto space-y-12">
         {/* Hero Image */}
         <div className="rounded-2xl overflow-hidden shadow-card">
-          <img src={articleImg} alt="Multi-channel marketing in Sri Lanka - Email, SMS, WhatsApp, Google Ads and Findit.lk.lk" className="w-full h-auto" loading="lazy" width={800} height={500} />
+          <img src={articleImg} alt="Multi-channel marketing in Sri Lanka - Email, SMS, WhatsApp, Google Ads and Findit.lk" className="w-full h-auto" loading="lazy" width={800} height={500} />
         </div>
 
         {/* Introduction */}
@@ -288,7 +288,7 @@ const MultiChannelMarketingSriLanka = () => {
             👉 From awareness → consideration → conversion — we cover it all.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            With open rates as high as 98% on SMS, real-time WhatsApp conversations, targeted Google Ads, and continuous Findit.lk.lk visibility — <strong>multi-channel marketing in Sri Lanka</strong> is the most powerful way to grow your business.
+            With open rates as high as 98% on SMS, real-time WhatsApp conversations, targeted Google Ads, and continuous Findit.lk visibility — <strong>multi-channel marketing in Sri Lanka</strong> is the most powerful way to grow your business.
           </p>
         </section>
 
@@ -335,7 +335,7 @@ const MultiChannelMarketingSriLanka = () => {
               { label: "WhatsApp Marketing", link: "/whatsapp-marketing" },
               { label: "Google Ads", link: "/google-ads-sri-lanka" },
               { label: "Online Advertising & Banners", link: "/online-advertising-sri-lanka" },
-              { label: "Findit.lk.lk Promotional Exposure", link: null },
+              { label: "Findit.lk Promotional Exposure", link: null },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-3 p-4 rounded-xl bg-muted/50 border border-border">
                 <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
@@ -354,16 +354,16 @@ const MultiChannelMarketingSriLanka = () => {
           </p>
         </section>
 
-        {/* Findit.lk.lk Section */}
+        {/* Findit.lk Section */}
         <section className="bg-muted/30 rounded-2xl p-8 border border-border">
           <div className="flex items-center gap-3 mb-4">
             <Globe className="w-7 h-7 text-accent" />
-            <h2 className="font-heading text-2xl font-bold text-foreground">Amplified Reach with Findit.lk.lk</h2>
+            <h2 className="font-heading text-2xl font-bold text-foreground">Amplified Reach with Findit.lk</h2>
           </div>
           <p className="text-muted-foreground mb-6">
-            One of the biggest advantages of Buzz Connect's <strong>multi-channel marketing in Sri Lanka</strong> is its integration with <strong>Findit.lk.lk</strong> — one of Sri Lanka's leading online promotion platforms.
+            One of the biggest advantages of Buzz Connect's <strong>multi-channel marketing in Sri Lanka</strong> is its integration with <strong>Findit.lk</strong> — one of Sri Lanka's leading online promotion platforms.
           </p>
-          <p className="text-muted-foreground mb-4">Findit.lk.lk allows businesses to:</p>
+          <p className="text-muted-foreground mb-4">Findit.lk allows businesses to:</p>
           <ul className="space-y-2 mb-6">
             {[
               "Promote offers to a large active audience",
@@ -405,7 +405,7 @@ const MultiChannelMarketingSriLanka = () => {
             </div>
             <div className="p-5 rounded-xl bg-accent/5 border border-accent/20">
               <h3 className="font-semibold text-foreground mb-2">Advertising & Visibility</h3>
-              <p className="text-sm text-muted-foreground">Google Ads, Social Media Ads, Findit.lk.lk → Continuous visibility & lead generation</p>
+              <p className="text-sm text-muted-foreground">Google Ads, Social Media Ads, Findit.lk → Continuous visibility & lead generation</p>
             </div>
           </div>
           <p className="text-muted-foreground">

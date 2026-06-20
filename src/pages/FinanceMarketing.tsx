@@ -95,11 +95,11 @@ const freeBonusItems = [
 
 const faqs = [
   { q: "What is finance marketing in Sri Lanka?", a: "Finance marketing involves promoting financial products like loans, credit cards, insurance, and investment opportunities to targeted audiences through digital marketing channels." },
-  { q: "How can Buzz Connect help generate financial leads?", a: "We combine SMS offers, email promotions, WhatsApp follow-ups, and Findit.lk.lk Finance category visibility to reach high-value prospects and generate qualified leads for financial institutions." },
+  { q: "How can Buzz Connect help generate financial leads?", a: "We combine SMS offers, email promotions, WhatsApp follow-ups, and Findit.lk Finance category visibility to reach high-value prospects and generate qualified leads for financial institutions." },
   { q: "Can you target high-net-worth individuals?", a: "Yes, our VIP and corporate database allows precise targeting of high-net-worth individuals, business owners, and corporate decision-makers." },
   { q: "How much does financial marketing cost in Sri Lanka?", a: "Buzz Connect offers financial marketing packages starting from LKR 60,000. Contact us for a customized quote based on your requirements." },
   { q: "Is SMS marketing effective for financial products?", a: "Absolutely. SMS has a 98% open rate, making it ideal for time-sensitive offers like loan promotions, credit card deals, and insurance renewals." },
-  { q: "Why is Buzz Connect the best finance marketing agency in Sri Lanka?", a: "Buzz Connect is the best finance marketing agency because it offers fast campaign launch, instant exposure on Findit.lk.lk's Finance category, and easy, cost-effective multi-channel solutions to generate high-value loan, credit card, and insurance leads quickly." },
+  { q: "Why is Buzz Connect the best finance marketing agency in Sri Lanka?", a: "Buzz Connect is the best finance marketing agency because it offers fast campaign launch, instant exposure on Findit.lk's Finance category, and easy, cost-effective multi-channel solutions to generate high-value loan, credit card, and insurance leads quickly." },
 ];
 
 const FinanceMarketing = () => {
@@ -115,7 +115,7 @@ const FinanceMarketing = () => {
       name: "Finance Marketing Sri Lanka",
       provider: { "@type": "Organization", name: "Buzz Connect" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Multi-channel finance marketing services in Sri Lanka combining SMS, email, WhatsApp, and Findit.lk.lk visibility to generate high-value financial leads.",
+      description: "Multi-channel finance marketing services in Sri Lanka combining SMS, email, WhatsApp, and Findit.lk visibility to generate high-value financial leads.",
     },
   ], []);
 
@@ -217,8 +217,8 @@ const FinanceMarketing = () => {
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />1 Targeted Email Campaign (loan / finance audience)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Featured listing in Findit.lk 'Finance & Loans'</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/finance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (finance category)</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/finance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (finance category)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />7-day visibility boost</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Basic Remarketing (repeat exposure)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Ad creative (loan / offer focused)</li>
@@ -241,8 +241,8 @@ const FinanceMarketing = () => {
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />2–3 Targeted Email Campaigns (segmented)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Premium Findit.lk finance placement</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/finance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (premium position)</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/finance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (premium position)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Campaigns for urgent needs (loans / quick cash)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Advanced Remarketing (multi-touch)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Performance report (clicks, inquiries)</li>
@@ -264,8 +264,8 @@ const FinanceMarketing = () => {
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />4–6 Email Campaigns (full funnel strategy)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Top ranking in Findit.lk finance category</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/finance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (top-tier position)</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/finance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (top-tier position)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Full Funnel Remarketing</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🎬 TikTok Video Ad (finance promo video)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Custom landing page (loan / finance offer)</li>
@@ -296,7 +296,7 @@ const FinanceMarketing = () => {
               { icon: Mail, label: "Email Marketing" },
               { icon: Smartphone, label: "SMS Campaigns" },
               { icon: MessageSquare, label: "WhatsApp Marketing" },
-              { icon: Globe, label: "Exposure on Findit.lk.lk" },
+              { icon: Globe, label: "Exposure on Findit.lk" },
             ].map((ch, i) => (
               <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
@@ -474,8 +474,8 @@ const FinanceMarketing = () => {
       </motion.div>
 
       <FinditlkAdvantage
-        title="Findit.lk.lk Finance & Credit Card Advantage"
-        description="Get your financial products promoted in Findit.lk.lk's Finance and Credit Card categories for continuous visibility to high-intent prospects seeking financial solutions."
+        title="Findit.lk Finance & Credit Card Advantage"
+        description="Get your financial products promoted in Findit.lk's Finance and Credit Card categories for continuous visibility to high-intent prospects seeking financial solutions."
         gradient="gradient-finance"
         links={[
           { label: "Finance", url: "https://www.findit.lk/promotions/finance" },

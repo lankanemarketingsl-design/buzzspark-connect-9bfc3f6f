@@ -90,9 +90,9 @@ const freeBonusItems = [
 
 const faqs = [
   { q: "What is hotel marketing in Sri Lanka?", a: "Hotel marketing involves promoting your accommodation, packages, and services to potential guests through targeted digital marketing channels like email, SMS, WhatsApp, and directory listings." },
-  { q: "Why is Buzz Connect the best hotel marketing agency?", a: "Buzz Connect is the best hotel marketing agency because it offers fast campaign launch, instant exposure on Findit.lk.lk, and easy, cost-effective solutions to boost bookings quickly." },
-  { q: "How can Buzz Connect help my hotel get more bookings?", a: "We use a multi-channel approach combining email campaigns, SMS alerts, WhatsApp messaging, and Findit.lk.lk category visibility to reach thousands of potential guests and drive direct bookings." },
-  { q: "What makes Buzz Connect different from other hotel marketing agencies?", a: "Our unique combination of direct marketing (email, SMS, WhatsApp) with Findit.lk.lk category-based promotions provides both instant reach and continuous visibility — something traditional agencies cannot offer." },
+  { q: "Why is Buzz Connect the best hotel marketing agency?", a: "Buzz Connect is the best hotel marketing agency because it offers fast campaign launch, instant exposure on Findit.lk, and easy, cost-effective solutions to boost bookings quickly." },
+  { q: "How can Buzz Connect help my hotel get more bookings?", a: "We use a multi-channel approach combining email campaigns, SMS alerts, WhatsApp messaging, and Findit.lk category visibility to reach thousands of potential guests and drive direct bookings." },
+  { q: "What makes Buzz Connect different from other hotel marketing agencies?", a: "Our unique combination of direct marketing (email, SMS, WhatsApp) with Findit.lk category-based promotions provides both instant reach and continuous visibility — something traditional agencies cannot offer." },
   { q: "How much does hotel marketing cost in Sri Lanka?", a: "Buzz Connect offers cost-effective hotel marketing packages starting from LKR 14,900. Contact us for a customized quote based on your property and target audience." },
   { q: "Can you target international tourists?", a: "Yes, our database includes both local travelers and international tourist segments, allowing you to reach the right audience for your property." },
 ];
@@ -114,7 +114,7 @@ const HotelMarketing = () => {
       name: "Hotel Marketing Sri Lanka",
       provider: { "@type": "Organization", name: "Buzz Connect" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Multi-channel hotel marketing services in Sri Lanka combining email, SMS, WhatsApp, and Findit.lk.lk visibility to drive direct bookings.",
+      description: "Multi-channel hotel marketing services in Sri Lanka combining email, SMS, WhatsApp, and Findit.lk visibility to drive direct bookings.",
     },
   ], []);
 
@@ -241,7 +241,7 @@ const HotelMarketing = () => {
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Featured listing in Findit.lk "Hotels & Accommodation"</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/promotions/hotels-and-accommodation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a>
+                <a href="https://www.findit.lk/promotions/hotels-and-accommodation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
               </li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 7-day visibility boost</li>
               <li className="flex items-start gap-2"><RefreshCw className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Basic Remarketing Exposure</li>
@@ -267,7 +267,7 @@ const HotelMarketing = () => {
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Premium placement in Findit.lk hotel category</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/promotions/hotels-and-accommodation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a>
+                <a href="https://www.findit.lk/promotions/hotels-and-accommodation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
               </li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Seasonal promotion push (weekend / holiday)</li>
               <li className="flex items-start gap-2"><RefreshCw className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" /> Advanced Remarketing (multi-touch exposure)</li>
@@ -292,7 +292,7 @@ const HotelMarketing = () => {
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Top ranking in Findit.lk category</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/promotions/hotels-and-accommodation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a>
+                <a href="https://www.findit.lk/promotions/hotels-and-accommodation" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
               </li>
               <li className="flex items-start gap-2"><RefreshCw className="w-4 h-4 text-red-500 shrink-0 mt-0.5" /> Full Funnel Remarketing (all touchpoints)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 🎬 TikTok Video Ad (hotel promo video)</li>
@@ -340,7 +340,7 @@ const HotelMarketing = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {[
               { icon: Mail, title: "2 Targeted Email Campaigns", points: ["Sent to active Sri Lankan travel audience", "Promote weekend / couple / seasonal offers", "Designed to generate booking inquiries"] },
-              { icon: Globe, title: "Featured Listing on Findit.lk.lk", points: ["Increased visibility in hotel category", "Direct traffic from travel seekers"] },
+              { icon: Globe, title: "Featured Listing on Findit.lk", points: ["Increased visibility in hotel category", "Direct traffic from travel seekers"] },
               { icon: Target, title: "Facebook & Instagram Ads", points: ["Basic remarketing to interested users", "Retarget people who engage with your campaign"] },
               { icon: Gift, title: "Offer Creation Support", points: ["Attractive deals (e.g., couple getaway)", "Limited-time promotions to drive urgency"] },
               { icon: BarChart3, title: "Campaign Performance Summary", points: ["Reach & engagement reporting"] },
@@ -447,7 +447,7 @@ const HotelMarketing = () => {
               { icon: Mail, label: "Email Marketing" },
               { icon: Smartphone, label: "SMS Campaigns" },
               { icon: MessageSquare, label: "WhatsApp Marketing" },
-              { icon: Globe, label: "Exposure on Findit.lk.lk" },
+              { icon: Globe, label: "Exposure on Findit.lk" },
             ].map((ch, i) => (
               <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
@@ -630,8 +630,8 @@ const HotelMarketing = () => {
       </motion.div>
 
       <FinditlkAdvantage
-        title="Findit.lk.lk Hotels & Travel Advantage"
-        description="Get your hotel listed and promoted in Findit.lk.lk's top travel categories for continuous visibility to high-intent travelers searching for accommodation and travel deals in Sri Lanka."
+        title="Findit.lk Hotels & Travel Advantage"
+        description="Get your hotel listed and promoted in Findit.lk's top travel categories for continuous visibility to high-intent travelers searching for accommodation and travel deals in Sri Lanka."
         gradient="gradient-hotel"
         links={[
           { label: "Hotels & Accommodation", url: "https://www.findit.lk/promotions/hotels-and-accommodation" },
