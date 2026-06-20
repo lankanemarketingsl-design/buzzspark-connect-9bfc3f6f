@@ -146,6 +146,22 @@ const BrandBlast360 = () => {
   const [open, setOpen] = useState<number | null>(0);
   const [activeIndustry, setActiveIndustry] = useState<string>("all");
 
+  const indCls: Record<string, { badge: string; text: string; border: string; icon: string; darkBadge: string; darkText: string; darkBorder: string }> = {
+    blue:    { badge: "bg-blue-50",    text: "text-blue-600",    border: "border-blue-200",    icon: "text-blue-500",    darkBadge: "dark:bg-blue-950/30",    darkText: "dark:text-blue-400",    darkBorder: "dark:border-blue-900/40" },
+    violet:  { badge: "bg-violet-50",  text: "text-violet-600",  border: "border-violet-200",  icon: "text-violet-500",  darkBadge: "dark:bg-violet-950/30",  darkText: "dark:text-violet-400",  darkBorder: "dark:border-violet-900/40" },
+    sky:     { badge: "bg-sky-50",     text: "text-sky-600",     border: "border-sky-200",     icon: "text-sky-500",     darkBadge: "dark:bg-sky-950/30",     darkText: "dark:text-sky-400",     darkBorder: "dark:border-sky-900/40" },
+    emerald: { badge: "bg-emerald-50", text: "text-emerald-600", border: "border-emerald-200", icon: "text-emerald-500", darkBadge: "dark:bg-emerald-950/30", darkText: "dark:text-emerald-400", darkBorder: "dark:border-emerald-900/40" },
+    amber:   { badge: "bg-amber-50",   text: "text-amber-600",   border: "border-amber-200",   icon: "text-amber-500",   darkBadge: "dark:bg-amber-950/30",   darkText: "dark:text-amber-400",   darkBorder: "dark:border-amber-900/40" },
+    pink:    { badge: "bg-pink-50",    text: "text-pink-600",    border: "border-pink-200",    icon: "text-pink-500",    darkBadge: "dark:bg-pink-950/30",    darkText: "dark:text-pink-400",    darkBorder: "dark:border-pink-900/40" },
+    orange:  { badge: "bg-orange-50",  text: "text-orange-600",  border: "border-orange-200",  icon: "text-orange-500",  darkBadge: "dark:bg-orange-950/30",  darkText: "dark:text-orange-400",  darkBorder: "dark:border-orange-900/40" },
+    slate:   { badge: "bg-slate-50",   text: "text-slate-600",   border: "border-slate-200",   icon: "text-slate-500",   darkBadge: "dark:bg-slate-950/30",   darkText: "dark:text-slate-400",   darkBorder: "dark:border-slate-900/40" },
+    purple:  { badge: "bg-purple-50",  text: "text-purple-600",  border: "border-purple-200",  icon: "text-purple-500",  darkBadge: "dark:bg-purple-950/30",  darkText: "dark:text-purple-400",  darkBorder: "dark:border-purple-900/40" },
+    rose:    { badge: "bg-rose-50",    text: "text-rose-600",    border: "border-rose-200",    icon: "text-rose-500",    darkBadge: "dark:bg-rose-950/30",    darkText: "dark:text-rose-400",    darkBorder: "dark:border-rose-900/40" },
+    red:     { badge: "bg-red-50",     text: "text-red-600",     border: "border-red-200",     icon: "text-red-500",     darkBadge: "dark:bg-red-950/30",     darkText: "dark:text-red-400",     darkBorder: "dark:border-red-900/40" },
+    indigo:  { badge: "bg-indigo-50",  text: "text-indigo-600",  border: "border-indigo-200",  icon: "text-indigo-500",  darkBadge: "dark:bg-indigo-950/30",  darkText: "dark:text-indigo-400",  darkBorder: "dark:border-indigo-900/40" },
+    teal:    { badge: "bg-teal-50",    text: "text-teal-600",    border: "border-teal-200",    icon: "text-teal-500",    darkBadge: "dark:bg-teal-950/30",    darkText: "dark:text-teal-400",    darkBorder: "dark:border-teal-900/40" },
+  };
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
