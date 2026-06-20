@@ -60,6 +60,7 @@ const TYPE_LABELS: Record<string, string> = {
   call_click: "Call",
   email_click: "Email",
   quote_open: "Quote Open",
+  page_view: "Page View",
 };
 
 
@@ -268,6 +269,11 @@ const AdminDashboard = () => {
             </div>
           ))}
         </div>
+
+        {/* Brand Blast 360 — dedicated tracking */}
+        <BrandBlast360Panel inquiries={inquiries} onPick={() => setPageFilter("/brand-blast-360")} />
+
+
 
         {/* Today */}
         <PeriodInquiries range="today" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
