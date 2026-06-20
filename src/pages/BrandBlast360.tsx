@@ -706,20 +706,23 @@ const BrandBlast360 = () => {
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {ind.useCases.map((uc, i) => (
-                      <div key={i} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:shadow-lg transition-shadow">
-                        <span className={`inline-block self-start mx-5 mt-4 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border bg-${ind.color}-50 text-${ind.color}-600 border-${ind.color}-200 dark:bg-${ind.color}-950/30 dark:text-${ind.color}-400 dark:border-${ind.color}-900/40`}>{uc.badge}</span>
-                        <div className="px-5 pt-3 pb-3 font-bold text-sm border-b border-border">{uc.title}</div>
-                        <ul className="p-5 space-y-2 flex-1">
-                          {uc.points.map((pt, j) => (
-                            <li key={j} className="text-xs text-muted-foreground flex gap-2 items-start leading-relaxed">
-                              <Check className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-${ind.color}-500`} />
-                              <span>{pt}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                    {ind.useCases.map((uc, i) => {
+                      const c = indCls[ind.color];
+                      return (
+                        <div key={i} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:shadow-lg transition-shadow">
+                          <span className={`inline-block self-start mx-5 mt-4 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${c.badge} ${c.text} ${c.border} ${c.darkBadge} ${c.darkText} ${c.darkBorder}`}>{uc.badge}</span>
+                          <div className="px-5 pt-3 pb-3 font-bold text-sm border-b border-border">{uc.title}</div>
+                          <ul className="p-5 space-y-2 flex-1">
+                            {uc.points.map((pt, j) => (
+                              <li key={j} className="text-xs text-muted-foreground flex gap-2 items-start leading-relaxed">
+                                <Check className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${c.icon}`} />
+                                <span>{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
