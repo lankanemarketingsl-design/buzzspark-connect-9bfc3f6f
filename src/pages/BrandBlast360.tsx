@@ -388,7 +388,7 @@ const BrandBlast360 = () => {
                         <div className="text-sm font-heading font-black text-foreground">8K+</div>
                       </div>
                       <div className="bg-amber-500/8 border border-amber-500/15 rounded-lg p-2 text-center">
-                        <div className="text-[10px] font-bold text-amber-500 uppercase tracking-wider">Findit</div>
+                        <div className="text-[10px] font-bold text-amber-500 uppercase tracking-wider">Findit.lk</div>
                         <div className="text-sm font-heading font-black text-foreground">100K</div>
                       </div>
                       <div className="col-span-2 bg-pink-500/8 border border-pink-500/15 rounded-lg p-2 text-center">

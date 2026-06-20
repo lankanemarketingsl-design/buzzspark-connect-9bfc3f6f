@@ -22,7 +22,7 @@ const industries = [
     emoji: "🏨",
     title: "Hotel Multi-Channel Marketing Sri Lanka – Drive Direct Bookings",
     campaigns: [
-      "Banner Ads (Findit) → Build awareness among travelers",
+      "Banner Ads (Findit.lk) → Build awareness among travelers",
       "Email Campaign → Promote packages with full details",
       "WhatsApp Bulk Messaging → Highlight limited-time offers",
       "SMS → Last-minute booking reminders",
@@ -57,7 +57,7 @@ const industries = [
     title: "Real Estate Multi-Channel Marketing Sri Lanka – Convert High-Value Buyers Faster",
     campaigns: [
       "Google Ads → Target active property searches",
-      "Banner Ads (Findit) → Continuous brand visibility",
+      "Banner Ads (Findit.lk) → Continuous brand visibility",
       "Email Campaign → Property details & investment value",
       "WhatsApp Bulk Messaging → Launch announcements",
       "SMS → Site visit reminders",
@@ -259,7 +259,7 @@ const MultiChannelMarketingSriLanka = () => {
     <ServicePageLayout
       badge="Multi-Channel Marketing"
       title="Multi Channel Marketing Services for Every Industry in Sri Lanka"
-      subtitle="At Buzz Connect, we design integrated campaigns using Email, SMS, WhatsApp, Social Media Ads, Google Ads, and Banner Advertising (Findit) — ensuring your brand reaches customers at every stage of their decision journey."
+      subtitle="At Buzz Connect, we design integrated campaigns using Email, SMS, WhatsApp, Social Media Ads, Google Ads, and Banner Advertising (Findit.lk) — ensuring your brand reaches customers at every stage of their decision journey."
     >
       <SEOHead
         title="Multi Channel Marketing Sri Lanka | Integrated Campaigns | Buzz Connect"
@@ -282,7 +282,7 @@ const MultiChannelMarketingSriLanka = () => {
         {/* Introduction */}
         <section className="prose prose-lg max-w-none">
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Looking for <strong>multi channel marketing in Sri Lanka</strong> that actually delivers results? At Buzz Connect, we design integrated campaigns using <Link to="/email-marketing" className="text-accent hover:underline font-semibold">Email</Link>, <Link to="/sms-marketing" className="text-accent hover:underline font-semibold">SMS</Link>, <Link to="/whatsapp-marketing" className="text-accent hover:underline font-semibold">WhatsApp bulk messaging</Link>, Social Media Ads, <Link to="/google-ads-sri-lanka" className="text-accent hover:underline font-semibold">Google Ads</Link>, and Banner Advertising (Findit) — ensuring your brand reaches customers at every stage of their decision journey.
+            Looking for <strong>multi channel marketing in Sri Lanka</strong> that actually delivers results? At Buzz Connect, we design integrated campaigns using <Link to="/email-marketing" className="text-accent hover:underline font-semibold">Email</Link>, <Link to="/sms-marketing" className="text-accent hover:underline font-semibold">SMS</Link>, <Link to="/whatsapp-marketing" className="text-accent hover:underline font-semibold">WhatsApp bulk messaging</Link>, Social Media Ads, <Link to="/google-ads-sri-lanka" className="text-accent hover:underline font-semibold">Google Ads</Link>, and Banner Advertising (Findit.lk) — ensuring your brand reaches customers at every stage of their decision journey.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed font-semibold">
             👉 From awareness → consideration → conversion — we cover it all.

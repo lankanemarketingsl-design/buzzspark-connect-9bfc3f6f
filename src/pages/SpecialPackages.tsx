@@ -17,7 +17,7 @@ const multiChannelIndustries = [
     emoji: "🏨",
     title: "Hotel Multi-Channel Marketing Sri Lanka – Drive Direct Bookings",
     campaigns: [
-      "Banner Ads (Findit) → Build awareness among travelers",
+      "Banner Ads (Findit.lk) → Build awareness among travelers",
       "Email Campaign → Promote packages with full details",
       "WhatsApp Bulk Messaging → Highlight limited-time offers",
       "SMS → Last-minute booking reminders",
@@ -52,7 +52,7 @@ const multiChannelIndustries = [
     title: "Real Estate Multi-Channel Marketing Sri Lanka – Convert High-Value Buyers",
     campaigns: [
       "Google Ads → Target active property searches",
-      "Banner Ads (Findit) → Continuous brand visibility",
+      "Banner Ads (Findit.lk) → Continuous brand visibility",
       "Email Campaign → Property details & investment value",
       "WhatsApp Bulk Messaging → Launch announcements",
       "SMS → Site visit reminders",
@@ -766,7 +766,7 @@ const SpecialPackages = () => {
         whyPoints={[
           "Customers interact with your brand across multiple platforms",
           "Each channel supports the next (awareness → trust → action)",
-          "Reach → Ads + Banner Advertising (Findit)",
+          "Reach → Ads + Banner Advertising (Findit.lk)",
           "Engagement → Email + WhatsApp",
           "Urgency → SMS reminders",
           "Higher conversions, stronger brand recall, and better ROI",

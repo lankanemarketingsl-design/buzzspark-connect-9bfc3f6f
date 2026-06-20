@@ -275,7 +275,7 @@ const EventMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for consistent ticket sales & event promotions</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 2–3 Targeted Email Campaigns (segmented)</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Premium Findit event placement</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Premium Findit.lk event placement</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
@@ -301,7 +301,7 @@ const EventMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for concerts, festivals & large-scale events</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 4–6 Email Campaigns (full funnel strategy)</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Top ranking in Findit events category</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Top ranking in Findit.lk events category</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
