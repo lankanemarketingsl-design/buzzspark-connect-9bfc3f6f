@@ -449,10 +449,18 @@ const BrandBlast360 = () => {
                 const fd = new FormData(e.currentTarget as HTMLFormElement);
                 const name = (fd.get("name") as string)?.trim() || "there";
                 const biz = (fd.get("biz") as string)?.trim() || "my business";
-                window.open(
-                  wa(`Hi Buzz Connect, I'm ${name} from ${biz}. Please recommend the best Brand Blast 360 package for me and share the next steps.`),
-                  "_blank"
-                );
+                const message = `Hi Buzz Connect, I'm ${name} from ${biz}. Please recommend the best Brand Blast 360 package for me and share the next steps.`;
+                logInquiry({
+                  inquiry_type: "form_submission",
+                  name: name === "there" ? undefined : name,
+                  business: biz === "my business" ? undefined : biz,
+                  service: "Brand Blast 360",
+                  source_page: "/brand-blast-360",
+                  source_url: typeof window !== "undefined" ? window.location.href : "",
+                  placement: "brandblast360_lead_form",
+                  whatsapp_number: WA,
+                });
+                window.open(wa(message), "_blank");
               }}
               className="bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-4 sm:p-5 grid sm:grid-cols-[1fr_1fr_auto] gap-3"
             >
