@@ -421,7 +421,20 @@ const AdminDashboard = () => {
                     </button>
                   </td>
                   <td className="p-3">
-                    <Button size="sm" variant="ghost" onClick={() => handleDelete(i.id)}>Delete</Button>
+                    <div className="flex items-center gap-2">
+                      {i.phone && (
+                        <a
+                          href={`https://wa.me/${i.phone.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${i.name || "there"}, this is Buzz Connect. We received your inquiry about ${i.service || "our services"}. How can we help you today?`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-medium"
+                          title="Reply on WhatsApp"
+                        >
+                          <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                        </a>
+                      )}
+                      <Button size="sm" variant="ghost" onClick={() => handleDelete(i.id)}>Delete</Button>
+                    </div>
                   </td>
                 </tr>
               ))}
