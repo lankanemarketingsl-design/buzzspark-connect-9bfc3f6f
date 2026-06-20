@@ -60,6 +60,7 @@ const TYPE_LABELS: Record<string, string> = {
   call_click: "Call",
   email_click: "Email",
   quote_open: "Quote Open",
+  page_view: "Page View",
 };
 
 
@@ -268,6 +269,11 @@ const AdminDashboard = () => {
             </div>
           ))}
         </div>
+
+        {/* Brand Blast 360 — dedicated tracking */}
+        <BrandBlast360Panel inquiries={inquiries} onPick={() => setPageFilter("/brand-blast-360")} />
+
+
 
         {/* Today */}
         <PeriodInquiries range="today" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
@@ -875,3 +881,81 @@ const PeriodSources = ({
 
 
 
+
+const BrandBlast360Panel = ({ inquiries, onPick }: { inquiries: Inquiry[]; onPick: () => void }) => {
+  const bb = inquiries.filter((i) => i.source_page === "/brand-blast-360");
+  const pageViews = bb.filter((i) => i.inquiry_type === "page_view").length;
+  const whatsapp = bb.filter((i) => i.inquiry_type === "whatsapp_click").length;
+  const forms = bb.filter((i) => i.inquiry_type === "form_submission").length;
+  const calls = bb.filter((i) => i.inquiry_type === "call_click").length;
+  const emails = bb.filter((i) => i.inquiry_type === "email_click").length;
+  const totalLeads = whatsapp + forms + calls + emails;
+  const convRate = pageViews > 0 ? ((totalLeads / pageViews) * 100).toFixed(1) : "—";
+
+  // CTA breakdown by placement
+  const ctaMap: Record<string, { total: number; whatsapp: number; form: number }> = {};
+  bb.forEach((i) => {
+    if (i.inquiry_type === "page_view" || !i.placement) return;
+    const k = i.placement;
+    if (!ctaMap[k]) ctaMap[k] = { total: 0, whatsapp: 0, form: 0 };
+    ctaMap[k].total++;
+    if (i.inquiry_type === "whatsapp_click") ctaMap[k].whatsapp++;
+    if (i.inquiry_type === "form_submission") ctaMap[k].form++;
+  });
+  const ctaRows = Object.entries(ctaMap)
+    .map(([placement, v]) => ({ placement, ...v }))
+    .sort((a, b) => b.total - a.total);
+  const maxCta = Math.max(1, ...ctaRows.map((r) => r.total));
+
+  return (
+    <div className="mb-6 border-2 border-primary/30 rounded-2xl bg-gradient-to-br from-primary/5 via-card to-accent/5 p-5">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+        <div>
+          <div className="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Dedicated tracking</div>
+          <h2 className="text-lg md:text-xl font-bold">🚀 Brand Blast 360 — /brand-blast-360</h2>
+          <p className="text-xs text-muted-foreground">Page visits and every CTA click on this single page</p>
+        </div>
+        <Button size="sm" variant="outline" onClick={onPick}>Filter table to this page →</Button>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-2.5 mb-5">
+        {[
+          { l: "Page Views", v: pageViews, c: "text-primary" },
+          { l: "Total Leads", v: totalLeads, c: "text-emerald-600" },
+          { l: "Conv. Rate", v: typeof convRate === "string" && convRate !== "—" ? `${convRate}%` : convRate, c: "text-accent-foreground" },
+          { l: "WhatsApp", v: whatsapp, c: "text-emerald-600" },
+          { l: "Forms", v: forms, c: "text-blue-600" },
+          { l: "Calls + Email", v: calls + emails, c: "text-amber-600" },
+        ].map((s) => (
+          <div key={s.l} className="bg-card border border-border rounded-xl p-3">
+            <div className="text-[10px] uppercase text-muted-foreground font-bold">{s.l}</div>
+            <div className={`text-xl font-bold ${s.c}`}>{s.v}</div>
+          </div>
+        ))}
+      </div>
+      <div>
+        <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">CTA Click Breakdown — which button gets clicked?</div>
+        {ctaRows.length === 0 ? (
+          <div className="text-sm text-muted-foreground p-4 text-center bg-muted/30 rounded-lg">No CTA clicks tracked yet on this page.</div>
+        ) : (
+          <ul className="divide-y divide-border bg-card border border-border rounded-xl">
+            {ctaRows.map((r) => (
+              <li key={r.placement} className="p-3">
+                <div className="flex items-center justify-between gap-3 mb-1.5">
+                  <div className="font-mono text-xs truncate flex-1">{r.placement}</div>
+                  <div className="text-sm font-bold tabular-nums">{r.total}</div>
+                </div>
+                <div className="flex flex-wrap gap-1 mb-1.5">
+                  {r.whatsapp > 0 && <Badge variant="outline" className="text-[10px]">WhatsApp · {r.whatsapp}</Badge>}
+                  {r.form > 0 && <Badge variant="outline" className="text-[10px]">Form · {r.form}</Badge>}
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                  <div className="h-full bg-primary" style={{ width: `${(r.total / maxCta) * 100}%` }} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+};
