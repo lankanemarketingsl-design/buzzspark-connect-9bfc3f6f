@@ -40,7 +40,7 @@ const services = [
   { icon: Mail, title: "Email Course Promotions", desc: "Promote courses, intakes & programs to 350,000+ targeted student & parent contacts." },
   { icon: Smartphone, title: "SMS Deadline Reminders", desc: "Send enrollment deadline alerts and intake reminders to 600,000+ mobile users." },
   { icon: MessageSquare, title: "WhatsApp Student Engagement", desc: "Enable direct student inquiries, course information sharing, and enrollment support." },
-  { icon: Globe, title: "Findit.lk Education Visibility", desc: "Get listed in Education categories on Findit.lk for continuous visibility to students." },
+  { icon: Globe, title: "Findit.lk.lk Education Visibility", desc: "Get listed in Education categories on Findit.lk.lk for continuous visibility to students." },
   { icon: Eye, title: "Banner Advertising", desc: "Showcase your courses and programs with visually engaging banner campaigns." },
   { icon: Target, title: "Student Database Targeting", desc: "Reach students, parents & professionals with precision demographic targeting." },
 ];
@@ -49,7 +49,7 @@ const channels = [
   { icon: Mail, channel: "Email", action: "Course promotions & details", color: "bg-blue-500/10 text-blue-600" },
   { icon: Smartphone, channel: "SMS", action: "Deadline reminders & alerts", color: "bg-green-500/10 text-green-600" },
   { icon: MessageSquare, channel: "WhatsApp", action: "Student engagement & inquiries", color: "bg-emerald-500/10 text-emerald-600" },
-  { icon: Globe, channel: "Findit.lk", action: "Education category visibility", color: "bg-purple-500/10 text-purple-600" },
+  { icon: Globe, channel: "Findit.lk.lk", action: "Education category visibility", color: "bg-purple-500/10 text-purple-600" },
 ];
 
 const benefits = [
@@ -73,7 +73,7 @@ const useCases = [
 const processSteps = [
   { icon: Target, title: "Define Student Profiles", desc: "Identify target students by age, location, and interests" },
   { icon: Mail, title: "Launch Intake Campaigns", desc: "Coordinate email, SMS & WhatsApp for maximum enrollment" },
-  { icon: Globe, title: "Activate Findit.lk Listing", desc: "Get visible in Education categories" },
+  { icon: Globe, title: "Activate Findit.lk.lk Listing", desc: "Get visible in Education categories" },
   { icon: Send, title: "Capture Student Inquiries", desc: "Convert interest into enrollment applications" },
   { icon: BarChart3, title: "Optimize Results", desc: "Track and improve campaign performance" },
 ];
@@ -81,7 +81,7 @@ const processSteps = [
 const whyChoose = [
   "Proven education marketing strategies",
   "Access to student & parent databases",
-  "Integration with Findit.lk Education category",
+  "Integration with Findit.lk.lk Education category",
   "Fast campaign execution for intake deadlines",
   "Cost-effective student acquisition",
   "Dedicated education campaign team",
@@ -89,11 +89,11 @@ const whyChoose = [
 
 const faqs = [
   { q: "What is education marketing in Sri Lanka?", a: "Education marketing involves promoting courses, programs, and educational institutions to potential students through targeted digital marketing channels like email, SMS, WhatsApp, and directory listings." },
-  { q: "How can Buzz Connect help my institution get more students?", a: "We use a multi-channel approach combining email campaigns, SMS reminders, WhatsApp engagement, and Findit.lk Education category visibility to reach thousands of students and drive enrollment." },
+  { q: "How can Buzz Connect help my institution get more students?", a: "We use a multi-channel approach combining email campaigns, SMS reminders, WhatsApp engagement, and Findit.lk.lk Education category visibility to reach thousands of students and drive enrollment." },
   { q: "Can you target specific student demographics?", a: "Yes, our database allows targeting by age group, location, education level, and interests — ensuring your campaigns reach the most relevant prospective students." },
   { q: "How much does education marketing cost in Sri Lanka?", a: "Buzz Connect offers education marketing packages starting from LKR 6,000. Contact us for a customized quote based on your institution and target audience." },
   { q: "How quickly can I see results?", a: "Most education campaigns start generating inquiries within 24-48 hours of launch, with peak results during intake seasons." },
-  { q: "Why is Buzz Connect the best education marketing agency?", a: "Buzz Connect is the best education marketing agency because it offers fast campaign launch, instant exposure on Findit.lk's Education category, and easy, cost-effective multi-channel solutions to drive enrollments quickly." },
+  { q: "Why is Buzz Connect the best education marketing agency?", a: "Buzz Connect is the best education marketing agency because it offers fast campaign launch, instant exposure on Findit.lk.lk's Education category, and easy, cost-effective multi-channel solutions to drive enrollments quickly." },
 ];
 
 const EducationMarketing = () => {
@@ -113,7 +113,7 @@ const EducationMarketing = () => {
       name: "Education Marketing Sri Lanka",
       provider: { "@type": "Organization", name: "Buzz Connect" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Multi-channel education marketing services in Sri Lanka combining email, SMS, WhatsApp, and Findit.lk visibility to drive student enrollment.",
+      description: "Multi-channel education marketing services in Sri Lanka combining email, SMS, WhatsApp, and Findit.lk.lk visibility to drive student enrollment.",
     },
   ], []);
 
@@ -121,7 +121,7 @@ const EducationMarketing = () => {
     <ServicePageLayout
       badge="Education Marketing"
       title="Education Marketing Sri Lanka – Drive Student Enrollment with Multi-Channel Campaigns"
-      subtitle="Reach students, parents, and professionals through targeted email, SMS, WhatsApp campaigns and Findit.lk Education category visibility."
+      subtitle="Reach students, parents, and professionals through targeted email, SMS, WhatsApp campaigns and Findit.lk.lk Education category visibility."
     >
       <SEOHead
         title="Education Marketing Sri Lanka | Education Marketing Agency"
@@ -152,7 +152,7 @@ const EducationMarketing = () => {
           Buzz Connect delivers high-impact education marketing campaigns in Sri Lanka, helping universities, schools, and training institutes fill their intakes through targeted multi-channel promotions.
         </p>
         <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-          Our student intake lead generation strategy combines <Link to="/" className="text-muted-foreground underline-offset-2 hover:underline">email marketing Sri Lanka</Link> for course promotions, <Link to="/sms-marketing" className="text-muted-foreground underline-offset-2 hover:underline">SMS marketing Sri Lanka</Link> for deadline reminders, and <Link to="/whatsapp-marketing" className="text-muted-foreground underline-offset-2 hover:underline">WhatsApp marketing Sri Lanka</Link> for direct student engagement — all backed by Findit.lk Education category visibility.
+          Our student intake lead generation strategy combines <Link to="/" className="text-muted-foreground underline-offset-2 hover:underline">email marketing Sri Lanka</Link> for course promotions, <Link to="/sms-marketing" className="text-muted-foreground underline-offset-2 hover:underline">SMS marketing Sri Lanka</Link> for deadline reminders, and <Link to="/whatsapp-marketing" className="text-muted-foreground underline-offset-2 hover:underline">WhatsApp marketing Sri Lanka</Link> for direct student engagement — all backed by Findit.lk.lk Education category visibility.
         </p>
         <p className="text-lg text-muted-foreground leading-relaxed">
           Whether you run a university, international school, or professional training center, our campaigns paired with <Link to="/social-media-marketing-sri-lanka" className="text-muted-foreground underline-offset-2 hover:underline">social media marketing Sri Lanka</Link> are designed to generate student inquiries and maximize enrollments.
@@ -187,9 +187,9 @@ const EducationMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for small institutes / short courses</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />1 Targeted Email Campaign (students / parents)</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Featured listing in Findit 'Education'</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/education" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (education category)</li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Featured listing in Findit.lk 'Education'</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/education" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (education category)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />7-day visibility boost</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Basic Remarketing (repeat exposure)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Course ad creative (intake-focused)</li>
@@ -211,9 +211,9 @@ const EducationMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Increase student enrollments consistently</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />2–3 Targeted Email Campaigns (segmented)</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Premium Findit education placement</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/education" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (premium position)</li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Premium Findit.lk education placement</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/education" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (premium position)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Campaigns for upcoming intakes</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Advanced Remarketing (multi-touch)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Performance report</li>
@@ -234,9 +234,9 @@ const EducationMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Fill entire course intakes faster</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />4–6 Email Campaigns (full funnel strategy)</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Top ranking in Findit category</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/education" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (top-tier position)</li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Top ranking in Findit.lk category</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/education" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (top-tier position)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Full Funnel Remarketing</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🎬 TikTok Video Ad (course promo video)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Custom course landing page</li>
@@ -267,7 +267,7 @@ const EducationMarketing = () => {
               { icon: Mail, label: "Email Marketing" },
               { icon: Smartphone, label: "SMS Campaigns" },
               { icon: MessageSquare, label: "WhatsApp Marketing" },
-              { icon: Globe, label: "Exposure on Findit.lk" },
+              { icon: Globe, label: "Exposure on Findit.lk.lk" },
             ].map((ch, i) => (
               <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
@@ -452,8 +452,8 @@ const EducationMarketing = () => {
       </motion.div>
 
       <FinditlkAdvantage
-        title="Findit.lk Education Category Advantage"
-        description="Get your institution promoted in Findit.lk's Education category for continuous visibility to students actively searching for courses and programs in Sri Lanka."
+        title="Findit.lk.lk Education Category Advantage"
+        description="Get your institution promoted in Findit.lk.lk's Education category for continuous visibility to students actively searching for courses and programs in Sri Lanka."
         gradient="gradient-education"
         links={[
           { label: "Education", url: "https://www.findit.lk/promotions/education" },
@@ -504,7 +504,7 @@ const EducationMarketing = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 rounded-2xl bg-card shadow-card border border-border">
           <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-6">Campaign Examples</h2>
           <ul className="space-y-3">
-            {["New intake email blast to 200K+ student contacts", "Enrollment deadline SMS reminders", "WhatsApp-based course inquiry campaigns", "Findit.lk Education category promotions", "Professional certification awareness campaigns"].map((item) => (
+            {["New intake email blast to 200K+ student contacts", "Enrollment deadline SMS reminders", "WhatsApp-based course inquiry campaigns", "Findit.lk.lk Education category promotions", "Professional certification awareness campaigns"].map((item) => (
               <li key={item} className="flex items-center gap-3"><TrendingUp className="w-5 h-5 text-accent shrink-0" /><span className="text-muted-foreground">{item}</span></li>
             ))}
           </ul>

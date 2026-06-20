@@ -96,7 +96,7 @@ const faqs = [
   { q: "Can you target customers near my restaurant?", a: "Yes, our database allows targeting by location, dining preferences, and behavior — ensuring your campaigns reach the most relevant food-loving audience nearby." },
   { q: "How much does restaurant marketing cost?", a: "Buzz Connect offers restaurant marketing packages starting from LKR 14,900. Contact us for a customized quote based on your restaurant's needs." },
   { q: "How quickly can campaigns go live?", a: "We can launch your campaign within hours of confirmation, making it perfect for same-day promotions and flash deals." },
-  { q: "Why is Buzz Connect the best restaurant marketing agency in Sri Lanka?", a: "Buzz Connect is the best restaurant marketing agency because it offers fast campaign launch, instant exposure on Findit.lk's Restaurants category, and easy, cost-effective multi-channel solutions to drive daily foot traffic and online orders quickly." },
+  { q: "Why is Buzz Connect the best restaurant marketing agency in Sri Lanka?", a: "Buzz Connect is the best restaurant marketing agency because it offers fast campaign launch, instant exposure on Findit.lk.lk's Restaurants category, and easy, cost-effective multi-channel solutions to drive daily foot traffic and online orders quickly." },
 ];
 
 const RestaurantMarketing = () => {
@@ -112,7 +112,7 @@ const RestaurantMarketing = () => {
       name: "Restaurant Marketing Sri Lanka",
       provider: { "@type": "Organization", name: "Buzz Connect" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Multi-channel restaurant marketing services in Sri Lanka combining SMS, WhatsApp, email, and Findit.lk visibility to drive foot traffic and daily orders.",
+      description: "Multi-channel restaurant marketing services in Sri Lanka combining SMS, WhatsApp, email, and Findit.lk.lk visibility to drive foot traffic and daily orders.",
     },
   ], []);
 
@@ -233,8 +233,8 @@ const RestaurantMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for small restaurants & cafes</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />1 Targeted Email Campaign</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Featured listing in Findit 'Restaurants'</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/food-and-drink" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Featured listing in Findit.lk 'Restaurants'</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/food-and-drink" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />7-day visibility boost</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Basic Remarketing (repeat exposure)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Ad creative (offer-based)</li>
@@ -256,8 +256,8 @@ const RestaurantMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Consistent daily customer flow</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />2–3 Targeted Email Campaigns</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Premium Findit restaurant placement</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/food-and-drink" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Premium Findit.lk restaurant placement</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/food-and-drink" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Weekend / promo campaign push</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Advanced Remarketing (multi-touch)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Performance report</li>
@@ -278,8 +278,8 @@ const RestaurantMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Maximize orders & dominate your area</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />4–6 Email Campaigns (full funnel)</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Top ranking in Findit category</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/food-and-drink" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Top ranking in Findit.lk category</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/food-and-drink" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Full Funnel Remarketing</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🎬 TikTok Video Ad (restaurant promo video)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Custom offer / promo landing page</li>
@@ -310,7 +310,7 @@ const RestaurantMarketing = () => {
               { icon: Mail, label: "Email Marketing" },
               { icon: Smartphone, label: "SMS Campaigns" },
               { icon: MessageSquare, label: "WhatsApp Marketing" },
-              { icon: Globe, label: "Exposure on Findit.lk" },
+              { icon: Globe, label: "Exposure on Findit.lk.lk" },
             ].map((ch, i) => (
               <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
@@ -488,8 +488,8 @@ const RestaurantMarketing = () => {
       </motion.div>
 
       <FinditlkAdvantage
-        title="Findit.lk Food & Restaurant Advantage"
-        description="Get your restaurant promoted in Findit.lk's Food & Drink category for continuous visibility to hungry customers looking for their next meal."
+        title="Findit.lk.lk Food & Restaurant Advantage"
+        description="Get your restaurant promoted in Findit.lk.lk's Food & Drink category for continuous visibility to hungry customers looking for their next meal."
         gradient="gradient-restaurant"
         links={[
           { label: "Food & Drink", url: "https://www.findit.lk/promotions/food-and-drink" },

@@ -51,8 +51,8 @@ const wa = (msg: string) =>
 const channels = [
   { icon: Mail, name: "Email Blast", num: "750,000", sub: "Verified opt-in subscribers", color: "text-indigo-500", bg: "bg-indigo-500/10" },
   { icon: Target, name: "Facebook Remarketing", num: "100,000", sub: "Warm leads retargeted", color: "text-pink-500", bg: "bg-pink-500/10" },
-  { icon: Search, name: "Findit.lk Advertisement", num: "100,000", sub: "No.1 Offer Finder in Sri Lanka", color: "text-amber-500", bg: "bg-amber-500/10" },
-  { icon: Facebook, name: "Facebook Exposure", num: "30,000+", sub: "Findit.lk audience network", color: "text-blue-500", bg: "bg-blue-500/10" },
+  { icon: Search, name: "Findit.lk.lk Advertisement", num: "100,000", sub: "No.1 Offer Finder in Sri Lanka", color: "text-amber-500", bg: "bg-amber-500/10" },
+  { icon: Facebook, name: "Facebook Exposure", num: "30,000+", sub: "Findit.lk.lk audience network", color: "text-blue-500", bg: "bg-blue-500/10" },
   { icon: Linkedin, name: "LinkedIn", num: "8,000+", sub: "Business owners & managers", color: "text-sky-500", bg: "bg-sky-500/10" },
 ];
 
@@ -67,18 +67,18 @@ const fbBad = [
 ];
 
 const fbGood = [
-  { t: "Reaches 988,000+ across 5 channels", d: "Email inboxes, Facebook feeds, LinkedIn profiles, remarketing audiences and Findit.lk searches — all covered." },
+  { t: "Reaches 988,000+ across 5 channels", d: "Email inboxes, Facebook feeds, LinkedIn profiles, remarketing audiences and Findit.lk.lk searches — all covered." },
   { t: "Fixed price — no surprises", d: "LKR 15,000 for 30 full days across all 5 channels. No bidding, no top-ups, no overspend." },
   { t: "We do everything — you send one brief", d: "Send your e-flyer. We handle creative, channel setup, targeting, launch and reporting. Live in 24 hours." },
-  { t: "6–9 touchpoints per person — impossible to ignore", d: "The same person sees your brand in email, on Facebook, on LinkedIn, retargeted again, then on Findit.lk." },
+  { t: "6–9 touchpoints per person — impossible to ignore", d: "The same person sees your brand in email, on Facebook, on LinkedIn, retargeted again, then on Findit.lk.lk." },
   { t: "8,000+ business owners via LinkedIn", d: "Sri Lanka's managers, executives and owners — the B2B credibility Facebook can't deliver." },
   { t: "750,000 direct inbox hits on day one", d: "Email is the highest-converting digital channel. Undivided attention, no algorithm suppression." },
-  { t: "Findit.lk keeps working after campaign ends", d: "Featured listing drives ongoing organic discovery long after the campaign month is over." },
+  { t: "Findit.lk.lk keeps working after campaign ends", d: "Featured listing drives ongoing organic discovery long after the campaign month is over." },
 ];
 
 const steps = [
   { icon: Upload, n: 1, t: "Submit Promotion", d: "Share your e-flyer, logo and brief. Takes minutes." },
-  { icon: Palette, n: 2, t: "We Create Campaign", d: "We format your artwork for every channel — email design, Facebook post, LinkedIn content, Findit.lk listing." },
+  { icon: Palette, n: 2, t: "We Create Campaign", d: "We format your artwork for every channel — email design, Facebook post, LinkedIn content, Findit.lk.lk listing." },
   { icon: Radio, n: 3, t: "Multi-Channel Distribution", d: "All 5 channels go live simultaneously within 24 hours." },
   { icon: TrendingUp, n: 4, t: "Brand Awareness Generated", d: "Customers see you everywhere. Trust builds. Enquiries and sales follow. Full report at end." },
 ];
@@ -101,7 +101,7 @@ const testimonials = [
   { quote: "Our inquiry line didn't stop for two weeks. LinkedIn visibility brought in corporate clients we had never reached before — that alone justified the investment three times over.", result: "3× more enrolment enquiries", who: "Education & Training", loc: "Nugegoda" },
   { quote: "Within 10 days I had 37 wholesale enquiries from LinkedIn and email combined. The 360 approach is the difference — I upgraded to Power Blast the same week.", result: "37 wholesale leads in 10 days", who: "Import & Wholesale", loc: "Wattala" },
   { quote: "Three large bookings came in the first week that paid for the entire campaign. Guests mentioned they had seen us in email and social media.", result: "3 large bookings in week one", who: "Hotel & Hospitality", loc: "Colombo" },
-  { quote: "We launched our new product line and sold out the first batch within 18 days. Customers found us on email, Facebook and Findit.lk.", result: "Sold out in 18 days", who: "Retail & Fashion", loc: "Colombo" },
+  { quote: "We launched our new product line and sold out the first batch within 18 days. Customers found us on email, Facebook and Findit.lk.lk.", result: "Sold out in 18 days", who: "Retail & Fashion", loc: "Colombo" },
   { quote: "We booked two weeks of appointments in the first few days. Patients mentioned seeing us on their phone and in their inbox.", result: "Two weeks fully booked", who: "Healthcare & Wellness", loc: "Nugegoda" },
 ];
 
@@ -133,8 +133,8 @@ const packages = [
 ];
 
 const faqs = [
-  { q: "What exactly do I get for LKR 15,000 with Starter Blast?", a: "A complete multi-channel campaign across all 5 channels — 750,000 email subscribers, 30,000+ Facebook followers, 8,000+ LinkedIn professionals, 100,000 remarketing retargets and a featured Findit.lk listing. We handle everything from creative setup to launch. Full report at campaign end." },
-  { q: "What does \"Brand Blast 360\" mean?", a: "The \"360\" stands for full-circle visibility. Email reaches their inbox. Facebook reaches their social feed. LinkedIn reaches them at work. Remarketing follows them after they click. Findit.lk captures them when they search. Together, your brand feels everywhere — which builds trust and drives action." },
+  { q: "What exactly do I get for LKR 15,000 with Starter Blast?", a: "A complete multi-channel campaign across all 5 channels — 750,000 email subscribers, 30,000+ Facebook followers, 8,000+ LinkedIn professionals, 100,000 remarketing retargets and a featured Findit.lk.lk listing. We handle everything from creative setup to launch. Full report at campaign end." },
+  { q: "What does \"Brand Blast 360\" mean?", a: "The \"360\" stands for full-circle visibility. Email reaches their inbox. Facebook reaches their social feed. LinkedIn reaches them at work. Remarketing follows them after they click. Findit.lk.lk captures them when they search. Together, your brand feels everywhere — which builds trust and drives action." },
   { q: "How quickly does my campaign go live?", a: "Within 24 hours of receiving your artwork and payment — guaranteed. Power Blast clients get priority 12-hour launch. Market Dominator clients get VIP same-day launch." },
   { q: "Who is in your 750,000 email database?", a: "Sri Lankan professionals, business owners, consumers and working adults who have voluntarily opted in. 100% permission-based. Segmented by profession, location and interest — strong Western Province coverage." },
   { q: "What is Facebook remarketing and why does it matter?", a: "Remarketing shows your ad on Facebook to people who already clicked your campaign — up to 100,000 warm leads. Studies show remarketing increases conversion rates by up to 70%. It turns 'almost bought' into 'bought'." },
@@ -181,7 +181,7 @@ const BrandBlast360 = () => {
       name: "Brand Blast 360 — Multi-Channel Brand Awareness Campaign",
       provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       areaServed: "Sri Lanka",
-      description: "5-channel brand awareness campaign reaching 988,000+ verified Sri Lankan contacts across email, Facebook, LinkedIn, remarketing and Findit.lk — fixed price from LKR 15,000.",
+      description: "5-channel brand awareness campaign reaching 988,000+ verified Sri Lankan contacts across email, Facebook, LinkedIn, remarketing and Findit.lk.lk — fixed price from LKR 15,000.",
       offers: packages.map((p) => ({
         "@type": "Offer",
         name: p.name,
@@ -205,7 +205,7 @@ const BrandBlast360 = () => {
     <>
       <SEOHead
         title="Brand Blast 360 — 988,000+ Verified Reach Across 5 Channels | Buzz Connect"
-        description="Reach 988,000+ Sri Lankan contacts across email, Facebook, LinkedIn, remarketing & Findit.lk for a fixed LKR 15,000. Live in 24 hours guaranteed. No contract."
+        description="Reach 988,000+ Sri Lankan contacts across email, Facebook, LinkedIn, remarketing & Findit.lk.lk for a fixed LKR 15,000. Live in 24 hours guaranteed. No contract."
         canonical="/brand-blast-360"
         keywords="brand blast 360, multi-channel campaign sri lanka, email marketing upsell, brand awareness sri lanka, 988000 reach"
         breadcrumbs={[
@@ -244,7 +244,7 @@ const BrandBlast360 = () => {
                 <div className="w-px h-12 bg-white/20" />
                 <div className="text-sm">
                   <div className="font-bold text-white mb-0.5">Verified Reach · LKR 0.015 per person</div>
-                  <div className="text-primary-foreground/70 text-xs">Email · Facebook · LinkedIn · Remarketing + Findit.lk featured</div>
+                  <div className="text-primary-foreground/70 text-xs">Email · Facebook · LinkedIn · Remarketing + Findit.lk.lk featured</div>
                 </div>
               </div>
 
@@ -322,8 +322,8 @@ const BrandBlast360 = () => {
             {[
               { ic: Mail, n: "750,000+", l: "Email Reach", s: "Verified opt-in subscribers", c: "text-indigo-500", bg: "bg-indigo-500/10" },
               { ic: Target, n: "100,000", l: "Remarketing", s: "Warm leads retargeted", c: "text-pink-500", bg: "bg-pink-500/10" },
-              { ic: Search, n: "100,000", l: "Findit.lk Advertisement", s: "No.1 Offer Finder in Sri Lanka", c: "text-amber-500", bg: "bg-amber-500/10" },
-              { ic: Facebook, n: "30,000+", l: "Facebook Exposure", s: "Findit.lk audience network", c: "text-blue-500", bg: "bg-blue-500/10" },
+              { ic: Search, n: "100,000", l: "Findit.lk.lk Advertisement", s: "No.1 Offer Finder in Sri Lanka", c: "text-amber-500", bg: "bg-amber-500/10" },
+              { ic: Facebook, n: "30,000+", l: "Facebook Exposure", s: "Findit.lk.lk audience network", c: "text-blue-500", bg: "bg-blue-500/10" },
               { ic: Linkedin, n: "8,000+", l: "LinkedIn Pros", s: "Owners, managers & decision-makers", c: "text-sky-500", bg: "bg-sky-500/10" },
               { ic: Radio, n: "988K+", l: "Total Reach", s: "Verified reach across all 5 channels", c: "text-primary", bg: "bg-primary/10" },
             ].map((s) => (
@@ -388,7 +388,7 @@ const BrandBlast360 = () => {
                         <div className="text-sm font-heading font-black text-foreground">8K+</div>
                       </div>
                       <div className="bg-amber-500/8 border border-amber-500/15 rounded-lg p-2 text-center">
-                        <div className="text-[10px] font-bold text-amber-500 uppercase tracking-wider">Findit</div>
+                        <div className="text-[10px] font-bold text-amber-500 uppercase tracking-wider">Findit.lk</div>
                         <div className="text-sm font-heading font-black text-foreground">100K</div>
                       </div>
                       <div className="col-span-2 bg-pink-500/8 border border-pink-500/15 rounded-lg p-2 text-center">
@@ -660,10 +660,10 @@ const BrandBlast360 = () => {
 
             <div className="grid sm:grid-cols-2 gap-5">
               {[
-                { ic: Facebook, ey: "Channel 2 — Social amplification", nm: "Facebook Exposure", big: "30,000+", lbl: "Findit.lk Facebook followers", pts: ["Pushed across Findit.lk pages", "Organic social amplification", "Brand visibility on feeds"], c: "blue-500" },
+                { ic: Facebook, ey: "Channel 2 — Social amplification", nm: "Facebook Exposure", big: "30,000+", lbl: "Findit.lk.lk Facebook followers", pts: ["Pushed across Findit.lk.lk pages", "Organic social amplification", "Brand visibility on feeds"], c: "blue-500" },
                 { ic: Target, ey: "Channel 3 — Highest converter", nm: "Facebook Remarketing", big: "100,000", lbl: "warm leads retargeted on Facebook", pts: ["Re-engages people who clicked", "Lifts conversions up to 70%", "Keeps brand top of mind"], c: "pink-500" },
                 { ic: Linkedin, ey: "Channel 4 — Professional network", nm: "LinkedIn", big: "8,000+", lbl: "business owners & decision-makers", pts: ["Managers, executives & owners", "Best for B2B & wholesale", "Builds professional credibility"], c: "sky-500" },
-                { ic: Search, ey: "Channel 5 — Always-on organic", nm: "Findit.lk Advertisement", big: "100,000", lbl: "estimated monthly directory visitors", pts: ["Sri Lanka's #1 business directory", "Featured premium placement", "Ongoing organic discovery"], c: "amber-500" },
+                { ic: Search, ey: "Channel 5 — Always-on organic", nm: "Findit.lk.lk Advertisement", big: "100,000", lbl: "estimated monthly directory visitors", pts: ["Sri Lanka's #1 business directory", "Featured premium placement", "Ongoing organic discovery"], c: "amber-500" },
               ].map((c) => (
                 <div key={c.nm} className="bg-card border border-border rounded-2xl p-6">
                   <div className={`w-12 h-12 rounded-xl bg-${c.c}/10 text-${c.c} flex items-center justify-center mb-3`}>
@@ -685,7 +685,7 @@ const BrandBlast360 = () => {
             <div className="mt-8 bg-primary text-primary-foreground rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
                 <div className="text-[11px] font-bold uppercase tracking-wider text-accent mb-2">Combined — all 5 channels — per campaign</div>
-                <div className="font-heading font-bold text-lg leading-snug">Email 750,000 + Facebook 30,000+ + Remarketing 100,000 + LinkedIn 8,000+ + Findit.lk 100,000</div>
+                <div className="font-heading font-bold text-lg leading-snug">Email 750,000 + Facebook 30,000+ + Remarketing 100,000 + LinkedIn 8,000+ + Findit.lk.lk 100,000</div>
               </div>
               <div className="text-right">
                 <div className="text-5xl font-heading font-black text-accent leading-none">988K+</div>
@@ -701,7 +701,7 @@ const BrandBlast360 = () => {
             <div className="text-center max-w-3xl mx-auto mb-10">
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Who it's for</div>
               <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Real campaign ideas for every industry</h2>
-              <p className="text-muted-foreground text-sm">Every Brand Blast 360 campaign reaches the full 988,000+ database — email, Facebook, LinkedIn, remarketing and Findit.lk — all at once, every time. Pick your industry. See exactly what you can promote. Then launch.</p>
+              <p className="text-muted-foreground text-sm">Every Brand Blast 360 campaign reaches the full 988,000+ database — email, Facebook, LinkedIn, remarketing and Findit.lk.lk — all at once, every time. Pick your industry. See exactly what you can promote. Then launch.</p>
             </div>
 
             {/* Filter */}
@@ -880,7 +880,7 @@ const BrandBlast360 = () => {
               <span className="bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">Everywhere.</span>
             </h2>
             <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-6">
-              For LKR 15,000 — less than a newspaper ad — your brand reaches 988,000+ verified Sri Lankan contacts plus a Findit.lk featured listing in 30 days. You send the artwork. We handle everything else.
+              For LKR 15,000 — less than a newspaper ad — your brand reaches 988,000+ verified Sri Lankan contacts plus a Findit.lk.lk featured listing in 30 days. You send the artwork. We handle everything else.
             </p>
             <div className="flex flex-wrap gap-3 justify-center mb-6">
               <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_launch" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-7 py-4 rounded-xl">

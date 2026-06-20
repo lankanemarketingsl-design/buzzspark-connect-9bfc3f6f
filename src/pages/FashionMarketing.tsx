@@ -93,11 +93,11 @@ const freeBonusItems = [
 
 const faqs = [
   { q: "What is fashion marketing in Sri Lanka?", a: "Fashion marketing involves promoting clothing brands, collections, sales events, and fashion accessories to targeted shoppers through digital marketing channels like SMS, WhatsApp, email, and directory listings." },
-  { q: "How can Buzz Connect help my fashion brand get more sales?", a: "We use a multi-channel approach combining SMS flash sale alerts, WhatsApp lookbook sharing, email collection launches, and Findit.lk Fashion category visibility to reach thousands of fashion shoppers and drive purchases." },
+  { q: "How can Buzz Connect help my fashion brand get more sales?", a: "We use a multi-channel approach combining SMS flash sale alerts, WhatsApp lookbook sharing, email collection launches, and Findit.lk.lk Fashion category visibility to reach thousands of fashion shoppers and drive purchases." },
   { q: "Can you target specific fashion demographics?", a: "Yes, our database allows targeting by age group, gender, location, and shopping preferences — ensuring your campaigns reach the most relevant fashion-conscious audience." },
   { q: "How much does fashion marketing cost in Sri Lanka?", a: "Buzz Connect offers fashion marketing packages starting from LKR 38,000. Contact us for a customized quote based on your brand and target audience." },
   { q: "How quickly can I promote a flash sale?", a: "We can launch flash sale SMS and WhatsApp campaigns within hours of confirmation, making it perfect for time-sensitive promotions and seasonal sales." },
-  { q: "Why is Buzz Connect the best fashion marketing agency in Sri Lanka?", a: "Buzz Connect is the best fashion marketing agency because it offers fast campaign launch, instant exposure on Findit.lk's Fashion category, and easy, cost-effective multi-channel solutions to drive store traffic and online sales quickly." },
+  { q: "Why is Buzz Connect the best fashion marketing agency in Sri Lanka?", a: "Buzz Connect is the best fashion marketing agency because it offers fast campaign launch, instant exposure on Findit.lk.lk's Fashion category, and easy, cost-effective multi-channel solutions to drive store traffic and online sales quickly." },
 ];
 
 const FashionMarketing = () => {
@@ -113,7 +113,7 @@ const FashionMarketing = () => {
       name: "Fashion & Clothing Marketing Sri Lanka",
       provider: { "@type": "Organization", name: "Buzz Connect" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Multi-channel fashion and clothing marketing services in Sri Lanka combining SMS, WhatsApp, email, and Findit.lk visibility to drive sales and brand awareness.",
+      description: "Multi-channel fashion and clothing marketing services in Sri Lanka combining SMS, WhatsApp, email, and Findit.lk.lk visibility to drive sales and brand awareness.",
     },
   ], []);
 
@@ -125,7 +125,7 @@ const FashionMarketing = () => {
     >
       <SEOHead
         title="Fashion Marketing Sri Lanka | Fashion Marketing Agency"
-        description="No.1 fashion marketing company in Sri Lanka. Drive clothing sales via SMS, WhatsApp, email & Findit.lk. Reach fashion shoppers. Flash sale campaigns that deliver instant results."
+        description="No.1 fashion marketing company in Sri Lanka. Drive clothing sales via SMS, WhatsApp, email & Findit.lk.lk. Reach fashion shoppers. Flash sale campaigns that deliver instant results."
         canonical="/fashion-marketing-sri-lanka"
         keywords="fashion marketing sri lanka, clothing promotion colombo, fashion advertising sri lanka, clothing brand marketing, fashion digital marketing, clothing sales campaigns, retail fashion marketing sri lanka, fashion sms marketing"
         breadcrumbs={[{ name: "Home", url: "/" }, { name: "Fashion Marketing", url: "/fashion-marketing-sri-lanka" }]}
@@ -234,8 +234,8 @@ const FashionMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for small boutiques & new brands</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />1 Targeted Email Campaign (fashion audience)</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Featured listing in Findit 'Fashion & Clothing'</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/fashion-and-clothing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Featured listing in Findit.lk 'Fashion & Clothing'</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/fashion-and-clothing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />7-day visibility boost</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Basic Remarketing (repeat exposure)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Ad creative (product-focused visual)</li>
@@ -257,9 +257,9 @@ const FashionMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Drive consistent product sales</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />2–3 Targeted Email Campaigns (segmented)</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Premium Findit fashion placement</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/fashion-and-clothing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (premium position)</li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Premium Findit.lk fashion placement</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/fashion-and-clothing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (premium position)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Promotion campaigns (sales, new arrivals)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Advanced Remarketing (multi-touch)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Performance report</li>
@@ -280,9 +280,9 @@ const FashionMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Maximize revenue & dominate fashion category</p>
             <ul className="space-y-2 mb-4 flex-grow">
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />4–6 Email Campaigns (full funnel)</li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Top ranking in Findit category</li>
-              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/fashion-and-clothing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a></li>
-              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk Banner Placement (top-tier position)</li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Top ranking in Findit.lk category</li>
+              <li className="flex items-start gap-2 text-sm"><Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://www.findit.lk/promotions/fashion-and-clothing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a></li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Findit.lk.lk Banner Placement (top-tier position)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🔁 Full Funnel Remarketing</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />🎬 TikTok Video Ad (fashion promo video)</li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />Custom promo / collection landing page</li>
@@ -313,7 +313,7 @@ const FashionMarketing = () => {
               { icon: Mail, label: "Email Marketing" },
               { icon: Smartphone, label: "SMS Campaigns" },
               { icon: MessageSquare, label: "WhatsApp Marketing" },
-              { icon: Globe, label: "Exposure on Findit.lk" },
+              { icon: Globe, label: "Exposure on Findit.lk.lk" },
             ].map((ch, i) => (
               <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
@@ -491,8 +491,8 @@ const FashionMarketing = () => {
       </motion.div>
 
       <FinditlkAdvantage
-        title="Findit.lk Fashion & Clothing Advantage"
-        description="Get your fashion brand promoted in Findit.lk's Fashion & Clothing category for continuous visibility to active fashion shoppers looking for the latest styles and deals."
+        title="Findit.lk.lk Fashion & Clothing Advantage"
+        description="Get your fashion brand promoted in Findit.lk.lk's Fashion & Clothing category for continuous visibility to active fashion shoppers looking for the latest styles and deals."
         gradient="gradient-fashion"
         links={[
           { label: "Fashion & Clothing", url: "https://www.findit.lk/promotions/fashion-and-clothing" },

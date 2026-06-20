@@ -18,7 +18,7 @@ const achievements = [
   { icon: Users, text: "Maximize event attendance" },
   { icon: Ticket, text: "Drive ticket sales & registrations" },
   { icon: Calendar, text: "Promote events across multiple channels" },
-  { icon: Star, text: "Reach high-intent audiences via Findit.lk" },
+  { icon: Star, text: "Reach high-intent audiences via Findit.lk.lk" },
   { icon: MessageSquare, text: "Get direct inquiries & RSVPs" },
 ];
 
@@ -40,7 +40,7 @@ const whyChooseUs = [
 
 const howItWorks = [
   { step: 1, icon: Target, title: "Audience Targeting", desc: "We identify the right audience based on your event type and location" },
-  { step: 2, icon: Send, title: "Multi-Channel Launch", desc: "Your event is promoted via Email, SMS, WhatsApp & Findit.lk" },
+  { step: 2, icon: Send, title: "Multi-Channel Launch", desc: "Your event is promoted via Email, SMS, WhatsApp & Findit.lk.lk" },
   { step: 3, icon: Megaphone, title: "Engagement & Reminders", desc: "We send event reminders, ticket updates & last-minute promotions" },
   { step: 4, icon: BarChart3, title: "Conversions & Attendance", desc: "Capture interested users and convert them into attendees" },
 ];
@@ -75,12 +75,12 @@ const freeBonusItems = [
 ];
 
 const faqs = [
-  { q: "What is event marketing in Sri Lanka?", a: "Event marketing involves promoting your event through strategic multi-channel campaigns to attract the right audience, boost attendance, and drive ticket sales using platforms like email, SMS, WhatsApp, and Findit.lk." },
-  { q: "How can Buzz Connect help promote my event?", a: "We use a multi-channel approach combining email campaigns, SMS alerts, WhatsApp messaging, and Findit.lk visibility to reach thousands of potential attendees and drive registrations." },
-  { q: "What makes Buzz Connect different from other event marketing agencies?", a: "Our unique combination of direct marketing (email, SMS, WhatsApp) with Findit.lk event listings provides both instant reach and continuous visibility — something traditional agencies cannot offer." },
+  { q: "What is event marketing in Sri Lanka?", a: "Event marketing involves promoting your event through strategic multi-channel campaigns to attract the right audience, boost attendance, and drive ticket sales using platforms like email, SMS, WhatsApp, and Findit.lk.lk." },
+  { q: "How can Buzz Connect help promote my event?", a: "We use a multi-channel approach combining email campaigns, SMS alerts, WhatsApp messaging, and Findit.lk.lk visibility to reach thousands of potential attendees and drive registrations." },
+  { q: "What makes Buzz Connect different from other event marketing agencies?", a: "Our unique combination of direct marketing (email, SMS, WhatsApp) with Findit.lk.lk event listings provides both instant reach and continuous visibility — something traditional agencies cannot offer." },
   { q: "How much does event marketing cost in Sri Lanka?", a: "Buzz Connect offers cost-effective event marketing packages starting from LKR 75,000. Contact us for a customized quote based on your event type and target audience." },
   { q: "What types of events can you promote?", a: "We promote all types of events including concerts, corporate events, workshops, seminars, exhibitions, product launches, festivals, and brand activations across Sri Lanka." },
-  { q: "Why is Buzz Connect the best event marketing agency in Sri Lanka?", a: "Buzz Connect is the best event marketing agency because it offers fast campaign launch, instant exposure on Findit.lk's Events category, and easy, cost-effective multi-channel solutions to maximize attendance and ticket sales quickly." },
+  { q: "Why is Buzz Connect the best event marketing agency in Sri Lanka?", a: "Buzz Connect is the best event marketing agency because it offers fast campaign launch, instant exposure on Findit.lk.lk's Events category, and easy, cost-effective multi-channel solutions to maximize attendance and ticket sales quickly." },
 ];
 
 const EventMarketing = () => {
@@ -100,7 +100,7 @@ const EventMarketing = () => {
       name: "Event Marketing Sri Lanka",
       provider: { "@type": "Organization", name: "Buzz Connect" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Multi-channel event marketing services in Sri Lanka combining email, SMS, WhatsApp, and Findit.lk visibility to maximize event attendance and ticket sales.",
+      description: "Multi-channel event marketing services in Sri Lanka combining email, SMS, WhatsApp, and Findit.lk.lk visibility to maximize event attendance and ticket sales.",
     },
   ], []);
 
@@ -108,11 +108,11 @@ const EventMarketing = () => {
     <ServicePageLayout
       badge="Event Marketing"
       title="Event Marketing Sri Lanka – Promote Concerts, Corporate Events & Large-Scale Campaigns"
-      subtitle="Maximize event visibility, increase registrations, and drive ticket sales using powerful multi-channel campaigns including Findit.lk."
+      subtitle="Maximize event visibility, increase registrations, and drive ticket sales using powerful multi-channel campaigns including Findit.lk.lk."
     >
       <SEOHead
         title="Event Marketing Sri Lanka | Event Marketing Agency"
-        description="No.1 event marketing company in Sri Lanka. Promote concerts, corporate events, workshops & festivals via email, SMS, WhatsApp & Findit.lk. Multi-channel campaigns that deliver results."
+        description="No.1 event marketing company in Sri Lanka. Promote concerts, corporate events, workshops & festivals via email, SMS, WhatsApp & Findit.lk.lk. Multi-channel campaigns that deliver results."
         canonical="/event-marketing-sri-lanka"
         keywords="event marketing sri lanka, concert marketing sri lanka, event promotion sri lanka, event advertising sri lanka, workshop marketing sri lanka, corporate event promotion, festival marketing sri lanka"
         breadcrumbs={[
@@ -210,11 +210,11 @@ const EventMarketing = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
         <div className="p-8 rounded-2xl bg-card shadow-card border border-border">
           <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">🚀 Why Multi-Channel Works Better Than Facebook Ads</h2>
-          <p className="text-muted-foreground mb-4">Relying only on Facebook limits your reach. With multi-channel campaigns — including Findit.lk — you connect with both:</p>
+          <p className="text-muted-foreground mb-4">Relying only on Facebook limits your reach. With multi-channel campaigns — including Findit.lk.lk — you connect with both:</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
             <div className="flex items-center gap-2 p-3 rounded-lg bg-accent/5 border border-accent/20">
               <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-              <span className="text-foreground font-medium text-sm">Active search users (Findit.lk)</span>
+              <span className="text-foreground font-medium text-sm">Active search users (Findit.lk.lk)</span>
             </div>
             <div className="flex items-center gap-2 p-3 rounded-lg bg-accent/5 border border-accent/20">
               <CheckCircle className="w-4 h-4 text-accent shrink-0" />
@@ -231,7 +231,7 @@ const EventMarketing = () => {
         <div className="text-center mb-10">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Pricing Packages</span>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Choose the Right Event Marketing Package for Your Campaign</h2>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Every package includes Findit.lk event listing, remarketing, and multi-channel promotion to maximize attendance.</p>
+          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Every package includes Findit.lk.lk event listing, remarketing, and multi-channel promotion to maximize attendance.</p>
           <p className="text-accent font-semibold mt-3 max-w-2xl mx-auto">Event organizers typically recover their investment with just 50–100 ticket sales.</p>
           <div className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/10 border border-accent/30">
             <span className="text-accent font-bold text-sm">🎉 Multi-Event Subscription = 10% Discount on All Packages</span>
@@ -248,12 +248,12 @@ const EventMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for small events, workshops & local promotions</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 1 Targeted Email Campaign (event audience)</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Featured event listing on Findit.lk</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Featured event listing on Findit.lk.lk</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
+                <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a>
               </li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk Banner Placement (events category)</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk.lk Banner Placement (events category)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 7-day visibility boost</li>
               <li className="flex items-start gap-2"><RefreshCw className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Basic Remarketing (repeat exposure)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Event ad creative (poster + offer)</li>
@@ -275,12 +275,12 @@ const EventMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for consistent ticket sales & event promotions</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 2–3 Targeted Email Campaigns (segmented)</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Premium Findit event placement</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Premium Findit.lk event placement</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
+                <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a>
               </li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk Banner Placement (premium position)</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk.lk Banner Placement (premium position)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> High-interest audience targeting</li>
               <li className="flex items-start gap-2"><RefreshCw className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" /> Advanced Remarketing (multi-touch)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Performance report</li>
@@ -301,12 +301,12 @@ const EventMarketing = () => {
             <p className="text-xs text-muted-foreground mb-4">Best for concerts, festivals & large-scale events</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 4–6 Email Campaigns (full funnel strategy)</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Top ranking in Findit events category</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Top ranking in Findit.lk events category</li>
               <li className="flex items-start gap-2">
                 <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
+                <a href="https://www.findit.lk/events" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk.lk <ArrowRight className="w-3 h-3" /></a>
               </li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk Banner Placement (top-tier)</li>
+              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk.lk Banner Placement (top-tier)</li>
               <li className="flex items-start gap-2"><RefreshCw className="w-4 h-4 text-red-500 shrink-0 mt-0.5" /> Full Funnel Remarketing</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 🎬 TikTok Video Ad (event promo)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Custom event landing page</li>
@@ -338,7 +338,7 @@ const EventMarketing = () => {
               { icon: Mail, label: "Email Marketing" },
               { icon: Smartphone, label: "SMS Campaigns" },
               { icon: MessageSquare, label: "WhatsApp Marketing" },
-              { icon: Globe, label: "Exposure on Findit.lk" },
+              { icon: Globe, label: "Exposure on Findit.lk.lk" },
             ].map((ch, i) => (
               <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
@@ -492,8 +492,8 @@ const EventMarketing = () => {
       </motion.div>
 
       <FinditlkAdvantage
-        title="Findit.lk Events & Activities Advantage"
-        description="Get your event promoted on Findit.lk, where users actively search for events, shows, courses, and opportunities. Unlike social media where users scroll passively, Findit.lk users are already interested — making them more likely to attend your event."
+        title="Findit.lk.lk Events & Activities Advantage"
+        description="Get your event promoted on Findit.lk.lk, where users actively search for events, shows, courses, and opportunities. Unlike social media where users scroll passively, Findit.lk.lk users are already interested — making them more likely to attend your event."
         gradient="gradient-event"
         links={[
           { label: "Events & Activities", url: "https://www.findit.lk/events" },

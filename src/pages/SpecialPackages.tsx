@@ -17,7 +17,7 @@ const multiChannelIndustries = [
     emoji: "🏨",
     title: "Hotel Multi-Channel Marketing Sri Lanka – Drive Direct Bookings",
     campaigns: [
-      "Banner Ads (Findit) → Build awareness among travelers",
+      "Banner Ads (Findit.lk) → Build awareness among travelers",
       "Email Campaign → Promote packages with full details",
       "WhatsApp Bulk Messaging → Highlight limited-time offers",
       "SMS → Last-minute booking reminders",
@@ -52,7 +52,7 @@ const multiChannelIndustries = [
     title: "Real Estate Multi-Channel Marketing Sri Lanka – Convert High-Value Buyers",
     campaigns: [
       "Google Ads → Target active property searches",
-      "Banner Ads (Findit) → Continuous brand visibility",
+      "Banner Ads (Findit.lk) → Continuous brand visibility",
       "Email Campaign → Property details & investment value",
       "WhatsApp Bulk Messaging → Launch announcements",
       "SMS → Site visit reminders",
@@ -230,12 +230,12 @@ const multiChannelIndustries = [
 
 /* ── Testimonials ── */
 const testimonials = [
-  "We contacted them last minute for our outlet opening. Campaign started within a few hours. With SMS, WhatsApp and Findit.lk, we had a good crowd on the first day itself.",
-  "We used SMS and email together for a promotion. Reach was very good and inquiries started from day one. Also got extra visibility through Findit.lk.",
+  "We contacted them last minute for our outlet opening. Campaign started within a few hours. With SMS, WhatsApp and Findit.lk.lk, we had a good crowd on the first day itself.",
+  "We used SMS and email together for a promotion. Reach was very good and inquiries started from day one. Also got extra visibility through Findit.lk.lk.",
   "They handled SMS, email and WhatsApp campaigns for us. Multi-channel really works for quick awareness.",
   "We tried this for our course promotion. Within a few days we got a good number of student inquiries.",
-  "People saw our brand in multiple places — SMS, WhatsApp and Findit.lk. It created strong recall and better response.",
-  "With SMS, email, WhatsApp and Findit.lk combined, we got visibility and inquiries in a short time.",
+  "People saw our brand in multiple places — SMS, WhatsApp and Findit.lk.lk. It created strong recall and better response.",
+  "With SMS, email, WhatsApp and Findit.lk.lk combined, we got visibility and inquiries in a short time.",
 ];
 
 /* ── Package Data ── */
@@ -251,11 +251,11 @@ const smsFeatures: FeatureRow[] = [
   { label: "Total Reach", starter: "450,000+ impressions", silver: "550,000+ impressions", gold: "950,000+ impressions", platinum: "1.2 Million+ impressions" },
   { label: "SMS Campaign", starter: "20,000", silver: "50,000", gold: "150,000", platinum: "400,000" },
   { label: "Email Campaign", starter: "350,000", silver: "350,000", gold: "2 Campaigns", platinum: "2 Campaigns" },
-  { label: "Findit.lk Featured Ad", starter: true, silver: true, gold: true, platinum: true },
-  { label: "Findit.lk Pop-Up Banner", starter: "1 Day", silver: "1 Day", gold: "2 Days", platinum: "4 Days" },
+  { label: "Findit.lk.lk Featured Ad", starter: true, silver: true, gold: true, platinum: true },
+  { label: "Findit.lk.lk Pop-Up Banner", starter: "1 Day", silver: "1 Day", gold: "2 Days", platinum: "4 Days" },
   { label: "Landing Page", starter: true, silver: true, gold: true, platinum: true },
-  { label: "Findit.lk Main Banner", starter: false, silver: false, gold: "2 Weeks", platinum: "1 Month" },
-  { label: "Findit.lk Side Banner", starter: false, silver: false, gold: "1 Week", platinum: "2 Weeks" },
+  { label: "Findit.lk.lk Main Banner", starter: false, silver: false, gold: "2 Weeks", platinum: "1 Month" },
+  { label: "Findit.lk.lk Side Banner", starter: false, silver: false, gold: "1 Week", platinum: "2 Weeks" },
   { label: "Facebook Boosting", starter: true, silver: true, gold: true, platinum: true },
 ];
 
@@ -263,11 +263,11 @@ const waFeatures: FeatureRow[] = [
   { label: "Total Reach", starter: "450,000+ impressions", silver: "550,000+ impressions", gold: "575,000+ impressions", platinum: "625,000+ impressions" },
   { label: "WhatsApp Campaign", starter: "30,000", silver: "60,000", gold: "110,000", platinum: "175,000" },
   { label: "Email Campaign", starter: "350,000", silver: "350,000", gold: "2 Campaigns", platinum: "2 Campaigns" },
-  { label: "Findit.lk Featured Ad", starter: true, silver: true, gold: true, platinum: true },
-  { label: "Findit.lk Lifetime Profile", starter: false, silver: false, gold: true, platinum: true },
-  { label: "Findit.lk Main Banner", starter: false, silver: "2 Weeks", gold: "3 Weeks + 2 Weeks", platinum: "1 Month" },
-  { label: "Findit.lk Side Banner", starter: false, silver: false, gold: "1 Week", platinum: "2 Weeks" },
-  { label: "Findit.lk Pop-Up Banner", starter: false, silver: false, gold: false, platinum: "4 Days" },
+  { label: "Findit.lk.lk Featured Ad", starter: true, silver: true, gold: true, platinum: true },
+  { label: "Findit.lk.lk Lifetime Profile", starter: false, silver: false, gold: true, platinum: true },
+  { label: "Findit.lk.lk Main Banner", starter: false, silver: "2 Weeks", gold: "3 Weeks + 2 Weeks", platinum: "1 Month" },
+  { label: "Findit.lk.lk Side Banner", starter: false, silver: false, gold: "1 Week", platinum: "2 Weeks" },
+  { label: "Findit.lk.lk Pop-Up Banner", starter: false, silver: false, gold: false, platinum: "4 Days" },
   { label: "Facebook Boosting", starter: true, silver: true, gold: true, platinum: true },
 ];
 
@@ -277,9 +277,9 @@ const tierKeys = ["starter", "silver", "gold", "platinum"] as const;
 const faqs = [
   { q: "What is multi channel marketing?", a: "It is a strategy that uses multiple platforms like email, SMS, WhatsApp, and web ads to reach customers simultaneously for maximum engagement." },
   { q: "Why is multi channel marketing effective in Sri Lanka?", a: "Because customers use multiple platforms daily, combining channels increases reach, brand recall, and conversion rates significantly." },
-  { q: "What makes Buzz Connect different?", a: "Buzz Connect combines targeted direct marketing with mass exposure using Findit.lk, offering maximum reach at lower cost — something no other provider in Sri Lanka offers." },
+  { q: "What makes Buzz Connect different?", a: "Buzz Connect combines targeted direct marketing with mass exposure using Findit.lk.lk, offering maximum reach at lower cost — something no other provider in Sri Lanka offers." },
   { q: "How fast can I launch a campaign?", a: "Most campaigns are launched within 48–72 hours of confirmation, ensuring you never miss time-sensitive opportunities." },
-  { q: "Which channels are included?", a: "Email marketing, SMS marketing, WhatsApp marketing, Findit.lk platform exposure, and Facebook boosting." },
+  { q: "Which channels are included?", a: "Email marketing, SMS marketing, WhatsApp marketing, Findit.lk.lk platform exposure, and Facebook boosting." },
 ];
 
 /* ── Cell Value ── */
@@ -405,11 +405,11 @@ const SpecialPackages = () => {
     <ServicePageLayout
       badge="Multi Channel Marketing Sri Lanka"
       title="Reach 1 Million+ Customers in Days with Multi-Channel Campaigns"
-      subtitle="The fastest way to achieve massive reach in Sri Lanka. Combine Email, SMS, WhatsApp (Bulk Messaging) & Findit.lk banner advertising into one powerful, results-driven campaign system."
+      subtitle="The fastest way to achieve massive reach in Sri Lanka. Combine Email, SMS, WhatsApp (Bulk Messaging) & Findit.lk.lk banner advertising into one powerful, results-driven campaign system."
     >
       <SEOHead
         title="Multi-Channel Marketing Sri Lanka | Reach 1.2 Million+ in 72 Hours"
-        description="No.1 multi-channel marketing in Sri Lanka. Combined email, SMS, WhatsApp & Findit.lk advertising packages. Reach 1.2 million+ customers. Launch in 48-72 hours."
+        description="No.1 multi-channel marketing in Sri Lanka. Combined email, SMS, WhatsApp & Findit.lk.lk advertising packages. Reach 1.2 million+ customers. Launch in 48-72 hours."
         canonical="/multi-channel-marketing-sri-lanka"
         breadcrumbs={[
           { name: "Home", url: "/" },
@@ -436,7 +436,7 @@ const SpecialPackages = () => {
           </div>
           <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border">
             <Globe className="w-4 h-4 text-secondary-foreground" />
-            <span className="text-secondary-foreground font-bold text-sm">Findit.lk Integration</span>
+            <span className="text-secondary-foreground font-bold text-sm">Findit.lk.lk Integration</span>
           </div>
         </div>
 
@@ -503,7 +503,7 @@ const SpecialPackages = () => {
             { icon: Mail, label: "Email Marketing", reach: "Detailed Engagement" },
             { icon: Smartphone, label: "SMS Marketing", reach: "Instant Attention" },
             { icon: MessageSquare, label: "WhatsApp Bulk Messaging", reach: "Mass Awareness" },
-            { icon: Globe, label: "Findit.lk Exposure", reach: "Continuous Visibility" },
+            { icon: Globe, label: "Findit.lk.lk Exposure", reach: "Continuous Visibility" },
           ].map(({ icon: Icon, label, reach }, i) => (
             <motion.div
               key={label}
@@ -536,7 +536,7 @@ const SpecialPackages = () => {
             Our Multi-Channel Advertising Packages
           </h2>
           <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
-            Fully managed campaigns across SMS, Email, WhatsApp & Findit.lk — choose the reach that fits your goals.
+            Fully managed campaigns across SMS, Email, WhatsApp & Findit.lk.lk — choose the reach that fits your goals.
           </p>
         </motion.div>
         <ComparisonTable title="WhatsApp Multi-Channel Packages" subtitle="High open rates, direct engagement, personal touch" features={waFeatures} emoji="💬" />
@@ -657,7 +657,7 @@ const SpecialPackages = () => {
         </div>
       </motion.div>
 
-      {/* Findit.lk Advantage */}
+      {/* Findit.lk.lk Advantage */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -676,7 +676,7 @@ const SpecialPackages = () => {
             "Reach customers faster across multiple platforms",
             "Reinforce your message with consistent multi-channel presence",
             "Increase conversion rates significantly",
-            "Findit.lk integration for continuous visibility & demand capture",
+            "Findit.lk.lk integration for continuous visibility & demand capture",
           ].map((item) => (
             <div key={item} className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border">
               <CheckCircle className="w-5 h-5 text-accent shrink-0" />
@@ -685,7 +685,7 @@ const SpecialPackages = () => {
           ))}
         </div>
         <p className="text-muted-foreground text-sm italic">
-          💡 No other provider in Sri Lanka offers Findit.lk integration — you don't just reach people, you <strong className="text-accent">capture demand</strong>.
+          💡 No other provider in Sri Lanka offers Findit.lk.lk integration — you don't just reach people, you <strong className="text-accent">capture demand</strong>.
         </p>
       </motion.div>
 
@@ -766,7 +766,7 @@ const SpecialPackages = () => {
         whyPoints={[
           "Customers interact with your brand across multiple platforms",
           "Each channel supports the next (awareness → trust → action)",
-          "Reach → Ads + Banner Advertising (Findit)",
+          "Reach → Ads + Banner Advertising (Findit.lk)",
           "Engagement → Email + WhatsApp",
           "Urgency → SMS reminders",
           "Higher conversions, stronger brand recall, and better ROI",
@@ -794,13 +794,13 @@ const SpecialPackages = () => {
         className="mb-16 max-w-4xl mx-auto p-8 rounded-2xl bg-card shadow-card border border-border"
       >
         <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-2">Why 100+ Sri Lankan Businesses Trust Buzz Connect</h2>
-        <p className="text-muted-foreground text-sm mb-6">The only multi-channel marketing provider with Findit.lk integration</p>
+        <p className="text-muted-foreground text-sm mb-6">The only multi-channel marketing provider with Findit.lk.lk integration</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {[
             "Proven multi-channel marketing strategy",
             "350,000+ segmented audience database",
             "Campaign launch within 48–72 hours",
-            "Exclusive Findit.lk platform integration",
+            "Exclusive Findit.lk.lk platform integration",
             "End-to-end campaign management",
             "Affordable packages for every business size",
             "Industry-specific audience targeting",
