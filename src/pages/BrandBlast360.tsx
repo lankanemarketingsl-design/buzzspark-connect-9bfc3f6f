@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { industries } from "@/data/bb360UseCases";
 import {
   Rocket,
   Mail,
@@ -143,6 +144,23 @@ const faqs = [
 
 const BrandBlast360 = () => {
   const [open, setOpen] = useState<number | null>(0);
+  const [activeIndustry, setActiveIndustry] = useState<string>("all");
+
+  const indCls: Record<string, { badge: string; text: string; border: string; icon: string; darkBadge: string; darkText: string; darkBorder: string }> = {
+    blue:    { badge: "bg-blue-50",    text: "text-blue-600",    border: "border-blue-200",    icon: "text-blue-500",    darkBadge: "dark:bg-blue-950/30",    darkText: "dark:text-blue-400",    darkBorder: "dark:border-blue-900/40" },
+    violet:  { badge: "bg-violet-50",  text: "text-violet-600",  border: "border-violet-200",  icon: "text-violet-500",  darkBadge: "dark:bg-violet-950/30",  darkText: "dark:text-violet-400",  darkBorder: "dark:border-violet-900/40" },
+    sky:     { badge: "bg-sky-50",     text: "text-sky-600",     border: "border-sky-200",     icon: "text-sky-500",     darkBadge: "dark:bg-sky-950/30",     darkText: "dark:text-sky-400",     darkBorder: "dark:border-sky-900/40" },
+    emerald: { badge: "bg-emerald-50", text: "text-emerald-600", border: "border-emerald-200", icon: "text-emerald-500", darkBadge: "dark:bg-emerald-950/30", darkText: "dark:text-emerald-400", darkBorder: "dark:border-emerald-900/40" },
+    amber:   { badge: "bg-amber-50",   text: "text-amber-600",   border: "border-amber-200",   icon: "text-amber-500",   darkBadge: "dark:bg-amber-950/30",   darkText: "dark:text-amber-400",   darkBorder: "dark:border-amber-900/40" },
+    pink:    { badge: "bg-pink-50",    text: "text-pink-600",    border: "border-pink-200",    icon: "text-pink-500",    darkBadge: "dark:bg-pink-950/30",    darkText: "dark:text-pink-400",    darkBorder: "dark:border-pink-900/40" },
+    orange:  { badge: "bg-orange-50",  text: "text-orange-600",  border: "border-orange-200",  icon: "text-orange-500",  darkBadge: "dark:bg-orange-950/30",  darkText: "dark:text-orange-400",  darkBorder: "dark:border-orange-900/40" },
+    slate:   { badge: "bg-slate-50",   text: "text-slate-600",   border: "border-slate-200",   icon: "text-slate-500",   darkBadge: "dark:bg-slate-950/30",   darkText: "dark:text-slate-400",   darkBorder: "dark:border-slate-900/40" },
+    purple:  { badge: "bg-purple-50",  text: "text-purple-600",  border: "border-purple-200",  icon: "text-purple-500",  darkBadge: "dark:bg-purple-950/30",  darkText: "dark:text-purple-400",  darkBorder: "dark:border-purple-900/40" },
+    rose:    { badge: "bg-rose-50",    text: "text-rose-600",    border: "border-rose-200",    icon: "text-rose-500",    darkBadge: "dark:bg-rose-950/30",    darkText: "dark:text-rose-400",    darkBorder: "dark:border-rose-900/40" },
+    red:     { badge: "bg-red-50",     text: "text-red-600",     border: "border-red-200",     icon: "text-red-500",     darkBadge: "dark:bg-red-950/30",     darkText: "dark:text-red-400",     darkBorder: "dark:border-red-900/40" },
+    indigo:  { badge: "bg-indigo-50",  text: "text-indigo-600",  border: "border-indigo-200",  icon: "text-indigo-500",  darkBadge: "dark:bg-indigo-950/30",  darkText: "dark:text-indigo-400",  darkBorder: "dark:border-indigo-900/40" },
+    teal:    { badge: "bg-teal-50",    text: "text-teal-600",    border: "border-teal-200",    icon: "text-teal-500",    darkBadge: "dark:bg-teal-950/30",    darkText: "dark:text-teal-400",    darkBorder: "dark:border-teal-900/40" },
+  };
 
   const jsonLd = [
     {
@@ -657,23 +675,81 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
-        {/* Who it's for */}
-        <section className="py-16 bg-muted/30">
+        {/* Who it's for — Industry Use Cases */}
+        <section className="py-16 bg-muted/30" id="use-cases">
           <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-10">
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Who it's for</div>
-              <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Any business that needs more customers this month</h2>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Real campaign ideas for every industry</h2>
+              <p className="text-muted-foreground text-sm">Every Brand Blast 360 campaign reaches the full 988,000+ database — email, Facebook, LinkedIn, remarketing and Findit.lk — all at once, every time. Pick your industry. See exactly what you can promote. Then launch.</p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-              {who.map((w) => (
-                <div key={w.n} className="bg-card border border-border rounded-xl p-4 text-center">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mx-auto mb-2">
-                    <w.icon className="w-5 h-5" />
+
+            {/* Filter */}
+            <div className="overflow-x-auto pb-2 mb-10 -mx-4 px-4">
+              <div className="flex gap-2 w-max">
+                <button onClick={() => setActiveIndustry("all")} className={`px-4 py-2 rounded-full text-xs font-bold border transition-all whitespace-nowrap ${activeIndustry === "all" ? "bg-primary text-primary-foreground border-primary" : "bg-card text-muted-foreground border-border hover:border-primary hover:text-primary"}`}>All industries</button>
+                {industries.map((ind) => (
+                  <button key={ind.id} onClick={() => setActiveIndustry(ind.id)} className={`px-4 py-2 rounded-full text-xs font-bold border transition-all whitespace-nowrap ${activeIndustry === ind.id ? "bg-primary text-primary-foreground border-primary" : "bg-card text-muted-foreground border-border hover:border-primary hover:text-primary"}`}>{ind.emoji} {ind.name}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* Industry blocks */}
+            <div className="space-y-16">
+              {industries.filter((ind) => activeIndustry === "all" || activeIndustry === ind.id).map((ind) => (
+                <div key={ind.id}>
+                  <div className="flex items-center gap-3 pb-4 mb-6 border-b-2 border-border">
+                    <span className="text-3xl">{ind.emoji}</span>
+                    <div>
+                      <div className="font-heading font-black text-lg">{ind.name}</div>
+                      <div className="text-xs text-muted-foreground">{ind.tagline}</div>
+                    </div>
                   </div>
-                  <div className="font-bold text-sm">{w.n}</div>
-                  <div className="text-[11px] text-muted-foreground mt-1">{w.d}</div>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {ind.useCases.map((uc, i) => {
+                      const c = indCls[ind.color];
+                      return (
+                        <div key={i} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:shadow-lg transition-shadow">
+                          <span className={`inline-block self-start mx-5 mt-4 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${c.badge} ${c.text} ${c.border} ${c.darkBadge} ${c.darkText} ${c.darkBorder}`}>{uc.badge}</span>
+                          <div className="px-5 pt-3 pb-3 font-bold text-sm border-b border-border">{uc.title}</div>
+                          <ul className="p-5 space-y-2 flex-1">
+                            {uc.points.map((pt, j) => (
+                              <li key={j} className="text-xs text-muted-foreground flex gap-2 items-start leading-relaxed">
+                                <Check className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${c.icon}`} />
+                                <span>{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="mt-16 bg-primary text-primary-foreground rounded-2xl p-8 sm:p-10 text-center relative overflow-hidden">
+              <div className="absolute -top-24 -left-24 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative z-10 max-w-2xl mx-auto">
+                <h3 className="font-heading font-black text-2xl sm:text-3xl mb-3">See your industry? <span className="text-accent">Launch your campaign.</span></h3>
+                <p className="text-primary-foreground/70 text-sm mb-6">Tell us your business and what you want to promote — your Brand Blast 360 campaign will be live across all 5 channels within 48 hours.</p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <a href={wa("Hi Buzz Connect, I want to launch a Brand Blast 360 campaign. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_usecases_cta_launch" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-accent/30">
+                    <Rocket className="w-4 h-4" /> Launch my campaign
+                  </a>
+                  <a href={wa("Hi Buzz Connect, I have a question about Brand Blast 360.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_usecases_cta_question" data-selected-service="Brand Blast 360 — Question" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3 rounded-xl text-sm">
+                    <MessageCircle className="w-4 h-4" /> Ask on WhatsApp
+                  </a>
+                </div>
+                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] text-primary-foreground/50">
+                  <span className="inline-flex items-center gap-1"><Bolt className="w-3 h-3 text-accent" /> Live in 48 hours</span>
+                  <span className="inline-flex items-center gap-1"><ShieldCheck className="w-3 h-3 text-accent" /> No contract</span>
+                  <span className="inline-flex items-center gap-1"><FileBarChart className="w-3 h-3 text-accent" /> Full report included</span>
+                  <span className="inline-flex items-center gap-1"><Users className="w-3 h-3 text-accent" /> 1,500+ clients</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
