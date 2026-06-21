@@ -34,9 +34,13 @@ import {
   resolveServiceName,
   resolveTrafficSource,
   prettyPath,
+  pathForService,
+  cleanPath,
   TREND_SERVICES,
   type TrafficSource,
 } from "@/lib/serviceNames";
+import { ExternalLink } from "lucide-react";
+
 
 type Inquiry = {
   id: string;
@@ -556,13 +560,34 @@ const AdminDashboard = () => {
                     .sort((a, b) => b.demand - a.demand)
                     .map((m) => (
                       <tr key={m.service} className="border-t border-border">
-                        <td className="p-3 font-medium">{m.service}</td>
+                        <td className="p-3 font-medium">
+                          {pathForService(m.service) ? (
+                            <a
+                              href={pathForService(m.service)!}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-primary hover:underline"
+                              title={`Open ${pathForService(m.service)}`}
+                            >
+                              {m.service}
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          ) : (
+                            m.service
+                          )}
+                          {pathForService(m.service) && (
+                            <div className="text-xs text-muted-foreground font-normal">
+                              {pathForService(m.service)}
+                            </div>
+                          )}
+                        </td>
                         <td className="p-3 text-right tabular-nums">{m.views}</td>
                         <td className="p-3 text-right tabular-nums">{m.ctas}</td>
                         <td className="p-3 text-right tabular-nums">{m.inquiries}</td>
                         <td className="p-3 text-right tabular-nums">{m.conversion.toFixed(1)}%</td>
                         <td className="p-3 text-right font-bold tabular-nums">{m.demand.toFixed(1)}</td>
                       </tr>
+
                     ))
                 )}
               </tbody>
@@ -766,8 +791,27 @@ const AdminDashboard = () => {
                         </div>
                       </td>
                       <td className="p-3">
-                        <div className="font-medium">{prettyPath(i.source_page)}</div>
+                        {cleanPath(i.source_page) ? (
+                          <a
+                            href={cleanPath(i.source_page)!}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary hover:underline font-medium"
+                            title={cleanPath(i.source_page)!}
+                          >
+                            {prettyPath(i.source_page)}
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <span className="font-medium">{prettyPath(i.source_page)}</span>
+                        )}
+                        {cleanPath(i.source_page) && (
+                          <div className="text-xs text-muted-foreground truncate max-w-[180px]">
+                            {cleanPath(i.source_page)}
+                          </div>
+                        )}
                       </td>
+
                       <td className="p-3 text-xs">
                         {resolveTrafficSource(i.utm_source, i.utm_medium)}
                       </td>

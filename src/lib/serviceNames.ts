@@ -72,6 +72,28 @@ export const prettyPath = (path: string | null | undefined): string => {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 };
 
+// Reverse lookup: service display name → canonical path (for "view page" links)
+const SERVICE_NAME_TO_PATH: Record<string, string> = Object.entries(SERVICE_PATHS).reduce(
+  (acc, [path, name]) => {
+    acc[name] = path;
+    return acc;
+  },
+  {} as Record<string, string>,
+);
+
+export const pathForService = (serviceName: string | null | undefined): string | null => {
+  if (!serviceName) return null;
+  return SERVICE_NAME_TO_PATH[serviceName] || null;
+};
+
+export const cleanPath = (path: string | null | undefined): string | null => {
+  if (!path) return null;
+  const p = stripPath(path);
+  if (p === "/") return "/";
+  return p;
+};
+
+
 export type TrafficSource =
   | "Google Organic"
   | "Google Ads"
