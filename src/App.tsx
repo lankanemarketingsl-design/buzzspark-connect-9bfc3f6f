@@ -9,6 +9,7 @@ import WhatsAppCTA from "@/components/WhatsAppCTA";
 import WhatsAppGlobalTracker from "@/components/WhatsAppGlobalTracker";
 import ContactCaptureDialog from "@/components/ContactCaptureDialog";
 import ContactClickTracker from "@/components/ContactClickTracker";
+import PageViewTracker from "@/components/PageViewTracker";
 
 
 import ScrollToTop from "@/components/ScrollToTop";
@@ -156,6 +157,7 @@ const SiteChrome = ({ children }: { children: React.ReactNode }) => {
       {!isAdmin && <WhatsAppGlobalTracker />}
       {!isAdmin && <ContactCaptureDialog />}
       {!isAdmin && <ContactClickTracker />}
+      {!isAdmin && <PageViewTracker />}
 
 
       {!isAdmin && <Navbar />}
