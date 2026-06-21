@@ -791,8 +791,27 @@ const AdminDashboard = () => {
                         </div>
                       </td>
                       <td className="p-3">
-                        <div className="font-medium">{prettyPath(i.source_page)}</div>
+                        {cleanPath(i.source_page) ? (
+                          <a
+                            href={cleanPath(i.source_page)!}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary hover:underline font-medium"
+                            title={cleanPath(i.source_page)!}
+                          >
+                            {prettyPath(i.source_page)}
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <span className="font-medium">{prettyPath(i.source_page)}</span>
+                        )}
+                        {cleanPath(i.source_page) && (
+                          <div className="text-xs text-muted-foreground truncate max-w-[180px]">
+                            {cleanPath(i.source_page)}
+                          </div>
+                        )}
                       </td>
+
                       <td className="p-3 text-xs">
                         {resolveTrafficSource(i.utm_source, i.utm_medium)}
                       </td>
