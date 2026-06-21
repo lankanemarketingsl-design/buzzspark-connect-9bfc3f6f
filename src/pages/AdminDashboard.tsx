@@ -1,11 +1,45 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip as RTooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
+import {
+  TrendingUp,
+  TrendingDown,
+  Flame,
+  Target,
+  DollarSign,
+  Trophy,
+  ArrowUpRight,
+  ArrowDownRight,
+  Minus,
+  MessageCircle,
+  Phone,
+  Mail,
+  FileText,
+  Send,
+  CalendarCheck,
+} from "lucide-react";
+
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { MessageCircle } from "lucide-react";
+import {
+  resolveServiceName,
+  resolveTrafficSource,
+  prettyPath,
+  TREND_SERVICES,
+  type TrafficSource,
+} from "@/lib/serviceNames";
 
 type Inquiry = {
   id: string;
@@ -27,53 +61,190 @@ type Inquiry = {
   inquiry_type: string;
 };
 
-const PAGE_LABELS: Record<string, string> = {
-  "/": "Home",
-  "/about-us": "About Us",
-  "/contact-us": "Contact Us",
-  "/email-marketing": "Email Marketing",
-  "/sms-marketing": "SMS Marketing",
-  "/whatsapp-marketing": "WhatsApp Marketing",
-  "/social-media-marketing": "Social Media Marketing",
-  "/seo-services": "SEO Services",
-  "/google-ads-sri-lanka": "Google Ads",
-  "/online-advertising": "Online Advertising",
-  "/website-design": "Website Design",
-  "/graphic-design": "Graphic Design",
-  "/lead-generation": "Lead Generation",
-  "/special-packages": "Special Packages",
-  "/why-choose-us": "Why Choose Us",
-  "/careers": "Careers",
-  "/resources": "Resources",
-  "/staff-recruitment": "Staff Recruitment",
-  "/hotel-marketing": "Hotel Marketing",
-  "/restaurant-marketing": "Restaurant Marketing",
-  "/real-estate-marketing": "Real Estate Marketing",
-  "/fashion-marketing": "Fashion Marketing",
-  "/finance-marketing": "Finance Marketing",
-  "/education-marketing": "Education Marketing",
-  "/event-marketing": "Event Marketing",
+type RangeKey = "today" | "7d" | "30d" | "all";
+
+const RANGES: { key: RangeKey; label: string }[] = [
+  { key: "today", label: "Today" },
+  { key: "7d", label: "Last 7 Days" },
+  { key: "30d", label: "Last 30 Days" },
+  { key: "all", label: "All Time" },
+];
+
+const rangeStart = (key: RangeKey): Date => {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  if (key === "today") return d;
+  if (key === "7d") {
+    d.setDate(d.getDate() - 6);
+    return d;
+  }
+  if (key === "30d") {
+    d.setDate(d.getDate() - 29);
+    return d;
+  }
+  return new Date(0);
 };
 
-const TYPE_LABELS: Record<string, string> = {
-  form_submission: "Form",
-  whatsapp_click: "WhatsApp",
-  call_click: "Call",
-  email_click: "Email",
-  quote_open: "Quote Open",
-  page_view: "Page View",
+const previousRangeBounds = (key: RangeKey): { start: Date; end: Date } => {
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  if (key === "today") {
+    const end = new Date(now);
+    const start = new Date(now);
+    start.setDate(start.getDate() - 1);
+    return { start, end };
+  }
+  if (key === "7d") {
+    const end = new Date(now);
+    end.setDate(end.getDate() - 6);
+    const start = new Date(end);
+    start.setDate(start.getDate() - 7);
+    return { start, end };
+  }
+  if (key === "30d") {
+    const end = new Date(now);
+    end.setDate(end.getDate() - 29);
+    const start = new Date(end);
+    start.setDate(start.getDate() - 30);
+    return { start, end };
+  }
+  return { start: new Date(0), end: new Date(0) };
 };
 
-
-const prettyPage = (path: string | null): string => {
-  if (!path) return "—";
-  if (PAGE_LABELS[path]) return PAGE_LABELS[path];
-  const last = path.split("/").filter(Boolean).pop() || "Home";
-  return last
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+type ServiceMetrics = {
+  service: string;
+  views: number;
+  ctas: number;
+  inquiries: number;
+  whatsapp: number;
+  calls: number;
+  emails: number;
+  forms: number;
+  quotes: number;
+  demand: number;
+  conversion: number;
+  leadScore: number;
 };
 
+const buildServiceMetrics = (rows: Inquiry[]): ServiceMetrics[] => {
+  const map = new Map<string, ServiceMetrics>();
+  rows.forEach((r) => {
+    const svc = resolveServiceName(r.source_page);
+    if (!svc) return;
+    const cur =
+      map.get(svc) ||
+      {
+        service: svc,
+        views: 0,
+        ctas: 0,
+        inquiries: 0,
+        whatsapp: 0,
+        calls: 0,
+        emails: 0,
+        forms: 0,
+        quotes: 0,
+        demand: 0,
+        conversion: 0,
+        leadScore: 0,
+      };
+    switch (r.inquiry_type) {
+      case "page_view":
+        cur.views += 1;
+        break;
+      case "whatsapp_click":
+        cur.ctas += 1;
+        cur.whatsapp += 1;
+        break;
+      case "call_click":
+        cur.ctas += 1;
+        cur.calls += 1;
+        break;
+      case "email_click":
+        cur.ctas += 1;
+        cur.emails += 1;
+        break;
+      case "quote_open":
+        cur.ctas += 1;
+        cur.quotes += 1;
+        break;
+      case "form_submission":
+        cur.ctas += 1;
+        cur.inquiries += 1;
+        cur.forms += 1;
+        break;
+    }
+    map.set(svc, cur);
+  });
+  map.forEach((m) => {
+    m.demand = m.views * 0.2 + m.ctas * 0.4 + m.inquiries * 0.4;
+    m.conversion = m.views > 0 ? (m.ctas / m.views) * 100 : 0;
+    m.leadScore = m.whatsapp * 5 + m.calls * 10 + m.forms * 15 + m.quotes * 20;
+  });
+  return Array.from(map.values());
+};
+
+const trendDelta = (current: number, previous: number): number => {
+  if (previous === 0) return current > 0 ? 100 : 0;
+  return ((current - previous) / previous) * 100;
+};
+
+const TrendPill = ({ delta }: { delta: number }) => {
+  if (!isFinite(delta) || Math.abs(delta) < 0.5) {
+    return (
+      <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+        <Minus className="w-3 h-3" /> 0%
+      </span>
+    );
+  }
+  const up = delta > 0;
+  return (
+    <span
+      className={`inline-flex items-center gap-1 text-xs font-medium ${
+        up ? "text-emerald-600" : "text-rose-600"
+      }`}
+    >
+      {up ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
+      {up ? "+" : ""}
+      {delta.toFixed(0)}% vs prev
+    </span>
+  );
+};
+
+const KpiCard = ({
+  icon,
+  label,
+  service,
+  value,
+  unit,
+  delta,
+  accent,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  service: string;
+  value: string;
+  unit?: string;
+  delta: number;
+  accent: string;
+}) => (
+  <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm">
+    <div className={`absolute inset-x-0 top-0 h-1 ${accent}`} />
+    <div className="flex items-start justify-between gap-3 mb-4">
+      <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-muted-foreground">
+        <span className="rounded-lg bg-muted p-1.5">{icon}</span>
+        {label}
+      </div>
+      <TrendPill delta={delta} />
+    </div>
+    <div className="text-xl font-bold text-foreground mb-1 truncate" title={service}>
+      {service}
+    </div>
+    <div className="flex items-baseline gap-1">
+      <span className="text-3xl font-bold tabular-nums">{value}</span>
+      {unit && <span className="text-sm text-muted-foreground">{unit}</span>}
+    </div>
+  </div>
+);
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -81,10 +252,8 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
+  const [range, setRange] = useState<RangeKey>("7d");
   const [search, setSearch] = useState("");
-  const [serviceFilter, setServiceFilter] = useState<string>("all");
-  const [pageFilter, setPageFilter] = useState<string>("all");
-  const [typeFilter, setTypeFilter] = useState<string>("all");
 
   useEffect(() => {
     const init = async () => {
@@ -119,7 +288,7 @@ const AdminDashboard = () => {
       .from("inquiries")
       .select("*")
       .order("created_at", { ascending: false })
-      .limit(1000);
+      .limit(5000);
     if (error) {
       toast({ title: "Load failed", description: error.message, variant: "destructive" });
       return;
@@ -152,824 +321,535 @@ const AdminDashboard = () => {
     setInquiries((prev) => prev.map((x) => (x.id === inq.id ? { ...x, status: next } : x)));
   };
 
-  const services = useMemo(() => {
-    const s = new Set<string>();
-    inquiries.forEach((i) => i.service && s.add(i.service));
-    return Array.from(s).sort();
-  }, [inquiries]);
+  // ----- scoped data -----
+  const scoped = useMemo(() => {
+    const start = rangeStart(range);
+    return inquiries.filter((i) => new Date(i.created_at) >= start);
+  }, [inquiries, range]);
 
-  const pages = useMemo(() => {
-    const s = new Set<string>();
-    inquiries.forEach((i) => i.source_page && s.add(i.source_page));
-    return Array.from(s).sort();
-  }, [inquiries]);
-
-  const filtered = useMemo(() => {
+  const previousScoped = useMemo(() => {
+    if (range === "all") return [];
+    const { start, end } = previousRangeBounds(range);
     return inquiries.filter((i) => {
-      if (serviceFilter !== "all" && i.service !== serviceFilter) return false;
-      if (pageFilter !== "all" && i.source_page !== pageFilter) return false;
-      if (typeFilter !== "all" && i.inquiry_type !== typeFilter) return false;
-      if (search) {
-        const q = search.toLowerCase();
-        const hay = [i.name, i.phone, i.email, i.business, i.message, i.service, i.source_page]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase();
-        if (!hay.includes(q)) return false;
-      }
-      return true;
+      const t = new Date(i.created_at);
+      return t >= start && t < end;
     });
-  }, [inquiries, search, serviceFilter, pageFilter, typeFilter]);
+  }, [inquiries, range]);
 
-  const exportCsv = () => {
-    const headers = [
-      "created_at",
-      "inquiry_type",
-      "status",
-      "name",
-      "phone",
-      "email",
-      "business",
-      "service",
-      "source_page",
-      "placement",
-      "whatsapp_number",
-      "utm_source",
-      "utm_medium",
-      "utm_campaign",
-      "message",
+  const serviceMetrics = useMemo(() => buildServiceMetrics(scoped), [scoped]);
+  const prevServiceMetrics = useMemo(() => buildServiceMetrics(previousScoped), [previousScoped]);
+
+  // ----- KPI picks -----
+  const topDemand = [...serviceMetrics].sort((a, b) => b.demand - a.demand)[0];
+  const topConv = [...serviceMetrics]
+    .filter((m) => m.views >= 1)
+    .sort((a, b) => b.conversion - a.conversion)[0];
+  const topRevenue = [...serviceMetrics].sort((a, b) => b.leadScore - a.leadScore)[0];
+
+  const findPrev = (svc: string | undefined) =>
+    svc ? prevServiceMetrics.find((p) => p.service === svc) : undefined;
+
+  // ----- CTA matrix -----
+  const ctaTypes: { key: string; label: string; icon: React.ReactNode }[] = [
+    { key: "whatsapp_click", label: "WhatsApp", icon: <MessageCircle className="w-3.5 h-3.5" /> },
+    { key: "call_click", label: "Call", icon: <Phone className="w-3.5 h-3.5" /> },
+    { key: "form_submission", label: "Contact Form", icon: <FileText className="w-3.5 h-3.5" /> },
+    { key: "quote_open", label: "Get Proposal", icon: <Send className="w-3.5 h-3.5" /> },
+    { key: "email_click", label: "Email", icon: <Mail className="w-3.5 h-3.5" /> },
+    { key: "book_consultation", label: "Book Consultation", icon: <CalendarCheck className="w-3.5 h-3.5" /> },
+  ];
+
+  const ctaMatrix = useMemo(() => {
+    const buckets: Record<RangeKey, Inquiry[]> = {
+      today: inquiries.filter((i) => new Date(i.created_at) >= rangeStart("today")),
+      "7d": inquiries.filter((i) => new Date(i.created_at) >= rangeStart("7d")),
+      "30d": inquiries.filter((i) => new Date(i.created_at) >= rangeStart("30d")),
+      all: inquiries,
+    };
+    return ctaTypes.map((t) => ({
+      ...t,
+      today: buckets.today.filter((i) => i.inquiry_type === t.key).length,
+      "7d": buckets["7d"].filter((i) => i.inquiry_type === t.key).length,
+      "30d": buckets["30d"].filter((i) => i.inquiry_type === t.key).length,
+      all: buckets.all.filter((i) => i.inquiry_type === t.key).length,
+    }));
+  }, [inquiries]);
+
+  // ----- Traffic sources -----
+  const sourceRows = useMemo(() => {
+    const map = new Map<TrafficSource, { source: TrafficSource; visitors: number; ctas: number; inquiries: number }>();
+    const all: TrafficSource[] = [
+      "Google Organic",
+      "Facebook",
+      "LinkedIn",
+      "Direct",
+      "Referral",
+      "Email Campaign",
     ];
-    const rows = filtered.map((i) =>
-      headers
-        .map((h) => `"${String((i as unknown as Record<string, unknown>)[h] ?? "").replace(/"/g, '""')}"`)
-        .join(","),
-    );
-    const csv = [headers.join(","), ...rows].join("\n");
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `inquiries-${new Date().toISOString().slice(0, 10)}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
+    all.forEach((s) => map.set(s, { source: s, visitors: 0, ctas: 0, inquiries: 0 }));
+    scoped.forEach((r) => {
+      const src = resolveTrafficSource(r.utm_source, r.utm_medium);
+      if (!map.has(src)) map.set(src, { source: src, visitors: 0, ctas: 0, inquiries: 0 });
+      const cur = map.get(src)!;
+      if (r.inquiry_type === "page_view") cur.visitors += 1;
+      else if (r.inquiry_type === "form_submission") {
+        cur.inquiries += 1;
+        cur.ctas += 1;
+      } else if (["whatsapp_click", "call_click", "email_click", "quote_open"].includes(r.inquiry_type)) {
+        cur.ctas += 1;
+      }
+    });
+    return Array.from(map.values()).map((r) => ({
+      ...r,
+      conversion: r.visitors > 0 ? (r.ctas / r.visitors) * 100 : 0,
+    }));
+  }, [scoped]);
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading…</div>;
-  }
+  // ----- Trend chart -----
+  const trendData = useMemo(() => {
+    const start = rangeStart(range === "all" ? "30d" : range);
+    const end = new Date();
+    end.setHours(0, 0, 0, 0);
+    const days: { date: string; key: string }[] = [];
+    const cursor = new Date(start);
+    while (cursor <= end) {
+      const key = cursor.toISOString().slice(0, 10);
+      days.push({ key, date: cursor.toLocaleDateString(undefined, { month: "short", day: "numeric" }) });
+      cursor.setDate(cursor.getDate() + 1);
+    }
+    return days.map((d) => {
+      const row: Record<string, string | number> = { date: d.date };
+      TREND_SERVICES.forEach((svc) => {
+        row[svc.label] = inquiries.filter((i) => {
+          if (!i.source_page) return false;
+          if (i.created_at.slice(0, 10) !== d.key) return false;
+          return svc.paths.includes(i.source_page);
+        }).length;
+      });
+      return row;
+    });
+  }, [inquiries, range]);
+
+  const trendColors = ["#3b82f6", "#ef4444", "#10b981", "#a855f7", "#f59e0b", "#06b6d4"];
+
+  // ----- Insights -----
+  const insights = useMemo(() => {
+    const growth = serviceMetrics
+      .map((m) => {
+        const prev = findPrev(m.service);
+        const delta = trendDelta(m.demand, prev?.demand ?? 0);
+        return { service: m.service, delta };
+      })
+      .sort((a, b) => b.delta - a.delta)[0];
+    const bestSource = [...sourceRows].sort((a, b) => b.ctas - a.ctas)[0];
+    return {
+      growth,
+      bestSource,
+    };
+  }, [serviceMetrics, prevServiceMetrics, sourceRows]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ----- inquiry table filter -----
+  const filteredInquiries = useMemo(() => {
+    return scoped.filter((i) => {
+      if (i.inquiry_type === "page_view") return false; // hide PV noise from table
+      if (!search) return true;
+      const q = search.toLowerCase();
+      const hay = [i.name, i.phone, i.email, i.business, i.message, i.service, i.source_page]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(q);
+    });
+  }, [scoped, search]);
+
+  if (loading) return <div className="min-h-screen flex items-center justify-center">Loading…</div>;
   if (!isAdmin) return null;
 
-  const stats = {
-    total: inquiries.length,
-    new: inquiries.filter((i) => i.status === "new").length,
-    forms: inquiries.filter((i) => i.inquiry_type === "form_submission").length,
-    whatsapp: inquiries.filter((i) => i.inquiry_type === "whatsapp_click").length,
-    calls: inquiries.filter((i) => i.inquiry_type === "call_click").length,
-    emails: inquiries.filter((i) => i.inquiry_type === "email_click").length,
-    quotes: inquiries.filter((i) => i.inquiry_type === "quote_open").length,
-  };
-
-
   return (
-    <div className="min-h-screen bg-background px-4 py-8">
+    <div className="min-h-screen bg-muted/30 px-4 py-8">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground">Inquiry Admin Panel</h1>
-            <p className="text-sm text-muted-foreground">All inquiries from the website</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+              Executive Revenue Intelligence
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              Demand, conversion & revenue signals across every service page.
+            </p>
           </div>
           <div className="flex gap-2">
             <Button variant="outline" onClick={loadInquiries}>Refresh</Button>
-            <Button variant="outline" onClick={exportCsv}>Export CSV</Button>
             <Button variant="ghost" onClick={handleSignOut}>Sign out</Button>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
-          {[
-            { label: "Total", value: stats.total },
-            { label: "New", value: stats.new },
-            { label: "Form Submissions", value: stats.forms },
-            { label: "Quote Opens", value: stats.quotes },
-          ].map((s) => (
-            <div key={s.label} className="border border-border rounded-xl p-4 bg-card">
-              <div className="text-xs uppercase text-muted-foreground">{s.label}</div>
-              <div className="text-2xl font-bold">{s.value}</div>
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-          {[
-            { label: "WhatsApp Clicks", value: stats.whatsapp },
-            { label: "Call Clicks", value: stats.calls },
-            { label: "Email Clicks", value: stats.emails },
-          ].map((s) => (
-            <div key={s.label} className="border border-border rounded-xl p-4 bg-card">
-              <div className="text-xs uppercase text-muted-foreground">{s.label}</div>
-              <div className="text-2xl font-bold">{s.value}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Brand Blast 360 — dedicated tracking */}
-        <BrandBlast360Panel inquiries={inquiries} onPick={() => setPageFilter("/brand-blast-360")} />
-
-
-
-        {/* Today */}
-        <PeriodInquiries range="today" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-          <PeriodServices range="today" inquiries={inquiries} onPick={(s) => setServiceFilter(s)} />
-          <PeriodSources range="today" inquiries={inquiries} />
-        </div>
-
-        {/* This week */}
-        <PeriodInquiries range="week" inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-          <PeriodServices range="week" inquiries={inquiries} onPick={(s) => setServiceFilter(s)} />
-          <PeriodSources range="week" inquiries={inquiries} />
-        </div>
-
-        {/* Top pages — overall */}
-        <PageLeaderboard inquiries={inquiries} onPick={(p) => setPageFilter(p)} />
-
-        {/* Top pages — per channel */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-          <TopPagesByType
-            title="Top pages — Inquiries"
-            subtitle="Pages that drove form submissions"
-            inquiries={inquiries.filter((i) => i.inquiry_type === "form_submission")}
-            emptyText="No form submissions yet."
-            onPick={(p) => setPageFilter(p)}
-          />
-          <TopPagesByType
-            title="Top pages — WhatsApp clicks"
-            subtitle="Pages where visitors tap WhatsApp"
-            inquiries={inquiries.filter((i) => i.inquiry_type === "whatsapp_click")}
-            emptyText="No WhatsApp clicks tracked yet."
-            onPick={(p) => setPageFilter(p)}
-          />
-          <TopPagesByType
-            title="Top pages — Call clicks"
-            subtitle="Pages where visitors tap to call"
-            inquiries={inquiries.filter((i) => i.inquiry_type === "call_click")}
-            emptyText="No call clicks tracked yet."
-            onPick={(p) => setPageFilter(p)}
-          />
-          <TopPagesByType
-            title="Top pages — Email clicks"
-            subtitle="Pages where visitors tap email"
-            inquiries={inquiries.filter((i) => i.inquiry_type === "email_click")}
-            emptyText="No email clicks tracked yet."
-            onPick={(p) => setPageFilter(p)}
-          />
-        </div>
-
-
-
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4">
-          <Input placeholder="Search name, phone, email…" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <select className="h-10 rounded-md border border-input bg-background px-3 text-sm" value={serviceFilter} onChange={(e) => setServiceFilter(e.target.value)}>
-            <option value="all">All services</option>
-            {services.map((s) => <option key={s} value={s}>{s}</option>)}
-          </select>
-          <select className="h-10 rounded-md border border-input bg-background px-3 text-sm" value={pageFilter} onChange={(e) => setPageFilter(e.target.value)}>
-            <option value="all">All pages</option>
-            {pages.map((p) => <option key={p} value={p}>{p}</option>)}
-          </select>
-          <select className="h-10 rounded-md border border-input bg-background px-3 text-sm" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
-            <option value="all">All types</option>
-            <option value="form_submission">Form Submissions</option>
-            <option value="quote_open">Quote Opens</option>
-            <option value="whatsapp_click">WhatsApp Clicks</option>
-            <option value="call_click">Call Clicks</option>
-            <option value="email_click">Email Clicks</option>
-          </select>
-
-        </div>
-
-        <div className="overflow-x-auto border border-border rounded-xl bg-card">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/40 text-left">
-              <tr>
-                <th className="p-3">Date</th>
-                <th className="p-3">Type</th>
-                <th className="p-3">Name / Contact</th>
-                <th className="p-3">Service</th>
-                <th className="p-3">Page</th>
-                <th className="p-3">UTM</th>
-                <th className="p-3">Status</th>
-                <th className="p-3">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.length === 0 ? (
-                <tr><td colSpan={8} className="p-8 text-center text-muted-foreground">No inquiries yet.</td></tr>
-              ) : filtered.map((i) => (
-                <tr key={i.id} className="border-t border-border align-top">
-                  <td className="p-3 whitespace-nowrap">{new Date(i.created_at).toLocaleString()}</td>
-                  <td className="p-3">
-                    <Badge variant={i.inquiry_type === "form_submission" ? "default" : "secondary"}>
-                      {TYPE_LABELS[i.inquiry_type] || i.inquiry_type}
-                    </Badge>
-
-                  </td>
-                  <td className="p-3">
-                    <div className="font-medium">{i.name || "—"}</div>
-                    {i.phone && <div className="text-xs text-muted-foreground">{i.phone}</div>}
-                    {i.email && <div className="text-xs text-muted-foreground">{i.email}</div>}
-                    {i.business && <div className="text-xs text-muted-foreground">{i.business}</div>}
-                    {i.message && <div className="text-xs mt-1 max-w-xs whitespace-pre-wrap">{i.message}</div>}
-                  </td>
-                  <td className="p-3">
-                    <div className="font-medium">{i.service || "—"}</div>
-                    {i.utm_campaign && (
-                      <div className="text-xs text-muted-foreground">Campaign: {i.utm_campaign}</div>
-                    )}
-                  </td>
-                  <td className="p-3">
-                    <div className="font-medium">{prettyPage(i.source_page)}</div>
-                    {i.source_page && (
-                      <div className="text-xs text-muted-foreground break-all">{i.source_page}</div>
-                    )}
-                    {i.source_url && (
-                      <a
-                        href={i.source_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-primary underline break-all"
-                      >
-                        Open page ↗
-                      </a>
-                    )}
-                    {i.placement && (
-                      <div className="text-xs text-muted-foreground mt-1">Clicked: {i.placement}</div>
-                    )}
-                  </td>
-                  <td className="p-3 text-xs">
-                    {i.utm_source && <div>src: {i.utm_source}</div>}
-                    {i.utm_medium && <div>med: {i.utm_medium}</div>}
-                    {i.utm_campaign && <div>camp: {i.utm_campaign}</div>}
-                    {!i.utm_source && !i.utm_medium && !i.utm_campaign && <span className="text-muted-foreground">—</span>}
-                  </td>
-                  <td className="p-3">
-                    <button onClick={() => handleStatusToggle(i)} className="text-xs">
-                      <Badge variant={i.status === "new" ? "destructive" : i.status === "contacted" ? "default" : "outline"}>
-                        {i.status}
-                      </Badge>
-                    </button>
-                  </td>
-                  <td className="p-3">
-                    <div className="flex items-center gap-2">
-                      {i.phone && (
-                        <a
-                          href={`https://wa.me/${i.phone.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${i.name || "there"}, this is Buzz Connect. We received your inquiry about ${i.service || "our services"}. How can we help you today?`)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-medium"
-                          title="Reply on WhatsApp"
-                        >
-                          <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
-                        </a>
-                      )}
-                      <Button size="sm" variant="ghost" onClick={() => handleDelete(i.id)}>Delete</Button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-type PageStat = {
-  page: string;
-  total: number;
-  whatsapp: number;
-  forms: number;
-  last: string;
-};
-
-const PageLeaderboard = ({
-  inquiries,
-  onPick,
-}: {
-  inquiries: Inquiry[];
-  onPick: (page: string) => void;
-}) => {
-  const rows = useMemo<PageStat[]>(() => {
-    const map = new Map<string, PageStat>();
-    inquiries.forEach((i) => {
-      const page = i.source_page || "(unknown)";
-      const cur = map.get(page) || { page, total: 0, whatsapp: 0, forms: 0, last: i.created_at };
-      cur.total += 1;
-      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
-      if (i.inquiry_type === "form_submission") cur.forms += 1;
-      if (new Date(i.created_at) > new Date(cur.last)) cur.last = i.created_at;
-      map.set(page, cur);
-    });
-    return Array.from(map.values()).sort((a, b) => b.total - a.total);
-  }, [inquiries]);
-
-  if (rows.length === 0) return null;
-
-  const max = rows[0].total || 1;
-
-  return (
-    <div className="border border-border rounded-xl bg-card mb-6">
-      <div className="p-4 border-b border-border flex items-center justify-between">
-        <div>
-          <h2 className="text-base font-semibold">Top Pages for Sales</h2>
-          <p className="text-xs text-muted-foreground">
-            Total inquiries per page (form submissions + WhatsApp clicks). Click a row to filter.
-          </p>
-        </div>
-        <Badge variant="outline">{rows.length} pages</Badge>
-      </div>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead className="bg-muted/40 text-left">
-            <tr>
-              <th className="p-3">#</th>
-              <th className="p-3">Page</th>
-              <th className="p-3">Total</th>
-              <th className="p-3">WhatsApp</th>
-              <th className="p-3">Forms</th>
-              <th className="p-3 w-48">Share</th>
-              <th className="p-3">Last inquiry</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.slice(0, 15).map((r, idx) => (
-              <tr
-                key={r.page}
-                onClick={() => onPick(r.page)}
-                className="border-t border-border cursor-pointer hover:bg-muted/30"
-              >
-                <td className="p-3 text-muted-foreground">{idx + 1}</td>
-                <td className="p-3">
-                  <div className="font-medium">{prettyPage(r.page)}</div>
-                  <div className="text-xs text-muted-foreground break-all">{r.page}</div>
-                </td>
-                <td className="p-3 font-semibold">{r.total}</td>
-                <td className="p-3">{r.whatsapp}</td>
-                <td className="p-3">{r.forms}</td>
-                <td className="p-3">
-                  <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
-                    <div
-                      className="h-full bg-primary"
-                      style={{ width: `${(r.total / max) * 100}%` }}
-                    />
-                  </div>
-                </td>
-                <td className="p-3 whitespace-nowrap text-xs text-muted-foreground">
-                  {new Date(r.last).toLocaleString()}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
-
-const TopPagesByType = ({
-  title,
-  subtitle,
-  inquiries,
-  emptyText,
-  onPick,
-}: {
-  title: string;
-  subtitle: string;
-  inquiries: Inquiry[];
-  emptyText: string;
-  onPick: (page: string) => void;
-}) => {
-  const rows = useMemo(() => {
-    const map = new Map<string, { page: string; count: number; last: string }>();
-    inquiries.forEach((i) => {
-      const page = i.source_page || "(unknown)";
-      const cur = map.get(page) || { page, count: 0, last: i.created_at };
-      cur.count += 1;
-      if (new Date(i.created_at) > new Date(cur.last)) cur.last = i.created_at;
-      map.set(page, cur);
-    });
-    return Array.from(map.values()).sort((a, b) => b.count - a.count).slice(0, 8);
-  }, [inquiries]);
-
-  const max = rows[0]?.count || 1;
-
-  return (
-    <div className="border border-border rounded-xl bg-card">
-      <div className="p-4 border-b border-border">
-        <h3 className="text-sm font-semibold">{title}</h3>
-        <p className="text-xs text-muted-foreground">{subtitle}</p>
-      </div>
-      {rows.length === 0 ? (
-        <div className="p-6 text-center text-sm text-muted-foreground">{emptyText}</div>
-      ) : (
-        <ul className="divide-y divide-border">
-          {rows.map((r) => (
-            <li
-              key={r.page}
-              onClick={() => onPick(r.page)}
-              className="p-3 cursor-pointer hover:bg-muted/30"
+        {/* Date filter pills */}
+        <div className="inline-flex rounded-xl border border-border bg-card p-1 mb-6 shadow-sm">
+          {RANGES.map((r) => (
+            <button
+              key={r.key}
+              onClick={() => setRange(r.key)}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition ${
+                range === r.key
+                  ? "bg-primary text-primary-foreground shadow"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              <div className="flex items-center justify-between gap-3 mb-1">
-                <div className="min-w-0 flex-1">
-                  <div className="font-medium text-sm truncate">{prettyPage(r.page)}</div>
-                  <div className="text-xs text-muted-foreground truncate">{r.page}</div>
-                </div>
-                <div className="text-sm font-bold tabular-nums">{r.count}</div>
-              </div>
-              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                <div
-                  className="h-full bg-primary"
-                  style={{ width: `${(r.count / max) * 100}%` }}
-                />
-              </div>
-            </li>
+              {r.label}
+            </button>
           ))}
-        </ul>
-      )}
-    </div>
-  );
-};
-
-export default AdminDashboard;
-
-type TodayRow = {
-  page: string;
-  total: number;
-  forms: number;
-  whatsapp: number;
-  calls: number;
-  emails: number;
-  quotes: number;
-  ctas: Map<string, number>;
-  last: string;
-};
-
-const PeriodInquiries = ({
-  range,
-  inquiries,
-  onPick,
-}: {
-  range: "today" | "week";
-  inquiries: Inquiry[];
-  onPick: (page: string) => void;
-}) => {
-  const { rows, totals, label } = useMemo(() => {
-    const start = new Date();
-    start.setHours(0, 0, 0, 0);
-    if (range === "week") {
-      // Last 7 days including today
-      start.setDate(start.getDate() - 6);
-    }
-    const scoped = inquiries.filter((i) => new Date(i.created_at) >= start);
-
-    const map = new Map<string, TodayRow>();
-    scoped.forEach((i) => {
-      const page = i.source_page || "(unknown)";
-      const cur =
-        map.get(page) ||
-        { page, total: 0, forms: 0, whatsapp: 0, calls: 0, emails: 0, quotes: 0, ctas: new Map<string, number>(), last: i.created_at };
-      cur.total += 1;
-      if (i.inquiry_type === "form_submission") cur.forms += 1;
-      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
-      if (i.inquiry_type === "call_click") cur.calls += 1;
-      if (i.inquiry_type === "email_click") cur.emails += 1;
-      if (i.inquiry_type === "quote_open") cur.quotes += 1;
-      const cta = `${TYPE_LABELS[i.inquiry_type] || i.inquiry_type}${i.placement ? ` · ${i.placement}` : ""}`;
-      cur.ctas.set(cta, (cur.ctas.get(cta) || 0) + 1);
-      if (new Date(i.created_at) > new Date(cur.last)) cur.last = i.created_at;
-      map.set(page, cur);
-    });
-
-    const rows = Array.from(map.values()).sort((a, b) => b.total - a.total);
-    const totals = {
-      total: scoped.length,
-      forms: scoped.filter((i) => i.inquiry_type === "form_submission").length,
-      whatsapp: scoped.filter((i) => i.inquiry_type === "whatsapp_click").length,
-      calls: scoped.filter((i) => i.inquiry_type === "call_click").length,
-      emails: scoped.filter((i) => i.inquiry_type === "email_click").length,
-      quotes: scoped.filter((i) => i.inquiry_type === "quote_open").length,
-    };
-    const label =
-      range === "today"
-        ? new Date().toLocaleDateString(undefined, {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-        : `${start.toLocaleDateString(undefined, { month: "short", day: "numeric" })} – ${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`;
-    return { rows, totals, label };
-  }, [inquiries, range]);
-
-  const max = rows[0]?.total || 1;
-  const title = range === "today" ? "Today's Inquiries" : "This Week's Inquiries (last 7 days)";
-  const subtitle =
-    range === "today"
-      ? `${label} — which pages & CTAs are driving leads today`
-      : `${label} — which pages have the most demand this week`;
-
-  return (
-    <div className="border border-border rounded-xl bg-card mb-6">
-      <div className="p-4 border-b border-border flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h2 className="text-base font-semibold">{title}</h2>
-          <p className="text-xs text-muted-foreground">{subtitle}</p>
         </div>
-        <div className="flex flex-wrap gap-2 text-xs">
-          <Badge variant="default">Total {totals.total}</Badge>
-          <Badge variant="secondary">Forms {totals.forms}</Badge>
-          <Badge variant="secondary">WhatsApp {totals.whatsapp}</Badge>
-          <Badge variant="secondary">Calls {totals.calls}</Badge>
-          <Badge variant="secondary">Emails {totals.emails}</Badge>
-          <Badge variant="secondary">Quote Opens {totals.quotes}</Badge>
+
+        {/* KPI cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <KpiCard
+            icon={<Flame className="w-4 h-4 text-orange-500" />}
+            label="Highest Demand Service"
+            service={topDemand?.service || "No data yet"}
+            value={topDemand ? topDemand.demand.toFixed(1) : "0"}
+            unit="demand score"
+            delta={trendDelta(topDemand?.demand ?? 0, findPrev(topDemand?.service)?.demand ?? 0)}
+            accent="bg-gradient-to-r from-orange-400 to-rose-500"
+          />
+          <KpiCard
+            icon={<Target className="w-4 h-4 text-blue-500" />}
+            label="Highest Converting Service"
+            service={topConv?.service || "No data yet"}
+            value={topConv ? topConv.conversion.toFixed(1) : "0"}
+            unit="%"
+            delta={trendDelta(topConv?.conversion ?? 0, findPrev(topConv?.service)?.conversion ?? 0)}
+            accent="bg-gradient-to-r from-blue-400 to-indigo-500"
+          />
+          <KpiCard
+            icon={<DollarSign className="w-4 h-4 text-emerald-500" />}
+            label="Highest Revenue Opportunity"
+            service={topRevenue?.service || "No data yet"}
+            value={topRevenue ? topRevenue.leadScore.toString() : "0"}
+            unit="lead score"
+            delta={trendDelta(topRevenue?.leadScore ?? 0, findPrev(topRevenue?.service)?.leadScore ?? 0)}
+            accent="bg-gradient-to-r from-emerald-400 to-teal-500"
+          />
         </div>
-      </div>
-      {rows.length === 0 ? (
-        <div className="p-8 text-center text-sm text-muted-foreground">
-          No inquiries yet for this period.
-        </div>
-      ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/40 text-left">
-              <tr>
-                <th className="p-3">#</th>
-                <th className="p-3">Page</th>
-                <th className="p-3">Total</th>
-                <th className="p-3">CTAs used (clicks)</th>
-                <th className="p-3 w-40">Share</th>
-                <th className="p-3">Last</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((r, idx) => {
-                const ctaList = Array.from(r.ctas.entries()).sort((a, b) => b[1] - a[1]);
-                return (
-                  <tr
-                    key={r.page}
-                    onClick={() => onPick(r.page)}
-                    className="border-t border-border cursor-pointer hover:bg-muted/30"
-                  >
-                    <td className="p-3 text-muted-foreground">{idx + 1}</td>
-                    <td className="p-3">
-                      <div className="font-medium">{prettyPage(r.page)}</div>
-                      <div className="text-xs text-muted-foreground break-all">{r.page}</div>
-                    </td>
-                    <td className="p-3 font-bold">{r.total}</td>
-                    <td className="p-3">
-                      <div className="flex flex-wrap gap-1">
-                        {ctaList.map(([lab, count]) => (
-                          <Badge key={lab} variant="outline" className="text-xs">
-                            {lab} · {count}
-                          </Badge>
-                        ))}
-                      </div>
-                    </td>
-                    <td className="p-3">
-                      <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
-                        <div
-                          className="h-full bg-primary"
-                          style={{ width: `${(r.total / max) * 100}%` }}
-                        />
-                      </div>
-                    </td>
-                    <td className="p-3 whitespace-nowrap text-xs text-muted-foreground">
-                      {range === "today"
-                        ? new Date(r.last).toLocaleTimeString()
-                        : new Date(r.last).toLocaleString()}
+
+        {/* Service demand analytics */}
+        <section className="mb-8">
+          <SectionHeader title="Service Demand Analytics" subtitle="Ranked by demand score" />
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">Service</th>
+                  <th className="p-3 text-right">Page Views</th>
+                  <th className="p-3 text-right">CTA Clicks</th>
+                  <th className="p-3 text-right">Inquiries</th>
+                  <th className="p-3 text-right">Conv. Rate</th>
+                  <th className="p-3 text-right">Demand Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {serviceMetrics.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="p-8 text-center text-muted-foreground">
+                      No service activity in this period yet.
                     </td>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const scopeByRange = (inquiries: Inquiry[], range: "today" | "week") => {
-  const start = new Date();
-  start.setHours(0, 0, 0, 0);
-  if (range === "week") start.setDate(start.getDate() - 6);
-  const label =
-    range === "today"
-      ? new Date().toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" })
-      : `${start.toLocaleDateString(undefined, { month: "short", day: "numeric" })} – ${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
-  return { scoped: inquiries.filter((i) => new Date(i.created_at) >= start), label };
-};
-
-const PeriodServices = ({
-  range,
-  inquiries,
-  onPick,
-}: {
-  range: "today" | "week";
-  inquiries: Inquiry[];
-  onPick: (service: string) => void;
-}) => {
-  const { rows, label } = useMemo(() => {
-    const { scoped, label } = scopeByRange(inquiries, range);
-    const map = new Map<string, { service: string; total: number; forms: number; whatsapp: number; calls: number; emails: number }>();
-    scoped.forEach((i) => {
-      const service = i.service || prettyPage(i.source_page) || "(unknown)";
-      const cur = map.get(service) || { service, total: 0, forms: 0, whatsapp: 0, calls: 0, emails: 0 };
-      cur.total += 1;
-      if (i.inquiry_type === "form_submission") cur.forms += 1;
-      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
-      if (i.inquiry_type === "call_click") cur.calls += 1;
-      if (i.inquiry_type === "email_click") cur.emails += 1;
-      map.set(service, cur);
-    });
-    return { rows: Array.from(map.values()).sort((a, b) => b.total - a.total).slice(0, 10), label };
-  }, [inquiries, range]);
-
-  const max = rows[0]?.total || 1;
-  const title = range === "today" ? "Top Services — Today" : "Top Services — This Week";
-
-  return (
-    <div className="border border-border rounded-xl bg-card">
-      <div className="p-4 border-b border-border">
-        <h3 className="text-sm font-semibold">{title}</h3>
-        <p className="text-xs text-muted-foreground">{label} — which services get the most inquiries</p>
-      </div>
-      {rows.length === 0 ? (
-        <div className="p-6 text-center text-sm text-muted-foreground">No service inquiries yet.</div>
-      ) : (
-        <ul className="divide-y divide-border">
-          {rows.map((r) => (
-            <li key={r.service} onClick={() => onPick(r.service)} className="p-3 cursor-pointer hover:bg-muted/30">
-              <div className="flex items-center justify-between gap-3 mb-1">
-                <div className="font-medium text-sm truncate flex-1">{r.service}</div>
-                <div className="text-sm font-bold tabular-nums">{r.total}</div>
-              </div>
-              <div className="flex flex-wrap gap-1 mb-2">
-                {r.forms > 0 && <Badge variant="outline" className="text-xs">Forms · {r.forms}</Badge>}
-                {r.whatsapp > 0 && <Badge variant="outline" className="text-xs">WhatsApp · {r.whatsapp}</Badge>}
-                {r.calls > 0 && <Badge variant="outline" className="text-xs">Calls · {r.calls}</Badge>}
-                {r.emails > 0 && <Badge variant="outline" className="text-xs">Emails · {r.emails}</Badge>}
-              </div>
-              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                <div className="h-full bg-primary" style={{ width: `${(r.total / max) * 100}%` }} />
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
-
-const PeriodSources = ({
-  range,
-  inquiries,
-}: {
-  range: "today" | "week";
-  inquiries: Inquiry[];
-}) => {
-  const { rows, label } = useMemo(() => {
-    const { scoped, label } = scopeByRange(inquiries, range);
-    const map = new Map<string, { source: string; total: number; forms: number; whatsapp: number; calls: number; emails: number }>();
-    scoped.forEach((i) => {
-      let source = i.utm_source ? `${i.utm_source}${i.utm_medium ? ` / ${i.utm_medium}` : ""}` : "";
-      if (!source) source = "Direct / Organic";
-      const cur = map.get(source) || { source, total: 0, forms: 0, whatsapp: 0, calls: 0, emails: 0 };
-      cur.total += 1;
-      if (i.inquiry_type === "form_submission") cur.forms += 1;
-      if (i.inquiry_type === "whatsapp_click") cur.whatsapp += 1;
-      if (i.inquiry_type === "call_click") cur.calls += 1;
-      if (i.inquiry_type === "email_click") cur.emails += 1;
-      map.set(source, cur);
-    });
-    return { rows: Array.from(map.values()).sort((a, b) => b.total - a.total).slice(0, 10), label };
-  }, [inquiries, range]);
-
-  const max = rows[0]?.total || 1;
-  const title = range === "today" ? "Top Sources — Today" : "Top Sources — This Week";
-
-  return (
-    <div className="border border-border rounded-xl bg-card">
-      <div className="p-4 border-b border-border">
-        <h3 className="text-sm font-semibold">{title}</h3>
-        <p className="text-xs text-muted-foreground">{label} — where inquiry traffic is coming from</p>
-      </div>
-      {rows.length === 0 ? (
-        <div className="p-6 text-center text-sm text-muted-foreground">No source data yet.</div>
-      ) : (
-        <ul className="divide-y divide-border">
-          {rows.map((r) => (
-            <li key={r.source} className="p-3">
-              <div className="flex items-center justify-between gap-3 mb-1">
-                <div className="font-medium text-sm truncate flex-1">{r.source}</div>
-                <div className="text-sm font-bold tabular-nums">{r.total}</div>
-              </div>
-              <div className="flex flex-wrap gap-1 mb-2">
-                {r.forms > 0 && <Badge variant="outline" className="text-xs">Forms · {r.forms}</Badge>}
-                {r.whatsapp > 0 && <Badge variant="outline" className="text-xs">WhatsApp · {r.whatsapp}</Badge>}
-                {r.calls > 0 && <Badge variant="outline" className="text-xs">Calls · {r.calls}</Badge>}
-                {r.emails > 0 && <Badge variant="outline" className="text-xs">Emails · {r.emails}</Badge>}
-              </div>
-              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                <div className="h-full bg-primary" style={{ width: `${(r.total / max) * 100}%` }} />
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
-
-
-
-
-const BrandBlast360Panel = ({ inquiries, onPick }: { inquiries: Inquiry[]; onPick: () => void }) => {
-  const bb = inquiries.filter((i) => i.source_page === "/brand-blast-360");
-  const pageViews = bb.filter((i) => i.inquiry_type === "page_view").length;
-  const whatsapp = bb.filter((i) => i.inquiry_type === "whatsapp_click").length;
-  const forms = bb.filter((i) => i.inquiry_type === "form_submission").length;
-  const calls = bb.filter((i) => i.inquiry_type === "call_click").length;
-  const emails = bb.filter((i) => i.inquiry_type === "email_click").length;
-  const totalLeads = whatsapp + forms + calls + emails;
-  const convRate = pageViews > 0 ? ((totalLeads / pageViews) * 100).toFixed(1) : "—";
-
-  // CTA breakdown by placement
-  const ctaMap: Record<string, { total: number; whatsapp: number; form: number }> = {};
-  bb.forEach((i) => {
-    if (i.inquiry_type === "page_view" || !i.placement) return;
-    const k = i.placement;
-    if (!ctaMap[k]) ctaMap[k] = { total: 0, whatsapp: 0, form: 0 };
-    ctaMap[k].total++;
-    if (i.inquiry_type === "whatsapp_click") ctaMap[k].whatsapp++;
-    if (i.inquiry_type === "form_submission") ctaMap[k].form++;
-  });
-  const ctaRows = Object.entries(ctaMap)
-    .map(([placement, v]) => ({ placement, ...v }))
-    .sort((a, b) => b.total - a.total);
-  const maxCta = Math.max(1, ...ctaRows.map((r) => r.total));
-
-  return (
-    <div className="mb-6 border-2 border-primary/30 rounded-2xl bg-gradient-to-br from-primary/5 via-card to-accent/5 p-5">
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-        <div>
-          <div className="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Dedicated tracking</div>
-          <h2 className="text-lg md:text-xl font-bold">🚀 Brand Blast 360 — /brand-blast-360</h2>
-          <p className="text-xs text-muted-foreground">Page visits and every CTA click on this single page</p>
-        </div>
-        <Button size="sm" variant="outline" onClick={onPick}>Filter table to this page →</Button>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-2.5 mb-5">
-        {[
-          { l: "Page Views", v: pageViews, c: "text-primary" },
-          { l: "Total Leads", v: totalLeads, c: "text-emerald-600" },
-          { l: "Conv. Rate", v: typeof convRate === "string" && convRate !== "—" ? `${convRate}%` : convRate, c: "text-accent-foreground" },
-          { l: "WhatsApp", v: whatsapp, c: "text-emerald-600" },
-          { l: "Forms", v: forms, c: "text-blue-600" },
-          { l: "Calls + Email", v: calls + emails, c: "text-amber-600" },
-        ].map((s) => (
-          <div key={s.l} className="bg-card border border-border rounded-xl p-3">
-            <div className="text-[10px] uppercase text-muted-foreground font-bold">{s.l}</div>
-            <div className={`text-xl font-bold ${s.c}`}>{s.v}</div>
+                ) : (
+                  [...serviceMetrics]
+                    .sort((a, b) => b.demand - a.demand)
+                    .map((m) => (
+                      <tr key={m.service} className="border-t border-border">
+                        <td className="p-3 font-medium">{m.service}</td>
+                        <td className="p-3 text-right tabular-nums">{m.views}</td>
+                        <td className="p-3 text-right tabular-nums">{m.ctas}</td>
+                        <td className="p-3 text-right tabular-nums">{m.inquiries}</td>
+                        <td className="p-3 text-right tabular-nums">{m.conversion.toFixed(1)}%</td>
+                        <td className="p-3 text-right font-bold tabular-nums">{m.demand.toFixed(1)}</td>
+                      </tr>
+                    ))
+                )}
+              </tbody>
+            </table>
           </div>
-        ))}
-      </div>
-      <div>
-        <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">CTA Click Breakdown — which button gets clicked?</div>
-        {ctaRows.length === 0 ? (
-          <div className="text-sm text-muted-foreground p-4 text-center bg-muted/30 rounded-lg">No CTA clicks tracked yet on this page.</div>
-        ) : (
-          <ul className="divide-y divide-border bg-card border border-border rounded-xl">
-            {ctaRows.map((r) => (
-              <li key={r.placement} className="p-3">
-                <div className="flex items-center justify-between gap-3 mb-1.5">
-                  <div className="font-mono text-xs truncate flex-1">{r.placement}</div>
-                  <div className="text-sm font-bold tabular-nums">{r.total}</div>
-                </div>
-                <div className="flex flex-wrap gap-1 mb-1.5">
-                  {r.whatsapp > 0 && <Badge variant="outline" className="text-[10px]">WhatsApp · {r.whatsapp}</Badge>}
-                  {r.form > 0 && <Badge variant="outline" className="text-[10px]">Form · {r.form}</Badge>}
-                </div>
-                <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                  <div className="h-full bg-primary" style={{ width: `${(r.total / maxCta) * 100}%` }} />
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+        </section>
+
+        {/* CTA performance */}
+        <section className="mb-8">
+          <SectionHeader title="CTA Performance" subtitle="Click counts per call-to-action across periods" />
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">CTA Type</th>
+                  <th className="p-3 text-right">Today</th>
+                  <th className="p-3 text-right">7 Days</th>
+                  <th className="p-3 text-right">30 Days</th>
+                  <th className="p-3 text-right">All Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ctaMatrix.map((row) => (
+                  <tr key={row.key} className="border-t border-border">
+                    <td className="p-3">
+                      <span className="inline-flex items-center gap-2 font-medium">
+                        <span className="rounded-md bg-muted p-1.5">{row.icon}</span>
+                        {row.label}
+                      </span>
+                    </td>
+                    <td className="p-3 text-right tabular-nums">{row.today}</td>
+                    <td className="p-3 text-right tabular-nums">{row["7d"]}</td>
+                    <td className="p-3 text-right tabular-nums">{row["30d"]}</td>
+                    <td className="p-3 text-right font-semibold tabular-nums">{row.all}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Traffic source */}
+        <section className="mb-8">
+          <SectionHeader title="Traffic Source Analytics" subtitle="Visitors, CTA clicks & conversion by origin" />
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">Source</th>
+                  <th className="p-3 text-right">Visitors</th>
+                  <th className="p-3 text-right">CTA Clicks</th>
+                  <th className="p-3 text-right">Inquiries</th>
+                  <th className="p-3 text-right">Conv. Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sourceRows.map((s) => (
+                  <tr key={s.source} className="border-t border-border">
+                    <td className="p-3 font-medium">{s.source}</td>
+                    <td className="p-3 text-right tabular-nums">{s.visitors}</td>
+                    <td className="p-3 text-right tabular-nums">{s.ctas}</td>
+                    <td className="p-3 text-right tabular-nums">{s.inquiries}</td>
+                    <td className="p-3 text-right tabular-nums">{s.conversion.toFixed(1)}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Trend chart */}
+        <section className="mb-8">
+          <SectionHeader
+            title="Service Demand Trend"
+            subtitle="Daily inquiry volume by service over the selected period"
+          />
+          <div className="rounded-xl border border-border bg-card p-4 shadow-sm h-[360px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={trendData} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis dataKey="date" tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
+                <YAxis allowDecimals={false} tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
+                <RTooltip
+                  contentStyle={{
+                    background: "hsl(var(--card))",
+                    border: "1px solid hsl(var(--border))",
+                    borderRadius: 8,
+                    fontSize: 12,
+                  }}
+                />
+                <Legend wrapperStyle={{ fontSize: 12 }} />
+                {TREND_SERVICES.map((s, idx) => (
+                  <Line
+                    key={s.label}
+                    type="monotone"
+                    dataKey={s.label}
+                    stroke={trendColors[idx % trendColors.length]}
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                ))}
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </section>
+
+        {/* Insights */}
+        <section className="mb-10">
+          <SectionHeader title="Executive Insights" subtitle="What to prioritise this week" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <InsightCard
+              emoji="🔥"
+              title="Fastest Growing Service"
+              value={insights.growth?.service || "—"}
+              detail={
+                insights.growth
+                  ? `${insights.growth.delta > 0 ? "+" : ""}${insights.growth.delta.toFixed(0)}% vs prev period`
+                  : "No movement yet"
+              }
+            />
+            <InsightCard
+              emoji="📈"
+              title="Highest Conversion Service"
+              value={topConv?.service || "—"}
+              detail={topConv ? `${topConv.conversion.toFixed(1)}% click rate` : "Awaiting page-view data"}
+            />
+            <InsightCard
+              emoji="💰"
+              title="Highest Revenue Opportunity"
+              value={topRevenue?.service || "—"}
+              detail={topRevenue ? `Lead score ${topRevenue.leadScore}` : "No leads yet"}
+            />
+            <InsightCard
+              emoji="🏆"
+              title="Best Traffic Source"
+              value={insights.bestSource?.source || "—"}
+              detail={
+                insights.bestSource
+                  ? `${insights.bestSource.ctas} CTA clicks · ${insights.bestSource.visitors} visitors`
+                  : "No source data"
+              }
+            />
+          </div>
+        </section>
+
+        {/* Inquiry table (preserved) */}
+        <section>
+          <SectionHeader title="All Inquiries" subtitle="Form submissions + CTA clicks (page views hidden)" />
+          <div className="mb-3">
+            <Input
+              placeholder="Search name, phone, email, service…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="max-w-md"
+            />
+          </div>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">Date</th>
+                  <th className="p-3">Type</th>
+                  <th className="p-3">Name / Contact</th>
+                  <th className="p-3">Service</th>
+                  <th className="p-3">Page</th>
+                  <th className="p-3">Source</th>
+                  <th className="p-3">Status</th>
+                  <th className="p-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredInquiries.length === 0 ? (
+                  <tr>
+                    <td colSpan={8} className="p-8 text-center text-muted-foreground">
+                      No inquiries in this period.
+                    </td>
+                  </tr>
+                ) : (
+                  filteredInquiries.map((i) => (
+                    <tr key={i.id} className="border-t border-border align-top">
+                      <td className="p-3 whitespace-nowrap text-xs">
+                        {new Date(i.created_at).toLocaleString()}
+                      </td>
+                      <td className="p-3">
+                        <Badge variant={i.inquiry_type === "form_submission" ? "default" : "secondary"}>
+                          {i.inquiry_type.replace(/_/g, " ")}
+                        </Badge>
+                      </td>
+                      <td className="p-3">
+                        <div className="font-medium">{i.name || "—"}</div>
+                        {i.phone && <div className="text-xs text-muted-foreground">{i.phone}</div>}
+                        {i.email && <div className="text-xs text-muted-foreground">{i.email}</div>}
+                        {i.business && <div className="text-xs text-muted-foreground">{i.business}</div>}
+                        {i.message && (
+                          <div className="text-xs mt-1 max-w-xs whitespace-pre-wrap">{i.message}</div>
+                        )}
+                      </td>
+                      <td className="p-3">
+                        <div className="font-medium">
+                          {i.service || resolveServiceName(i.source_page) || "—"}
+                        </div>
+                      </td>
+                      <td className="p-3">
+                        <div className="font-medium">{prettyPath(i.source_page)}</div>
+                      </td>
+                      <td className="p-3 text-xs">
+                        {resolveTrafficSource(i.utm_source, i.utm_medium)}
+                      </td>
+                      <td className="p-3">
+                        <button onClick={() => handleStatusToggle(i)} className="text-xs">
+                          <Badge
+                            variant={
+                              i.status === "new"
+                                ? "destructive"
+                                : i.status === "contacted"
+                                ? "default"
+                                : "outline"
+                            }
+                          >
+                            {i.status}
+                          </Badge>
+                        </button>
+                      </td>
+                      <td className="p-3">
+                        <div className="flex items-center gap-2">
+                          {i.phone && (
+                            <a
+                              href={`https://wa.me/${i.phone.replace(/\D/g, "")}?text=${encodeURIComponent(
+                                `Hi ${i.name || "there"}, this is Buzz Connect. We received your inquiry about ${
+                                  i.service || resolveServiceName(i.source_page) || "our services"
+                                }. How can we help you today?`,
+                              )}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-medium"
+                            >
+                              <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                            </a>
+                          )}
+                          <Button size="sm" variant="ghost" onClick={() => handleDelete(i.id)}>
+                            Delete
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
   );
 };
+
+const SectionHeader = ({ title, subtitle }: { title: string; subtitle: string }) => (
+  <div className="mb-3 flex items-end justify-between gap-3">
+    <div>
+      <h2 className="text-lg font-semibold text-foreground">{title}</h2>
+      <p className="text-xs text-muted-foreground">{subtitle}</p>
+    </div>
+  </div>
+);
+
+const InsightCard = ({
+  emoji,
+  title,
+  value,
+  detail,
+}: {
+  emoji: string;
+  title: string;
+  value: string;
+  detail: string;
+}) => (
+  <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+    <div className="text-2xl mb-2">{emoji}</div>
+    <div className="text-xs uppercase tracking-wide text-muted-foreground mb-1">{title}</div>
+    <div className="text-lg font-bold text-foreground truncate" title={value}>
+      {value}
+    </div>
+    <div className="text-xs text-muted-foreground mt-1">{detail}</div>
+  </div>
+);
+
+export default AdminDashboard;
