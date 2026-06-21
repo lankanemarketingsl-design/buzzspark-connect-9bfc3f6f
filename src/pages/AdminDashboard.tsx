@@ -11,12 +11,9 @@ import {
   Legend,
 } from "recharts";
 import {
-  TrendingUp,
-  TrendingDown,
   Flame,
   Target,
   DollarSign,
-  Trophy,
   ArrowUpRight,
   ArrowDownRight,
   Minus,
