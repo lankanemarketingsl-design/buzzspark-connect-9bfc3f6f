@@ -114,6 +114,7 @@ const previousRangeBounds = (key: RangeKey): { start: Date; end: Date } => {
 
 type ServiceMetrics = {
   service: string;
+  path: string | null;
   views: number;
   ctas: number;
   inquiries: number;
@@ -136,6 +137,7 @@ const buildServiceMetrics = (rows: Inquiry[]): ServiceMetrics[] => {
       map.get(svc) ||
       {
         service: svc,
+        path: null,
         views: 0,
         ctas: 0,
         inquiries: 0,
@@ -148,6 +150,7 @@ const buildServiceMetrics = (rows: Inquiry[]): ServiceMetrics[] => {
         conversion: 0,
         leadScore: 0,
       };
+    if (!cur.path) cur.path = cleanPath(r.source_page) || pathForService(svc);
     switch (r.inquiry_type) {
       case "page_view":
         cur.views += 1;
@@ -177,12 +180,14 @@ const buildServiceMetrics = (rows: Inquiry[]): ServiceMetrics[] => {
     map.set(svc, cur);
   });
   map.forEach((m) => {
+    if (!m.path) m.path = pathForService(m.service);
     m.demand = m.views * 0.2 + m.ctas * 0.4 + m.inquiries * 0.4;
     m.conversion = m.views > 0 ? (m.ctas / m.views) * 100 : 0;
     m.leadScore = m.whatsapp * 5 + m.calls * 10 + m.forms * 15 + m.quotes * 20;
   });
   return Array.from(map.values());
 };
+
 
 const trendDelta = (current: number, previous: number): number => {
   if (previous === 0) return current > 0 ? 100 : 0;
