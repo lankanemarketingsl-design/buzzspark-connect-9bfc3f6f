@@ -566,13 +566,13 @@ const AdminDashboard = () => {
                     .map((m) => (
                       <tr key={m.service} className="border-t border-border">
                         <td className="p-3 font-medium">
-                          {pathForService(m.service) ? (
+                          {m.path ? (
                             <a
-                              href={pathForService(m.service)!}
+                              href={m.path}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1 text-primary hover:underline"
-                              title={`Open ${pathForService(m.service)}`}
+                              title={`Open ${m.path}`}
                             >
                               {m.service}
                               <ExternalLink className="w-3 h-3" />
@@ -580,12 +580,13 @@ const AdminDashboard = () => {
                           ) : (
                             m.service
                           )}
-                          {pathForService(m.service) && (
-                            <div className="text-xs text-muted-foreground font-normal">
-                              {pathForService(m.service)}
+                          {m.path && (
+                            <div className="text-xs text-muted-foreground font-normal truncate max-w-[260px]">
+                              {m.path}
                             </div>
                           )}
                         </td>
+
                         <td className="p-3 text-right tabular-nums">{m.views}</td>
                         <td className="p-3 text-right tabular-nums">{m.ctas}</td>
                         <td className="p-3 text-right tabular-nums">{m.inquiries}</td>
