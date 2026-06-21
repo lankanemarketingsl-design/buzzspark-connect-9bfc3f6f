@@ -34,9 +34,13 @@ import {
   resolveServiceName,
   resolveTrafficSource,
   prettyPath,
+  pathForService,
+  cleanPath,
   TREND_SERVICES,
   type TrafficSource,
 } from "@/lib/serviceNames";
+import { ExternalLink } from "lucide-react";
+
 
 type Inquiry = {
   id: string;
