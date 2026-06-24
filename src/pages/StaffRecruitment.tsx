@@ -3,76 +3,182 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import {
-  CheckCircle, Target, BarChart3, Mail, Smartphone, MessageSquare, Globe, Search,
+  CheckCircle, Target, Smartphone, MessageSquare, Globe,
   HelpCircle, Briefcase, Users, TrendingUp,
-  ArrowRight, Send, Rocket, Zap, Clock, Gift, DollarSign, RefreshCw,
-  Building, GraduationCap, ShoppingBag, Factory, Heart, Truck, Crown, Star
+  ArrowRight, Rocket, Zap, DollarSign,
+  Crown, Rocket as RocketIcon
 } from "lucide-react";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
-import IndustryStatsBanner from "@/components/IndustryStatsBanner";
-import FinditlkAdvantage from "@/components/FinditlkAdvantage";
 
-const achievements = [
-  { icon: Users, text: "Attract more qualified candidates" },
-  { icon: Briefcase, text: "Fill vacancies faster" },
-  { icon: Target, text: "Reach active job seekers on Findit.lk" },
-  { icon: Star, text: "Build stronger employer branding" },
-  { icon: MessageSquare, text: "Get direct applications & inquiries" },
+const WA_NUMBER = "94771976351";
+
+const stats = [
+  { value: "350K+", label: "Candidate database" },
+  { value: "3", label: "Job platforms per campaign" },
+  { value: "24hrs", label: "Campaign launch" },
+  { value: "4", label: "Campaign packages" },
 ];
 
-const whoIsFor = [
-  { icon: Building, text: "Corporates & SMEs" },
-  { icon: Factory, text: "Manufacturing & Logistics" },
-  { icon: ShoppingBag, text: "Retail & Hospitality" },
-  { icon: GraduationCap, text: "Education Institutes" },
-  { icon: Heart, text: "Healthcare & NGOs" },
+const platforms = [
+  {
+    id: "yj",
+    name: "YouJobs.lk",
+    tag: "Job portal · Google indexed",
+    headline: "Reach candidates actively searching",
+    desc: "YouJobs.lk is Sri Lanka's modern job portal — every listing is indexed on Google Jobs within hours. Candidates apply directly, for free, from any device.",
+    features: [
+      "Google Jobs indexed within hours",
+      "Verified employer badge on listing",
+      "Mobile-first apply — zero friction for candidates",
+      "IT, finance, sales, engineering, remote roles",
+      "Free to apply for all candidates",
+    ],
+    stats: [
+      { value: "100%", label: "Google Jobs indexed" },
+      { value: "Free", label: "For candidates" },
+    ],
+    color: "green",
+    link: "https://youjobs.lk/",
+  },
+  {
+    id: "fd",
+    name: "Findit.lk",
+    tag: "Directory + jobs · 200K users",
+    headline: "Dominate Sri Lanka's top job directory",
+    desc: "Findit.lk is Sri Lanka's most trusted online directory. With 200K+ monthly users browsing jobs, your listing gets continuous visibility to motivated candidates from Colombo to Jaffna.",
+    features: [
+      "200K+ monthly job seekers on the platform",
+      "Featured placement in category (Growth+)",
+      "Premium top-of-category visibility (Pro+)",
+      "Island-wide coverage across all cities",
+      "All job categories — factory to management",
+    ],
+    stats: [
+      { value: "200K+", label: "Monthly users" },
+      { value: "Weeks", label: "Continuous visibility" },
+    ],
+    color: "red",
+    link: "https://www.findit.lk/jobs",
+  },
+  {
+    id: "bc",
+    name: "BuzzConnect",
+    tag: "Facebook · Findit.lk · YouJobs.lk",
+    headline: "Push your vacancy directly to candidates",
+    desc: "Unlike portals where candidates must find you, BuzzConnect actively promotes your vacancy via Facebook ads — driving direct responses from job seekers immediately.",
+    features: [
+      "Facebook & Instagram targeted campaigns",
+      "Campaign launched within 24 hours",
+    ],
+    stats: [
+      { value: "Fast", label: "Direct responses" },
+      { value: "24 hrs", label: "Go live" },
+    ],
+    color: "blue",
+    link: "#packages",
+  },
 ];
 
-const whyChooseUs = [
-  { icon: Users, text: "Access to Sri Lanka's active job-seeker audience" },
-  { icon: Mail, text: "Multi-channel campaigns (Email + SMS + WhatsApp)" },
-  { icon: Zap, text: "Faster hiring compared to traditional job portals" },
-  { icon: DollarSign, text: "Cost-effective alternative to paid recruitment" },
-  { icon: Send, text: "Immediate reach and quick results" },
+const whyCards = [
+  { icon: RocketIcon, title: "Active push, not passive waiting", desc: "Your vacancy reaches thousands of job seekers via Facebook ads the same day — not buried in a listing no one sees." },
+  { icon: Globe, title: "3 platforms, one campaign", desc: "YouJobs.lk + Findit.lk + Facebook in a single package. No managing multiple vendors." },
+  { icon: Target, title: "Targeted by role and location", desc: "Reach candidates segmented by industry, experience level, and city — not a blanket blast to irrelevant people." },
+  { icon: Zap, title: "24-hour campaign launch", desc: "Tell us your role today, receive applications tomorrow. No lengthy setups or account approvals required." },
+  { icon: DollarSign, title: "More cost-effective than agencies", desc: "Starting at LKR 12,000, you get multi-platform reach that would cost 5× more through traditional agencies." },
+  { icon: Crown, title: "Proven results across industries", desc: "Used by DFCC Bank, Radisson, Swarnamahal, Best Western and hundreds of Sri Lankan businesses." },
 ];
 
-const howItWorks = [
-  { step: 1, icon: Target, title: "Define Your Hiring Needs", desc: "We identify the right audience segments based on your job roles and locations" },
-  { step: 2, icon: Mail, title: "Launch Multi-Channel Campaign", desc: "Your vacancies are promoted via Email, Facebook & Findit.lk" },
-  { step: 3, icon: Send, title: "Drive Applications", desc: "Candidates apply via WhatsApp, lead forms, or direct contact" },
-  { step: 4, icon: BarChart3, title: "Hire Faster", desc: "Track responses and fill your positions efficiently" },
+const packages = [
+  {
+    name: "Starter hiring",
+    sub: "Quick, single-role hiring",
+    price: "LKR 12,000",
+    featured: false,
+    platforms: ["YouJobs.lk standard listing", "Findit.lk job listing"],
+    promotions: ["Facebook basic targeting"],
+    cta: "Get in touch",
+    message: "Hi Buzz Connect, Starter Hiring Campaign (LKR 12,000).",
+  },
+  {
+    name: "Growth hiring",
+    sub: "Consistent ongoing hiring",
+    price: "LKR 25,000",
+    featured: true,
+    platforms: ["YouJobs.lk featured listing", "Findit.lk featured placement"],
+    promotions: ["Facebook + Story promotions", "Lead form integration", "Increased campaign reach"],
+    cta: "Get in touch",
+    message: "Hi Buzz Connect, Growth Hiring Campaign (LKR 25,000).",
+  },
+  {
+    name: "Pro hiring",
+    sub: "High-demand & skilled roles",
+    price: "LKR 45,000",
+    featured: false,
+    platforms: ["YouJobs.lk premium + featured", "Findit.lk premium category top"],
+    promotions: ["Advanced Facebook targeting", "Multi-placement strategy", "Optimised application flow"],
+    cta: "Get in touch",
+    message: "Hi Buzz Connect, Pro Hiring Campaign (LKR 45,000).",
+  },
+  {
+    name: "Mass hiring",
+    sub: "Bulk recruitment drives",
+    price: "Custom",
+    priceNote: "pricing",
+    featured: false,
+    platforms: ["YouJobs.lk bulk ad slots", "Findit.lk multi-listing"],
+    promotions: ["Full multi-platform blast", "Dedicated campaign manager", "Multiple creatives + TikTok video"],
+    cta: "Get a custom quote",
+    message: "Hi Buzz Connect, Mass Hiring Campaign custom quote.",
+  },
 ];
 
-const useCases = [
-  { icon: Building, title: "Corporate Hiring Campaigns", audience: "Reach professionals and graduates across Sri Lanka", result: "Fill skilled positions faster" },
-  { icon: Factory, title: "Mass Recruitment Drives", audience: "Promote bulk hiring for factories, retail, and logistics", result: "Attract high-volume applicants" },
-  { icon: Briefcase, title: "Walk-in Interview Promotions", audience: "Drive foot traffic to walk-in events and open days", result: "Maximize interview attendance" },
-  { icon: GraduationCap, title: "Graduate & Internship Recruitment", audience: "Target fresh graduates and interns for entry-level roles", result: "Build your talent pipeline" },
+const process = [
+  { step: 1, title: "Share your hiring brief", desc: "Tell us the role, location, and requirements. We handle the rest." },
+  { step: 2, title: "We create the campaign", desc: "Our team designs the job ad and sets up listings on YouJobs.lk, Findit.lk, and Facebook." },
+  { step: 3, title: "Campaign goes live", desc: "Your vacancy is pushed live across all platforms within 24 hours. Facebook ads go live immediately." },
+  { step: 4, title: "Applications arrive", desc: "Candidates apply via WhatsApp, lead forms, or direct contact. Review and hire fast." },
 ];
 
-const campaignTypes = [
-  "Job vacancy email blasts",
-  "Walk-in interview promotions",
-  "Employer branding campaigns",
-  "Urgent hiring alerts",
-  "Seasonal recruitment drives",
-  "Bulk staff hiring campaigns",
+const industries = [
+  { label: "Banking & Finance", color: "#1B4FD8" },
+  { label: "Manufacturing & Logistics", color: "#39B54A" },
+  { label: "Retail & FMCG", color: "#E8261A" },
+  { label: "Hospitality & Hotels", color: "#F5A623" },
+  { label: "IT & Software", color: "#8B5CF6" },
+  { label: "Education & NGOs", color: "#0EA5E9" },
+  { label: "Healthcare", color: "#EF4444" },
+  { label: "Engineering", color: "#F97316" },
+  { label: "Sales & Marketing", color: "#10B981" },
+  { label: "Corporate & SMEs", color: "#6B7280" },
+  { label: "Graduate & Internship", color: "#EC4899" },
+  { label: "Walk-in Recruitment", color: "#D97706" },
 ];
 
-const whyBuzzConnect = [
-  "Direct access to active job-seeking audience",
-  "Industry-focused recruitment strategies",
-  "Fast campaign launch and execution",
-  "Designed for the Sri Lankan job market",
-];
-
-const freeBonusItems = [
-  "Best channels for your vacancies",
-  "Recommended campaign strategy",
-  "Expected application results",
+const testimonials = [
+  {
+    text: "We filled 12 factory positions in under a week. The combination of Facebook ads and YouJobs.lk listing brought in far more applicants than we expected.",
+    author: "HR Manager",
+    company: "Manufacturing company, Katunayake",
+    initials: "HR",
+    color: "#1B4FD8",
+  },
+  {
+    text: "BuzzConnect's campaign reached candidates we couldn't find on traditional portals. The Findit.lk featured listing kept our role visible for weeks.",
+    author: "General Manager",
+    company: "Hospitality group, Colombo",
+    initials: "GM",
+    color: "#39B54A",
+  },
+  {
+    text: "The campaign results were a game changer — candidates responded within hours. Best value for bulk recruitment drives in Sri Lanka.",
+    author: "Admin Director",
+    company: "Retail chain, Sri Lanka",
+    initials: "AD",
+    color: "#F5A623",
+  },
 ];
 
 const faqs = [
@@ -82,6 +188,34 @@ const faqs = [
   { q: "How much does a recruitment campaign cost?", a: "Buzz Connect offers recruitment campaign packages starting from LKR 12,000. Contact us for a customized quote based on your hiring needs." },
   { q: "Can you run mass hiring campaigns?", a: "Yes, our Mass Hiring Campaign is designed for bulk recruitment with multi-platform promotion, multiple ad creatives, and dedicated campaign management." },
 ];
+
+const colorMap: Record<string, { top: string; badgeBg: string; badgeText: string; check: string; stat: string; }> = {
+  green: {
+    top: "bg-green-500",
+    badgeBg: "bg-green-50",
+    badgeText: "text-green-700",
+    check: "text-green-500",
+    stat: "text-green-600",
+  },
+  red: {
+    top: "bg-red-500",
+    badgeBg: "bg-red-50",
+    badgeText: "text-red-700",
+    check: "text-red-500",
+    stat: "text-red-600",
+  },
+  blue: {
+    top: "bg-blue-600",
+    badgeBg: "bg-blue-50",
+    badgeText: "text-blue-700",
+    check: "text-blue-500",
+    stat: "text-blue-600",
+  },
+};
+
+const buildWhatsAppHref = (message: string) => {
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}%20Please%20share%20details.`;
+};
 
 const StaffRecruitment = () => {
   const jsonLd = useMemo(() => [
@@ -100,19 +234,19 @@ const StaffRecruitment = () => {
       name: "Staff Recruitment Campaigns Sri Lanka",
       provider: { "@type": "Organization", name: "Buzz Connect" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Multi-channel staff recruitment campaigns in Sri Lanka combining email, Facebook, and Findit.lk visibility to speed up hiring.",
+      description: "Multi-channel staff recruitment campaigns in Sri Lanka combining email, Facebook, Findit.lk and YouJobs.lk visibility to speed up hiring.",
     },
   ], []);
 
   return (
     <ServicePageLayout
-      badge="Staff Recruitment Marketing"
-      title="Hire Faster with Multi-Channel Recruitment Campaigns in Sri Lanka"
-      subtitle="Promote your job vacancies across Email, Facebook & Findit.lk — and attract more candidates, faster."
+      badge="No.1 Recruitment Marketing · Sri Lanka"
+      title="Fill vacancies 3× faster with Sri Lanka's best hiring campaign"
+      subtitle="One campaign. Three powerful job platforms. BuzzConnect pushes your vacancies to YouJobs.lk, Findit.lk and Facebook — reaching active job seekers where they already are."
     >
       <SEOHead
         title="Staff Recruitment Campaigns Sri Lanka | Hire Faster"
-        description="No.1 recruitment marketing company in Sri Lanka. Fill vacancies faster with email, Facebook & Findit.lk campaigns. Multi-channel recruitment that delivers results."
+        description="No.1 recruitment marketing company in Sri Lanka. Fill vacancies faster with email, Facebook, Findit.lk and YouJobs.lk campaigns. Multi-channel recruitment that delivers results."
         canonical="/staff-recruitment-campaigns-sri-lanka"
         keywords="staff recruitment sri lanka, recruitment campaigns sri lanka, hiring campaigns sri lanka, job vacancy promotion, recruitment marketing, staff hiring sri lanka, recruitment agency marketing"
         breadcrumbs={[
@@ -122,422 +256,366 @@ const StaffRecruitment = () => {
         jsonLd={jsonLd}
       />
 
-      {/* Hero CTA Buttons */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-4 mb-12 -mt-4">
-        <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%20want%20to%20run%20a%20recruitment%20campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer">
-          <Button className="bg-accent hover:bg-accent/90 text-white px-8 py-3 text-base font-bold rounded-full"><Briefcase className="w-5 h-5 mr-2" />Start Hiring Campaign</Button>
-        </a>
-        <Link to="/contact-us">
-          <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white px-8 py-3 text-base font-bold rounded-full"><Rocket className="w-5 h-5 mr-2" />Get a Quote</Button>
-        </Link>
-      </motion.div>
-
-      <IndustryStatsBanner
-        icon={Briefcase}
-        gradient="gradient-hotel"
-        tagline="High-Impact Recruitment Promotion Campaigns"
-        stats={[
-          { value: "350K+", label: "Email Database" },
-          { value: "200K+", label: "Findit.lk Monthly Users" },
-          { value: "24hrs", label: "Campaign Launch" },
-          { value: "4", label: "Campaign Packages" },
-        ]}
-      />
-
-      {/* Intro with anchor links */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
-        <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-          Finding the right employees in Sri Lanka's competitive job market requires more than just posting on job boards. Buzz Connect helps companies fill vacancies faster using targeted <Link to="/" className="text-muted-foreground underline-offset-2 hover:underline">email marketing Sri Lanka</Link> campaigns that reach active job seekers directly.
-        </p>
-        <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-          We combine <Link to="/sms-marketing" className="text-muted-foreground underline-offset-2 hover:underline">SMS marketing Sri Lanka</Link> for urgent hiring alerts with <Link to="/whatsapp-marketing" className="text-muted-foreground underline-offset-2 hover:underline">WhatsApp marketing Sri Lanka</Link> to enable direct candidate communication and quick applications.
-        </p>
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          To maximize your reach, we integrate <Link to="/social-media-marketing-sri-lanka" className="text-muted-foreground underline-offset-2 hover:underline">social media marketing Sri Lanka</Link> strategies with Findit.lk job listings, ensuring your vacancies are seen by thousands of motivated candidates.
-        </p>
-      </motion.div>
-
-      {/* What You Can Achieve */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">What You Can Achieve</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Stop Relying Only on Job Portals and Slow Recruitment Methods</h2>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">With BuzzConnect's <Link to="/advertising-sri-lanka" className="text-accent hover:underline font-semibold">advertising in Sri Lanka</Link> solutions, you can reach job-ready candidates and fill roles faster.</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {achievements.map((item, i) => (
-            <motion.div key={item.text} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-              className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border shadow-card hover:border-accent/40 transition-all">
-              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                <item.icon className="w-5 h-5 text-accent" />
-              </div>
-              <span className="text-foreground font-medium text-sm">{item.text}</span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Who This Is For */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Who This Is For</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Perfect For Companies Across Sri Lanka</h2>
-          <p className="text-muted-foreground mt-2">Used by corporates, SMEs, and growing businesses</p>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
-          {whoIsFor.map((item, i) => (
-            <motion.div key={item.text} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-              className="flex flex-col items-center gap-3 p-5 rounded-xl bg-card border border-border shadow-card text-center">
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-                <item.icon className="w-6 h-6 text-accent" />
-              </div>
-              <span className="text-foreground font-medium text-sm">{item.text}</span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Recruitment Campaign Packages */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-        <div className="text-center mb-10">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Pricing Packages</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Staff Recruitment Campaign Packages</h2>
-          <p className="text-accent font-semibold mt-2">🎯 Designed for Visibility, Reach & Faster Hiring</p>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Buzz Connect recruitment campaigns now include YouJobs.lk ad placements across every tier, combining Findit.lk, Facebook, WhatsApp, and Google Jobs indexing to attract more qualified candidates.</p>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-accent/10 text-accent border border-accent/20">
-            <Globe className="w-3.5 h-3.5" /> Findit.lk listings
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-            <Briefcase className="w-3.5 h-3.5" /> YouJobs.lk ads
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground border border-border">
-            <MessageSquare className="w-3.5 h-3.5" /> Facebook campaigns
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
-            <Smartphone className="w-3.5 h-3.5" /> WhatsApp apply
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {/* Starter */}
-          <div className="relative p-6 rounded-2xl bg-card shadow-card border border-border flex flex-col">
-            <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mb-4">
-              <Rocket className="w-6 h-6 text-green-600" />
-            </div>
-            <h3 className="font-heading text-lg font-bold text-foreground mb-1">Starter Hiring</h3>
-            <p className="text-xs text-muted-foreground mb-2">Best for quick hiring needs</p>
-            <p className="text-3xl font-bold text-foreground mb-4">LKR 12,000</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk job listing</li>
-              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk standard ad</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Facebook campaign (basic targeting)</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> WhatsApp / simple apply method</li>
-            </ul>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
-              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
-            </div>
-            <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Starter%20Hiring%20Campaign%20(LKR%2012%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
-              <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-          </div>
-
-          {/* Growth */}
-          <div className="relative p-6 rounded-2xl bg-card shadow-card border-2 border-accent flex flex-col ring-2 ring-accent/20">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full gradient-accent text-primary text-xs font-bold">⭐ MOST POPULAR</div>
-            <div className="w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center mb-4">
-              <TrendingUp className="w-6 h-6 text-yellow-600" />
-            </div>
-            <h3 className="font-heading text-lg font-bold text-foreground mb-1">Growth Hiring</h3>
-            <p className="text-xs text-muted-foreground mb-2">Ideal for consistent hiring</p>
-            <p className="text-3xl font-bold text-foreground mb-4">LKR 25,000</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Featured placement on Findit.lk</li>
-              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk featured ad</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Facebook + Story promotions</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Lead form integration</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Increased campaign reach</li>
-            </ul>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
-              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
-            </div>
-            <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Growth%20Hiring%20Campaign%20(LKR%2025%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
-              <Button variant="hero" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-          </div>
-
-          {/* Pro */}
-          <div className="relative p-6 rounded-2xl bg-card shadow-card border border-border flex flex-col">
-            <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mb-4">
-              <Crown className="w-6 h-6 text-blue-600" />
-            </div>
-            <h3 className="font-heading text-lg font-bold text-foreground mb-1">Pro Hiring</h3>
-            <p className="text-xs text-muted-foreground mb-2">For high-demand roles</p>
-            <p className="text-3xl font-bold text-foreground mb-4">LKR 45,000</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
-              <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> Premium visibility on Findit.lk</li>
-              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk premium + featured ad</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Advanced Facebook targeting</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Multi-placement promotion strategy</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Optimized application flow</li>
-            </ul>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
-              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
-            </div>
-            <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Pro%20Hiring%20Campaign%20(LKR%2045%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
-              <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-          </div>
-
-          {/* Mass Hiring */}
-          <div className="relative p-6 rounded-2xl bg-card shadow-card border border-border flex flex-col">
-            <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
-              <Users className="w-6 h-6 text-red-600" />
-            </div>
-            <h3 className="font-heading text-lg font-bold text-foreground mb-1">Mass Hiring</h3>
-            <p className="text-xs text-muted-foreground mb-2">For bulk recruitment & scaling</p>
-            <p className="text-3xl font-bold text-foreground mb-4">Custom</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
-              <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> Multi-platform promotion</li>
-              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk bulk ad slots</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> High-reach campaign setup</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Multiple ad creatives</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Dedicated campaign management</li>
-              <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> TikTok Video Ad</li>
-            </ul>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
-              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
-            </div>
-            <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Mass%20Hiring%20Campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
-              <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* What YouJobs.lk adds to every package */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-5xl mx-auto">
-        <div className="p-6 rounded-2xl bg-muted/30 border border-border">
-          <h3 className="font-heading text-lg font-bold text-foreground mb-5 text-center">What YouJobs.lk adds to every package</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {[
-              { icon: Search, label: "Google Jobs indexed" },
-              { icon: Users, label: "Verified employer profile" },
-              { icon: Smartphone, label: "Mobile-first applications" },
-              { icon: RefreshCw, label: "Daily listing refresh" },
-              { icon: Gift, label: "Free to apply for candidates" },
-              { icon: TrendingUp, label: "Active Sri Lankan talent pool" },
-            ].map((item) => (
-              <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border shadow-card">
-                <item.icon className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-foreground font-medium text-sm">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-
-
-      {/* Multi-Channel Upsell */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Scale Your Recruitment</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">📈 Need Larger Reach for Mass Hiring?</h2>
-          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">For companies with ongoing hiring needs or large-scale recruitment drives — we offer advanced multi-channel campaigns across Sri Lanka.</p>
-        </div>
-
-        <Link to="/multi-channel-marketing-sri-lanka" className="block p-8 pt-10 rounded-2xl upsell-highlight mb-8 relative overflow-hidden cursor-pointer hover:scale-[1.01] transition-transform duration-300">
-          <div className="absolute top-0 right-0 px-5 py-2 rounded-bl-xl bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider animate-pulse">🔥 Most Popular</div>
-          <h3 className="font-heading text-xl font-bold text-foreground mb-4 flex items-center gap-2">🌐 Upgrade Recruitment Campaigns to Multi-Channel</h3>
-          <p className="text-muted-foreground mb-5">Combine your recruitment promotions with:</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-            {[
-              { icon: Mail, label: "Email Marketing" },
-              { icon: Smartphone, label: "SMS Campaigns" },
-              { icon: MessageSquare, label: "WhatsApp Marketing" },
-              { icon: Globe, label: "Exposure on Findit.lk" },
-            ].map((ch, i) => (
-              <motion.div key={ch.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <ch.icon className="w-5 h-5 text-accent" />
+      {/* Hero Platform Cards */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="max-w-5xl mx-auto mb-16 -mt-6 sm:-mt-10 bg-navy -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-8"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { icon: "BC", label: "BuzzConnect Facebook Ads", sub: "Targeted Facebook & Instagram ads reaching active job seekers island-wide", stat: "350K+", statLabel: "Database", color: "blue" },
+            { icon: "YJ", label: "YouJobs.lk", sub: "Google Jobs–indexed listings. Free to apply, verified employers", stat: "100%", statLabel: "Google Jobs", color: "green" },
+            { icon: "FD", label: "Findit.lk Jobs", sub: "Sri Lanka's trusted directory with 200K+ monthly job seekers", stat: "200K+", statLabel: "Monthly users", color: "red" },
+          ].map((card) => {
+            const c = colorMap[card.color];
+            return (
+              <div key={card.label} className="flex items-center gap-3 p-4 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm">
+                <div className={`w-11 h-11 rounded-lg ${c.badgeBg} ${c.badgeText} flex items-center justify-center text-sm font-bold shrink-0`}>
+                  {card.icon}
                 </div>
-                <span className="text-foreground font-medium text-sm">{ch.label}</span>
-              </motion.div>
-            ))}
-          </div>
-          <p className="text-accent font-semibold text-center text-lg">👉 Reach hundreds of thousands of candidates within days</p>
-        </Link>
-      </motion.div>
-
-      {/* Why Choose Us */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Why Choose Us</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Why Companies Choose BuzzConnect for Recruitment</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {whyChooseUs.map((item, i) => (
-            <motion.div key={item.text} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-              className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border shadow-card">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0">
-                <item.icon className="w-5 h-5 text-secondary-foreground" />
-              </div>
-              <span className="text-foreground font-medium text-sm">{item.text}</span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* How It Works */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Our Process</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">How Staff Recruitment Campaigns Work</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {howItWorks.map((step, i) => (
-            <motion.div key={step.title} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-              className="relative flex flex-col items-center text-center p-6 rounded-2xl bg-card shadow-card border border-border">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full gradient-accent flex items-center justify-center text-sm font-bold text-primary">{step.step}</div>
-              <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mt-3 mb-4">
-                <step.icon className="w-7 h-7 text-accent" />
-              </div>
-              <h3 className="font-heading font-bold text-foreground mb-2">{step.title}</h3>
-              <p className="text-sm text-muted-foreground">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Use Cases */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Use Cases</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Recruitment Marketing Use Cases</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {useCases.map((uc, i) => (
-            <motion.div key={uc.title} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-              className="p-6 rounded-2xl bg-card shadow-card border border-border hover:border-accent/40 transition-all">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 rounded-xl gradient-accent flex items-center justify-center">
-                  <uc.icon className="w-6 h-6 text-primary" />
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-sm font-bold text-white mb-0.5">{card.label}</h4>
+                  <p className="text-xs text-white/60 leading-snug">{card.sub}</p>
                 </div>
-                <h3 className="font-heading font-bold text-foreground text-lg">{uc.title}</h3>
+                <div className="text-right shrink-0">
+                  <strong className="text-lg font-bold text-accent block leading-none">{card.stat}</strong>
+                  <span className="text-[10px] text-white/50 uppercase tracking-wider">{card.statLabel}</span>
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">{uc.audience}</p>
-              <p className="text-sm text-accent font-semibold flex items-center gap-1"><ArrowRight className="w-4 h-4" />{uc.result}</p>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </motion.div>
 
-      <FinditlkAdvantage
-        title="Findit.lk Jobs & Recruitment Advantage"
-        description="Get your job vacancies listed and promoted in Findit.lk's Jobs category for continuous visibility to active job seekers searching for opportunities in Sri Lanka."
-        gradient="gradient-hotel"
-        links={[
-          { label: "Jobs & Careers", url: "https://www.findit.lk/jobs" },
-        ]}
-        benefits={["Access to active job seekers", "High visibility in Jobs category", "Continuous promotion for weeks", "Better applications than traditional job boards"]}
-      />
-
-      {/* What You Get */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto p-8 rounded-2xl bg-muted/30 border border-border">
-        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-4">📊 What You Get with Every Campaign</h2>
-        <p className="text-muted-foreground mb-4">Each campaign is designed to deliver:</p>
-        <ul className="space-y-3">
-          {["Strong visibility across platforms", "Reach to active job seekers", "Consistent promotion throughout the campaign", "Increased chances of receiving quality applications"].map((item) => (
-            <li key={item} className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-muted-foreground font-medium">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
-
-      {/* Optional Add-Ons */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Add-Ons</span>
-          <h2 className="font-heading text-2xl font-bold text-foreground mt-2">Optional Add-Ons</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {["Priority campaign boosting", "Creative design for job ads", "Featured placement upgrades", "Application handling support"].map((item) => (
-            <div key={item} className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border shadow-card">
-              <Star className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-foreground font-medium text-sm">{item}</span>
+      {/* Stats Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-16 -mx-4 sm:-mx-6 lg:-mx-8"
+      >
+        <div className="bg-blue-600 py-7">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {stats.map((s, i) => (
+                <div key={s.label} className={`text-center ${i % 2 === 0 ? "" : "md:border-l md:border-white/15"} ${i > 1 ? "md:border-l md:border-white/15" : ""}`}>
+                  <div className="font-heading text-2xl sm:text-3xl font-bold text-white leading-none">{s.value}</div>
+                  <div className="text-xs text-white/60 mt-1 font-medium">{s.label}</div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </motion.div>
 
-      {/* 📊 Real Campaign Results */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
-        <div className="p-8 rounded-2xl bg-card shadow-card border border-border text-center">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Proven Results</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2 mb-4">Real Recruitment Campaign Results</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">See how companies in Sri Lanka hired faster, attracted quality candidates, and filled positions efficiently with BuzzConnect.</p>
-          <Link to="/staff-recruitment-case-studies-sri-lanka">
-            <Button className="bg-accent hover:bg-accent/90 text-white font-bold">
-              <BarChart3 className="w-5 h-5 mr-2" /> View Recruitment Case Studies
-            </Button>
-          </Link>
+      {/* Platform Power */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-20"
+        id="platforms"
+      >
+        <div className="text-center mb-10">
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider flex items-center justify-center gap-2">
+            <span className="w-5 h-0.5 bg-accent rounded-full" /> Platform power
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mt-3">Three platforms. Maximum reach.</h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto text-base">Every BuzzConnect recruitment campaign simultaneously activates all three platforms — so you're not just posting a job, you're running a full hiring campaign.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {platforms.map((p) => {
+            const c = colorMap[p.color];
+            return (
+              <div key={p.id} className="relative rounded-2xl bg-card border border-border p-6 overflow-hidden shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1">
+                <div className={`absolute top-0 left-0 right-0 h-1 ${c.top}`} />
+                <div className="flex items-center gap-2.5 mb-4 mt-1">
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${c.badgeBg} ${c.badgeText}`}>{p.name}</span>
+                  <span className="text-xs text-muted-foreground">{p.tag}</span>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-foreground mb-2">{p.headline}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{p.desc}</p>
+                <div className="flex flex-col gap-2 mb-5">
+                  {p.features.map((f) => (
+                    <div key={f} className="flex items-start gap-2 text-sm text-foreground">
+                      <CheckCircle className={`w-4 h-4 ${c.check} shrink-0 mt-0.5`} />
+                      <span>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {p.stats.map((s) => (
+                    <div key={s.label} className="bg-muted rounded-lg p-3">
+                      <strong className={`text-lg font-bold ${c.stat} block leading-tight`}>{s.value}</strong>
+                      <span className="text-xs text-muted-foreground">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+                {p.link && p.link !== "#packages" && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-4 inline-flex items-center gap-1.5 text-xs font-semibold ${c.stat} hover:underline`}
+                  >
+                    <Globe className="w-3.5 h-3.5" /> Visit {p.name}
+                  </a>
+                )}
+              </div>
+            );
+          })}
         </div>
       </motion.div>
 
       {/* Why BuzzConnect */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto p-8 rounded-2xl bg-card shadow-card border border-border">
-        <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-6">Why BuzzConnect for Recruitment Marketing?</h2>
-        <ul className="space-y-3">
-          {whyBuzzConnect.map((item) => (
-            <li key={item} className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-muted-foreground font-medium">{item}</span>
-            </li>
-          ))}
-        </ul>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-navy"
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-sm font-semibold text-accent uppercase tracking-wider flex items-center justify-center gap-2">
+              <span className="w-5 h-0.5 bg-accent rounded-full" /> Why BuzzConnect
+            </span>
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-3">What makes BuzzConnect different</h2>
+            <p className="text-white/60 mt-3 max-w-2xl mx-auto text-base">Traditional job portals wait for candidates to visit. BuzzConnect finds them first — across every channel they use.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {whyCards.map((w, i) => (
+              <motion.div
+                key={w.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/[0.07] transition-colors"
+              >
+                <div className="w-11 h-11 rounded-lg bg-blue-500/20 flex items-center justify-center mb-4">
+                  <w.icon className="w-5 h-5 text-blue-400" />
+                </div>
+                <h4 className="text-base font-bold text-white mb-2">{w.title}</h4>
+                <p className="text-sm text-white/55 leading-relaxed">{w.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </motion.div>
 
-      {/* Free Bonus */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
-        <div className="p-8 rounded-2xl border-2 border-accent/30 bg-accent/5 relative overflow-hidden">
-          <div className="absolute top-4 right-4 opacity-10">
-            <Gift className="w-24 h-24 text-accent" />
-          </div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-              <Gift className="w-6 h-6 text-accent" />
+      {/* Packages */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-20"
+        id="packages"
+      >
+        <div className="text-center mb-10">
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider flex items-center justify-center gap-2">
+            <span className="w-5 h-0.5 bg-accent rounded-full" /> Campaign packages
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mt-3">Choose your hiring power</h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto text-base">Every package includes YouJobs.lk + Findit.lk listings plus BuzzConnect multi-channel promotion. Scale up for more reach.</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
+          {packages.map((pkg) => (
+            <div
+              key={pkg.name}
+              className={`relative rounded-2xl p-5 flex flex-col ${pkg.featured ? "bg-blue-50 border-2 border-blue-500 shadow-lg" : "bg-card border border-border shadow-card"} hover:-translate-y-1 hover:shadow-card-hover transition-all`}
+            >
+              {pkg.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-blue-600 text-white text-xs font-bold whitespace-nowrap">
+                  ⭐ Most popular
+                </div>
+              )}
+              <div className="mb-1">
+                <h3 className="font-heading text-lg font-bold text-foreground">{pkg.name}</h3>
+                <p className="text-xs text-muted-foreground">{pkg.sub}</p>
+              </div>
+              <div className="font-heading text-2xl font-bold text-foreground mb-1">
+                {pkg.price} {pkg.priceNote && <small className="text-sm font-medium text-muted-foreground font-body">/{pkg.priceNote}</small>}
+              </div>
+              <div className="h-px bg-border my-4" />
+              <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">Job platforms</div>
+              <div className="flex flex-col gap-2 mb-3 flex-1">
+                {pkg.platforms.map((feat) => (
+                  <div key={feat} className="flex items-start gap-2 text-sm text-foreground">
+                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+                <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mt-2 mb-1">Promotion channels</div>
+                {pkg.promotions.map((feat) => (
+                  <div key={feat} className="flex items-start gap-2 text-sm text-foreground">
+                    <CheckCircle className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-2 mb-3">
+                <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-red-50 text-red-600 font-semibold text-xs hover:bg-red-100 transition-colors">
+                  <Globe className="w-3 h-3" /> Findit.lk
+                </a>
+                <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-50 text-green-600 font-semibold text-xs hover:bg-green-100 transition-colors">
+                  <Briefcase className="w-3 h-3" /> YouJobs.lk
+                </a>
+              </div>
+              <a
+                data-selected-service="Staff Recruitment Campaigns"
+                href={buildWhatsAppHref(pkg.message)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto"
+              >
+                <Button className={`w-full ${pkg.featured ? "bg-blue-600 hover:bg-blue-700 text-white" : "bg-navy hover:bg-navy/90 text-white"}`}>
+                  <MessageSquare className="w-4 h-4 mr-1.5" /> {pkg.cta}
+                </Button>
+              </a>
             </div>
-            <div>
-              <span className="text-xs font-semibold text-accent uppercase tracking-wider">Free Bonus</span>
-              <h2 className="font-heading text-xl font-bold text-foreground">Get a FREE Recruitment Campaign Plan</h2>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Process */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-20"
+        id="process"
+      >
+        <div className="text-center mb-10">
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider flex items-center justify-center gap-2">
+            <span className="w-5 h-0.5 bg-accent rounded-full" /> How it works
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mt-3">From brief to applications in 24 hours</h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto text-base">We handle everything from listing creation to platform publishing. You just interview the candidates.</p>
+        </div>
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-border" />
+          {process.map((p) => (
+            <div key={p.step} className="relative text-center">
+              <div className="w-14 h-14 rounded-full bg-blue-600 text-white font-heading text-xl font-bold flex items-center justify-center mx-auto mb-4 relative z-10">
+                {p.step}
+              </div>
+              <h4 className="font-heading text-base font-bold text-foreground mb-2">{p.title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
             </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Industries */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-20 py-16 bg-muted/30 rounded-3xl -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="text-sm font-semibold text-accent uppercase tracking-wider flex items-center justify-center gap-2">
+              <span className="w-5 h-0.5 bg-accent rounded-full" /> Who we serve
+            </span>
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mt-3">Works for every industry in Sri Lanka</h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto text-base">From garment factories in Katunayake to finance firms in Colombo 3 — BuzzConnect fills roles at every level and every sector.</p>
           </div>
-          <p className="text-muted-foreground mb-4">Tailored to your hiring needs. We will show you:</p>
-          <ul className="space-y-2 mb-6">
-            {freeBonusItems.map((item) => (
-              <li key={item} className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-accent shrink-0" />
-                <span className="text-foreground font-medium">{item}</span>
-              </li>
+          <div className="flex flex-wrap justify-center gap-3">
+            {industries.map((ind) => (
+              <span
+                key={ind.label}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border text-sm font-semibold text-foreground hover:border-accent hover:bg-accent/5 hover:text-accent transition-colors cursor-default"
+              >
+                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: ind.color }} />
+                {ind.label}
+              </span>
             ))}
-          </ul>
-          <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27d%20like%20a%20FREE%20Recruitment%20Campaign%20Plan%20for%20my%20company." target="_blank" rel="noopener noreferrer">
-            <Button className="bg-accent hover:bg-accent/90 text-white font-bold"><Gift className="w-4 h-4 mr-2" />Get Your Free Plan</Button>
-          </a>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Testimonials */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-navy"
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-sm font-semibold text-accent uppercase tracking-wider flex items-center justify-center gap-2">
+              <span className="w-5 h-0.5 bg-accent rounded-full" /> Trusted by leading brands
+            </span>
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-3">Companies hiring faster with BuzzConnect</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {testimonials.map((t) => (
+              <div key={t.author} className="bg-white/5 border border-white/10 rounded-xl p-5">
+                <div className="text-accent text-sm tracking-widest mb-3">★★★★★</div>
+                <p className="text-sm text-white/70 leading-relaxed mb-4">"{t.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                    style={{ backgroundColor: t.color }}
+                  >
+                    {t.initials}
+                  </div>
+                  <div>
+                    <strong className="text-sm text-white block">{t.author}</strong>
+                    <span className="text-xs text-white/50">{t.company}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Final CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-16 text-center p-10 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-900 text-white relative overflow-hidden"
+      >
+        <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">Ready to fill your vacancies faster?</h2>
+        <p className="text-white/75 mb-6 max-w-xl mx-auto text-base">Start your campaign today — reach 350K+ candidates across Sri Lanka's top job platforms.</p>
+        <a
+          data-selected-service="Staff Recruitment Campaigns"
+          href={buildWhatsAppHref("Hi Buzz Connect, I want to launch a recruitment campaign.")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button className="bg-white text-blue-900 hover:bg-white/90 font-bold px-8 py-3 text-base">
+            <Rocket className="w-5 h-5 mr-2" /> Start your campaign
+          </Button>
+        </a>
+        <div className="flex flex-wrap justify-center gap-3 mt-6">
+          {[
+            { label: "YouJobs.lk", color: "#39B54A" },
+            { label: "Findit.lk", color: "#FF7A72" },
+            { label: "Facebook Ads", color: "#4267B2" },
+          ].map((chip) => (
+            <span key={chip.label} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-white/80">
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: chip.color }} />
+              {chip.label}
+            </span>
+          ))}
         </div>
       </motion.div>
 
       {/* FAQ */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-3xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-16 max-w-3xl mx-auto"
+      >
         <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground text-center mb-8">Frequently Asked Questions – Staff Recruitment Campaigns</h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
@@ -549,33 +627,6 @@ const StaffRecruitment = () => {
               <p className="text-muted-foreground text-sm pl-7">{faq.a}</p>
             </div>
           ))}
-        </div>
-      </motion.div>
-
-      {/* Urgency */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
-        <div className="p-8 rounded-2xl bg-destructive/5 border border-destructive/20 text-center">
-          <div className="w-14 h-14 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-4">
-            <Clock className="w-7 h-7 text-destructive" />
-          </div>
-          <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-3">Limited Recruitment Campaign Slots Available</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-2">We only take a limited number of recruitment campaigns each month to ensure quality results.</p>
-          <p className="text-foreground font-semibold">Book your campaign now and start receiving applications.</p>
-        </div>
-      </motion.div>
-
-      {/* Final CTA */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center p-10 rounded-2xl gradient-hero text-white relative overflow-hidden">
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-3">Promote Your Job Vacancies Where Candidates Are Already Active</h2>
-        <p className="text-primary-foreground/80 mb-4 max-w-xl mx-auto">Start your recruitment campaign today — reach more candidates and fill your vacancies faster.</p>
-        <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto">Powered by <strong>multi-channel campaigns</strong> and <strong>Findit.lk</strong> job listings.</p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%20want%20to%20launch%20a%20recruitment%20campaign." target="_blank" rel="noopener noreferrer">
-            <button className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-bold hover:opacity-90 transition-opacity text-base">Start Your Campaign <ArrowRight className="inline w-4 h-4 ml-1" /></button>
-          </a>
-          <Link to="/contact-us">
-            <button className="px-8 py-3 rounded-full border-2 border-accent text-accent font-bold hover:bg-accent/10 transition-colors text-base">Get Proposal</button>
-          </Link>
         </div>
       </motion.div>
 
