@@ -230,17 +230,18 @@ const StaffRecruitment = () => {
             <h3 className="font-heading text-lg font-bold text-foreground mb-1">Starter Hiring</h3>
             <p className="text-xs text-muted-foreground mb-2">Best for quick hiring needs</p>
             <p className="text-3xl font-bold text-foreground mb-4">LKR 12,000</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
+            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk job listing</li>
               <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk standard ad</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Facebook campaign (basic targeting)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> WhatsApp / simple apply method</li>
             </ul>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
+              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
+            </div>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Starter%20Hiring%20Campaign%20(LKR%2012%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-            <a href="tel:+94771976351" className="mt-2">
-              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
             </a>
           </div>
 
@@ -253,18 +254,19 @@ const StaffRecruitment = () => {
             <h3 className="font-heading text-lg font-bold text-foreground mb-1">Growth Hiring</h3>
             <p className="text-xs text-muted-foreground mb-2">Ideal for consistent hiring</p>
             <p className="text-3xl font-bold text-foreground mb-4">LKR 25,000</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
+            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Featured placement on Findit.lk</li>
               <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk featured ad</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Facebook + Story promotions</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Lead form integration</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Increased campaign reach</li>
             </ul>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
+              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
+            </div>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Growth%20Hiring%20Campaign%20(LKR%2025%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-            <a href="tel:+94771976351" className="mt-2">
-              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
             </a>
           </div>
 
@@ -276,18 +278,19 @@ const StaffRecruitment = () => {
             <h3 className="font-heading text-lg font-bold text-foreground mb-1">Pro Hiring</h3>
             <p className="text-xs text-muted-foreground mb-2">For high-demand roles</p>
             <p className="text-3xl font-bold text-foreground mb-4">LKR 45,000</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
+            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
               <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> Premium visibility on Findit.lk</li>
               <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk premium + featured ad</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Advanced Facebook targeting</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Multi-placement promotion strategy</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Optimized application flow</li>
             </ul>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
+              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
+            </div>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Pro%20Hiring%20Campaign%20(LKR%2045%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-            <a href="tel:+94771976351" className="mt-2">
-              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
             </a>
           </div>
 
@@ -299,7 +302,7 @@ const StaffRecruitment = () => {
             <h3 className="font-heading text-lg font-bold text-foreground mb-1">Mass Hiring</h3>
             <p className="text-xs text-muted-foreground mb-2">For bulk recruitment & scaling</p>
             <p className="text-3xl font-bold text-foreground mb-4">Custom</p>
-            <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
+            <ul className="space-y-2.5 text-sm text-muted-foreground mb-4 flex-1">
               <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> Multi-platform promotion</li>
               <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk bulk ad slots</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> High-reach campaign setup</li>
@@ -307,11 +310,12 @@ const StaffRecruitment = () => {
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Dedicated campaign management</li>
               <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> TikTok Video Ad</li>
             </ul>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors"><Globe className="w-3 h-3" /> Findit.lk</a>
+              <a href="https://youjobs.lk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary font-semibold text-xs hover:bg-primary/20 transition-colors"><Briefcase className="w-3 h-3" /> YouJobs.lk</a>
+            </div>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Mass%20Hiring%20Campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
-            </a>
-            <a href="tel:+94771976351" className="mt-2">
-              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
             </a>
           </div>
         </div>
