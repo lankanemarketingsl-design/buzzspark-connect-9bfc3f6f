@@ -576,11 +576,10 @@ const StaffRecruitment = () => {
           <Link to="/contact-us">
             <button className="px-8 py-3 rounded-full border-2 border-accent text-accent font-bold hover:bg-accent/10 transition-colors text-base">Get Proposal</button>
           </Link>
-          <a href="tel:+94771976351">
-            <button className="px-8 py-3 rounded-full bg-accent/20 text-accent font-bold hover:bg-accent/30 transition-colors text-base"><Phone className="inline w-4 h-4 mr-1" />Call 077 197 6351</button>
-          </a>
         </div>
       </motion.div>
+
+      <WhatsAppCTA />
 
       <RelatedArticles currentPath="/staff-recruitment-campaigns-sri-lanka" />
     </ServicePageLayout>
