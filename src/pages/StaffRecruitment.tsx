@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import {
-  CheckCircle, Target, BarChart3, Smartphone, MessageSquare, Globe, Search,
+  CheckCircle, Target, Smartphone, MessageSquare, Globe,
   HelpCircle, Briefcase, Users, TrendingUp,
   ArrowRight, Rocket, Zap, DollarSign,
   Crown, Rocket as RocketIcon
