@@ -41,8 +41,8 @@ const whyChooseUs = [
   { icon: Globe, text: "3 platforms — YouJobs.lk, Findit.lk & Facebook in one campaign" },
   { icon: Target, text: "Targeted by role, experience and location" },
   { icon: Zap, text: "24-hour campaign launch — applications arrive fast" },
-  { icon: Crown, text: "Trusted by DFCC, Radisson, Best Western and 100s of brands" },
 ];
+
 
 const platforms = [
   {
