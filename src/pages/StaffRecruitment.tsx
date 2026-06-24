@@ -127,9 +127,6 @@ const StaffRecruitment = () => {
         <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%20want%20to%20run%20a%20recruitment%20campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer">
           <Button className="bg-accent hover:bg-accent/90 text-white px-8 py-3 text-base font-bold rounded-full"><Briefcase className="w-5 h-5 mr-2" />Start Hiring Campaign</Button>
         </a>
-        <a href="tel:+94771976351">
-          <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white px-8 py-3 text-base font-bold rounded-full"><Phone className="w-5 h-5 mr-2" />Call 077 197 6351</Button>
-        </a>
         <Link to="/contact-us">
           <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white px-8 py-3 text-base font-bold rounded-full"><Rocket className="w-5 h-5 mr-2" />Get a Quote</Button>
         </Link>
