@@ -197,13 +197,29 @@ const StaffRecruitment = () => {
       </motion.div>
 
       {/* Recruitment Campaign Packages */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
         <div className="text-center mb-10">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Pricing Packages</span>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Staff Recruitment Campaign Packages</h2>
           <p className="text-accent font-semibold mt-2">🎯 Designed for Visibility, Reach & Faster Hiring</p>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Buzz Connect recruitment campaigns are built to give your job vacancies maximum exposure across multiple platforms, helping you attract more candidates and fill roles efficiently.</p>
+          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Buzz Connect recruitment campaigns now include YouJobs.lk ad placements across every tier, combining Findit.lk, Facebook, WhatsApp, and Google Jobs indexing to attract more qualified candidates.</p>
         </div>
+
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-accent/10 text-accent border border-accent/20">
+            <Globe className="w-3.5 h-3.5" /> Findit.lk listings
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+            <Briefcase className="w-3.5 h-3.5" /> YouJobs.lk ads
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground border border-border">
+            <MessageSquare className="w-3.5 h-3.5" /> Facebook campaigns
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
+            <Smartphone className="w-3.5 h-3.5" /> WhatsApp apply
+          </span>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {/* Starter */}
           <div className="relative p-6 rounded-2xl bg-card shadow-card border border-border flex flex-col">
@@ -215,12 +231,9 @@ const StaffRecruitment = () => {
             <p className="text-3xl font-bold text-foreground mb-4">LKR 12,000</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Findit.lk job listing</li>
+              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk standard ad</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Facebook campaign (basic targeting)</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> WhatsApp / simple apply method</li>
-              <li className="flex items-start gap-2">
-                <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
-              </li>
             </ul>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Starter%20Hiring%20Campaign%20(LKR%2012%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
@@ -238,13 +251,10 @@ const StaffRecruitment = () => {
             <p className="text-3xl font-bold text-foreground mb-4">LKR 25,000</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Featured placement on Findit.lk</li>
+              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk featured ad</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Facebook + Story promotions</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Lead form integration</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Increased campaign reach</li>
-              <li className="flex items-start gap-2">
-                <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
-              </li>
             </ul>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Growth%20Hiring%20Campaign%20(LKR%2025%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
@@ -260,14 +270,11 @@ const StaffRecruitment = () => {
             <p className="text-xs text-muted-foreground mb-2">For high-demand roles</p>
             <p className="text-3xl font-bold text-foreground mb-4">LKR 45,000</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Premium category visibility on Findit.lk</li>
+              <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> Premium visibility on Findit.lk</li>
+              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk premium + featured ad</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Advanced Facebook targeting</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Multi-placement promotion strategy</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Optimized application flow</li>
-              <li className="flex items-start gap-2">
-                <Globe className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://www.findit.lk/jobs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-accent/10 text-accent font-semibold text-xs hover:bg-accent/20 transition-colors">🔗 View on Findit.lk <ArrowRight className="w-3 h-3" /></a>
-              </li>
             </ul>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Pro%20Hiring%20Campaign%20(LKR%2045%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
@@ -283,11 +290,12 @@ const StaffRecruitment = () => {
             <p className="text-xs text-muted-foreground mb-2">For bulk recruitment & scaling</p>
             <p className="text-3xl font-bold text-foreground mb-4">Custom</p>
             <ul className="space-y-2.5 text-sm text-muted-foreground mb-6 flex-1">
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Multi-platform promotion</li>
+              <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> Multi-platform promotion</li>
+              <li className="flex items-start gap-2"><Briefcase className="w-4 h-4 text-primary shrink-0 mt-0.5" /> YouJobs.lk bulk ad slots</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> High-reach campaign setup</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Multiple ad creatives</li>
               <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> Dedicated campaign management</li>
-              <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 🎬 TikTok Video Ad</li>
+              <li className="flex items-start gap-2"><Star className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" /> TikTok Video Ad</li>
             </ul>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Mass%20Hiring%20Campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
@@ -295,6 +303,29 @@ const StaffRecruitment = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* What YouJobs.lk adds to every package */}
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-5xl mx-auto">
+        <div className="p-6 rounded-2xl bg-muted/30 border border-border">
+          <h3 className="font-heading text-lg font-bold text-foreground mb-5 text-center">What YouJobs.lk adds to every package</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              { icon: Search, label: "Google Jobs indexed" },
+              { icon: Users, label: "Verified employer profile" },
+              { icon: Smartphone, label: "Mobile-first applications" },
+              { icon: RefreshCw, label: "Daily listing refresh" },
+              { icon: Gift, label: "Free to apply for candidates" },
+              { icon: TrendingUp, label: "Active Sri Lankan talent pool" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border shadow-card">
+                <item.icon className="w-5 h-5 text-primary shrink-0" />
+                <span className="text-foreground font-medium text-sm">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
 
       {/* Multi-Channel Upsell */}
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-5xl mx-auto">
