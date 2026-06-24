@@ -297,26 +297,47 @@ const StaffRecruitment = () => {
         </div>
       </motion.div>
 
-      {/* Platform Power */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16" id="platforms">
-        <div className="text-center mb-10">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Platform Power</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">Three Platforms. One Campaign.</h2>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Every BuzzConnect recruitment campaign activates all three platforms simultaneously — you're not posting a job, you're running a full hiring campaign.</p>
+      {/* Platform Power — Highlighted */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-16 rounded-3xl overflow-hidden gradient-recruitment p-8 sm:p-12 relative"
+        id="platforms"
+      >
+        {/* Subtle mesh glow */}
+        <div className="absolute inset-0 pointer-events-none opacity-30">
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="relative z-10 text-center mb-12">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/90 text-xs font-bold uppercase tracking-wider mb-4">
+            <Zap className="w-3.5 h-3.5 text-accent" /> Platform Power
+          </span>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+            Three Platforms. <span className="text-gradient">One Campaign.</span>
+          </h2>
+          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+            Every BuzzConnect recruitment campaign activates all three platforms simultaneously — you're not posting a job, you're running a full hiring campaign.
+          </p>
+        </div>
+
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Connector line (desktop) */}
+          <div className="hidden md:block absolute top-1/2 left-4 right-4 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent -translate-y-1/2" />
+
           {platforms.map((p, i) => (
             <motion.div
               key={p.badge}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="relative rounded-2xl bg-card border border-border p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all flex flex-col"
+              transition={{ delay: i * 0.12 }}
+              className="group relative rounded-2xl bg-white/95 backdrop-blur-sm border border-white/20 p-6 shadow-2xl hover:shadow-accent/20 hover:-translate-y-2 transition-all duration-300 flex flex-col"
             >
               <div className="flex items-center gap-2 mb-3">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-accent/10 text-accent">{p.badge}</span>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-accent/10 text-accent border border-accent/20">{p.badge}</span>
                 <span className="text-xs text-muted-foreground">{p.tag}</span>
               </div>
               <h3 className="font-heading text-lg font-bold text-foreground mb-2">{p.headline}</h3>
