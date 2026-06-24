@@ -3,11 +3,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import {
-  CheckCircle, Target, BarChart3, Mail, Smartphone, MessageSquare, Globe, Search, Phone,
+  CheckCircle, Target, BarChart3, Mail, Smartphone, MessageSquare, Globe, Search,
   HelpCircle, Briefcase, Users, TrendingUp,
   ArrowRight, Send, Rocket, Zap, Clock, Gift, DollarSign, RefreshCw,
   Building, GraduationCap, ShoppingBag, Factory, Heart, Truck, Crown, Star
 } from "lucide-react";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
