@@ -312,6 +312,9 @@ const StaffRecruitment = () => {
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Mass%20Hiring%20Campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
             </a>
+            <a href="tel:+94771976351" className="mt-2">
+              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
+            </a>
           </div>
         </div>
       </motion.div>
