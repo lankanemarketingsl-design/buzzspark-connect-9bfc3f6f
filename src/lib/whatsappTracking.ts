@@ -7,6 +7,7 @@ const INDUSTRY_ROUTES = [
   "/education-marketing-sri-lanka",
   "/restaurant-marketing-sri-lanka",
   "/fashion-marketing-sri-lanka",
+  "/staff-recruitment-campaigns-sri-lanka",
 ];
 
 const SERVICE_MAP: Record<string, string> = {
