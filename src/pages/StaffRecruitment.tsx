@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import {
-  CheckCircle, Target, BarChart3, Mail, Smartphone, MessageSquare, Globe, Search,
+  CheckCircle, Target, BarChart3, Mail, Smartphone, MessageSquare, Globe, Search, Phone,
   HelpCircle, Briefcase, Users, TrendingUp,
   ArrowRight, Send, Rocket, Zap, Clock, Gift, DollarSign, RefreshCw,
   Building, GraduationCap, ShoppingBag, Factory, Heart, Truck, Crown, Star
@@ -126,6 +126,9 @@ const StaffRecruitment = () => {
         <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%20want%20to%20run%20a%20recruitment%20campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer">
           <Button className="bg-accent hover:bg-accent/90 text-white px-8 py-3 text-base font-bold rounded-full"><Briefcase className="w-5 h-5 mr-2" />Start Hiring Campaign</Button>
         </a>
+        <a href="tel:+94771976351">
+          <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white px-8 py-3 text-base font-bold rounded-full"><Phone className="w-5 h-5 mr-2" />Call 077 197 6351</Button>
+        </a>
         <Link to="/contact-us">
           <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white px-8 py-3 text-base font-bold rounded-full"><Rocket className="w-5 h-5 mr-2" />Get a Quote</Button>
         </Link>
@@ -238,6 +241,9 @@ const StaffRecruitment = () => {
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Starter%20Hiring%20Campaign%20(LKR%2012%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
             </a>
+            <a href="tel:+94771976351" className="mt-2">
+              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
+            </a>
           </div>
 
           {/* Growth */}
@@ -259,6 +265,9 @@ const StaffRecruitment = () => {
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Growth%20Hiring%20Campaign%20(LKR%2025%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
             </a>
+            <a href="tel:+94771976351" className="mt-2">
+              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
+            </a>
           </div>
 
           {/* Pro */}
@@ -278,6 +287,9 @@ const StaffRecruitment = () => {
             </ul>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Pro%20Hiring%20Campaign%20(LKR%2045%2C000).%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
+            </a>
+            <a href="tel:+94771976351" className="mt-2">
+              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
             </a>
           </div>
 
@@ -299,6 +311,9 @@ const StaffRecruitment = () => {
             </ul>
             <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20the%20Mass%20Hiring%20Campaign.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="hero-outline" className="w-full"><MessageSquare className="w-4 h-4 mr-1" /> Inquire via WhatsApp</Button>
+            </a>
+            <a href="tel:+94771976351" className="mt-2">
+              <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white"><Phone className="w-4 h-4 mr-1" /> Call 077 197 6351</Button>
             </a>
           </div>
         </div>
@@ -516,6 +531,9 @@ const StaffRecruitment = () => {
           <a data-selected-service="Staff Recruitment Campaigns" href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27d%20like%20a%20FREE%20Recruitment%20Campaign%20Plan%20for%20my%20company." target="_blank" rel="noopener noreferrer">
             <Button className="bg-accent hover:bg-accent/90 text-white font-bold"><Gift className="w-4 h-4 mr-2" />Get Your Free Plan</Button>
           </a>
+          <a href="tel:+94771976351" className="ml-3">
+            <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white font-bold"><Phone className="w-4 h-4 mr-2" />Call 077 197 6351</Button>
+          </a>
         </div>
       </motion.div>
 
@@ -559,8 +577,8 @@ const StaffRecruitment = () => {
           <Link to="/contact-us">
             <button className="px-8 py-3 rounded-full border-2 border-accent text-accent font-bold hover:bg-accent/10 transition-colors text-base">Get Proposal</button>
           </Link>
-          <a href="tel:+94771437707">
-            <button className="px-8 py-3 rounded-full bg-accent/20 text-accent font-bold hover:bg-accent/30 transition-colors text-base">📞 Call Now</button>
+          <a href="tel:+94771976351">
+            <button className="px-8 py-3 rounded-full bg-accent/20 text-accent font-bold hover:bg-accent/30 transition-colors text-base"><Phone className="inline w-4 h-4 mr-1" />Call 077 197 6351</button>
           </a>
         </div>
       </motion.div>
