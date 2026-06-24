@@ -21,6 +21,7 @@ const INDUSTRY_ROUTES = [
   "/education-marketing-sri-lanka",
   "/restaurant-marketing-sri-lanka",
   "/fashion-marketing-sri-lanka",
+  "/staff-recruitment-campaigns-sri-lanka",
 ];
 
 const ServicePageLayout = ({ badge, title, subtitle, children }: ServicePageLayoutProps) => {
