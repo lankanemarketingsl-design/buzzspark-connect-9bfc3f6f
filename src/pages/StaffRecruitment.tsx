@@ -262,7 +262,7 @@ const StaffRecruitment = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-5xl mx-auto mb-16"
+        className="max-w-5xl mx-auto mb-16 -mt-6 sm:-mt-10 bg-navy -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-8"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
@@ -272,17 +272,17 @@ const StaffRecruitment = () => {
           ].map((card) => {
             const c = colorMap[card.color];
             return (
-              <div key={card.label} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div key={card.label} className="flex items-center gap-3 p-4 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm">
                 <div className={`w-11 h-11 rounded-lg ${c.badgeBg} ${c.badgeText} flex items-center justify-center text-sm font-bold shrink-0`}>
                   {card.icon}
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4 className="text-sm font-bold text-white mb-0.5">{card.label}</h4>
-                  <p className="text-xs text-white/55 leading-snug">{card.sub}</p>
+                  <p className="text-xs text-white/60 leading-snug">{card.sub}</p>
                 </div>
                 <div className="text-right shrink-0">
                   <strong className="text-lg font-bold text-accent block leading-none">{card.stat}</strong>
-                  <span className="text-[10px] text-white/40 uppercase tracking-wider">{card.statLabel}</span>
+                  <span className="text-[10px] text-white/50 uppercase tracking-wider">{card.statLabel}</span>
                 </div>
               </div>
             );
