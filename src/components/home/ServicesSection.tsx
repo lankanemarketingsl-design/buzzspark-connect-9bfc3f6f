@@ -65,6 +65,13 @@ const services = [
     path: "/online-advertising-sri-lanka",
   },
   {
+    icon: Radar,
+    title: "Programmatic Advertising",
+    bullets: ["Sri Lanka's only Premium PMP", "FindIt.lk + Studyway.lk + YouJobs.lk", "Zero ad fraud · 100% verified LK", "From LKR 60,000 · Live in 24h"],
+    description: "The premium tier of programmatic — brand-safe, guaranteed placements.",
+    path: "/programmatic-advertising-sri-lanka",
+  },
+  {
     icon: PenTool,
     title: "Graphic Designing",
     bullets: ["E-flyers & artwork", "Social media creatives", "Animated videos"],
