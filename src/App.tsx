@@ -145,6 +145,7 @@ import StaffRecruitment from "./pages/StaffRecruitment.tsx";
 import GraphicDesignService from "./pages/GraphicDesignService.tsx";
 import Careers from "./pages/Careers.tsx";
 import BrandBlast360 from "./pages/BrandBlast360.tsx";
+import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
 
 const queryClient = new QueryClient();
 
