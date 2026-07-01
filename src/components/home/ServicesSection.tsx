@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Mail, MessageSquare, Smartphone, Globe, Search, PenTool, Monitor, Package, ArrowRight, Target, Share2, Zap } from "lucide-react";
+import { Mail, MessageSquare, Smartphone, Globe, Search, PenTool, Monitor, Package, ArrowRight, Target, Share2, Zap, Radar } from "lucide-react";
 
 const services = [
   {
@@ -63,6 +63,13 @@ const services = [
     bullets: ["Banner placements", "Discount coupons", "Web advertising placements"],
     description: "Promote your brand through banners, coupons, and web ads.",
     path: "/online-advertising-sri-lanka",
+  },
+  {
+    icon: Radar,
+    title: "Programmatic Advertising",
+    bullets: ["Sri Lanka's only Premium PMP", "FindIt.lk + Studyway.lk + YouJobs.lk", "Zero ad fraud · 100% verified LK", "From LKR 60,000 · Live in 24h"],
+    description: "The premium tier of programmatic — brand-safe, guaranteed placements.",
+    path: "/programmatic-advertising-sri-lanka",
   },
   {
     icon: PenTool,

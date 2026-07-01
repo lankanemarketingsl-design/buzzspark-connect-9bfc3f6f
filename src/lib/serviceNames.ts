@@ -15,6 +15,7 @@ export const SERVICE_PATHS: Record<string, string> = {
   "/graphic-designing-in-sri-lanka": "Graphic Design",
   "/online-advertising-sri-lanka": "Online Advertising",
   "/web-banner-advertising-sri-lanka": "Web Banner Advertising",
+  "/programmatic-advertising-sri-lanka": "Programmatic Advertising",
   "/brand-blast-360": "Brand Blast 360",
   "/multi-channel-marketing-sri-lanka": "Multi-Channel Marketing",
   "/hotel-marketing-sri-lanka": "Hotel Marketing",
