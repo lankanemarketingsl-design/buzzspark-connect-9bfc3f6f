@@ -104,7 +104,7 @@ const Footer = () => {
             {" · "}
             <a href="https://buzzconnect.lk/whatsapp-marketing" className="hover:text-accent transition-colors">WhatsApp Marketing Sri Lanka</a>
           </p>
-          <p>&copy; 2014 Buzz Connect. All rights reserved.</p>
+          <p>&copy; 2020 Buzz Connect. All rights reserved.</p>
         </div>
       </div>
     </footer>
