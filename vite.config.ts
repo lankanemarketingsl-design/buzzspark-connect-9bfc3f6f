@@ -211,6 +211,93 @@ const applyRouteSeo = (templateHtml: string, entry: RouteSeoEntry) => {
   return html;
 };
 
+interface JobSeoEntry {
+  slug: string;
+  title: string;
+  seoTitle: string;
+  metaDescription: string;
+  h1: string;
+  employmentType: string;
+  datePosted: string;
+  validThrough: string;
+  identifier: string;
+  schemaDescription: string;
+}
+
+const parseJobs = (projectRoot: string): JobSeoEntry[] => {
+  const dataFile = path.join(projectRoot, "src", "data", "jobs.ts");
+  if (!fs.existsSync(dataFile)) return [];
+  const content = fs.readFileSync(dataFile, "utf8");
+  const marker = /\n\s{4}slug:\s*"([^"]+)"/g;
+  const positions: { slug: string; index: number }[] = [];
+  for (const m of content.matchAll(marker)) positions.push({ slug: m[1], index: m.index ?? 0 });
+
+  const entries: JobSeoEntry[] = [];
+  positions.forEach((pos, i) => {
+    const block = content.slice(pos.index, positions[i + 1]?.index ?? content.length);
+    const get = (prop: string) => block.match(new RegExp(`${prop}:\\s*"((?:[^"\\\\]|\\\\.)*)"`))?.[1]?.replace(/\\"/g, '"') ?? "";
+    const seoTitle = get("seoTitle");
+    if (!seoTitle) return;
+    entries.push({
+      slug: pos.slug,
+      title: get("title"),
+      seoTitle,
+      metaDescription: get("metaDescription"),
+      h1: get("h1") || get("title"),
+      employmentType: get("employmentType") || "FULL_TIME",
+      datePosted: get("datePosted"),
+      validThrough: get("validThrough"),
+      identifier: get("identifier"),
+      schemaDescription: get("schemaDescription") || get("metaDescription"),
+    });
+  });
+  return entries;
+};
+
+const buildJobHtml = (template: string, job: JobSeoEntry) => {
+  const canonical = `${SITE_URL}/careers/${job.slug}`;
+  let html = applyRouteSeo(template, {
+    route: `/careers/${job.slug}`,
+    title: job.seoTitle,
+    description: job.metaDescription,
+    canonical,
+    h1: job.h1,
+    paragraphs: [job.schemaDescription],
+  });
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: job.title,
+    description: `<p>${job.schemaDescription}</p>`,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Buzz Connect",
+      value: job.identifier,
+    },
+    datePosted: job.datePosted,
+    validThrough: job.validThrough,
+    employmentType: job.employmentType,
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "Buzz Connect",
+      sameAs: SITE_URL,
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Colombo",
+        addressCountry: "LK",
+      },
+    },
+    directApply: true,
+    url: canonical,
+  };
+
+  const jsonLd = `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>`;
+  return html.replace("</head>", `  ${jsonLd}\n  </head>`);
+};
 
 const staticRouteSeoPlugin = (): Plugin => ({
   name: "static-route-seo-plugin",
@@ -230,6 +317,7 @@ const staticRouteSeoPlugin = (): Plugin => ({
     const routeSeo = collectRouteSeo(projectRoot);
 
     routeSeo.forEach((entry) => {
+      if (entry.route.includes(":")) return; // dynamic routes handled separately
       if (entry.route === "/") {
         fs.writeFileSync(path.join(distDir, "index.html"), applyRouteSeo(template, entry), "utf8");
       } else {
@@ -246,9 +334,20 @@ const staticRouteSeoPlugin = (): Plugin => ({
       }
     });
 
-    console.log(`[static-route-seo] Generated static SEO HTML for ${routeSeo.length} routes.`);
+    // Pre-render each job vacancy page (/careers/<slug>) with JobPosting schema
+    const jobEntries = parseJobs(projectRoot);
+    const careersDir = path.join(distDir, "careers");
+    if (jobEntries.length) fs.mkdirSync(careersDir, { recursive: true });
+    jobEntries.forEach((job) => {
+      fs.writeFileSync(path.join(careersDir, `${job.slug}.html`), buildJobHtml(template, job), "utf8");
+    });
+
+    console.log(
+      `[static-route-seo] Generated static SEO HTML for ${routeSeo.length} routes and ${jobEntries.length} job pages.`,
+    );
   },
 });
+
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
