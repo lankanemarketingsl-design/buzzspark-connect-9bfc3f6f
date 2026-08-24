@@ -144,6 +144,7 @@ import EventMarketing from "./pages/EventMarketing.tsx";
 import StaffRecruitment from "./pages/StaffRecruitment.tsx";
 import GraphicDesignService from "./pages/GraphicDesignService.tsx";
 import Careers from "./pages/Careers.tsx";
+import JobPage from "./pages/JobPage.tsx";
 import BrandBlast360 from "./pages/BrandBlast360.tsx";
 import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
 
@@ -237,6 +238,7 @@ const App = () => (
               <Route path="/event-marketing-sri-lanka" element={<EventMarketing />} />
               <Route path="/staff-recruitment-campaigns-sri-lanka" element={<StaffRecruitment />} />
               <Route path="/careers" element={<Careers />} />
+              <Route path="/careers/:slug" element={<JobPage />} />
               <Route path="/google-ads-sri-lanka" element={<GoogleAdsSriLanka />} />
               <Route path="/why-email-marketing-is-important" element={<WhyEmailMarketingIsImportant />} />
               <Route path="/why-you-need-email-marketing" element={<WhyYouNeedEmailMarketing />} />
