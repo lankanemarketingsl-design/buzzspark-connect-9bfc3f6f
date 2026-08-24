@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Rocket, TrendingUp, Lightbulb, Users, Target, MessageCircle, ArrowRight } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import { jobs } from "@/data/jobs";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 const whyJoin = [
@@ -30,8 +31,8 @@ const Careers = () => {
   return (
     <>
       <SEOHead
-        title="Careers at BuzzConnect | Digital Marketing Jobs Sri Lanka"
-        description="Join BuzzConnect — Sri Lanka's fast-growing digital marketing agency. Explore career opportunities in marketing, design, sales and more. Internships welcome."
+        title="Digital Marketing Jobs in Sri Lanka | Careers at BuzzConnect"
+        description="Explore open digital marketing jobs and internships in Sri Lanka at BuzzConnect — Digital Marketing Specialist, Video Editor, Content Creator and marketing internships in Colombo."
         canonical="/careers"
         keywords="careers BuzzConnect, digital marketing jobs Sri Lanka, marketing internships Sri Lanka"
         breadcrumbs={breadcrumbs}
@@ -49,7 +50,7 @@ const Careers = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4">
-              Careers at <span className="text-accent">BuzzConnect</span>
+              Digital Marketing Jobs &amp; <span className="text-accent">Careers in Sri Lanka</span>
             </h1>
             <p className="text-xl sm:text-2xl text-primary-foreground/80 mb-6">
               Build Your Career in Digital Marketing
@@ -58,6 +59,42 @@ const Careers = () => {
               BuzzConnect is a fast-growing digital marketing agency in Sri Lanka, helping brands grow through performance marketing, social media, and creative strategy. We're always looking for passionate, talented individuals who want to grow in the digital space.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+
+      {/* Open Vacancies */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-3">
+              Current Openings
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Explore our open roles in Colombo, Sri Lanka. Apply in seconds via WhatsApp.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {jobs.map((job, i) => (
+              <motion.div
+                key={job.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex flex-col p-6 rounded-xl border border-border bg-card hover:border-accent transition-colors"
+              >
+                <span className="text-xs font-semibold uppercase tracking-wide text-accent mb-2">
+                  {job.employmentLabel} · Colombo
+                </span>
+                <h3 className="font-heading text-xl font-bold text-foreground mb-2">{job.title}</h3>
+                <p className="text-muted-foreground text-sm mb-5 flex-1">{job.cardBlurb}</p>
+                <Link to={`/careers/${job.slug}`} className="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:gap-3 transition-all">
+                  View Job <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
