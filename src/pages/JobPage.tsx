@@ -60,7 +60,6 @@ const JobPage = () => {
     },
     applicantLocationRequirements: { "@type": "Country", name: "Sri Lanka" },
     industry: "Digital Marketing",
-    hiringOrganizationSameAs: undefined,
   };
 
   const otherJobs = jobs.filter((j) => j.slug !== job.slug);
