@@ -44,7 +44,7 @@ import LogoCarousel from "@/components/home/LogoCarousel";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
 
-const WA = "94771437707";
+const WA = "94771976351";
 const wa = (msg: string) =>
   `https://wa.me/${WA}?text=${encodeURIComponent(msg)}&utm_source=website&utm_medium=whatsapp_cta&utm_campaign=brand_blast_360&utm_content=brand_blast_360_page`;
 
