@@ -14,6 +14,7 @@ import PageViewTracker from "@/components/PageViewTracker";
 
 import ScrollToTop from "@/components/ScrollToTop";
 import AdminLogin from "./pages/AdminLogin.tsx";
+import AdminResetPassword from "./pages/AdminResetPassword.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -180,6 +181,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/reset-password" element={<AdminResetPassword />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/email-marketing" element={<EmailMarketing />} />
               <Route path="/sms-marketing" element={<SmsMarketing />} />

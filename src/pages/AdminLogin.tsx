@@ -12,6 +12,27 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      toast({ title: "Enter your email first", description: "Type your admin email above, then click Forgot password.", variant: "destructive" });
+      return;
+    }
+    setResetLoading(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/admin/reset-password`,
+      });
+      if (error) throw error;
+      toast({ title: "Reset email sent", description: "Check your inbox for a password reset link." });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Could not send reset email";
+      toast({ title: "Error", description: message, variant: "destructive" });
+    } finally {
+      setResetLoading(false);
+    }
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -54,6 +75,14 @@ const AdminLogin = () => {
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Please wait…" : "Sign In"}
           </Button>
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            disabled={resetLoading}
+            className="w-full text-sm text-muted-foreground hover:text-foreground transition-colors text-center"
+          >
+            {resetLoading ? "Sending…" : "Forgot password?"}
+          </button>
         </form>
       </div>
     </div>
