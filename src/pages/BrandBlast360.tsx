@@ -41,6 +41,7 @@ import { useState, useEffect } from "react";
 import SEOHead from "@/components/SEOHead";
 import RelatedServices from "@/components/RelatedServices";
 import LogoCarousel from "@/components/home/LogoCarousel";
+import HeroReachPanel from "@/components/brandblast/HeroReachPanel";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
 import { Button } from "@/components/ui/button";
