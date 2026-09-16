@@ -574,7 +574,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* How it works */}
-        <section className="py-16 bg-primary text-primary-foreground">
+        <section className="order-[12] py-16 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-xs font-bold uppercase tracking-wider text-accent mb-3">How it works</div>
@@ -597,7 +597,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Mid-page CTA */}
-        <div className="bg-gradient-to-r from-accent via-amber-500 to-accent text-accent-foreground py-10 px-4 text-center">
+        <div className="order-[11] bg-gradient-to-r from-accent via-amber-500 to-accent text-accent-foreground py-10 px-4 text-center">
           <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Your next 100 customers are 24 hours away.</h3>
           <p className="text-sm sm:text-base opacity-90 mb-5">Send us your offer on WhatsApp — we'll have all 5 channels live within 24 hours. Fixed price. No contract. Guaranteed.</p>
           <div className="flex flex-wrap gap-3 justify-center">
@@ -608,10 +608,12 @@ const BrandBlast360 = () => {
               See packages & pricing
             </a>
           </div>
+          <div className="text-[11px] opacity-80 mt-4">Live in 24h · No contract · Reply within 1 hour</div>
         </div>
 
+
         {/* Channels detail */}
-        <section id="channels" className="py-16">
+        <section id="channels" className="order-[6] py-16">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Every channel. One campaign.</div>
@@ -673,9 +675,78 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
+        {/* See exactly what you get */}
+        <section className="order-[7] py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">The deliverables</div>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">See exactly what you get</h2>
+              <p className="text-muted-foreground">Not just numbers — here is the actual work that lands in front of your customers, and the report you receive afterwards.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                { img: shotEflyer, t: "Designed e-flyer", d: "We design your campaign artwork — ready for every channel.", alt: "Sample Brand Blast 360 promotional e-flyer design" },
+                { img: shotInbox, t: "Email in the inbox", d: "How your promotion lands for 750,000 opt-in subscribers.", alt: "Preview of a Brand Blast 360 email campaign in an inbox" },
+                { img: shotFindit, t: "Findit.lk featured listing", d: "Premium placement that keeps working after the campaign.", alt: "Findit.lk featured business listing on a mobile phone" },
+                { img: shotReport, t: "Performance report", d: "Opens, clicks and channel results at the end of every campaign.", alt: "Brand Blast 360 campaign performance report with open and click charts" },
+              ].map((c) => (
+                <figure key={c.t} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col shadow-card">
+                  <img src={c.img} alt={c.alt} loading="lazy" width={816} height={816} className="w-full aspect-square object-cover" />
+                  <figcaption className="p-5">
+                    <div className="font-heading font-bold text-base mb-1">{c.t}</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{c.d}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="text-center text-[11px] text-muted-foreground mt-5">Sample visuals shown for illustration.</p>
+          </div>
+        </section>
+
+        {/* Is the reach real? */}
+        <section className="order-[9] py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-9">
+              <div className="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-3">Quality, not just quantity</div>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl">Is the reach real? Yes — here's why.</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              {[
+                { ic: ShieldCheck, t: "100% opt-in", d: "Permission-based database — every contact chose to receive offers." },
+                { ic: Users, t: "Verified Sri Lankan contacts", d: "Real local people, with strong Western Province coverage." },
+                { ic: Target, t: "Segmented", d: "Grouped by profession, location and interest — not a random blast." },
+                { ic: Search, t: "Keeps working", d: "Your Findit.lk listing keeps pulling traffic after the campaign ends." },
+              ].map((p) => (
+                <div key={p.t} className="bg-card border border-border rounded-2xl p-5">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-3"><p.ic className="w-5 h-5" /></div>
+                  <div className="font-heading font-bold text-sm mb-1">{p.t}</div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{p.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Free mockup lead magnet */}
+        <section className="order-[11] py-12 bg-background">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="bg-card border-2 border-accent/40 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-accent mb-2">No commitment</div>
+                <h3 className="font-heading font-black text-2xl mb-2">Get a free sample campaign mockup + reach estimate for your business — within the hour.</h3>
+                <p className="text-sm text-muted-foreground">See your own offer as a finished campaign before you spend anything.</p>
+              </div>
+              <a href={MOCKUP_WA} target="_blank" rel="noopener" data-wa-placement="brandblast360_mockup_midpage" data-selected-service="Brand Blast 360 — Free mockup" data-service="Brand Blast 360" className="shrink-0 inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm">
+                <Palette className="w-4 h-4" /> Send me a free mockup
+              </a>
+            </div>
+          </div>
+        </section>
+
+
         {/* Who it's for — Industry Campaign Explorer */}
         {selectedIndustry && (
-          <section className="py-16 sm:py-20 bg-primary text-primary-foreground" id="use-cases">
+          <section className="order-[10] py-16 sm:py-20 bg-primary text-primary-foreground" id="use-cases">
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mb-9">
                 <div className="text-xs font-bold uppercase tracking-wider text-accent mb-3">Who it's for</div>
