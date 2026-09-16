@@ -739,6 +739,128 @@ const AdminDashboard = () => {
           </div>
         </section>
 
+        {/* Lead Inbox — full inquiry details with WhatsApp reply */}
+        <section>
+          <SectionHeader
+            title="Lead Inbox"
+            subtitle="Every inquiry with full details — reply instantly on WhatsApp"
+          />
+          {filteredInquiries.length === 0 ? (
+            <div className="rounded-xl border border-border bg-card p-8 text-center text-sm text-muted-foreground shadow-sm">
+              No inquiries in this period.
+            </div>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-2">
+              {filteredInquiries.map((i) => {
+                const serviceName = i.service || resolveServiceName(i.source_page) || "General";
+                const OWN_NUMBERS = new Set(["94771437707", "94771976351", "0771437707", "0771976351"]);
+                let waPhone = (i.phone || "").replace(/\D/g, "");
+                if (waPhone.startsWith("0")) waPhone = "94" + waPhone.slice(1);
+                if (OWN_NUMBERS.has(waPhone)) waPhone = ""; // don't reply to our own business numbers
+                const waText = encodeURIComponent(
+                  `Hi ${i.name || "there"}, this is Buzz Connect. We received your inquiry about ${serviceName}. How can we help you today?`,
+                );
+                return (
+                  <div
+                    key={i.id}
+                    className="rounded-xl border border-border bg-card p-4 shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <div>
+                        <div className="font-semibold text-foreground">{i.name || "—"}</div>
+                        <div className="text-xs text-muted-foreground">
+                          {new Date(i.created_at).toLocaleString()}
+                        </div>
+                      </div>
+                      <Badge variant={i.inquiry_type === "form_submission" ? "default" : "secondary"}>
+                        {i.inquiry_type.replace(/_/g, " ")}
+                      </Badge>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <Badge variant="outline" className="font-medium">
+                        {serviceName}
+                      </Badge>
+                      {cleanPath(i.source_page) && (
+                        <a
+                          href={cleanPath(i.source_page)!}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                        >
+                          {prettyPath(i.source_page)} <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                      <span className="text-xs text-muted-foreground">
+                        via {resolveTrafficSource(i.utm_source, i.utm_medium)}
+                      </span>
+                    </div>
+
+                    <div className="space-y-1 text-sm mb-3">
+                      {i.phone && (
+                        <div className="flex items-center gap-2">
+                          <Phone className="w-3.5 h-3.5 text-muted-foreground" />
+                          <span>{i.phone}</span>
+                        </div>
+                      )}
+                      {i.email && (
+                        <div className="flex items-center gap-2">
+                          <Mail className="w-3.5 h-3.5 text-muted-foreground" />
+                          <span className="break-all">{i.email}</span>
+                        </div>
+                      )}
+                      {i.business && (
+                        <div className="text-xs text-muted-foreground">Business: {i.business}</div>
+                      )}
+                      {i.message && (
+                        <div className="mt-2 rounded-lg bg-muted/50 p-2.5 text-xs whitespace-pre-wrap">
+                          {i.message}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-border">
+                      {waPhone ? (
+                        <a
+                          href={`https://wa.me/${waPhone}?text=${waText}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-700 transition-colors"
+                        >
+                          <MessageCircle className="w-3.5 h-3.5" /> Reply on WhatsApp
+                        </a>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">No phone number</span>
+                      )}
+                      {i.phone && (
+                        <a
+                          href={`tel:${i.phone.replace(/\s/g, "")}`}
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium hover:bg-muted transition-colors"
+                        >
+                          <Phone className="w-3.5 h-3.5" /> Call
+                        </a>
+                      )}
+                      <button onClick={() => handleStatusToggle(i)} className="text-xs ml-auto">
+                        <Badge
+                          variant={
+                            i.status === "new"
+                              ? "destructive"
+                              : i.status === "contacted"
+                              ? "default"
+                              : "outline"
+                          }
+                        >
+                          {i.status}
+                        </Badge>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+
         {/* Inquiry table (preserved) */}
         <section>
           <SectionHeader title="All Inquiries" subtitle="Form submissions + CTA clicks (page views hidden)" />
