@@ -1,7 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, Search, Send, Trophy } from "lucide-react";
 import type { ReactNode } from "react";
-import buzzLogo from "@/assets/logo-dark.webp";
+import buzzLogo from "@/assets/buzz-connect-logo.jpg.asset.json";
+import finditLogo from "@/assets/finditlk-logo.jpg.asset.json";
 
 const BrandCard = ({
   type,
