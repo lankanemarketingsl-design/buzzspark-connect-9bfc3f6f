@@ -92,14 +92,44 @@ const HeroDistributionCard = () => {
 
   return (
     <div className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.04] backdrop-blur-xl p-5 sm:p-6 shadow-2xl">
-      <div className="flex items-center justify-center gap-2.5 flex-wrap mb-3.5">
-        <span className="inline-flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-primary-foreground bg-primary-foreground/[0.07] border border-primary-foreground/15 rounded-full px-3.5 py-1.5">
-          <FileText className="w-3.5 h-3.5 text-accent" /> Your content
-        </span>
-        <span className="text-xs sm:text-[13px] text-primary-foreground/55">
-          distributed across every channel →
-        </span>
+      <div className="text-center text-xs sm:text-[13px] font-medium text-primary-foreground/55 mb-1">
+        Your content, distributed across every channel
       </div>
+
+      {/* Distribution hub diagram */}
+      <div className="mx-auto max-w-[440px] mb-1">
+        <svg viewBox="0 0 440 146" width="100%" height="146" className="block overflow-visible" aria-hidden="true">
+          <g fill="none" stroke="rgba(255,255,255,.13)" strokeWidth="2">
+            <path id="bzhp1" d="M220,42 C220,82 60,70 60,112" />
+            <path id="bzhp2" d="M220,42 C220,82 168,82 168,112" />
+            <path id="bzhp3" d="M220,42 C220,82 272,82 272,112" />
+            <path id="bzhp4" d="M220,42 C220,82 380,70 380,112" />
+          </g>
+          <rect x="172" y="8" width="96" height="30" rx="9" fill="#0f1d35" stroke="rgba(255,255,255,.2)" />
+          <text x="220" y="28" textAnchor="middle" fill="#fff" fontSize="12.5" fontWeight="600">
+            Your content
+          </text>
+          {CHANNELS.map((ch, i) => (
+            <circle key={ch.key} cx={[60, 168, 272, 380][i]} cy="112" r="9" fill={ch.color} />
+          ))}
+          <g fontSize="10" fill="rgba(255,255,255,.6)" textAnchor="middle">
+            {CHANNELS.map((ch, i) => (
+              <text key={ch.key} x={[60, 168, 272, 380][i]} y="136">
+                {ch.label}
+              </text>
+            ))}
+          </g>
+          {!reduce &&
+            CHANNELS.map((ch, i) => (
+              <circle key={`dot-${ch.key}`} r="4.5" fill={ch.color}>
+                <animateMotion dur="1.7s" begin={`${[0, 0.4, 0.8, 0.25][i]}s`} repeatCount="indefinite">
+                  <mpath href={`#bzhp${i + 1}`} />
+                </animateMotion>
+              </circle>
+            ))}
+        </svg>
+      </div>
+
 
       <div
         className="font-heading text-4xl sm:text-5xl font-bold leading-none bg-clip-text text-transparent"
