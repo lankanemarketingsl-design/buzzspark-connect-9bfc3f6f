@@ -45,10 +45,16 @@ import HeroReachPanel from "@/components/brandblast/HeroReachPanel";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
 import { Button } from "@/components/ui/button";
+import shotEflyer from "@/assets/bb360/sample-eflyer.jpg";
+import shotInbox from "@/assets/bb360/inbox-preview.jpg";
+import shotFindit from "@/assets/bb360/findit-listing.jpg";
+import shotReport from "@/assets/bb360/performance-report.jpg";
 
 const WA = "94771976351";
 const wa = (msg: string) =>
   `https://wa.me/${WA}?text=${encodeURIComponent(msg)}&utm_source=website&utm_medium=whatsapp_cta&utm_campaign=brand_blast_360&utm_content=brand_blast_360_page`;
+const MOCKUP_WA = wa("Hi Buzz Connect, please send me a free sample campaign mockup and reach estimate for my business.");
+
 
 const channels = [
   { icon: Mail, name: "Email Blast", num: "750,000", sub: "Verified opt-in subscribers", color: "text-indigo-500", bg: "bg-indigo-500/10" },
@@ -219,9 +225,10 @@ const BrandBlast360 = () => {
         jsonLd={jsonLd}
       />
 
-      <div className="pt-14 sm:pt-16 overflow-x-hidden">
+      <div className="pt-14 sm:pt-16 overflow-x-hidden flex flex-col pb-20 lg:pb-0">
         {/* HERO */}
-        <section className="relative bg-gradient-to-br from-primary/95 via-primary to-primary/90 text-primary-foreground overflow-hidden">
+        <section className="order-[1] relative bg-gradient-to-br from-primary/95 via-primary to-primary/90 text-primary-foreground overflow-hidden">
+
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,hsl(var(--accent)/.4),transparent_50%),radial-gradient(circle_at_80%_60%,hsl(var(--primary-foreground)/.15),transparent_55%)]" />
           <div className="container mx-auto px-4 py-14 sm:py-20 relative grid lg:grid-cols-2 gap-10 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -229,7 +236,9 @@ const BrandBlast360 = () => {
                 <Rocket className="w-3.5 h-3.5" />
                 Brand Blast 360 — Buzz Connect
               </div>
+              <p className="text-accent font-semibold text-sm sm:text-base mb-3">One campaign. Five channels. Your phone starts ringing this week.</p>
               <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mb-5">
+
                 Get Seen by 988,000+
                 <span className="block bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">Customers in 24 Hours.</span>
               </h1>
@@ -256,10 +265,14 @@ const BrandBlast360 = () => {
                 <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps and pricing.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero_whatsapp" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105 shadow-lg shadow-accent/30">
                   <MessageCircle className="w-4 h-4" /> WhatsApp Us — Launch in 24h
                 </a>
+                <a href={MOCKUP_WA} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero_mockup" data-selected-service="Brand Blast 360 — Free mockup" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+                  <Palette className="w-4 h-4" /> Free sample mockup
+                </a>
                 <a href="#packages" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
                   <Rocket className="w-4 h-4" /> See Pricing
                 </a>
               </div>
+
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-6 text-xs text-primary-foreground/70">
                 <span className="inline-flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-accent" /> Fixed price · no contract</span>
@@ -276,7 +289,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Problem strip */}
-        <div className="bg-gradient-to-r from-red-50 via-orange-50 to-red-50 dark:from-red-950/30 dark:via-orange-950/30 dark:to-red-950/30 border-y border-red-200/50 dark:border-red-900/30 py-4 px-4 text-center text-sm">
+        <div className="order-[2] bg-gradient-to-r from-red-50 via-orange-50 to-red-50 dark:from-red-950/30 dark:via-orange-950/30 dark:to-red-950/30 border-y border-red-200/50 dark:border-red-900/30 py-4 px-4 text-center text-sm">
           <span className="font-semibold text-foreground">Running Facebook ads only? You're missing 89% of your potential audience.</span>
           <ArrowRight className="inline mx-2 w-4 h-4 text-red-500" />
           <span className="font-bold text-primary">Brand Blast 360: LKR 15,000 · 5 channels · 988,000+ reach · same price as Facebook alone.</span>
@@ -284,7 +297,7 @@ const BrandBlast360 = () => {
 
 
         {/* Social proof strip */}
-        <div className="bg-background border-b border-border py-4 px-4">
+        <div className="order-[3] bg-background border-b border-border py-4 px-4">
           <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm">
             <span className="inline-flex items-center gap-2"><div className="text-accent text-base">★★★★★</div><span className="font-semibold">4.9/5 from 320+ clients</span></span>
             <span className="inline-flex items-center gap-2"><Users className="w-4 h-4 text-primary" /><span className="font-semibold">1,500+ Sri Lankan businesses</span></span>
@@ -295,7 +308,7 @@ const BrandBlast360 = () => {
 
 
         {/* Stats */}
-        <section className="py-14 bg-background">
+        <section className="order-[5] py-14 bg-background">
           <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
               { ic: Mail, n: "750,000+", l: "Email Reach", s: "Verified opt-in subscribers", c: "text-indigo-500", bg: "bg-indigo-500/10" },
@@ -318,7 +331,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Packages — moved up for conversion */}
-        <section id="packages" className="py-16 bg-background">
+        <section id="packages" className="order-[14] py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-8">
               <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full mb-4">
@@ -414,7 +427,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Quick lead-capture (1-field WhatsApp shortcut) */}
-        <section className="py-12 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
+        <section className="order-[15] py-12 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
           <div className="container mx-auto px-4 max-w-3xl">
             <div className="text-center mb-6">
               <div className="text-xs font-bold uppercase tracking-wider text-accent mb-2">Not sure which package?</div>
@@ -473,7 +486,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* ROI — moved up for conversion */}
-        <section className="py-10 bg-muted/30">
+        <section className="order-[13] py-10 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 grid md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 text-center">
               <div>
@@ -498,83 +511,75 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Facebook vs Brand Blast 360 */}
-        <section id="compare" className="py-16 bg-muted/30">
+        <section id="compare" className="order-[8] py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-10">
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Brand Blast 360 vs Facebook Ads</div>
               <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Why running Facebook alone is leaving money on the table</h2>
               <p className="text-muted-foreground">Most businesses run a Facebook ad and wonder why results are weak. Here's the honest truth — and why Brand Blast 360 delivers what Facebook alone never can.</p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-5">
-              {/* Facebook Only */}
-              <div className="bg-card border border-border rounded-2xl p-7">
-                <div className="flex items-center gap-3 pb-5 mb-5 border-b border-border">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                    <Facebook className="w-6 h-6 text-blue-500" />
-                  </div>
+            <div className="max-w-5xl mx-auto bg-card border border-border rounded-2xl overflow-hidden">
+              <div className="grid grid-cols-2 sticky top-14 sm:top-16 z-10">
+                <div className="flex items-center gap-2 p-4 bg-card border-b border-r border-border">
+                  <Facebook className="w-5 h-5 text-blue-500 shrink-0" />
                   <div>
-                    <div className="font-heading font-bold">Facebook Ads Only</div>
-                    <div className="text-xs text-muted-foreground">What most businesses run</div>
+                    <div className="font-heading font-bold text-sm">Facebook Ads Only</div>
+                    <div className="text-[11px] text-muted-foreground">What most businesses run</div>
                   </div>
                 </div>
-                <div className="space-y-4">
-                  {fbBad.map((p) => (
-                    <div key={p.t} className="flex gap-3">
-                      <div className="w-6 h-6 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <X className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-sm mb-1">{p.t}</div>
-                        <div className="text-xs text-muted-foreground leading-relaxed">{p.d}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 p-4 rounded-xl bg-red-500/5 border border-red-500/20 text-center">
-                  <div className="text-2xl font-heading font-black text-red-500">LKR 15,000+</div>
-                  <div className="text-[11px] font-semibold text-red-500/70 mt-1">for Facebook alone — one audience, one channel, unpredictable</div>
+                <div className="flex items-center gap-2 p-4 bg-primary text-primary-foreground border-b border-border">
+                  <Rocket className="w-5 h-5 text-accent shrink-0" />
+                  <div>
+                    <div className="font-heading font-bold text-sm">Brand Blast 360</div>
+                    <div className="text-[11px] text-primary-foreground/60">Multi-channel · full coverage</div>
+                  </div>
                 </div>
               </div>
 
-              {/* Brand Blast 360 */}
-              <div className="relative bg-primary text-primary-foreground rounded-2xl p-7 shadow-xl shadow-primary/20 ring-4 ring-accent/10">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-[10px] font-black tracking-widest uppercase px-4 py-1 rounded-full">
-                  Brand Blast 360
-                </div>
-                <div className="flex items-center gap-3 pb-5 mb-5 border-b border-white/10">
-                  <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                    <Rocket className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-heading font-bold">Brand Blast 360</div>
-                    <div className="text-xs text-primary-foreground/60">Multi-channel · full coverage</div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  {fbGood.map((p) => (
-                    <div key={p.t} className="flex gap-3">
-                      <div className="w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-sm mb-1">{p.t}</div>
-                        <div className="text-xs text-primary-foreground/65 leading-relaxed">{p.d}</div>
-                      </div>
+              {fbBad.map((bad, i) => (
+                <div key={bad.t} className="grid grid-cols-2 border-b border-border last:border-b-0">
+                  <div className="p-4 border-r border-border flex gap-2.5">
+                    <span className="w-5 h-5 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center shrink-0 mt-0.5"><X className="w-3 h-3" /></span>
+                    <div>
+                      <div className="font-bold text-[13px] sm:text-sm mb-1">{bad.t}</div>
+                      <div className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">{bad.d}</div>
                     </div>
-                  ))}
+                  </div>
+                  <div className="p-4 bg-emerald-500/5 flex gap-2.5">
+                    <span className="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><Check className="w-3 h-3" /></span>
+                    <div>
+                      <div className="font-bold text-[13px] sm:text-sm mb-1">{fbGood[i]?.t}</div>
+                      <div className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">{fbGood[i]?.d}</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-6 p-4 rounded-xl bg-accent/10 border border-accent/25 text-center">
-                  <div className="text-2xl font-heading font-black text-accent">LKR 15,000</div>
-                  <div className="text-[11px] font-semibold text-accent/80 mt-1">all 5 channels · 988,000+ reach · 30 days · fixed price</div>
+              ))}
+
+              <div className="grid grid-cols-2 border-t-2 border-border">
+                <div className="p-4 border-r border-border text-center bg-red-500/5">
+                  <div className="text-xl sm:text-2xl font-heading font-black text-red-500">LKR 15,000+</div>
+                  <div className="text-[11px] font-semibold text-red-500/70 mt-1">for Facebook alone — one audience, one channel, unpredictable</div>
+                </div>
+                <div className="p-4 text-center bg-accent/10">
+                  <div className="text-xl sm:text-2xl font-heading font-black text-amber-600">LKR 15,000</div>
+                  <div className="text-[11px] font-semibold text-muted-foreground mt-1">all 5 channels · 988,000+ reach · 30 days · fixed price</div>
                 </div>
               </div>
+            </div>
+
+            <div className="text-center mt-7">
+              <a href={wa("Hi Buzz Connect, I currently run Facebook ads only. Please show me how Brand Blast 360 compares for my business.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_compare_cta" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-3.5 rounded-xl text-sm">
+                <MessageCircle className="w-4 h-4" /> Switch to all 5 channels
+              </a>
+              <div className="text-[11px] text-muted-foreground mt-3">Live in 24h · No contract · Reply within 1 hour</div>
             </div>
           </div>
         </section>
 
+
         {/* How it works */}
-        <section className="py-16 bg-primary text-primary-foreground">
+        <section className="order-[12] py-16 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-xs font-bold uppercase tracking-wider text-accent mb-3">How it works</div>
@@ -597,7 +602,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Mid-page CTA */}
-        <div className="bg-gradient-to-r from-accent via-amber-500 to-accent text-accent-foreground py-10 px-4 text-center">
+        <div className="order-[11] bg-gradient-to-r from-accent via-amber-500 to-accent text-accent-foreground py-10 px-4 text-center">
           <h3 className="font-heading font-black text-2xl sm:text-3xl mb-2">Your next 100 customers are 24 hours away.</h3>
           <p className="text-sm sm:text-base opacity-90 mb-5">Send us your offer on WhatsApp — we'll have all 5 channels live within 24 hours. Fixed price. No contract. Guaranteed.</p>
           <div className="flex flex-wrap gap-3 justify-center">
@@ -608,10 +613,12 @@ const BrandBlast360 = () => {
               See packages & pricing
             </a>
           </div>
+          <div className="text-[11px] opacity-80 mt-4">Live in 24h · No contract · Reply within 1 hour</div>
         </div>
 
+
         {/* Channels detail */}
-        <section id="channels" className="py-16">
+        <section id="channels" className="order-[6] py-16">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Every channel. One campaign.</div>
@@ -673,9 +680,78 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
+        {/* See exactly what you get */}
+        <section className="order-[7] py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">The deliverables</div>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">See exactly what you get</h2>
+              <p className="text-muted-foreground">Not just numbers — here is the actual work that lands in front of your customers, and the report you receive afterwards.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                { img: shotEflyer, t: "Designed e-flyer", d: "We design your campaign artwork — ready for every channel.", alt: "Sample Brand Blast 360 promotional e-flyer design" },
+                { img: shotInbox, t: "Email in the inbox", d: "How your promotion lands for 750,000 opt-in subscribers.", alt: "Preview of a Brand Blast 360 email campaign in an inbox" },
+                { img: shotFindit, t: "Findit.lk featured listing", d: "Premium placement that keeps working after the campaign.", alt: "Findit.lk featured business listing on a mobile phone" },
+                { img: shotReport, t: "Performance report", d: "Opens, clicks and channel results at the end of every campaign.", alt: "Brand Blast 360 campaign performance report with open and click charts" },
+              ].map((c) => (
+                <figure key={c.t} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col shadow-card">
+                  <img src={c.img} alt={c.alt} loading="lazy" width={816} height={816} className="w-full aspect-square object-cover" />
+                  <figcaption className="p-5">
+                    <div className="font-heading font-bold text-base mb-1">{c.t}</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{c.d}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="text-center text-[11px] text-muted-foreground mt-5">Sample visuals shown for illustration.</p>
+          </div>
+        </section>
+
+        {/* Is the reach real? */}
+        <section className="order-[9] py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-9">
+              <div className="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-3">Quality, not just quantity</div>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl">Is the reach real? Yes — here's why.</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              {[
+                { ic: ShieldCheck, t: "100% opt-in", d: "Permission-based database — every contact chose to receive offers." },
+                { ic: Users, t: "Verified Sri Lankan contacts", d: "Real local people, with strong Western Province coverage." },
+                { ic: Target, t: "Segmented", d: "Grouped by profession, location and interest — not a random blast." },
+                { ic: Search, t: "Keeps working", d: "Your Findit.lk listing keeps pulling traffic after the campaign ends." },
+              ].map((p) => (
+                <div key={p.t} className="bg-card border border-border rounded-2xl p-5">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-3"><p.ic className="w-5 h-5" /></div>
+                  <div className="font-heading font-bold text-sm mb-1">{p.t}</div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{p.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Free mockup lead magnet */}
+        <section className="order-[11] py-12 bg-background">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="bg-card border-2 border-accent/40 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-accent mb-2">No commitment</div>
+                <h3 className="font-heading font-black text-2xl mb-2">Get a free sample campaign mockup + reach estimate for your business — within the hour.</h3>
+                <p className="text-sm text-muted-foreground">See your own offer as a finished campaign before you spend anything.</p>
+              </div>
+              <a href={MOCKUP_WA} target="_blank" rel="noopener" data-wa-placement="brandblast360_mockup_midpage" data-selected-service="Brand Blast 360 — Free mockup" data-service="Brand Blast 360" className="shrink-0 inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm">
+                <Palette className="w-4 h-4" /> Send me a free mockup
+              </a>
+            </div>
+          </div>
+        </section>
+
+
         {/* Who it's for — Industry Campaign Explorer */}
         {selectedIndustry && (
-          <section className="py-16 sm:py-20 bg-primary text-primary-foreground" id="use-cases">
+          <section className="order-[10] py-16 sm:py-20 bg-primary text-primary-foreground" id="use-cases">
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mb-9">
                 <div className="text-xs font-bold uppercase tracking-wider text-accent mb-3">Who it's for</div>
@@ -836,7 +912,8 @@ const BrandBlast360 = () => {
         )}
 
         {/* Testimonials */}
-        <section className="py-16 bg-primary text-primary-foreground">
+        <section className="order-[16] py-16 bg-primary text-primary-foreground">
+
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-xs font-bold uppercase tracking-wider text-accent mb-3">What clients say</div>
@@ -867,11 +944,12 @@ const BrandBlast360 = () => {
         </section>
 
 
-        {/* Client logos — social proof before FAQ */}
-        <LogoCarousel />
+        {/* Client logos — social proof */}
+        <div className="order-[4]"><LogoCarousel /></div>
 
         {/* 24-hour Launch Guarantee — conversion booster */}
-        <section className="py-14 bg-background">
+        <section className="order-[17] py-14 bg-background">
+
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="relative bg-gradient-to-br from-emerald-500/10 via-background to-accent/10 border-2 border-emerald-500/30 rounded-3xl p-7 sm:p-10 text-center overflow-hidden">
               <div className="absolute -top-16 -right-16 w-56 h-56 bg-emerald-500/15 rounded-full blur-3xl" />
@@ -908,7 +986,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 bg-muted/30">
+        <section className="order-[18] py-16 bg-muted/30">
           <div className="container mx-auto px-4 max-w-3xl">
             <div className="text-center mb-10">
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Frequently asked questions</div>
@@ -930,7 +1008,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="relative py-20 bg-gradient-to-br from-primary via-primary to-primary/95 text-primary-foreground text-center overflow-hidden">
+        <section className="order-[19] relative py-20 bg-gradient-to-br from-primary via-primary to-primary/95 text-primary-foreground text-center overflow-hidden">
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_30%,hsl(var(--accent)/.35),transparent_55%),radial-gradient(circle_at_70%_70%,hsl(var(--accent)/.2),transparent_55%)]" />
           <div className="container mx-auto px-4 relative max-w-3xl">
             <div className="inline-block bg-red-500/15 border border-red-300/30 px-4 py-1.5 rounded-full text-xs font-semibold mb-6">
@@ -947,31 +1025,49 @@ const BrandBlast360 = () => {
               <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_launch" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-7 py-4 rounded-xl">
                 <Rocket className="w-4 h-4" /> Launch Brand Blast 360
               </a>
+              <a href={MOCKUP_WA} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_mockup" data-selected-service="Brand Blast 360 — Free mockup" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-7 py-4 rounded-xl">
+                <Palette className="w-4 h-4" /> Get a free sample mockup
+              </a>
               <a href={wa("Hi Buzz Connect, I have a question about Brand Blast 360.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_question" data-selected-service="Brand Blast 360 — Question" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-7 py-4 rounded-xl">
                 <MessageCircle className="w-4 h-4" /> Ask on WhatsApp
               </a>
             </div>
             <div className="text-xs text-primary-foreground/65 inline-flex items-center gap-2">
-              <ShieldCheck className="w-3.5 h-3.5" /> No contract · No hidden fees · Full report included
+              <ShieldCheck className="w-3.5 h-3.5" /> Live in 24h · No contract · Reply within 1 hour · Full report included
             </div>
+
           </div>
         </section>
 
-        <RelatedServices currentPath="/brand-blast-360" />
-        <ContactSection />
+        <div className="order-[20]"><RelatedServices currentPath="/brand-blast-360" /></div>
+        <div className="order-[21]"><ContactSection /></div>
 
-        {/* Sticky mobile WhatsApp CTA */}
-        <a
-          href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps and pricing.")}
-          target="_blank"
-          rel="noopener"
-          data-wa-placement="brandblast360_sticky_mobile"
-          data-selected-service="Brand Blast 360"
-          data-service="Brand Blast 360"
-          className="lg:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3.5 rounded-2xl text-sm shadow-2xl shadow-emerald-500/40"
-        >
-          <MessageCircle className="w-5 h-5" /> WhatsApp Us — Reserve a Slot
-        </a>
+        {/* Sticky mobile CTA bar — WhatsApp + free mockup */}
+        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-background/95 backdrop-blur border-t border-border p-3 flex gap-2">
+          <a
+            href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps and pricing.")}
+            target="_blank"
+            rel="noopener"
+            data-wa-placement="brandblast360_sticky_mobile"
+            data-selected-service="Brand Blast 360"
+            data-service="Brand Blast 360"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-xl text-sm shadow-lg shadow-emerald-500/30"
+          >
+            <MessageCircle className="w-4 h-4" /> WhatsApp us
+          </a>
+          <a
+            href={MOCKUP_WA}
+            target="_blank"
+            rel="noopener"
+            data-wa-placement="brandblast360_sticky_mobile_mockup"
+            data-selected-service="Brand Blast 360 — Free mockup"
+            data-service="Brand Blast 360"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-4 py-3 rounded-xl text-sm"
+          >
+            <Palette className="w-4 h-4" /> Free mockup
+          </a>
+        </div>
+
       </div>
 
     </>
