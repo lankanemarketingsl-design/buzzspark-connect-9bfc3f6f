@@ -836,7 +836,8 @@ const BrandBlast360 = () => {
         )}
 
         {/* Testimonials */}
-        <section className="py-16 bg-primary text-primary-foreground">
+        <section className="order-[16] py-16 bg-primary text-primary-foreground">
+
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-xs font-bold uppercase tracking-wider text-accent mb-3">What clients say</div>
@@ -867,11 +868,12 @@ const BrandBlast360 = () => {
         </section>
 
 
-        {/* Client logos — social proof before FAQ */}
-        <LogoCarousel />
+        {/* Client logos — social proof */}
+        <div className="order-[4]"><LogoCarousel /></div>
 
         {/* 24-hour Launch Guarantee — conversion booster */}
-        <section className="py-14 bg-background">
+        <section className="order-[17] py-14 bg-background">
+
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="relative bg-gradient-to-br from-emerald-500/10 via-background to-accent/10 border-2 border-emerald-500/30 rounded-3xl p-7 sm:p-10 text-center overflow-hidden">
               <div className="absolute -top-16 -right-16 w-56 h-56 bg-emerald-500/15 rounded-full blur-3xl" />
@@ -908,7 +910,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 bg-muted/30">
+        <section className="order-[18] py-16 bg-muted/30">
           <div className="container mx-auto px-4 max-w-3xl">
             <div className="text-center mb-10">
               <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Frequently asked questions</div>
@@ -930,7 +932,7 @@ const BrandBlast360 = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="relative py-20 bg-gradient-to-br from-primary via-primary to-primary/95 text-primary-foreground text-center overflow-hidden">
+        <section className="order-[19] relative py-20 bg-gradient-to-br from-primary via-primary to-primary/95 text-primary-foreground text-center overflow-hidden">
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_30%,hsl(var(--accent)/.35),transparent_55%),radial-gradient(circle_at_70%_70%,hsl(var(--accent)/.2),transparent_55%)]" />
           <div className="container mx-auto px-4 relative max-w-3xl">
             <div className="inline-block bg-red-500/15 border border-red-300/30 px-4 py-1.5 rounded-full text-xs font-semibold mb-6">
@@ -947,31 +949,49 @@ const BrandBlast360 = () => {
               <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_launch" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-7 py-4 rounded-xl">
                 <Rocket className="w-4 h-4" /> Launch Brand Blast 360
               </a>
+              <a href={MOCKUP_WA} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_mockup" data-selected-service="Brand Blast 360 — Free mockup" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-7 py-4 rounded-xl">
+                <Palette className="w-4 h-4" /> Get a free sample mockup
+              </a>
               <a href={wa("Hi Buzz Connect, I have a question about Brand Blast 360.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_final_cta_question" data-selected-service="Brand Blast 360 — Question" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-7 py-4 rounded-xl">
                 <MessageCircle className="w-4 h-4" /> Ask on WhatsApp
               </a>
             </div>
             <div className="text-xs text-primary-foreground/65 inline-flex items-center gap-2">
-              <ShieldCheck className="w-3.5 h-3.5" /> No contract · No hidden fees · Full report included
+              <ShieldCheck className="w-3.5 h-3.5" /> Live in 24h · No contract · Reply within 1 hour · Full report included
             </div>
+
           </div>
         </section>
 
-        <RelatedServices currentPath="/brand-blast-360" />
-        <ContactSection />
+        <div className="order-[20]"><RelatedServices currentPath="/brand-blast-360" /></div>
+        <div className="order-[21]"><ContactSection /></div>
 
-        {/* Sticky mobile WhatsApp CTA */}
-        <a
-          href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps and pricing.")}
-          target="_blank"
-          rel="noopener"
-          data-wa-placement="brandblast360_sticky_mobile"
-          data-selected-service="Brand Blast 360"
-          data-service="Brand Blast 360"
-          className="lg:hidden fixed bottom-4 inset-x-4 z-40 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3.5 rounded-2xl text-sm shadow-2xl shadow-emerald-500/40"
-        >
-          <MessageCircle className="w-5 h-5" /> WhatsApp Us — Reserve a Slot
-        </a>
+        {/* Sticky mobile CTA bar — WhatsApp + free mockup */}
+        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-background/95 backdrop-blur border-t border-border p-3 flex gap-2">
+          <a
+            href={wa("Hi Buzz Connect, I want to launch Brand Blast 360. Please share next steps and pricing.")}
+            target="_blank"
+            rel="noopener"
+            data-wa-placement="brandblast360_sticky_mobile"
+            data-selected-service="Brand Blast 360"
+            data-service="Brand Blast 360"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-xl text-sm shadow-lg shadow-emerald-500/30"
+          >
+            <MessageCircle className="w-4 h-4" /> WhatsApp us
+          </a>
+          <a
+            href={MOCKUP_WA}
+            target="_blank"
+            rel="noopener"
+            data-wa-placement="brandblast360_sticky_mobile_mockup"
+            data-selected-service="Brand Blast 360 — Free mockup"
+            data-service="Brand Blast 360"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-4 py-3 rounded-xl text-sm"
+          >
+            <Palette className="w-4 h-4" /> Free mockup
+          </a>
+        </div>
+
       </div>
 
     </>
