@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, MessageSquare, Smartphone, PhoneCall, Send, Globe, TrendingUp, Zap, Target, Rocket, Building2, Clock } from "lucide-react";
+import { ArrowRight, Mail, MessageSquare, Smartphone, PhoneCall, Send, Globe, TrendingUp, Zap } from "lucide-react";
 import HeroDistributionCard from "@/components/home/HeroDistributionCard";
 
 const heroBg = "/hero-bg.webp";
@@ -20,12 +20,6 @@ const channels = [
   { icon: Globe, label: "Findit.lk", delay: 0.9 },
 ];
 
-const trustStats = [
-  { icon: Target, num: "100,000+", label: "Inquiries Generated" },
-  { icon: Rocket, num: "20,000+", label: "Campaigns Executed" },
-  { icon: Building2, num: "1,500+", label: "Businesses Served" },
-  { icon: Clock, num: "24–72 hrs", label: "Campaign Execution" },
-];
 
 const HeroSection = () => {
   return (
