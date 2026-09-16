@@ -45,10 +45,7 @@ import HeroReachPanel from "@/components/brandblast/HeroReachPanel";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
 import { Button } from "@/components/ui/button";
-import shotEflyer from "@/assets/bb360/sample-eflyer.jpg";
-import shotInbox from "@/assets/bb360/inbox-preview.jpg";
-import shotFindit from "@/assets/bb360/findit-listing.jpg";
-import shotReport from "@/assets/bb360/performance-report.jpg";
+import { Smartphone, BarChart3 } from "lucide-react";
 
 const WA = "94771976351";
 const wa = (msg: string) =>
@@ -690,21 +687,21 @@ const BrandBlast360 = () => {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
-                { img: shotEflyer, t: "Designed e-flyer", d: "We design your campaign artwork — ready for every channel.", alt: "Sample Brand Blast 360 promotional e-flyer design" },
-                { img: shotInbox, t: "Email in the inbox", d: "How your promotion lands for 750,000 opt-in subscribers.", alt: "Preview of a Brand Blast 360 email campaign in an inbox" },
-                { img: shotFindit, t: "Findit.lk featured listing", d: "Premium placement that keeps working after the campaign.", alt: "Findit.lk featured business listing on a mobile phone" },
-                { img: shotReport, t: "Performance report", d: "Opens, clicks and channel results at the end of every campaign.", alt: "Brand Blast 360 campaign performance report with open and click charts" },
+                { icon: Palette, t: "Designed e-flyer", d: "We design your campaign artwork — ready for every channel.", gradient: "from-violet-500 to-fuchsia-500", iconBg: "bg-violet-500/10", iconColor: "text-violet-500" },
+                { icon: Mail, t: "Email in the inbox", d: "How your promotion lands for 750,000 opt-in subscribers.", gradient: "from-blue-500 to-cyan-500", iconBg: "bg-blue-500/10", iconColor: "text-blue-500" },
+                { icon: Smartphone, t: "Findit.lk featured listing", d: "Premium placement that keeps working after the campaign.", gradient: "from-amber-500 to-orange-500", iconBg: "bg-amber-500/10", iconColor: "text-amber-500" },
+                { icon: BarChart3, t: "Performance report", d: "Opens, clicks and channel results at the end of every campaign.", gradient: "from-emerald-500 to-teal-500", iconBg: "bg-emerald-500/10", iconColor: "text-emerald-500" },
               ].map((c) => (
-                <figure key={c.t} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col shadow-card">
-                  <img src={c.img} alt={c.alt} loading="lazy" width={816} height={816} className="w-full aspect-square object-cover" />
-                  <figcaption className="p-5">
-                    <div className="font-heading font-bold text-base mb-1">{c.t}</div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{c.d}</p>
-                  </figcaption>
-                </figure>
+                <motion.div key={c.t} whileHover={{ y: -6, scale: 1.02 }} transition={{ type: "spring", stiffness: 250, damping: 15 }} className="group relative bg-card border border-border rounded-2xl p-6 overflow-hidden shadow-card">
+                  <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${c.gradient}`} />
+                  <div className={`w-14 h-14 rounded-2xl ${c.iconBg} ${c.iconColor} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                    <c.icon className="w-7 h-7" />
+                  </div>
+                  <div className="font-heading font-bold text-lg mb-2">{c.t}</div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{c.d}</p>
+                </motion.div>
               ))}
             </div>
-            <p className="text-center text-[11px] text-muted-foreground mt-5">Sample visuals shown for illustration.</p>
           </div>
         </section>
 
