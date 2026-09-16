@@ -267,35 +267,9 @@ const BrandBlast360 = () => {
               </div>
             </motion.div>
 
-            {/* Live channel dashboard */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="bg-white/95 backdrop-blur rounded-2xl shadow-2xl p-5 sm:p-6 text-foreground">
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-border">
-                <div>
-                  <div className="text-sm font-bold">Your Brand Blast 360 — live channels</div>
-                  <div className="text-[11px] text-muted-foreground">Each channel works as its own touchpoint</div>
-                </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> All active
-                </div>
-              </div>
-              <div className="space-y-3">
-                {channels.map((c) => (
-                  <div key={c.name} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                    <div className={`w-10 h-10 rounded-lg ${c.bg} flex items-center justify-center`}>
-                      <c.icon className={`w-5 h-5 ${c.color}`} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-semibold truncate">{c.name}</div>
-                      <div className="text-[11px] text-muted-foreground truncate">{c.sub}</div>
-                    </div>
-                    <div className={`text-sm font-heading font-black ${c.color}`}>{c.num}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 pt-4 border-t border-border flex items-end justify-between">
-                <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-bold">Total verified reach</div>
-                <div className="text-3xl font-heading font-black text-primary">988,000+</div>
-              </div>
+            {/* Animated reach panel */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}>
+              <HeroReachPanel />
             </motion.div>
           </div>
         </section>
