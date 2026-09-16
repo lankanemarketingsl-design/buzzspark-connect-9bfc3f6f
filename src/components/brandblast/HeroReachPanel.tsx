@@ -9,7 +9,7 @@ const SEGMENTS = [
   { key: "linkedin", label: "LinkedIn", num: "8K", count: 2, hex: "#ff5a5f" },
 ] as const;
 
-const STEP = 7;
+const STEP = 4;
 const TARGET = 988000;
 const WORDS = ["in their inbox", "on Facebook", "on LinkedIn", "on Findit.lk"];
 
@@ -53,7 +53,7 @@ export default function HeroReachPanel() {
     if (reduce) return;
     const raf = requestAnimationFrame(() => setGo(true));
 
-    const dur = 2100;
+    const dur = 1500;
     const t0 = performance.now();
     const tick = (t: number) => {
       const p = Math.min(1, (t - t0) / dur);
@@ -70,8 +70,8 @@ export default function HeroReachPanel() {
       hide = setTimeout(() => {
         setWordIndex((w) => (w + 1) % WORDS.length);
         setWordVisible(true);
-      }, 200);
-    }, 1700);
+      }, 150);
+    }, 1500);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -83,8 +83,42 @@ export default function HeroReachPanel() {
 
   return (
     <div className="rounded-[22px] border border-white/15 bg-gradient-to-b from-white/10 to-white/[0.04] backdrop-blur-sm p-6 shadow-2xl">
-      <div className="text-[13px] text-primary-foreground/70">
-        Your reach — real people, every channel
+      <div className="text-[13px] text-primary-foreground/70 text-center mb-1">
+        Your content, distributed across all 5 channels
+      </div>
+
+      <div className="mx-auto mb-2 max-w-[440px]" aria-hidden="true">
+        <svg viewBox="0 0 440 146" width="100%" height="146" className="block overflow-visible">
+          <g fill="none" stroke="rgba(255,255,255,.13)" strokeWidth="2">
+            <path id="bbp1" d="M220,42 C220,82 44,72 44,112" />
+            <path id="bbp2" d="M220,42 C220,82 132,84 132,112" />
+            <path id="bbp3" d="M220,42 C220,82 220,84 220,112" />
+            <path id="bbp4" d="M220,42 C220,82 308,84 308,112" />
+            <path id="bbp5" d="M220,42 C220,82 396,72 396,112" />
+          </g>
+          <rect x="172" y="8" width="96" height="30" rx="9" fill="#0f1d35" stroke="rgba(255,255,255,.2)" />
+          <text x="220" y="28" textAnchor="middle" fill="#fff" fontSize="12.5" fontWeight="600">Your content</text>
+          <circle cx="44" cy="112" r="9" fill="#38bdf8" />
+          <circle cx="132" cy="112" r="9" fill="#a855f7" />
+          <circle cx="220" cy="112" r="9" fill="#ffb627" />
+          <circle cx="308" cy="112" r="9" fill="#22c55e" />
+          <circle cx="396" cy="112" r="9" fill="#ff5a5f" />
+          <g fontSize="9.5" fill="#9db0cc" textAnchor="middle">
+            <text x="44" y="136">Email</text>
+            <text x="132" y="136">FB Rmkt</text>
+            <text x="220" y="136">Findit</text>
+            <text x="308" y="136">FB Exp</text>
+            <text x="396" y="136">LinkedIn</text>
+          </g>
+          {!reduce &&
+            SEGMENTS.map((s, i) => (
+              <circle key={s.key} r="4.5" fill={s.hex}>
+                <animateMotion dur="1.4s" begin={`${i * 0.28}s`} repeatCount="indefinite">
+                  <mpath href={`#bbp${i + 1}`} />
+                </animateMotion>
+              </circle>
+            ))}
+        </svg>
       </div>
 
       <div
