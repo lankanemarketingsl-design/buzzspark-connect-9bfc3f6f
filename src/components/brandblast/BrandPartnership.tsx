@@ -64,7 +64,7 @@ const FlowLine = ({ reverse = false }: { reverse?: boolean }) => {
       )}
       {!reduceMotion && (
         <motion.span
-          className={`absolute h-2.5 w-2.5 rounded-full ${reverse ? "bg-accent" : "bg-secondary"}`}
+          className={`absolute hidden h-2.5 w-2.5 rounded-full md:block ${reverse ? "bg-accent" : "bg-secondary"}`}
           animate={reverse ? { x: [64, -8] } : { x: [-8, 64] }}
           transition={{ duration: 1.4, repeat: Infinity, ease: "linear" }}
         />
