@@ -75,6 +75,14 @@ const AdminLogin = () => {
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Please wait…" : "Sign In"}
           </Button>
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            disabled={resetLoading}
+            className="w-full text-sm text-muted-foreground hover:text-foreground transition-colors text-center"
+          >
+            {resetLoading ? "Sending…" : "Forgot password?"}
+          </button>
         </form>
       </div>
     </div>

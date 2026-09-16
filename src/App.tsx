@@ -14,6 +14,7 @@ import PageViewTracker from "@/components/PageViewTracker";
 
 import ScrollToTop from "@/components/ScrollToTop";
 import AdminLogin from "./pages/AdminLogin.tsx";
+import AdminResetPassword from "./pages/AdminResetPassword.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
