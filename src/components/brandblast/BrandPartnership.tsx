@@ -1,7 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, Search, Send, Trophy } from "lucide-react";
 import type { ReactNode } from "react";
-import buzzLogo from "@/assets/logo-dark.webp";
+import buzzLogo from "@/assets/buzz-connect-logo.jpg.asset.json";
+import finditLogo from "@/assets/finditlk-logo.jpg.asset.json";
 
 const BrandCard = ({
   type,
@@ -32,10 +33,10 @@ const BrandCard = ({
 
     <div className="mx-auto my-4 flex h-20 max-w-[220px] items-center justify-center rounded-xl bg-primary-foreground px-5">
       {type === "buzz" ? (
-        <img src={buzzLogo} alt="Buzz Connect" className="h-12 w-auto object-contain" width={154} height={43} />
+        <img src={buzzLogo.url} alt="Buzz Connect" className="h-12 w-auto object-contain" width={154} height={43} />
       ) : (
-        <a href="https://www.findit.lk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk" className="font-heading text-3xl font-black text-primary">
-          Findit<span className="text-accent">.lk</span>
+        <a href="https://www.findit.lk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk">
+          <img src={finditLogo.url} alt="Findit.lk" className="h-12 w-auto object-contain" width={160} height={48} />
         </a>
       )}
     </div>
