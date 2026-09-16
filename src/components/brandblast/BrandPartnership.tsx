@@ -33,10 +33,10 @@ const BrandCard = ({
 
     <div className="mx-auto my-4 flex h-20 max-w-[220px] items-center justify-center rounded-xl bg-primary-foreground px-5">
       {type === "buzz" ? (
-        <img src={buzzLogo.url} alt="Buzz Connect" className="h-12 w-auto object-contain" width={154} height={43} />
+        <img src={buzzLogo} alt="Buzz Connect" className="h-12 w-auto object-contain" width={154} height={43} />
       ) : (
         <a href="https://www.findit.lk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk">
-          <img src={finditLogo.url} alt="Findit.lk" className="h-12 w-auto object-contain" width={160} height={48} />
+          <img src={finditLogo} alt="Findit.lk" className="h-12 w-auto object-contain" width={160} height={48} />
         </a>
       )}
     </div>
