@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, MessageSquare, Smartphone, PhoneCall, Send, Globe, TrendingUp, Zap, Target, Rocket, Building2, Clock } from "lucide-react";
+import { ArrowRight, Mail, MessageSquare, Smartphone, PhoneCall, Send, Globe, TrendingUp, Zap } from "lucide-react";
+import HeroDistributionCard from "@/components/home/HeroDistributionCard";
+
 const heroBg = "/hero-bg.webp";
 
 const stats = [
@@ -18,12 +20,6 @@ const channels = [
   { icon: Globe, label: "Findit.lk", delay: 0.9 },
 ];
 
-const trustStats = [
-  { icon: Target, num: "100,000+", label: "Inquiries Generated" },
-  { icon: Rocket, num: "20,000+", label: "Campaigns Executed" },
-  { icon: Building2, num: "1,500+", label: "Businesses Served" },
-  { icon: Clock, num: "24–72 hrs", label: "Campaign Execution" },
-];
 
 const HeroSection = () => {
   return (
@@ -83,7 +79,7 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 py-8 sm:py-14">
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
-        <div className="max-w-4xl lg:flex-1">
+        <div className="lg:flex-1 min-w-0">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -103,10 +99,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Sri Lanka's #1{" "}
-            <span className="text-gradient-hero">Multi-Channel</span>
-            <br className="hidden sm:block" />{" "}
-            Marketing Platform
+            Sri Lanka's <span className="text-gradient-hero">#1 multi-channel</span> platform — your message in front of <span className="text-gradient-hero">1,000,000+ real people</span>, on every channel.
           </motion.h1>
 
           {/* Description */}
@@ -181,34 +174,14 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-          {/* Right side trust stats - positioned at far right */}
+          {/* Right side: animated content distribution card */}
           <motion.div
-            className="hidden lg:flex flex-col gap-2.5 lg:w-[260px] xl:w-[290px] shrink-0"
+            className="mt-8 lg:mt-0 lg:w-[440px] xl:w-[500px] shrink-0"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
           >
-            <div className="rounded-2xl border border-primary-foreground/10 bg-primary-foreground/[0.03] backdrop-blur-xl p-4 space-y-2.5">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-primary-foreground/40 font-semibold mb-3 text-center">Proven Results</div>
-              {trustStats.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-accent/[0.06] border border-accent/10 hover:border-accent/25 transition-colors duration-300"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.6 + i * 0.12 }}
-                  whileHover={{ x: -3 }}
-                >
-                  <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent/10 shrink-0">
-                    <item.icon className="w-4 h-4 text-accent" />
-                  </div>
-                  <div>
-                    <div className="text-base font-heading font-bold text-accent leading-tight">{item.num}</div>
-                    <div className="text-[9px] text-primary-foreground/45 uppercase tracking-wider font-medium">{item.label}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <HeroDistributionCard />
           </motion.div>
         </div>
       </div>
