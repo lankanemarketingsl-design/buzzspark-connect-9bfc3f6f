@@ -754,12 +754,17 @@ const BrandBlast360 = () => {
                     <div className="font-heading font-black text-5xl sm:text-6xl text-accent mt-2">988K+</div>
                     <div className="text-sm text-primary-foreground/65 mt-1">verified Sri Lankan contacts</div>
                   </div>
-                  <div className="grid grid-cols-10 gap-1.5 mt-6" aria-hidden="true">
-                    {Array.from({ length: 50 }).map((_, index) => (
-                      <Users key={index} className={`w-full h-auto ${index < 38 ? "text-accent" : index < 48 ? "text-secondary" : "text-primary-foreground/35"}`} />
+                  <div className="grid grid-cols-[repeat(19,minmax(0,1fr))] gap-1 mt-6" aria-hidden="true">
+                    {Array.from({ length: 247 }).map((_, index) => (
+                      <span key={index} className={`aspect-square rounded-full ${index < 190 ? "bg-accent" : index < 240 ? "bg-secondary" : "bg-primary-foreground/35"}`} />
                     ))}
                   </div>
-                  <div className="text-[11px] text-primary-foreground/50 mt-3">Each figure represents thousands of potential customers.</div>
+                  <div className="text-[11px] text-primary-foreground/50 mt-3">Each dot represents 4,000 people · 247 dots = 988,000+ real Sri Lankans reached.</div>
+                </div>
+                <div className="grid sm:grid-cols-3 gap-3 mt-5">
+                  <div className="border border-primary-foreground/10 bg-primary-foreground/5 rounded-lg p-3"><strong className="block text-accent text-lg">≈ 1 in 22</strong><span className="text-xs text-primary-foreground/55">Sri Lankans reached in one campaign</span></div>
+                  <div className="border border-primary-foreground/10 bg-primary-foreground/5 rounded-lg p-3"><strong className="block text-accent text-lg">≈ 1 in 6</strong><span className="text-xs text-primary-foreground/55">people across the Western Province</span></div>
+                  <div className="border border-primary-foreground/10 bg-primary-foreground/5 rounded-lg p-3"><strong className="block text-accent text-lg">28×</strong><span className="text-xs text-primary-foreground/55">a 35,000-seat stadium filled</span></div>
                 </div>
               </motion.div>
 
@@ -794,7 +799,7 @@ const BrandBlast360 = () => {
                     <div className="text-xs font-bold uppercase tracking-wider text-accent">Campaign playbook</div>
                     <h3 className="font-heading font-black text-2xl sm:text-3xl mt-1">What {selectedIndustry.name} can promote</h3>
                   </div>
-                  <span className="text-sm text-primary-foreground/55">6 ready-to-launch ideas</span>
+                  <span className="text-sm text-primary-foreground/55">{selectedIndustry.useCases.length} ready-to-launch ideas</span>
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {selectedIndustry.useCases.map((useCase, index) => {
