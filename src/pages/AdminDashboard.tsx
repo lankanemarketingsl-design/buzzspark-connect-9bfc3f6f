@@ -753,7 +753,10 @@ const AdminDashboard = () => {
             <div className="grid gap-4 md:grid-cols-2">
               {filteredInquiries.map((i) => {
                 const serviceName = i.service || resolveServiceName(i.source_page) || "General";
-                const waPhone = (i.phone || "").replace(/\D/g, "");
+                const OWN_NUMBERS = new Set(["94771437707", "94771976351", "0771437707", "0771976351"]);
+                let waPhone = (i.phone || "").replace(/\D/g, "");
+                if (waPhone.startsWith("0")) waPhone = "94" + waPhone.slice(1);
+                if (OWN_NUMBERS.has(waPhone)) waPhone = ""; // don't reply to our own business numbers
                 const waText = encodeURIComponent(
                   `Hi ${i.name || "there"}, this is Buzz Connect. We received your inquiry about ${serviceName}. How can we help you today?`,
                 );
