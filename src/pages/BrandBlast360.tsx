@@ -772,11 +772,11 @@ const BrandBlast360 = () => {
                   <span className="font-heading font-black text-2xl text-accent">988,000+</span>
                 </div>
                 <div className="flex h-3 rounded-full overflow-hidden bg-primary-foreground/10" aria-label="Channel reach contribution">
-                  <span className="bg-accent" style={{ width: "75.9%" }} />
-                  <span className="bg-secondary" style={{ width: "10.1%" }} />
-                  <span className="bg-amber-500" style={{ width: "10.1%" }} />
-                  <span className="bg-blue-500" style={{ width: "3%" }} />
-                  <span className="bg-sky-300" style={{ width: "0.9%" }} />
+                  <span className="bg-accent basis-[75.9%]" />
+                  <span className="bg-secondary basis-[10.1%]" />
+                  <span className="bg-accent/70 basis-[10.1%]" />
+                  <span className="bg-secondary/65 basis-[3%]" />
+                  <span className="bg-primary-foreground/45 basis-[0.9%]" />
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-5">
                   {channels.map((channel) => (
