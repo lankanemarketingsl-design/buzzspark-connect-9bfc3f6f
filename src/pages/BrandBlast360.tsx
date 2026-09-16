@@ -43,6 +43,7 @@ import RelatedServices from "@/components/RelatedServices";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
+import { Button } from "@/components/ui/button";
 
 const WA = "94771976351";
 const wa = (msg: string) =>
@@ -145,7 +146,7 @@ const faqs = [
 
 const BrandBlast360 = () => {
   const [open, setOpen] = useState<number | null>(0);
-  const [activeIndustry, setActiveIndustry] = useState<string>("all");
+  const [activeIndustry, setActiveIndustry] = useState<string>(industries[0]?.id ?? "");
 
   // Dedicated page-view tracking for Brand Blast 360
   useEffect(() => {
@@ -173,6 +174,8 @@ const BrandBlast360 = () => {
     indigo:  { badge: "bg-indigo-50",  text: "text-indigo-600",  border: "border-indigo-200",  icon: "text-indigo-500",  darkBadge: "dark:bg-indigo-950/30",  darkText: "dark:text-indigo-400",  darkBorder: "dark:border-indigo-900/40" },
     teal:    { badge: "bg-teal-50",    text: "text-teal-600",    border: "border-teal-200",    icon: "text-teal-500",    darkBadge: "dark:bg-teal-950/30",    darkText: "dark:text-teal-400",    darkBorder: "dark:border-teal-900/40" },
   };
+
+  const selectedIndustry = industries.find((industry) => industry.id === activeIndustry) ?? industries[0];
 
   const jsonLd = [
     {
@@ -695,84 +698,162 @@ const BrandBlast360 = () => {
           </div>
         </section>
 
-        {/* Who it's for — Industry Use Cases */}
-        <section className="py-16 bg-muted/30" id="use-cases">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Who it's for</div>
-              <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Real campaign ideas for every industry</h2>
-              <p className="text-muted-foreground text-sm">Every Brand Blast 360 campaign reaches the full 988,000+ database — email, Facebook, LinkedIn, remarketing and Findit.lk — all at once, every time. Pick your industry. See exactly what you can promote. Then launch.</p>
-            </div>
-
-            {/* Filter */}
-            <div className="overflow-x-auto pb-2 mb-10 -mx-4 px-4">
-              <div className="flex gap-2 w-max">
-                <button onClick={() => setActiveIndustry("all")} className={`px-4 py-2 rounded-full text-xs font-bold border transition-all whitespace-nowrap ${activeIndustry === "all" ? "bg-primary text-primary-foreground border-primary" : "bg-card text-muted-foreground border-border hover:border-primary hover:text-primary"}`}>All industries</button>
-                {industries.map((ind) => (
-                  <button key={ind.id} onClick={() => setActiveIndustry(ind.id)} className={`px-4 py-2 rounded-full text-xs font-bold border transition-all whitespace-nowrap ${activeIndustry === ind.id ? "bg-primary text-primary-foreground border-primary" : "bg-card text-muted-foreground border-border hover:border-primary hover:text-primary"}`}>{ind.emoji} {ind.name}</button>
-                ))}
+        {/* Who it's for — Industry Campaign Explorer */}
+        {selectedIndustry && (
+          <section className="py-16 sm:py-20 bg-primary text-primary-foreground" id="use-cases">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl mb-9">
+                <div className="text-xs font-bold uppercase tracking-wider text-accent mb-3">Who it's for</div>
+                <h2 className="font-heading font-black text-3xl sm:text-4xl mb-4">Real campaign ideas for every industry</h2>
+                <p className="text-primary-foreground/70 leading-relaxed">Every Brand Blast 360 campaign reaches the full 988,000+ database — email, Facebook, LinkedIn, remarketing and Findit.lk — all at once, every time. Pick your industry. See exactly what you can promote. Then launch.</p>
               </div>
-            </div>
 
-            {/* Industry blocks */}
-            <div className="space-y-16">
-              {industries.filter((ind) => activeIndustry === "all" || activeIndustry === ind.id).map((ind) => (
-                <div key={ind.id}>
-                  <div className="flex items-center gap-3 pb-4 mb-6 border-b-2 border-border">
-                    <span className="text-3xl">{ind.emoji}</span>
+              <div className="overflow-x-auto pb-3 mb-8 -mx-4 px-4" role="tablist" aria-label="Choose your industry">
+                <div className="flex gap-2 w-max">
+                  {industries.map((industry) => (
+                    <Button
+                      key={industry.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={activeIndustry === industry.id}
+                      onClick={() => setActiveIndustry(industry.id)}
+                      variant={activeIndustry === industry.id ? "hero" : "outline"}
+                      size="sm"
+                      className={activeIndustry === industry.id ? "rounded-full" : "rounded-full border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground hover:bg-primary-foreground/10 hover:text-accent"}
+                    >
+                      <span aria-hidden="true">{industry.emoji}</span> {industry.name}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              <motion.div
+                key={selectedIndustry.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="grid lg:grid-cols-[minmax(0,1fr)_22rem] gap-6 items-stretch mb-8"
+              >
+                <div className="border border-primary-foreground/15 bg-primary-foreground/5 rounded-2xl p-6 sm:p-8">
+                  <div className="flex items-start gap-4">
+                    <span className="text-4xl sm:text-5xl" aria-hidden="true">{selectedIndustry.emoji}</span>
                     <div>
-                      <div className="font-heading font-black text-lg">{ind.name}</div>
-                      <div className="text-xs text-muted-foreground">{ind.tagline}</div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-accent mb-1">Selected industry</div>
+                      <h3 className="font-heading font-black text-2xl sm:text-3xl">{selectedIndustry.name}</h3>
+                      <p className="text-primary-foreground/60 text-sm mt-2 leading-relaxed">{selectedIndustry.tagline}</p>
                     </div>
                   </div>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {ind.useCases.map((uc, i) => {
-                      const c = indCls[ind.color];
-                      return (
-                        <div key={i} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:shadow-lg transition-shadow">
-                          <span className={`inline-block self-start mx-5 mt-4 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${c.badge} ${c.text} ${c.border} ${c.darkBadge} ${c.darkText} ${c.darkBorder}`}>{uc.badge}</span>
-                          <div className="px-5 pt-3 pb-3 font-bold text-sm border-b border-border">{uc.title}</div>
-                          <ul className="p-5 space-y-2 flex-1">
-                            {uc.points.map((pt, j) => (
-                              <li key={j} className="text-xs text-muted-foreground flex gap-2 items-start leading-relaxed">
-                                <Check className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${c.icon}`} />
-                                <span>{pt}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      );
-                    })}
+                  <div className="mt-7 pt-6 border-t border-primary-foreground/10">
+                    <p className="font-heading font-bold text-lg mb-1">Your message appears wherever customers pay attention.</p>
+                    <p className="text-sm text-primary-foreground/60">Five coordinated channels build recognition, trust and action in one 24-hour launch.</p>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Bottom CTA */}
-            <div className="mt-16 bg-primary text-primary-foreground rounded-2xl p-8 sm:p-10 text-center relative overflow-hidden">
-              <div className="absolute -top-24 -left-24 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="relative z-10 max-w-2xl mx-auto">
-                <h3 className="font-heading font-black text-2xl sm:text-3xl mb-3">See your industry? <span className="text-accent">Launch your campaign.</span></h3>
-                <p className="text-primary-foreground/70 text-sm mb-6">Tell us your business and what you want to promote — your Brand Blast 360 campaign will be live across all 5 channels within 24 hours.</p>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <a href={wa("Hi Buzz Connect, I want to launch a Brand Blast 360 campaign. Please share next steps.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_usecases_cta_launch" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-accent/30">
-                    <Rocket className="w-4 h-4" /> Launch my campaign
-                  </a>
-                  <a href={wa("Hi Buzz Connect, I have a question about Brand Blast 360.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_usecases_cta_question" data-selected-service="Brand Blast 360 — Question" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3 rounded-xl text-sm">
-                    <MessageCircle className="w-4 h-4" /> Ask on WhatsApp
-                  </a>
+                <div className="border border-accent/40 bg-accent/10 rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-accent">Reach in every campaign</div>
+                    <div className="font-heading font-black text-5xl sm:text-6xl text-accent mt-2">988K+</div>
+                    <div className="text-sm text-primary-foreground/65 mt-1">verified Sri Lankan contacts</div>
+                  </div>
+                  <div className="grid grid-cols-10 gap-1.5 mt-6" aria-hidden="true">
+                    {Array.from({ length: 50 }).map((_, index) => (
+                      <Users key={index} className={`w-full h-auto ${index < 38 ? "text-accent" : index < 48 ? "text-secondary" : "text-primary-foreground/35"}`} />
+                    ))}
+                  </div>
+                  <div className="text-[11px] text-primary-foreground/50 mt-3">Each figure represents thousands of potential customers.</div>
                 </div>
-                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] text-primary-foreground/50">
-                  <span className="inline-flex items-center gap-1"><Bolt className="w-3 h-3 text-accent" /> Live in 24 hours</span>
-                  <span className="inline-flex items-center gap-1"><ShieldCheck className="w-3 h-3 text-accent" /> No contract</span>
-                  <span className="inline-flex items-center gap-1"><FileBarChart className="w-3 h-3 text-accent" /> Full report included</span>
-                  <span className="inline-flex items-center gap-1"><Users className="w-3 h-3 text-accent" /> 1,500+ clients</span>
+              </motion.div>
+
+              <div className="border border-primary-foreground/15 bg-primary-foreground/5 rounded-2xl p-5 sm:p-6 mb-10">
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-accent">How your reach adds up</div>
+                    <p className="text-sm text-primary-foreground/60 mt-1">One launch. Five channels. Repeated visibility.</p>
+                  </div>
+                  <span className="font-heading font-black text-2xl text-accent">988,000+</span>
+                </div>
+                <div className="flex h-3 rounded-full overflow-hidden bg-primary-foreground/10" aria-label="Channel reach contribution">
+                  <span className="bg-accent basis-[75.9%]" />
+                  <span className="bg-secondary basis-[10.1%]" />
+                  <span className="bg-accent/70 basis-[10.1%]" />
+                  <span className="bg-secondary/65 basis-[3%]" />
+                  <span className="bg-primary-foreground/45 basis-[0.9%]" />
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-5">
+                  {channels.map((channel) => (
+                    <div key={channel.name} className="flex items-center gap-2 min-w-0">
+                      <div className={`w-9 h-9 rounded-lg ${channel.bg} ${channel.color} flex items-center justify-center shrink-0`}><channel.icon className="w-4 h-4" /></div>
+                      <div className="min-w-0"><div className="font-bold text-sm">{channel.num}</div><div className="text-[11px] text-primary-foreground/55 truncate">{channel.name}</div></div>
+                    </div>
+                  ))}
                 </div>
               </div>
+
+              <motion.div key={`${selectedIndustry.id}-campaigns`} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-accent">Campaign playbook</div>
+                    <h3 className="font-heading font-black text-2xl sm:text-3xl mt-1">What {selectedIndustry.name} can promote</h3>
+                  </div>
+                  <span className="text-sm text-primary-foreground/55">6 ready-to-launch ideas</span>
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {selectedIndustry.useCases.map((useCase, index) => {
+                    const color = indCls[selectedIndustry.color];
+                    return (
+                      <article key={useCase.title} className="bg-card text-card-foreground border border-border border-t-4 border-t-accent rounded-2xl p-5 flex flex-col shadow-card">
+                        <span className={`inline-block self-start px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider border ${color.badge} ${color.text} ${color.border} ${color.darkBadge} ${color.darkText} ${color.darkBorder}`}>{useCase.badge}</span>
+                        <h4 className="font-heading font-bold text-base mt-4 min-h-12">{useCase.title}</h4>
+                        <ul className="mt-4 pt-4 border-t border-border space-y-2.5 flex-1">
+                          {useCase.points.map((point) => (
+                            <li key={point} className="text-xs text-muted-foreground flex gap-2 items-start leading-relaxed">
+                              <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${color.icon}`} />
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <a
+                          href={wa(`Hi Buzz Connect, I want to run a ${useCase.badge} Brand Blast 360 campaign for my ${selectedIndustry.name} business. Please share next steps.`)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-wa-placement={`brandblast360_industry_${selectedIndustry.id}_${index}`}
+                          data-selected-service={`Brand Blast 360 — ${selectedIndustry.name}`}
+                          data-service="Brand Blast 360"
+                          className="inline-flex items-center gap-1.5 text-sm font-bold text-primary mt-5 hover:text-accent transition-colors"
+                        >
+                          Promote this idea <ArrowRight className="w-4 h-4" />
+                        </a>
+                      </article>
+                    );
+                  })}
+                </div>
+              </motion.div>
+
+              <div className="mt-10 border border-accent/35 bg-accent/10 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="max-w-2xl">
+                  <h3 className="font-heading font-black text-2xl">Put your {selectedIndustry.name} offer in front of 988,000+ people.</h3>
+                  <p className="text-primary-foreground/65 text-sm mt-2">Send us your offer today. We create the multi-channel campaign and launch it within 24 hours.</p>
+                  <div className="flex flex-wrap gap-x-4 gap-y-2 mt-4 text-xs text-primary-foreground/60">
+                    <span className="inline-flex items-center gap-1"><Bolt className="w-3.5 h-3.5 text-accent" /> 24-hour launch</span>
+                    <span className="inline-flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-accent" /> No contract</span>
+                    <span className="inline-flex items-center gap-1"><FileBarChart className="w-3.5 h-3.5 text-accent" /> Full report</span>
+                  </div>
+                </div>
+                <Button variant="hero" size="lg" asChild className="shrink-0">
+                  <a
+                    href={wa(`Hi Buzz Connect, I run a ${selectedIndustry.name} business and want to launch a Brand Blast 360 campaign. Please share next steps.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-wa-placement={`brandblast360_industry_${selectedIndustry.id}_launch`}
+                    data-selected-service={`Brand Blast 360 — ${selectedIndustry.name}`}
+                    data-service="Brand Blast 360"
+                  >
+                    <MessageCircle className="w-4 h-4" /> Launch my campaign
+                  </a>
+                </Button>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Testimonials */}
         <section className="py-16 bg-primary text-primary-foreground">
