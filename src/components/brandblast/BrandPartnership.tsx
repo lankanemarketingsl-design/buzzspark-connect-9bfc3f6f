@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, Search, Send, Trophy } from "lucide-react";
+import type { ReactNode } from "react";
 import buzzLogo from "@/assets/logo-dark.webp";
 
 const BrandCard = ({
@@ -11,7 +12,7 @@ const BrandCard = ({
   type: "buzz" | "findit";
   badge: string;
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 18 }}
@@ -44,7 +45,7 @@ const BrandCard = ({
   </motion.div>
 );
 
-const Chip = ({ children }: { children: React.ReactNode }) => (
+const Chip = ({ children }: { children: ReactNode }) => (
   <span className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/[0.05] px-2.5 py-1 text-xs font-medium text-primary-foreground">
     {children}
   </span>
@@ -56,8 +57,15 @@ const FlowLine = ({ reverse = false }: { reverse?: boolean }) => {
     <div className={`relative h-12 w-1 overflow-hidden rounded-full md:h-1 md:w-16 ${reverse ? "bg-accent/30" : "bg-secondary/30"}`} aria-hidden="true">
       {!reduceMotion && (
         <motion.span
-          className={`absolute h-2.5 w-2.5 rounded-full ${reverse ? "bg-accent" : "bg-secondary"}`}
+          className={`absolute h-2.5 w-2.5 rounded-full md:hidden ${reverse ? "bg-accent" : "bg-secondary"}`}
           animate={reverse ? { y: [48, -8] } : { y: [-8, 48] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "linear" }}
+        />
+      )}
+      {!reduceMotion && (
+        <motion.span
+          className={`absolute h-2.5 w-2.5 rounded-full ${reverse ? "bg-accent" : "bg-secondary"}`}
+          animate={reverse ? { x: [64, -8] } : { x: [-8, 64] }}
           transition={{ duration: 1.4, repeat: Infinity, ease: "linear" }}
         />
       )}

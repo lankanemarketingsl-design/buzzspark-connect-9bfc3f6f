@@ -42,6 +42,7 @@ import SEOHead from "@/components/SEOHead";
 import RelatedServices from "@/components/RelatedServices";
 import LogoCarousel from "@/components/home/LogoCarousel";
 import HeroReachPanel from "@/components/brandblast/HeroReachPanel";
+import BrandPartnership from "@/components/brandblast/BrandPartnership";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
 import { Button } from "@/components/ui/button";
@@ -676,6 +677,8 @@ const BrandBlast360 = () => {
             </div>
           </div>
         </section>
+
+        <BrandPartnership />
 
         {/* See exactly what you get */}
         <section className="order-[7] py-16 bg-muted/30">
