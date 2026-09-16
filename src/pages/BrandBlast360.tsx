@@ -45,10 +45,7 @@ import HeroReachPanel from "@/components/brandblast/HeroReachPanel";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
 import { Button } from "@/components/ui/button";
-import shotEflyer from "@/assets/bb360/sample-eflyer.jpg";
-import shotInbox from "@/assets/bb360/inbox-preview.jpg";
-import shotFindit from "@/assets/bb360/findit-listing.jpg";
-import shotReport from "@/assets/bb360/performance-report.jpg";
+import { Smartphone, BarChart3 } from "lucide-react";
 
 const WA = "94771976351";
 const wa = (msg: string) =>
