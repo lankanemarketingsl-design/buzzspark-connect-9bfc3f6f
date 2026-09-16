@@ -111,6 +111,10 @@
 /direct-marketing-strategy-sri-lanka/ /direct-marketing-strategy-sri-lanka 301
 /fast-direct-marketing-sri-lanka/ /fast-direct-marketing-sri-lanka 301
 /hotel-digital-marketing-case-studies-sri-lanka/ /hotel-digital-marketing-case-studies-sri-lanka 301
+# Admin area (client-side only) must return 200, not the 404 shell
+/admin /index.html 200
+/admin/* /index.html 200
+
 # SPA fallback — pre-rendered routes are served automatically from filesystem
 # Unknown routes get 404 status with the SPA shell for client-side NotFound page
 /* /index.html 404
