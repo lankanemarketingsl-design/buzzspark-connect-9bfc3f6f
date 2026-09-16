@@ -45,10 +45,16 @@ import HeroReachPanel from "@/components/brandblast/HeroReachPanel";
 import ContactSection from "@/components/home/ContactSection";
 import { logInquiry } from "@/lib/logInquiry";
 import { Button } from "@/components/ui/button";
+import shotEflyer from "@/assets/bb360/sample-eflyer.jpg";
+import shotInbox from "@/assets/bb360/inbox-preview.jpg";
+import shotFindit from "@/assets/bb360/findit-listing.jpg";
+import shotReport from "@/assets/bb360/performance-report.jpg";
 
 const WA = "94771976351";
 const wa = (msg: string) =>
   `https://wa.me/${WA}?text=${encodeURIComponent(msg)}&utm_source=website&utm_medium=whatsapp_cta&utm_campaign=brand_blast_360&utm_content=brand_blast_360_page`;
+const MOCKUP_WA = wa("Hi Buzz Connect, please send me a free sample campaign mockup and reach estimate for my business.");
+
 
 const channels = [
   { icon: Mail, name: "Email Blast", num: "750,000", sub: "Verified opt-in subscribers", color: "text-indigo-500", bg: "bg-indigo-500/10" },
@@ -219,9 +225,10 @@ const BrandBlast360 = () => {
         jsonLd={jsonLd}
       />
 
-      <div className="pt-14 sm:pt-16 overflow-x-hidden">
+      <div className="pt-14 sm:pt-16 overflow-x-hidden flex flex-col pb-20 lg:pb-0">
         {/* HERO */}
-        <section className="relative bg-gradient-to-br from-primary/95 via-primary to-primary/90 text-primary-foreground overflow-hidden">
+        <section className="order-[1] relative bg-gradient-to-br from-primary/95 via-primary to-primary/90 text-primary-foreground overflow-hidden">
+
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,hsl(var(--accent)/.4),transparent_50%),radial-gradient(circle_at_80%_60%,hsl(var(--primary-foreground)/.15),transparent_55%)]" />
           <div className="container mx-auto px-4 py-14 sm:py-20 relative grid lg:grid-cols-2 gap-10 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -229,7 +236,9 @@ const BrandBlast360 = () => {
                 <Rocket className="w-3.5 h-3.5" />
                 Brand Blast 360 — Buzz Connect
               </div>
+              <p className="text-accent font-semibold text-sm sm:text-base mb-3">One campaign. Five channels. Your phone starts ringing this week.</p>
               <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mb-5">
+
                 Get Seen by 988,000+
                 <span className="block bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">Customers in 24 Hours.</span>
               </h1>
@@ -256,10 +265,14 @@ const BrandBlast360 = () => {
                 <a href={wa("Hi Buzz Connect, I want to launch Brand Blast 360 today. Please share next steps and pricing.")} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero_whatsapp" data-selected-service="Brand Blast 360" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:scale-105 shadow-lg shadow-accent/30">
                   <MessageCircle className="w-4 h-4" /> WhatsApp Us — Launch in 24h
                 </a>
+                <a href={MOCKUP_WA} target="_blank" rel="noopener" data-wa-placement="brandblast360_hero_mockup" data-selected-service="Brand Blast 360 — Free mockup" data-service="Brand Blast 360" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+                  <Palette className="w-4 h-4" /> Free sample mockup
+                </a>
                 <a href="#packages" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
                   <Rocket className="w-4 h-4" /> See Pricing
                 </a>
               </div>
+
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-6 text-xs text-primary-foreground/70">
                 <span className="inline-flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-accent" /> Fixed price · no contract</span>
