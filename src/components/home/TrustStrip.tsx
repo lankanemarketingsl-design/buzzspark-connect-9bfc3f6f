@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { Shield, Clock, Users, TrendingUp, CheckCircle } from "lucide-react";
+import { Shield, Clock, Users, TrendingUp, CheckCircle, Globe } from "lucide-react";
 
 const badges = [
   { icon: Shield, label: "100% Data Safe" },
   { icon: Clock, label: "24hr Campaign Launch" },
   { icon: Users, label: "1,500+ Happy Clients" },
+  { icon: Globe, label: "Exclusive Findit.lk Integration" },
   { icon: TrendingUp, label: "Proven ROI Results" },
   { icon: CheckCircle, label: "10+ Years Trusted" },
 ];
