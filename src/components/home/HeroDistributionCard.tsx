@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { FileText } from "lucide-react";
+
 
 const CHANNELS = [
   { key: "sms", label: "SMS", figures: 75, total: "600K", color: "#a855f7" },
