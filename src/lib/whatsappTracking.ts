@@ -63,10 +63,14 @@ const titleCaseFromPath = (pathname: string): string => {
 };
 
 export const getServiceName = (pathname: string): string =>
-  SERVICE_MAP[pathname] || titleCaseFromPath(pathname);
+  pathname.startsWith("/brand-blast-360/")
+    ? "Brand Blast 360"
+    : SERVICE_MAP[pathname] || titleCaseFromPath(pathname);
 
 export const getWhatsAppNumber = (pathname: string): string =>
-  INDUSTRY_ROUTES.includes(pathname) ? "94771976351" : "94771437707";
+  INDUSTRY_ROUTES.includes(pathname) || pathname.startsWith("/brand-blast-360/")
+    ? "94771976351"
+    : "94771437707";
 
 // ---------- UTM hygiene ----------
 const UTM_LIMITS: Record<string, number> = {
