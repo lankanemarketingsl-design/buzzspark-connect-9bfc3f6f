@@ -299,6 +299,107 @@ const buildJobHtml = (template: string, job: JobSeoEntry) => {
   return html.replace("</head>", `  ${jsonLd}\n  </head>`);
 };
 
+interface Bb360ServiceSeoEntry {
+  slug: string;
+  metaTitle: string;
+  metaDescription: string;
+  h1: string;
+  sections: { h2: string; body: string }[];
+  reach: string;
+  audience: string;
+  priceFrom: string;
+  industry: string;
+}
+
+const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => {
+  const dataFile = path.join(projectRoot, "src", "data", "bb360ServicePages.ts");
+  if (!fs.existsSync(dataFile)) return [];
+  const content = fs.readFileSync(dataFile, "utf8");
+  const marker = /\n\s{4}slug:\s*"([^"]+)"/g;
+  const positions: { slug: string; index: number }[] = [];
+  for (const m of content.matchAll(marker)) positions.push({ slug: m[1], index: m.index ?? 0 });
+
+  const entries: Bb360ServiceSeoEntry[] = [];
+  positions.forEach((pos, i) => {
+    const block = content.slice(pos.index, positions[i + 1]?.index ?? content.length);
+    const get = (prop: string) =>
+      block.match(new RegExp(`${prop}:\\s*\\n?\\s*"((?:[^"\\\\]|\\\\.)*)"`))?.[1]?.replace(/\\"/g, '"') ?? "";
+    const metaTitle = get("metaTitle");
+    if (!metaTitle) return;
+    const sections: { h2: string; body: string }[] = [];
+    const sectionRegex = /h2:\s*"((?:[^"\\]|\\.)*)"\s*,\s*body:\s*\n?\s*"((?:[^"\\]|\\.)*)"/g;
+    for (const s of block.matchAll(sectionRegex)) {
+      sections.push({ h2: s[1].replace(/\\"/g, '"'), body: s[2].replace(/\\"/g, '"') });
+    }
+    entries.push({
+      slug: pos.slug,
+      metaTitle,
+      metaDescription: get("metaDescription"),
+      h1: get("h1"),
+      sections,
+      reach: get("reach"),
+      audience: get("audience"),
+      priceFrom: get("priceFrom"),
+      industry: get("industry"),
+    });
+  });
+  return entries;
+};
+
+const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) => {
+  const canonical = `${SITE_URL}/brand-blast-360/${entry.slug}`;
+  const intro = `Email, SMS and WhatsApp marketing for ${entry.industry.toLowerCase()} in Sri Lanka lets you reach ${entry.reach} ${entry.audience} in one campaign — from ${entry.priceFrom}, live in 24 hours.`;
+  const faqs = [
+    {
+      q: `How much does ${entry.industry.toLowerCase()} marketing cost in Sri Lanka?`,
+      a: `Campaigns start from ${entry.priceFrom} — roughly LKR 0.015 per person reached, including creative, send and report.`,
+    },
+    {
+      q: `How many ${entry.audience} can I reach?`,
+      a: `${entry.reach} people in one campaign across email, SMS, WhatsApp, Facebook remarketing, Findit.lk and LinkedIn.`,
+    },
+    { q: "How fast can it go live?", a: "Within 24 hours of confirming your offer and artwork details." },
+  ];
+
+  let html = applyRouteSeo(template, {
+    route: `/brand-blast-360/${entry.slug}`,
+    title: entry.metaTitle,
+    description: entry.metaDescription,
+    canonical,
+    h1: entry.h1,
+    paragraphs: [intro, ...entry.sections.map((s) => `${s.h2}. ${s.body}`)],
+    faqs,
+  });
+
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: entry.h1,
+      serviceType: `Email, SMS and WhatsApp Marketing for ${entry.industry}`,
+      provider: { "@type": "Organization", name: "Buzz Connect", url: SITE_URL },
+      areaServed: { "@type": "Country", name: "Sri Lanka" },
+      description: entry.metaDescription,
+      url: canonical,
+      offers: { "@type": "Offer", price: "15000", priceCurrency: "LKR" },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ];
+
+  const jsonLd = schema
+    .map((s) => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, "\\u003c")}</script>`)
+    .join("\n  ");
+  return html.replace("</head>", `  ${jsonLd}\n  </head>`);
+};
+
 const staticRouteSeoPlugin = (): Plugin => ({
   name: "static-route-seo-plugin",
   apply: "build",
