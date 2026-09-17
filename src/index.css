@@ -58,6 +58,21 @@
     --shadow-card: 0 4px 24px -4px hsl(220 60% 12% / 0.08);
     --shadow-card-hover: 0 12px 40px -8px hsl(220 60% 12% / 0.15);
     --shadow-glow: 0 0 40px hsl(35 95% 55% / 0.2);
+    --reach-email: 199 89% 60%;
+    --reach-remarketing: 271 91% 65%;
+    --reach-findit: 39 100% 58%;
+    --reach-facebook: 142 71% 45%;
+    --reach-linkedin: 358 100% 68%;
+    --industry-restaurants: 0 84% 60%;
+    --industry-real-estate: 160 84% 39%;
+    --industry-education: 239 84% 67%;
+    --industry-banking: 201 96% 36%;
+    --industry-fashion: 330 81% 60%;
+    --industry-events: 271 91% 65%;
+    --industry-recruitment: 142 71% 45%;
+    --industry-healthcare: 173 80% 40%;
+    --industry-automotive: 224 76% 48%;
+    --industry-construction: 25 95% 53%;
   }
 
   .dark {
@@ -129,6 +144,10 @@
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--teal-light)));
   }
+  .text-industry { color: hsl(var(--industry-accent)); }
+  .bg-industry { background-color: hsl(var(--industry-accent)); }
+  .border-industry { border-color: hsl(var(--industry-accent)); }
+  .border-l-industry { border-left-color: hsl(var(--industry-accent)); }
 
   /* Industry-specific gradients */
   .gradient-hotel {
