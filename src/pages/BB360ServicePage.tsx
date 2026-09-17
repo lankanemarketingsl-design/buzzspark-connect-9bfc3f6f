@@ -57,6 +57,31 @@ const BRAND_LOGOS: Record<string, string> = {
   "Best Western": bestwesternLogo,
 };
 
+const ALL_CLIENT_LOGOS: { name: string; src: string }[] = [
+  { name: "DFCC Bank", src: dfccLogo },
+  { name: "Radisson", src: radissonLogo },
+  { name: "Hunters", src: huntersLogo },
+  { name: "Sala Enterprises", src: salaLogo },
+  { name: "Best Western", src: bestwesternLogo },
+  { name: "Chinese Dragon Cafe", src: chinesedragonLogo },
+  { name: "Swarnamahal", src: swarnamahalLogo },
+  { name: "Burger King", src: burgerkingLogo },
+  { name: "Mimosa", src: mimosaLogo },
+  { name: "Abans", src: abansLogo },
+  { name: "Odel", src: odelLogo },
+  { name: "Glomark", src: glomarkLogo },
+  { name: "Commercial Bank", src: combankLogo },
+  { name: "Alliance Finance", src: allianceLogo },
+  { name: "Nolimit", src: nolimitLogo },
+  { name: "Bhoomi Realty", src: bhoomiLogo },
+  { name: "Vision Care", src: visioncareLogo },
+  { name: "Lassana.com", src: lassanaLogo },
+  { name: "CIPM Sri Lanka", src: cipmLogo },
+  { name: "Cinnamon Hotels", src: cinnamonLogo },
+  { name: "SLIM", src: slimLogo },
+  { name: "Ninewells Hospital", src: ninewellsLogo },
+];
+
 const WA_NUMBER = "94771976351";
 const PERSON_MASK = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3Cpath d='M4 21v-1.5C4 15.9 7.6 13.5 12 13.5s8 2.4 8 6V21z'/%3E%3C/svg%3E\") center/contain no-repeat";
 const CHANNELS = [
