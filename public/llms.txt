@@ -154,6 +154,20 @@ The lowest tier on every service is called "Starter" (never "Budget").
 - [Multi-Channel Marketing in Sri Lanka](/multi-channel-marketing-in-sri-lanka)
 - [Future of Email Marketing Sri Lanka](/future-of-email-marketing-sri-lanka)
 
+## Brand Blast 360 — Industry Campaign Pages
+
+- [Email, SMS & WhatsApp Marketing for Hotels in Sri Lanka](/brand-blast-360/hotels)
+- [Email, SMS & WhatsApp Marketing for Restaurants in Sri Lanka](/brand-blast-360/restaurants)
+- [Email, SMS & WhatsApp Marketing for Real Estate in Sri Lanka](/brand-blast-360/real-estate)
+- [Email, SMS & WhatsApp Marketing for Education in Sri Lanka](/brand-blast-360/education)
+- [Email, SMS & WhatsApp Marketing for Finance & Banking in Sri Lanka](/brand-blast-360/banking)
+- [Email, SMS & WhatsApp Marketing for Fashion in Sri Lanka](/brand-blast-360/fashion)
+- [Email, SMS & WhatsApp Marketing for Events in Sri Lanka](/brand-blast-360/events)
+- [Email, SMS & WhatsApp Marketing for Staff Recruitment in Sri Lanka](/brand-blast-360/recruitment)
+- [Email, SMS & WhatsApp Marketing for Healthcare in Sri Lanka](/brand-blast-360/healthcare)
+- [Email, SMS & WhatsApp Marketing for Automotive in Sri Lanka](/brand-blast-360/automotive)
+- [Email, SMS & WhatsApp Marketing for Construction in Sri Lanka](/brand-blast-360/construction)
+
 ## Crawler Guidance
 
 This file (llms.txt) is the canonical index for AI assistants and LLMs crawling buzzconnect.lk.
