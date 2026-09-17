@@ -9,6 +9,53 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { bb360Packages } from "@/data/bb360ServicePages";
 import conversionPages from "@/data/bb360ConversionPages.json";
+import dfccLogo from "@/assets/logos/dfcc.webp";
+import radissonLogo from "@/assets/logos/radisson.webp";
+import huntersLogo from "@/assets/logos/hunters.webp";
+import salaLogo from "@/assets/logos/sala.webp";
+import bestwesternLogo from "@/assets/logos/bestwestern.webp";
+import chinesedragonLogo from "@/assets/logos/chinesedragon.webp";
+import swarnamahalLogo from "@/assets/logos/swarnamahal.webp";
+import burgerkingLogo from "@/assets/logos/burgerking.webp";
+import mimosaLogo from "@/assets/logos/mimosa.webp";
+import abansLogo from "@/assets/logos/abans.webp";
+import odelLogo from "@/assets/logos/odel.webp";
+import glomarkLogo from "@/assets/logos/glomark.webp";
+import combankLogo from "@/assets/logos/combank.webp";
+import allianceLogo from "@/assets/logos/alliance.webp";
+import nolimitLogo from "@/assets/logos/nolimit.webp";
+import bhoomiLogo from "@/assets/logos/bhoomi.webp";
+import visioncareLogo from "@/assets/logos/visioncare.webp";
+import lassanaLogo from "@/assets/logos/lassana.webp";
+import cipmLogo from "@/assets/logos/cipm.webp";
+import cinnamonLogo from "@/assets/logos/cinnamon.webp";
+import slimLogo from "@/assets/logos/slim.webp";
+import ninewellsLogo from "@/assets/logos/ninewells.webp";
+
+const BRAND_LOGOS: Record<string, string> = {
+  "Burger King": burgerkingLogo,
+  "Chinese Dragon Cafe": chinesedragonLogo,
+  Mimosa: mimosaLogo,
+  Odel: odelLogo,
+  "Bhoomi Realty": bhoomiLogo,
+  "DFCC Bank": dfccLogo,
+  "Commercial Bank": combankLogo,
+  "CIPM Sri Lanka": cipmLogo,
+  SLIM: slimLogo,
+  "Ninewells Hospital": ninewellsLogo,
+  "Alliance Finance": allianceLogo,
+  Nolimit: nolimitLogo,
+  Glomark: glomarkLogo,
+  "Lassana.com": lassanaLogo,
+  Radisson: radissonLogo,
+  "Vision Care": visioncareLogo,
+  Abans: abansLogo,
+  Hunters: huntersLogo,
+  "Sala Enterprises": salaLogo,
+  Swarnamahal: swarnamahalLogo,
+  Cinnamon: cinnamonLogo,
+  "Best Western": bestwesternLogo,
+};
 
 const WA_NUMBER = "94771976351";
 const PERSON_MASK = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3Cpath d='M4 21v-1.5C4 15.9 7.6 13.5 12 13.5s8 2.4 8 6V21z'/%3E%3C/svg%3E\") center/contain no-repeat";
@@ -83,7 +130,7 @@ export default function BB360ServicePage() {
 
       <section className="pt-8 sm:pt-10 lg:pt-14"><div className="container mx-auto px-4"><Breadcrumbs /><div className="grid items-center gap-9 py-10 lg:grid-cols-[1.06fr_.94fr] lg:py-14"><div><p className="text-xs font-bold uppercase text-industry">{page.eyebrow}</p><h1 className="mt-3 max-w-2xl font-heading text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">{page.h1}</h1><p className="mt-3 font-heading text-lg font-semibold text-secondary">{page.keywordLine}</p><p className="mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/70 sm:text-lg">{page.hero}</p><div className="mt-6 flex flex-wrap gap-3">{[["988K+","reach"],["LKR 15,000","fixed · 5 channels"],["24 hrs","live · or next free"]].map(([value,label])=><div key={value} className="min-w-28 rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-3"><b className="block font-heading text-lg text-industry">{value}</b><span className="text-[11px] text-primary-foreground/55">{label}</span></div>)}</div><div className="mt-6 flex flex-col gap-3 sm:flex-row"><Button className="bg-industry text-primary-foreground hover:bg-industry/90" size="lg" asChild><a href={whatsappUrl(launchMessage)} target="_blank" rel="noopener noreferrer" data-wa-placement={`bb360_${page.slug}_hero`} data-selected-service={`Brand Blast 360 — ${industryName}`}><MessageCircle/>Launch My Campaign</a></Button><Button variant="hero-outline" size="lg" asChild><Link to="/contact-us">Free Consultation</Link></Button></div><p className="mt-4 text-xs text-primary-foreground/45">{page.heroNote}</p></div><ReachPanel page={page}/></div></div></section>
 
-      <section aria-label={page.trustLabel} className="border-y border-primary-foreground/10 bg-primary-foreground/[0.03] py-6"><div className="container mx-auto px-4"><p className="mb-4 text-center text-xs font-semibold uppercase text-primary-foreground/45">{page.trustLabel}</p><div className="flex flex-wrap justify-center gap-2">{page.trustBrands.map((brand)=><span key={brand} className="rounded-md bg-card px-4 py-2 text-sm font-bold text-card-foreground">{brand}</span>)}</div></div></section>
+      <section aria-label={page.trustLabel} className="border-y border-primary-foreground/10 bg-primary-foreground/[0.03] py-6"><div className="container mx-auto px-4"><p className="mb-4 text-center text-xs font-semibold uppercase text-primary-foreground/45">{page.trustLabel}</p><div className="flex flex-wrap justify-center gap-2">{page.trustBrands.map((brand)=>{const src=BRAND_LOGOS[brand];return src?<span key={brand} className="flex h-11 items-center rounded-md bg-card px-4 py-2"><img src={src} alt={`${brand} logo`} className="h-full w-auto object-contain" loading="lazy" width={120} height={44}/></span>:<span key={brand} className="rounded-md bg-card px-4 py-2 text-sm font-bold text-card-foreground">{brand}</span>})}</div></div></section>
       <section className="py-12"><div className="container mx-auto px-4"><div className="mx-auto max-w-5xl rounded-xl border border-primary-foreground/10 bg-primary-foreground/[0.04] p-6 text-center text-primary-foreground/65 sm:p-8">{page.definition}</div></div></section>
       <section className="py-14"><div className="container mx-auto px-4"><SectionHeading eyebrow="The problem" title="Sound familiar?"/><div className="grid gap-4 md:grid-cols-3">{page.pains.map((item,index)=>{const Icon=cardIcons[index];return <article key={item.title} className="rounded-lg border border-primary-foreground/10 border-l-industry bg-primary-foreground/[0.04] p-5"><Icon className="mb-4 h-6 w-6 text-industry"/><h3 className="font-heading text-lg font-bold">{item.title}</h3><p className="mt-2 text-sm text-primary-foreground/60">{item.body}</p></article>})}</div></div></section>
       <section className="bg-primary-foreground/[0.03] py-16"><div className="container mx-auto px-4"><SectionHeading eyebrow="The fix" title="One campaign puts your offer everywhere" body="Pick a promotion you already have — we turn it into one coordinated campaign across every channel."/><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{page.useCases.map((item,index)=>{const Icon=cardIcons[index];return <article key={item.title} className="rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.04] p-5"><Icon className="h-7 w-7 text-industry"/><h3 className="mt-4 font-heading font-bold">{item.title}</h3><p className="mt-2 text-sm text-primary-foreground/60">{item.body}</p></article>})}</div></div></section>
