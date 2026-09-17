@@ -147,6 +147,7 @@ import GraphicDesignService from "./pages/GraphicDesignService.tsx";
 import Careers from "./pages/Careers.tsx";
 import JobPage from "./pages/JobPage.tsx";
 import BrandBlast360 from "./pages/BrandBlast360.tsx";
+import BB360ServicePage from "./pages/BB360ServicePage.tsx";
 import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
 
 const queryClient = new QueryClient();
