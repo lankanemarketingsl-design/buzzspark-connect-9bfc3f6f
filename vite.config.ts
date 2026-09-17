@@ -362,7 +362,37 @@ const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => 
       faqs,
     });
   });
-  return entries;
+  const conversionFile = path.join(projectRoot, "src", "data", "bb360ConversionPages.json");
+  if (!fs.existsSync(conversionFile)) return entries;
+  const conversionPages = JSON.parse(fs.readFileSync(conversionFile, "utf8")) as Array<{
+    slug: string;
+    title: string;
+    description: string;
+    h1: string;
+    hero: string;
+    reachSub: string;
+    services: { title: string; body: string }[];
+    useCases: { title: string; body: string }[];
+    faqs: { q: string; a: string }[];
+    eyebrow: string;
+  }>;
+  const replacements = new Map(conversionPages.map((page) => [page.slug, page]));
+  return entries.map((entry) => {
+    const page = replacements.get(entry.slug);
+    if (!page) return entry;
+    return {
+      ...entry,
+      metaTitle: page.title.replace(" | Buzz Connect", ""),
+      metaDescription: page.description,
+      h1: page.h1,
+      hero: page.hero,
+      industry: page.eyebrow.replace("Brand Blast 360 · ", ""),
+      audience: page.reachSub.replace(" reached across 5 channels", ""),
+      sections: page.services.map((section) => ({ h2: section.title, body: section.body })),
+      campaignIdeas: page.useCases.map((item) => ({ title: item.title, description: item.body })),
+      faqs: page.faqs,
+    };
+  });
 };
 
 const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) => {

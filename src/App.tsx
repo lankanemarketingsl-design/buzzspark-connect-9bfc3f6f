@@ -156,7 +156,7 @@ const queryClient = new QueryClient();
 const SiteChrome = ({ children }: { children: React.ReactNode }) => {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith("/admin");
-  const hasDedicatedMobileCta = pathname === "/brand-blast-360/hotels";
+  const hasDedicatedMobileCta = pathname.startsWith("/brand-blast-360/");
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
       <ScrollToTop />
