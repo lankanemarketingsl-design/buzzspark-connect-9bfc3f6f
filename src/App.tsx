@@ -156,6 +156,7 @@ const queryClient = new QueryClient();
 const SiteChrome = ({ children }: { children: React.ReactNode }) => {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith("/admin");
+  const hasDedicatedMobileCta = pathname === "/brand-blast-360/hotels";
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
       <ScrollToTop />
@@ -168,7 +169,7 @@ const SiteChrome = ({ children }: { children: React.ReactNode }) => {
       {!isAdmin && <Navbar />}
       <main className="overflow-x-hidden">{children}</main>
       {!isAdmin && <Footer />}
-      {!isAdmin && <WhatsAppCTA />}
+      {!isAdmin && !hasDedicatedMobileCta && <WhatsAppCTA />}
     </div>
   );
 };
