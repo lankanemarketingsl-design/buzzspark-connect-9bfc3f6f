@@ -148,6 +148,7 @@ import Careers from "./pages/Careers.tsx";
 import JobPage from "./pages/JobPage.tsx";
 import BrandBlast360 from "./pages/BrandBlast360.tsx";
 import BB360ServicePage from "./pages/BB360ServicePage.tsx";
+import BB360Hotels from "./pages/BB360Hotels.tsx";
 import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
 
 const queryClient = new QueryClient();
@@ -155,6 +156,7 @@ const queryClient = new QueryClient();
 const SiteChrome = ({ children }: { children: React.ReactNode }) => {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith("/admin");
+  const hasDedicatedMobileCta = pathname === "/brand-blast-360/hotels";
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
       <ScrollToTop />
@@ -167,7 +169,7 @@ const SiteChrome = ({ children }: { children: React.ReactNode }) => {
       {!isAdmin && <Navbar />}
       <main className="overflow-x-hidden">{children}</main>
       {!isAdmin && <Footer />}
-      {!isAdmin && <WhatsAppCTA />}
+      {!isAdmin && !hasDedicatedMobileCta && <WhatsAppCTA />}
     </div>
   );
 };
@@ -333,6 +335,7 @@ const App = () => (
               <Route path="/sms-marketing-sri-lanka-600000-customers-2026" element={<SmsMarketingSriLanka600k2026 />} />
               <Route path="/social-media-marketing-sri-lanka-complete-guide-2026" element={<SocialMediaMarketingSriLankaComplete2026 />} />
               <Route path="/brand-blast-360" element={<BrandBlast360 />} />
+              <Route path="/brand-blast-360/hotels" element={<BB360Hotels />} />
               <Route path="/brand-blast-360/:industry" element={<BB360ServicePage />} />
               
               
