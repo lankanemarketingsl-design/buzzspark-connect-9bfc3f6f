@@ -309,6 +309,10 @@ interface Bb360ServiceSeoEntry {
   audience: string;
   priceFrom: string;
   industry: string;
+  hero: string;
+  promotions: { title: string; description: string }[];
+  campaignIdeas: { title: string; description: string }[];
+  faqs: { q: string; a: string }[];
 }
 
 const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => {
@@ -331,6 +335,17 @@ const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => 
     for (const s of block.matchAll(sectionRegex)) {
       sections.push({ h2: s[1].replace(/\\"/g, '"'), body: s[2].replace(/\\"/g, '"') });
     }
+    const pairList = (property: string, first: string, second: string) => {
+      const section = block.match(new RegExp(`${property}:\\s*\\[([\\s\\S]*?)\\n\\s*\\],`))?.[1] ?? "";
+      const pairRegex = new RegExp(`${first}:\\s*"((?:[^"\\\\]|\\\\.)*)"\\s*,\\s*${second}:\\s*"((?:[^"\\\\]|\\\\.)*)"`, "g");
+      return Array.from(section.matchAll(pairRegex)).map((pair) => ({
+        first: pair[1].replace(/\\"/g, '"'),
+        second: pair[2].replace(/\\"/g, '"'),
+      }));
+    };
+    const promotions = pairList("promotions", "title", "description").map((item) => ({ title: item.first, description: item.second }));
+    const campaignIdeas = pairList("campaignIdeas", "title", "description").map((item) => ({ title: item.first, description: item.second }));
+    const faqs = pairList("faqs", "q", "a").map((item) => ({ q: item.first, a: item.second }));
     entries.push({
       slug: pos.slug,
       metaTitle,
@@ -341,6 +356,10 @@ const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => 
       audience: get("audience"),
       priceFrom: get("priceFrom"),
       industry: get("industry"),
+      hero: get("hero"),
+      promotions,
+      campaignIdeas,
+      faqs,
     });
   });
   return entries;
@@ -348,18 +367,8 @@ const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => 
 
 const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) => {
   const canonical = `${SITE_URL}/brand-blast-360/${entry.slug}`;
-  const intro = `Email, SMS and WhatsApp marketing for ${entry.industry.toLowerCase()} in Sri Lanka lets you reach ${entry.reach} ${entry.audience} in one campaign — from ${entry.priceFrom}, live in 24 hours.`;
-  const faqs = [
-    {
-      q: `How much does ${entry.industry.toLowerCase()} marketing cost in Sri Lanka?`,
-      a: `Campaigns start from ${entry.priceFrom} — roughly LKR 0.015 per person reached, including creative, send and report.`,
-    },
-    {
-      q: `How many ${entry.audience} can I reach?`,
-      a: `${entry.reach} people in one campaign across email, SMS, WhatsApp, Facebook remarketing, Findit.lk and LinkedIn.`,
-    },
-    { q: "How fast can it go live?", a: "Within 24 hours of confirming your offer and artwork details." },
-  ];
+  const intro = entry.hero || `Promote one ${entry.industry.toLowerCase()} offer through Brand Blast 360 from ${entry.priceFrom}, live in 24 hours.`;
+  const faqs = entry.faqs;
 
   let html = applyRouteSeo(template, {
     route: `/brand-blast-360/${entry.slug}`,
@@ -367,7 +376,12 @@ const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) =>
     description: entry.metaDescription,
     canonical,
     h1: entry.h1,
-    paragraphs: [intro, ...entry.sections.map((s) => `${s.h2}. ${s.body}`)],
+    paragraphs: [
+      intro,
+      ...entry.promotions.map((item) => `${item.title}. ${item.description}`),
+      ...entry.campaignIdeas.map((item) => `${item.title}. ${item.description}`),
+      ...entry.sections.map((s) => `${s.h2}. ${s.body}`),
+    ],
     faqs,
   });
 
@@ -375,8 +389,8 @@ const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) =>
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: entry.h1,
-      serviceType: `Email, SMS and WhatsApp Marketing for ${entry.industry}`,
+      name: `Brand Blast 360 for ${entry.industry}`,
+      serviceType: `${entry.industry} promotion campaign`,
       provider: { "@type": "Organization", name: "Buzz Connect", url: SITE_URL },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
       description: entry.metaDescription,
