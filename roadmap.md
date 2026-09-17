@@ -5,5 +5,5 @@
 - [x] Update static HTML generation and AI-discovery labels for the expanded intent.
 - [x] Verify SEO isolation, links, WhatsApp tracking, generated HTML, and responsive layouts.
 
-- [ ] Rebuild only `/brand-blast-360/hotels` from the supplied conversion reference.
-- [ ] Verify Hotels SEO, CTAs, animation, responsive layout, and isolation.
+- [x] Rebuild only `/brand-blast-360/hotels` from the supplied conversion reference.
+- [x] Verify Hotels SEO, CTAs, animation, responsive layout, and isolation.
