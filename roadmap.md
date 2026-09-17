@@ -7,3 +7,6 @@
 
 - [x] Rebuild only `/brand-blast-360/hotels` from the supplied conversion reference.
 - [x] Verify Hotels SEO, CTAs, animation, responsive layout, and isolation.
+- [ ] Rebuild the remaining ten `/brand-blast-360/:industry` pages from their supplied references.
+- [ ] Preserve Hotels and every existing broad industry/service page unchanged.
+- [ ] Verify unique SEO, schema, WhatsApp CTAs, animation, mobile layouts, and route isolation.
