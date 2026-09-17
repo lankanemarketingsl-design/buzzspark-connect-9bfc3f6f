@@ -74,7 +74,7 @@ const LogoCarousel = () => {
   );
 
   return (
-    <section className="py-12 sm:py-16 bg-muted/50 overflow-hidden">
+    <section data-client-logos className="py-12 sm:py-16 bg-muted/50 overflow-hidden">
       <div className="container mx-auto px-4 mb-8">
         <motion.div
           className="text-center"
