@@ -443,8 +443,20 @@ const staticRouteSeoPlugin = (): Plugin => ({
       fs.writeFileSync(path.join(careersDir, `${job.slug}.html`), buildJobHtml(template, job), "utf8");
     });
 
+    // Pre-render each Brand Blast 360 industry service page
+    const bb360Entries = parseBb360ServicePages(projectRoot);
+    const bb360Dir = path.join(distDir, "brand-blast-360");
+    if (bb360Entries.length) fs.mkdirSync(bb360Dir, { recursive: true });
+    bb360Entries.forEach((entry) => {
+      fs.writeFileSync(
+        path.join(bb360Dir, `${entry.slug}.html`),
+        buildBb360ServiceHtml(template, entry),
+        "utf8",
+      );
+    });
+
     console.log(
-      `[static-route-seo] Generated static SEO HTML for ${routeSeo.length} routes and ${jobEntries.length} job pages.`,
+      `[static-route-seo] Generated static SEO HTML for ${routeSeo.length} routes, ${jobEntries.length} job pages and ${bb360Entries.length} Brand Blast 360 industry pages.`,
     );
   },
 });
