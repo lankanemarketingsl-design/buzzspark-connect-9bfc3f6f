@@ -267,6 +267,25 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
           </div>
         </section>
 
+        {/* What we measure */}
+        {page.metrics && page.metrics.length > 0 && (
+          <section>
+            <SectionLabel>Reporting</SectionLabel>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">What we measure and report</h2>
+            <p className="text-muted-foreground max-w-4xl mb-6">
+              Every report ties back to these numbers, plus what we plan to change next. If a number is not trackable for your setup, we say so rather than estimating it.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {page.metrics.map((m) => (
+                <div key={m.name} className="p-6 rounded-2xl bg-card border border-border">
+                  <h3 className="font-heading font-semibold mb-2">{m.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Comparison table */}
         {page.table && (
           <section>
