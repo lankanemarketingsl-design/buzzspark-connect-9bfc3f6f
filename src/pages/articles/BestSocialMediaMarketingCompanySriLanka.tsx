@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle, Target, Users, BarChart3, Megaphone, ArrowRight, Star, Zap, TrendingUp } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 
 const BestSocialMediaMarketingCompanySriLanka = () => {
@@ -131,6 +132,17 @@ const BestSocialMediaMarketingCompanySriLanka = () => {
             and how to pick the right partner for your business.
           </p>
         </div>
+        <SocialClusterLinks
+          title="Compare agencies and services"
+          intro="If you are still shortlisting providers, these pages explain what an agency should deliver and what each service covers."
+          links={[
+            { label: "what a social media agency actually does", to: "/social-media-agency-sri-lanka" },
+            { label: "our social media marketing services", to: "/social-media-marketing-sri-lanka" },
+            { label: "monthly social media management", to: "/social-media-management-sri-lanka" },
+            { label: "social media packages and pricing", to: "/social-media-packages-sri-lanka" },
+            { label: "paid social advertising", to: "/social-media-advertising-sri-lanka" },
+          ]}
+        />
         <RelatedArticles />
           <DigitalMarketingCTA />
         </motion.div>

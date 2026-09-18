@@ -12,6 +12,7 @@ import {
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
+import SocialClusterNav from "@/components/SocialClusterNav";
 
 const smmServices = [
   { icon: Target, title: "Social Media Strategy Development", desc: "Custom strategies aligned with your business goals and target audience in Sri Lanka." },
@@ -607,6 +608,13 @@ const SocialMediaMarketing = () => {
           👉 This is your competitive advantage in Sri Lanka.
         </p>
       </motion.div>
+
+      {/* Social media cluster hub links */}
+      <SocialClusterNav
+        heading="Our social media services in Sri Lanka"
+        intro="Facebook, Instagram, TikTok and LinkedIn, plus advertising, management, campaigns, content and lead generation — each with its own page."
+        exclude={["/social-media-marketing-sri-lanka"]}
+      />
 
       {/* Pricing */}
       <motion.div

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle, Target, BarChart3, ArrowRight, Globe, TrendingUp, Zap, Mail, MessageSquare } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 
 const HowSocialMediaMarketingWorksSriLanka = () => {
@@ -146,6 +147,16 @@ const HowSocialMediaMarketingWorksSriLanka = () => {
             and how to pick the right partner for your business.
           </p>
         </div>
+        <SocialClusterLinks
+          title="See how each part works in practice"
+          intro="The process on this page becomes concrete on our service pages."
+          links={[
+            { label: "social media marketing in Sri Lanka", to: "/social-media-marketing-sri-lanka" },
+            { label: "social media campaign management", to: "/social-media-campaigns-sri-lanka" },
+            { label: "social media management services", to: "/social-media-management-sri-lanka" },
+            { label: "paid social media advertising", to: "/social-media-advertising-sri-lanka" },
+          ]}
+        />
         <RelatedArticles />
           <DigitalMarketingCTA />
         </motion.div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle, DollarSign, BarChart3, TrendingUp, ArrowRight, Zap, Target } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 
 const SocialMediaMarketingCostSriLanka = () => {
@@ -121,6 +122,16 @@ const SocialMediaMarketingCostSriLanka = () => {
             and how to pick the right partner for your business.
           </p>
         </div>
+        <SocialClusterLinks
+          title="Costs, packages and services"
+          intro="The figures on this page are general Sri Lankan market estimates. Buzz Connect's own package pricing starts from LKR 50,000 and is set out in full on the packages page."
+          links={[
+            { label: "Buzz Connect social media packages", to: "/social-media-packages-sri-lanka" },
+            { label: "what monthly social media management includes", to: "/social-media-management-sri-lanka" },
+            { label: "paid social media advertising costs", to: "/social-media-advertising-sri-lanka" },
+            { label: "Facebook marketing services", to: "/facebook-marketing-sri-lanka" },
+          ]}
+        />
         <RelatedArticles />
           <DigitalMarketingCTA />
         </motion.div>
