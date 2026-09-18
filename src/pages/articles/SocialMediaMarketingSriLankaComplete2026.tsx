@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 
 const SocialMediaMarketingSriLankaComplete2026 = () => {
   return (
