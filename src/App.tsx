@@ -151,6 +151,7 @@ import BrandBlast360 from "./pages/BrandBlast360.tsx";
 import BB360ServicePage from "./pages/BB360ServicePage.tsx";
 import BB360Hotels from "./pages/BB360Hotels.tsx";
 import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
+import SocialClusterPage from "./pages/SocialClusterPage.tsx";
 import GlobalClientLogos from "@/components/GlobalClientLogos";
 
 const queryClient = new QueryClient();
