@@ -139,7 +139,28 @@ const SocialMediaMarketingSriLankaComplete2026 = () => {
               View Social Media Packages
             </Link>
           </div>
+          <div className="p-6 rounded-2xl bg-card shadow-card border border-border">
+            <h2 className="font-heading text-xl font-bold text-foreground mb-3">Sources &amp; methodology</h2>
+            <p className="text-muted-foreground leading-relaxed text-sm">
+              Platform user figures and demographic splits in this guide are approximate market estimates for Sri Lanka, drawn from publicly reported platform audience data (Meta and TikTok advertising audience estimates, as summarised in annual DataReportal Digital Sri Lanka reports) and rounded. Platforms report reachable advertising audiences rather than verified individuals, so treat these numbers as planning ranges, not exact counts. Cost figures reflect what we observe in the Sri Lankan market and in campaigns we run; Buzz Connect's own package pricing is published on our{" "}
+              <Link to="/social-media-packages-sri-lanka" className="text-accent hover:underline font-semibold">social media packages page</Link>.
+            </p>
+          </div>
         </motion.article>
+        <SocialClusterLinks
+          title="Explore the services covered in this guide"
+          intro="Each service in this guide has its own page with scope, process and deliverables."
+          links={[
+            { label: "Social media marketing services", to: "/social-media-marketing-sri-lanka" },
+            { label: "Social media packages and pricing", to: "/social-media-packages-sri-lanka" },
+            { label: "Facebook marketing", to: "/facebook-marketing-sri-lanka" },
+            { label: "Instagram marketing", to: "/instagram-marketing-sri-lanka" },
+            { label: "Social media advertising", to: "/social-media-advertising-sri-lanka" },
+            { label: "Social media management", to: "/social-media-management-sri-lanka" },
+            { label: "Meta Ads agency", to: "/meta-ads-agency-sri-lanka" },
+            { label: "Social media content creation", to: "/social-media-content-creation-sri-lanka" },
+          ]}
+        />
         <RelatedArticles currentPath="/social-media-marketing-sri-lanka-complete-guide-2026" />
       </div>
     </ServicePageLayout>
