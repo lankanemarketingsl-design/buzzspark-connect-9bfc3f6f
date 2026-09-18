@@ -151,6 +151,20 @@ const collectRouteSeo = (projectRoot: string): RouteSeoEntry[] => {
       continue;
     }
 
+    const clusterSeo = socialClusterSeo.get(slug);
+    if (clusterSeo) {
+      entries.push({
+        route,
+        title: clusterSeo.title,
+        description: clusterSeo.description,
+        canonical: `${SITE_URL}${route}`,
+        h1: clusterSeo.h1,
+        paragraphs: [clusterSeo.answer],
+        faqs: clusterSeo.faqs,
+      });
+      continue;
+    }
+
     const componentPath = importMap.get(component);
     if (!componentPath || !fs.existsSync(componentPath)) continue;
 
