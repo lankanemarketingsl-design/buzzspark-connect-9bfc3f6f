@@ -182,7 +182,30 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
                 </li>
               ))}
             </ul>
-          </section>
+        </section>
+
+        {/* Inline CTA */}
+        <section className="rounded-2xl border border-accent/30 bg-accent/5 p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+          <div>
+            <h2 className="font-heading text-xl sm:text-2xl font-bold mb-2">Not sure where to start?</h2>
+            <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
+              Send us your goal and rough budget on WhatsApp. We'll reply with a suggested plan, a recommended advertising budget and a clear fee — usually the same working day.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 shrink-0">
+            <a href={wa(page.waText)} target="_blank" rel="noopener noreferrer" data-selected-service={page.serviceType}>
+              <Button variant="default" size="lg">
+                <MessageCircle className="mr-2 w-4 h-4" /> WhatsApp us
+              </Button>
+            </a>
+            <a href="tel:+94771437707">
+              <Button variant="outline" size="lg">
+                <Phone className="mr-2 w-4 h-4" /> 077 143 7707
+              </Button>
+            </a>
+          </div>
+        </section>
+
         )}
 
 
