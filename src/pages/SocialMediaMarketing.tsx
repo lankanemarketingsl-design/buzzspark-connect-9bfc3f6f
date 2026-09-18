@@ -623,6 +623,9 @@ const SocialMediaMarketing = () => {
           <p className="text-muted-foreground mt-2">
             Pricing depends on scope of work, ad budget, and campaign complexity.
           </p>
+          <Link to="/social-media-packages-sri-lanka" className="inline-flex items-center gap-2 mt-3 text-accent font-semibold hover:underline">
+            View our social media marketing packages <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
         <div className="p-8 rounded-2xl bg-card shadow-card border-2 border-accent/30 text-center">
           <p className="text-muted-foreground mb-3">Social Media Marketing Campaigns</p>
