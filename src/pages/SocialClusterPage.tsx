@@ -159,6 +159,33 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
           </div>
         </section>
 
+        {/* Who it's for */}
+        {page.whoFor && page.whoFor.length > 0 && (
+          <section className="grid lg:grid-cols-2 gap-6 items-start">
+            <div>
+              <SectionLabel>Good fit</SectionLabel>
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Who this is a good fit for</h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                This service works best in the situations below. If none of them describe you, tell us your situation on WhatsApp and we'll point you to the service that fits — even if it isn't this one.
+              </p>
+              <a href={wa(page.waText)} target="_blank" rel="noopener noreferrer" data-selected-service={page.serviceType}>
+                <Button variant="default" size="lg">
+                  <MessageCircle className="mr-2 w-4 h-4" /> Ask if this fits your business
+                </Button>
+              </a>
+            </div>
+            <ul className="space-y-3">
+              {page.whoFor.map((w) => (
+                <li key={w} className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border">
+                  <CheckCircle2 className="w-4 h-4 text-accent mt-1 shrink-0" />
+                  <span className="text-sm text-muted-foreground leading-relaxed">{w}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+
         {/* Process */}
         <section>
           <SectionLabel>Process</SectionLabel>
