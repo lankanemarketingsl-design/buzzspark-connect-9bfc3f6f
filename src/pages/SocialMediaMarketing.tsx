@@ -13,6 +13,7 @@ import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 import SocialClusterNav from "@/components/SocialClusterNav";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 
 const smmServices = [
   { icon: Target, title: "Social Media Strategy Development", desc: "Custom strategies aligned with your business goals and target audience in Sri Lanka." },
