@@ -36,6 +36,15 @@ const Footer = () => {
               <li><Link to="/lead-generation-sri-lanka" className="hover:text-accent transition-colors">Lead Generation</Link></li>
               <li><Link to="/social-media-marketing-sri-lanka" className="hover:text-accent transition-colors">Social Media Marketing</Link></li>
               <li><Link to="/social-media-packages-sri-lanka" className="hover:text-accent transition-colors">Social Media Packages</Link></li>
+              <li><Link to="/facebook-marketing-sri-lanka" className="hover:text-accent transition-colors">Facebook Marketing</Link></li>
+              <li><Link to="/instagram-marketing-sri-lanka" className="hover:text-accent transition-colors">Instagram Marketing</Link></li>
+              <li><Link to="/social-media-advertising-sri-lanka" className="hover:text-accent transition-colors">Social Media Advertising</Link></li>
+              <li><Link to="/social-media-management-sri-lanka" className="hover:text-accent transition-colors">Social Media Management</Link></li>
+              <li><Link to="/social-media-campaigns-sri-lanka" className="hover:text-accent transition-colors">Social Media Campaigns</Link></li>
+              <li><Link to="/social-media-agency-sri-lanka" className="hover:text-accent transition-colors">Social Media Agency</Link></li>
+              <li><Link to="/meta-ads-agency-sri-lanka" className="hover:text-accent transition-colors">Meta Ads Agency</Link></li>
+              <li><Link to="/social-media-lead-generation-sri-lanka" className="hover:text-accent transition-colors">Social Media Lead Generation</Link></li>
+              <li><Link to="/social-media-content-creation-sri-lanka" className="hover:text-accent transition-colors">Social Media Content Creation</Link></li>
               <li><Link to="/linkedin-marketing-sri-lanka" className="hover:text-accent transition-colors">LinkedIn Marketing</Link></li>
               <li><Link to="/tiktok-marketing-sri-lanka" className="hover:text-accent transition-colors">TikTok Marketing</Link></li>
               <li><Link to="/advertising-sri-lanka" className="hover:text-accent transition-colors">Advertising Sri Lanka</Link></li>
