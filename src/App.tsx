@@ -219,6 +219,15 @@ const App = () => (
               <Route path="/lead-generation-sri-lanka" element={<LeadGeneration />} />
               <Route path="/social-media-marketing-sri-lanka" element={<SocialMediaMarketing />} />
               <Route path="/social-media-packages-sri-lanka" element={<SocialMediaPackages />} />
+              <Route path="/facebook-marketing-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/instagram-marketing-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/social-media-advertising-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/social-media-management-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/social-media-agency-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/social-media-campaigns-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/meta-ads-agency-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/social-media-lead-generation-sri-lanka" element={<SocialClusterPage />} />
+              <Route path="/social-media-content-creation-sri-lanka" element={<SocialClusterPage />} />
               <Route path="/linkedin-marketing-sri-lanka" element={<LinkedInMarketing />} />
               <Route path="/tiktok-marketing-sri-lanka" element={<TikTokMarketing />} />
               <Route path="/web-banner-advertising-sri-lanka" element={<WebBannerAdvertising />} />
