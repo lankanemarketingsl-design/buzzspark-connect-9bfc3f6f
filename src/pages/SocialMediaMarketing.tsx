@@ -1,828 +1,254 @@
-import ServicePageLayout from "@/components/ServicePageLayout";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useMemo } from "react";
 import {
-  CheckCircle, Target, Zap, BarChart3, Globe,
-  HelpCircle, GraduationCap, ShoppingCart, Building2, Home, Calendar, Rocket,
-  TrendingUp, ArrowRight, Users, Eye, PenTool, Megaphone,
-  Layers, Send, Heart, Star, Award, Smartphone,
-  TrendingUpIcon, MessageCircle, Share2, PlayCircle, Globe2
+  ArrowRight, BarChart3, Building2, CheckCircle2, CircleDollarSign, Eye,
+  Facebook, GraduationCap, Heart, Hotel, Instagram, Layers3, Linkedin,
+  Megaphone, MessageCircle, RefreshCw, Search, Send, ShoppingBag, Sparkles,
+  Target, Users, Utensils, Video, Workflow, XCircle,
 } from "lucide-react";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import SEOHead from "@/components/SEOHead";
-import RelatedArticles from "@/components/RelatedArticles";
-import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
-import SocialClusterNav from "@/components/SocialClusterNav";
-import SocialClusterLinks from "@/components/SocialClusterLinks";
+import SocialCampaignPlanForm from "@/components/SocialCampaignPlanForm";
+import { Button } from "@/components/ui/button";
 
-const smmServices = [
-  { icon: Target, title: "Social Media Strategy Development", desc: "Custom strategies aligned with your business goals and target audience in Sri Lanka." },
-  { icon: PenTool, title: "Content Creation & Post Design", desc: "Eye-catching social media posts, banners, and promotional creatives." },
-  { icon: Megaphone, title: "Facebook & Instagram Advertising", desc: "High-performing paid campaigns to reach targeted audiences and generate leads." },
-  { icon: Users, title: "Audience Targeting & Segmentation", desc: "Precision targeting to connect with the right customers at the right time." },
-  { icon: Smartphone, title: "WhatsApp Marketing Integration", desc: "Direct messaging campaigns that convert followers into customers." },
-  { icon: BarChart3, title: "Performance Tracking & Reporting", desc: "Detailed analytics and reporting to measure campaign success." },
+const waUrl = "https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27d%20like%20a%20free%20social%20media%20campaign%20plan.";
+
+const problems = [
+  "Posting without a strategy", "Boosting posts without a clear objective", "Reaching people unlikely to buy",
+  "Attractive creative without a conversion path", "No retargeting or lead follow-up", "No clear measurement",
+  "Spending without understanding the numbers", "Using the same content on every platform", "Prioritising followers over business outcomes",
 ];
 
-const adPlatforms = [
-  { name: "Facebook Ads", desc: "Reach Sri Lanka's largest social audience with targeted campaigns", color: "bg-accent/10 text-accent" },
-  { name: "Instagram Ads", desc: "Visual storytelling that converts for lifestyle brands", color: "bg-accent/10 text-accent" },
-  { name: "TikTok Ads", desc: "Engage younger demographics with viral content", color: "bg-secondary text-secondary-foreground" },
-  { name: "LinkedIn Ads", desc: "Target B2B decision-makers and professionals", color: "bg-accent/10 text-accent" },
+const framework = [
+  ["Attract", "Reach audiences relevant to the offer."], ["Engage", "Give people a useful reason to interact."],
+  ["Capture", "Turn interest into messages, forms or enquiries."], ["Nurture", "Reconnect through remarketing, email, SMS or WhatsApp where appropriate."],
+  ["Convert", "Move prospects towards the campaign objective."], ["Measure", "Track meaningful business and campaign metrics."],
+  ["Optimise", "Improve the creative, audience, offer and budget allocation."],
 ];
 
-const comparisonData = [
-  { feature: "Campaign Strategy", standard: "Generic Approach", bc: "✅ Custom Multi-Platform Strategy" },
-  { feature: "Content Creation", standard: "Basic Posts", bc: "✅ Professional Creatives & Videos" },
-  { feature: "Platform Coverage", standard: "Single Platform", bc: "✅ Facebook, Instagram, TikTok & More" },
-  { feature: "Multi-Channel Support", standard: "Not Included", bc: "✅ Email, SMS & Findit.lk Integration" },
-  { feature: "Audience Targeting", standard: "⚠️ Basic", bc: "✅ Advanced Segmentation" },
-  { feature: "Campaign Visibility", standard: "One-Time Reach", bc: "✅ Extended Multi-Platform Visibility" },
-  { feature: "Performance Tracking", standard: "Limited Reports", bc: "✅ Detailed Analytics & Optimization" },
+const platforms = [
+  { icon: Facebook, name: "Facebook", best: "Local businesses, broad audiences and community", objectives: "Leads, reach, offers, traffic and remarketing", content: "Posts, video, carousels and lead forms", recommendation: "When scale, local targeting or retargeting matters", to: "/facebook-marketing-sri-lanka" },
+  { icon: Instagram, name: "Instagram", best: "Hospitality, food, fashion, beauty and lifestyle", objectives: "Discovery, engagement, product interest and enquiries", content: "Reels, Stories, carousels and visual campaigns", recommendation: "When the product or experience benefits from strong visuals", to: "/instagram-marketing-sri-lanka" },
+  { icon: Video, name: "TikTok", best: "Younger audiences, discovery and education", objectives: "Awareness, consideration and product discovery", content: "Short-form video, demonstrations and explainers", recommendation: "When the team can sustain platform-native video", to: "/tiktok-marketing-sri-lanka" },
+  { icon: Linkedin, name: "LinkedIn", best: "B2B, recruitment and professional services", objectives: "Corporate visibility, enquiries and employer branding", content: "Expert posts, company updates and professional campaigns", recommendation: "When decision-makers or professional audiences are central", to: "/linkedin-marketing-sri-lanka" },
 ];
 
-const keyBenefits = [
-  { icon: Users, title: "High Audience Reach", desc: "Millions of active users in Sri Lanka — connect directly with your target market" },
-  { icon: Zap, title: "Cost-Effective Marketing", desc: "More affordable than traditional advertising while delivering stronger results" },
-  { icon: Target, title: "Targeted Advertising", desc: "Target by location, interests, age, and behavior — reach the right audience" },
-  { icon: MessageCircle, title: "Real-Time Engagement", desc: "Interact instantly through comments, messages, and reactions" },
-  { icon: BarChart3, title: "Measurable Results", desc: "Track every campaign with clicks, conversions, and engagement rates" },
+const services = [
+  ["Social Media Strategy", "Turns your business objective into a channel, audience, content and measurement plan.", "Clarify the route to results", "/social-media-agency-sri-lanka"],
+  ["Content Strategy", "Plans useful campaign themes, formats, messages and calls to action.", "Build relevant attention", "/social-media-content-creation-sri-lanka"],
+  ["Social Media Management", "Coordinates publishing, monitoring and ongoing improvement.", "Maintain a consistent presence", "/social-media-management-sri-lanka"],
+  ["Facebook Marketing", "Uses Facebook content, audiences, offers, lead forms and remarketing.", "Reach and capture local demand", "/facebook-marketing-sri-lanka"],
+  ["Instagram Marketing", "Combines Reels, Stories, carousels and advertising for visual discovery.", "Create product and brand interest", "/instagram-marketing-sri-lanka"],
+  ["TikTok Marketing", "Develops short-form video suited to discovery and platform behaviour.", "Earn attention through video", "/tiktok-marketing-sri-lanka"],
+  ["LinkedIn Marketing", "Supports B2B visibility, recruitment and professional audience targeting.", "Reach business decision-makers", "/linkedin-marketing-sri-lanka"],
+  ["Paid Social Advertising", "Plans objectives, targeting, placements, budgets and optimisation.", "Scale qualified reach", "/social-media-advertising-sri-lanka"],
+  ["Lead Generation", "Connects ads and content to forms, messages and follow-up paths.", "Generate qualified enquiries", "/social-media-lead-generation-sri-lanka"],
+  ["Retargeting", "Reconnects with people who visited, watched or engaged when appropriate.", "Continue the buying journey", "/meta-ads-agency-sri-lanka"],
+  ["Campaign Management", "Coordinates launch, monitoring, testing and reporting across a campaign.", "Keep delivery accountable", "/social-media-campaigns-sri-lanka"],
+  ["Creative Production", "Produces static, carousel, short-video and promotional campaign assets.", "Communicate the offer clearly", "/social-media-content-creation-sri-lanka"],
+  ["Performance Reporting", "Explains delivery, response, cost and next actions in practical terms.", "Make informed decisions", "/social-media-campaigns-sri-lanka"],
 ];
 
-const industriesServed = [
-  { icon: Home, label: "Hotels & Tourism", desc: "Increase bookings, promote offers, reach global travelers" },
-  { icon: Building2, label: "Real Estate", desc: "Generate property leads, showcase listings, target investors" },
-  { icon: GraduationCap, label: "Education", desc: "Promote courses, generate student inquiries, build enrollment" },
-  { icon: ShoppingCart, label: "Retail & E-commerce", desc: "Drive online sales, promote products, retarget customers" },
-  { icon: Calendar, label: "Events", desc: "Promote events, sell tickets, maximize attendance" },
-  { icon: Rocket, label: "SMEs & Startups", desc: "Build brand awareness, increase foot traffic, generate leads" },
+const process = [
+  ["01", "Business discovery", "We clarify the business, offer, customer, geography, competition, current marketing and objective."],
+  ["02", "Audience and market research", "We identify target locations, demographics, interests, behaviours and customer intent."],
+  ["03", "Campaign strategy", "We select the objective, platform mix, offer, funnel, budget and useful KPIs."],
+  ["04", "Creative production", "We develop approved static, carousel or video assets, copy and landing-page messaging where needed."],
+  ["05", "Campaign launch", "We configure audiences, ads, placements, tracking and budgets for the agreed scope."],
+  ["06", "Monitor and optimise", "We review reach, click-through rate, cost per click, leads, conversions and creative response."],
+  ["07", "Report and improve", "We explain performance and recommend the next campaign cycle based on what the data shows."],
 ];
 
-const leadGenFunnel = [
-  { step: "1", title: "Awareness", desc: "Ads & content reach new audiences", icon: Eye },
-  { step: "2", title: "Interest", desc: "Engagement builds curiosity", icon: Heart },
-  { step: "3", title: "Consideration", desc: "Retargeting keeps you top of mind", icon: Star },
-  { step: "4", title: "Conversion", desc: "Lead forms & messages capture prospects", icon: CheckCircle },
+const industries = [
+  [Hotel, "Hotels & Hospitality", "Promote rooms, packages and experiences with visual campaigns, retargeting and booking-focused calls to action."],
+  [Utensils, "Restaurants & Food", "Turn menu items, new launches and limited offers into local discovery, reservations and delivery enquiries."],
+  [Building2, "Real Estate", "Present listings with video and carousels, capture enquiries and reconnect with interested prospects."],
+  [GraduationCap, "Education", "Promote courses, intakes and seminars through information-led creative and enquiry campaigns."],
+  [CircleDollarSign, "Finance", "Explain services clearly, build credibility and route qualified prospects into compliant enquiry journeys."],
+  [ShoppingBag, "Retail & E-commerce", "Use product-led creative, offers and remarketing to support discovery and purchase intent."],
+  [Sparkles, "Fashion, Beauty & Fitness", "Use visual demonstrations, transformations and launches to drive relevant appointments or product interest."],
+  [Building2, "B2B & Technology", "Reach professional audiences with expertise, use cases and consultation-led campaigns."],
+  [Users, "Recruitment", "Present vacancies and employer value clearly, then route suitable applicants into a simple application path."],
+  [Megaphone, "Events & Automotive", "Build time-bound awareness, showcase the experience or product and capture registrations or enquiries."],
 ];
 
-const processSteps = [
-  { icon: Target, title: "Understand Goals", desc: "Analyze your business goals and target audience" },
-  { icon: Layers, title: "Create Strategy", desc: "Develop a tailored social media strategy" },
-  { icon: PenTool, title: "Design Content", desc: "Create engaging content and creatives" },
-  { icon: Send, title: "Launch Campaigns", desc: "Execute campaigns across chosen platforms" },
-  { icon: BarChart3, title: "Monitor & Optimize", desc: "Track performance and optimize for results" },
-];
-
-const selectionCriteria = [
-  { title: "Proven Experience", desc: "Look for case studies, results, and industry-specific experience that demonstrates real success" },
-  { title: "Strategy Approach", desc: "Avoid agencies that only post content — choose one that focuses on leads and uses paid ads effectively" },
-  { title: "Transparency", desc: "You should receive regular reports with clear metrics and honest performance insights" },
-  { title: "Custom Solutions", desc: "Every business is different — your strategy should be tailored to your audience and goals" },
-];
-
-const commonMistakes = [
-  "Posting without a clear strategy or goals",
-  "Ignoring paid advertising and relying only on organic reach",
-  "Targeting the wrong audience segments",
-  "Inconsistent posting and engagement",
-  "Not tracking results or measuring ROI",
-];
-
-const futureTrends = [
-  { icon: PlayCircle, title: "Video Content Dominance", desc: "Short-form video continues to dominate engagement" },
-  { icon: Zap, title: "AI-Driven Campaigns", desc: "Smart algorithms optimize targeting and creative" },
-  { icon: Target, title: "Hyper-Personalization", desc: "Tailored content for individual user preferences" },
-  { icon: Layers, title: "Marketing Automation", desc: "Streamlined workflows for consistent engagement" },
+const examples = [
+  { industry: "Hotel", objective: "Generate booking enquiries", campaign: "Room or package offer", platform: "Facebook + Instagram", creative: "Video + carousel", cta: "WhatsApp or booking page", measure: "Qualified enquiries and confirmed bookings" },
+  { industry: "Education", objective: "Generate course enquiries", campaign: "Intake campaign", platform: "Facebook + Instagram", creative: "Course benefits + proof + CTA", cta: "Lead form or WhatsApp", measure: "Qualified leads and enrolments" },
+  { industry: "Real estate", objective: "Generate property enquiries", campaign: "Listing launch", platform: "Facebook + Instagram", creative: "Property video + carousel", cta: "Request details", measure: "Qualified property enquiries" },
 ];
 
 const faqs = [
-  { q: "What is social media marketing?", a: "Social media marketing is the use of platforms like Facebook, Instagram, LinkedIn, and TikTok to promote your business, products, or services. It includes content creation, paid advertising, audience targeting, engagement management, and performance tracking. Unlike traditional advertising, social media allows precise audience targeting with measurable results." },
-  { q: "Which platform is best for social media marketing in Sri Lanka?", a: "Facebook and Instagram are the most widely used platforms in Sri Lanka, offering the broadest reach. TikTok is growing rapidly and offers massive reach for younger audiences. LinkedIn is essential for B2B marketing and professional services. The best choice depends on your target audience and business goals." },
-  { q: "How long does it take to see results from social media marketing?", a: "Paid advertising delivers immediate visibility and can generate leads within days. Organic growth and brand building typically take 3-6 months to show significant results. A combined approach of paid and organic strategies yields the best short-term and long-term outcomes." },
-  { q: "Is social media marketing worth the investment?", a: "Yes, when done correctly, social media marketing delivers strong ROI and consistent growth. It allows you to reach a massive audience cost-effectively, build brand trust, generate leads, and track measurable results. The key is having a strategy that focuses on business outcomes, not just vanity metrics." },
-  { q: "How much does social media marketing cost in Sri Lanka?", a: "Buzz Connect offers social media marketing campaigns starting from LKR 50,000. Pricing depends on scope of work, ad budget, and campaign complexity. Instead of focusing on cost alone, focus on return on investment — a well-executed campaign pays for itself through increased leads and sales." },
-  { q: "Why choose Buzz Connect for social media marketing?", a: "Buzz Connect provides integrated, results-driven social media marketing solutions with multi-channel support including email, SMS, WhatsApp, and Findit.lk advertising. We combine social media with other channels to maximize visibility and conversions, delivering measurable business growth for Sri Lankan businesses." },
+  { q: "What is social media marketing in Sri Lanka?", a: "Social media marketing is the coordinated use of strategy, content, community activity and paid advertising to reach Sri Lankan audiences and support a defined business objective. It can build awareness, traffic, enquiries, leads, bookings, applications or sales depending on the campaign." },
+  { q: "How much does social media marketing cost in Sri Lanka?", a: "BuzzConnect social media campaign and service packages start from LKR 50,000. The final agency fee depends on platforms, creative requirements, duration, management scope and campaign complexity; advertising media spend is quoted separately." },
+  { q: "How much does a social media marketing agency charge?", a: "Agency charges vary with the work involved rather than one universal rate. Ask for a written scope showing strategy, content, ad management, reporting and any exclusions, then compare the agency fee separately from the amount paid to the advertising platform." },
+  { q: "What is included in social media marketing?", a: "A scope may include strategy, content planning, creative production, page management, paid campaign setup, targeting, optimisation, lead-generation flows and reporting. Exact deliverables depend on the selected package and are confirmed before work starts." },
+  { q: "What is the difference between social media marketing and social media advertising?", a: "Social media marketing is the wider system, including strategy, content, organic presence, community activity, advertising and measurement. Social media advertising is the paid part used to target and scale campaign delivery." },
+  { q: "Which social media platform is best for a business in Sri Lanka?", a: "There is no single best platform for every business. Facebook may suit broad local reach, Instagram visual discovery, TikTok short-form discovery and LinkedIn professional audiences; the right choice depends on your customer, objective, offer, creative and budget." },
+  { q: "How much should I spend on Facebook advertising?", a: "The appropriate media budget depends on audience size, geography, objective, competition, campaign length and required lead volume. BuzzConnect recommends separating the media budget from the agency fee and setting it only after the campaign objective and audience are clear." },
+  { q: "Can social media marketing generate leads?", a: "Yes. Social campaigns can generate leads when the audience, offer, creative, call to action, capture method and follow-up process work together. Lead quality and response speed matter as much as the number of forms or messages received." },
+  { q: "How long does social media marketing take to produce results?", a: "Paid campaigns can begin producing delivery and response data soon after launch, while brand building and organic audience development usually require sustained work. The practical timeline depends on the objective, budget, offer, audience and quality of the conversion path." },
+  { q: "Can BuzzConnect manage Facebook and Instagram advertising?", a: "Yes. BuzzConnect can plan, set up, manage and report on Facebook and Instagram campaigns within the agreed scope, including audience targeting, creative coordination, lead generation and optimisation." },
+  { q: "Does the LKR 50,000 starting price include advertising spend?", a: "No. LKR 50,000 is the starting point for BuzzConnect's campaign or service fee. Advertising media spend paid to platforms is separate unless a written package explicitly states otherwise." },
+  { q: "What industries does BuzzConnect work with?", a: "BuzzConnect develops campaigns for sectors including hospitality, food, real estate, education, finance, healthcare, retail, fashion, automotive, events, construction, professional services, recruitment, fitness and technology. The strategy changes by audience and objective." },
+  { q: "How do I start a social media marketing campaign?", a: "Start by sharing your business, offer, target customer, objective, preferred geography and available budget. BuzzConnect can then recommend a suitable platform mix, campaign structure, deliverables and measurement plan." },
 ];
+
+const Section = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <motion.section initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} className={`mb-16 sm:mb-24 ${className}`}>{children}</motion.section>
+);
+
+const Heading = ({ eyebrow, title, intro }: { eyebrow?: string; title: string; intro?: string }) => (
+  <div className="max-w-3xl mb-8">
+    {eyebrow && <p className="text-sm font-semibold uppercase text-accent mb-2">{eyebrow}</p>}
+    <h2 className="font-heading text-2xl sm:text-4xl font-bold text-foreground">{title}</h2>
+    {intro && <p className="mt-3 text-muted-foreground leading-relaxed">{intro}</p>}
+  </div>
+);
 
 const SocialMediaMarketing = () => {
   const jsonLd = useMemo(() => [
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map(f => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: "Social Media Marketing Sri Lanka",
-      provider: { "@type": "Organization", name: "Buzz Connect" },
-      areaServed: { "@type": "Country", name: "Sri Lanka" },
-      description: "Result-driven social media marketing services in Sri Lanka including Facebook, Instagram, TikTok, and LinkedIn advertising. Campaigns starting from LKR 50,000.",
-      offers: {
-        "@type": "Offer",
-        priceCurrency: "LKR",
-        price: "50000",
-        priceValidUntil: "2026-12-31",
-      },
-    },
+    { "@context": "https://schema.org", "@type": "Service", name: "Social Media Marketing Sri Lanka", serviceType: "Social media marketing services", url: "https://buzzconnect.lk/social-media-marketing-sri-lanka", provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" }, areaServed: { "@type": "Country", name: "Sri Lanka" }, description: "Social media strategy, content, paid advertising, lead generation, campaign management and reporting for Sri Lankan businesses.", offers: { "@type": "Offer", priceCurrency: "LKR", price: "50000", description: "BuzzConnect agency service packages start from LKR 50,000. Advertising media spend is separate." } },
+    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.q, acceptedAnswer: { "@type": "Answer", text: faq.a } })) },
   ], []);
 
   return (
     <ServicePageLayout
       badge="Social Media Marketing Sri Lanka"
-      title="Social Media Marketing That Builds Brands — and Drives Results"
-      subtitle="Targeted campaigns across Facebook, Instagram & TikTok — starting from LKR 50,000. Multi-platform reach with Findit.lk integration."
+      title="Social Media Marketing Sri Lanka That Turns Attention Into Customers"
+      subtitle="Build your brand, reach the right Sri Lankan audience and generate measurable enquiries through strategic Facebook, Instagram, TikTok and LinkedIn campaigns. Starting from LKR 50,000."
+      primaryCta={{ label: "Get Your Free Campaign Plan", href: "/social-media-marketing-sri-lanka#campaign-plan" }}
+      secondaryCta={{ label: "Chat With BuzzConnect", href: waUrl }}
+      heroHighlights={["Campaigns from LKR 50,000", "Facebook, Instagram, TikTok & LinkedIn", "Content + paid advertising", "Lead generation", "Campaign reporting", "Findit.lk amplification available"]}
     >
       <SEOHead
-        title="Social Media Marketing Sri Lanka | Top Agency for Leads & Growth"
-        description="Best social media marketing sri lanka services from the best social media marketing agency in sri lanka. Drive traffic, engagement and conversions with proven strategies."
+        title="Social Media Marketing Sri Lanka | Facebook, Instagram & TikTok | BuzzConnect"
+        description="Social media marketing in Sri Lanka from LKR 50,000. Get strategy, content, paid advertising, lead generation and measurable reporting from BuzzConnect."
         canonical="/social-media-marketing-sri-lanka"
-        keywords="social media marketing sri lanka, social media marketing services sri lanka, facebook advertising sri lanka, instagram marketing sri lanka, tiktok ads sri lanka, smm services colombo, social media agency sri lanka, facebook ads sri lanka, best social media agency sri lanka"
-        breadcrumbs={[
-          { name: "Home", url: "/" },
-          { name: "Social Media Marketing", url: "/social-media-marketing-sri-lanka" },
-        ]}
+        keywords="social media marketing Sri Lanka, social media marketing agency Sri Lanka, social media marketing services Sri Lanka, Facebook marketing Sri Lanka, Instagram marketing Sri Lanka"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Social Media Marketing", url: "/social-media-marketing-sri-lanka" }]}
         jsonLd={jsonLd}
       />
 
-      {/* Trust Badges - Top Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-12"
-      >
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-          <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/15 border border-accent/40 shadow-sm">
-            <Zap className="w-5 h-5 text-accent" />
-            <span className="text-accent font-bold text-sm sm:text-base">Campaigns from LKR 50,000</span>
-          </div>
-          <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary border border-border shadow-sm">
-            <Users className="w-5 h-5 text-secondary-foreground" />
-            <span className="text-secondary-foreground font-bold text-sm sm:text-base">Multi-Platform Reach</span>
-          </div>
-          <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary border border-border shadow-sm">
-            <Globe2 className="w-5 h-5 text-secondary-foreground" />
-            <span className="text-secondary-foreground font-bold text-sm sm:text-base">Findit.lk Integration</span>
-          </div>
+      <Section className="grid lg:grid-cols-[1.05fr_.95fr] gap-8 items-start">
+        <div>
+          <Heading eyebrow="The commercial reality" title="Your Business May Be Getting Views — But Are You Getting Customers?" intro="Activity can look busy while the path to an enquiry remains broken. A useful campaign connects each post and ad to a business objective, an audience, an offer and a next step." />
+          <p className="text-lg font-semibold text-foreground">BuzzConnect approaches social media as a business growth channel, not simply a posting service.</p>
+          <Button asChild variant="link" className="px-0 mt-3"><a href="#campaign-process">See how we build a campaign <ArrowRight /></a></Button>
         </div>
-      </motion.div>
-
-      {/* Introduction */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-4xl mx-auto"
-      >
-        <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-          Social media has become one of the most powerful tools for business growth in Sri Lanka. From small local brands to large enterprises, companies are using platforms like <strong>Facebook, Instagram, TikTok, and LinkedIn</strong> to connect with their audience, generate leads, and increase sales.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-4">
-          If you are searching for <strong>social media marketing Sri Lanka</strong>, you are likely looking for a reliable way to increase brand awareness, generate quality leads, boost engagement, and drive real business results.
-        </p>
-        <p className="text-muted-foreground leading-relaxed">
-          This guide explains everything you need to know about <strong>social media marketing in Sri Lanka</strong>, including strategies, benefits, pricing, and how to choose the right approach for your business.
-        </p>
-
-        {/* Social Proof Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
-          {[
-            { value: "4", suffix: "+", label: "Platforms Covered" },
-            { value: "500", suffix: "+", label: "Campaigns Delivered" },
-            { value: "10", suffix: "+", label: "Years Experience" },
-            { value: "200K", suffix: "+", label: "Audience via Findit.lk" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center p-4 rounded-xl bg-card border border-border">
-              <p className="text-2xl font-bold text-accent">{stat.value}<span className="text-accent">{stat.suffix}</span></p>
-              <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* What is Social Media Marketing */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-4xl mx-auto p-8 rounded-2xl bg-card shadow-card border border-border"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-4">What is Social Media Marketing?</h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
-          <strong>Social media marketing</strong> is the process of using platforms such as Facebook, Instagram, LinkedIn, and TikTok to promote your business, products, or services. It includes:
-        </p>
-        <ul className="space-y-2 mb-4">
-          {["Content creation", "Paid advertising", "Audience targeting", "Engagement management", "Performance tracking"].map((item, i) => (
-            <li key={i} className="flex items-center gap-2 text-muted-foreground">
-              <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-              {item}
-            </li>
-          ))}
+        <ul className="grid sm:grid-cols-2 gap-3">
+          {problems.map((problem) => <li key={problem} className="flex gap-3 p-4 bg-card border border-border rounded-md"><XCircle className="w-5 h-5 text-destructive shrink-0" /><span className="text-sm text-muted-foreground">{problem}</span></li>)}
         </ul>
-        <p className="text-muted-foreground leading-relaxed">
-          Unlike traditional advertising, <strong>social media marketing</strong> allows businesses to reach specific audiences with precision and measurable results. At Buzz Connect, we go beyond basic campaigns by combining <strong>social media advertising</strong> with multi-channel promotion — ensuring your business gets maximum visibility and engagement.
-        </p>
-      </motion.div>
+      </Section>
 
-      {/* Why Social Media Marketing is Important */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-4xl mx-auto"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground text-center mb-4">Why Social Media Marketing is Important in Sri Lanka</h2>
-        <p className="text-muted-foreground leading-relaxed text-center mb-8 max-w-2xl mx-auto">
-          Sri Lanka has a rapidly growing digital audience. <strong>Millions of users are active daily</strong> on social media platforms, creating a massive opportunity for businesses to reach potential customers instantly, build brand trust, and generate consistent leads.
-        </p>
+      <Section>
+        <Heading title="What Is Social Media Marketing in Sri Lanka?" intro="Social media marketing is the coordinated use of strategy, content, organic distribution, paid advertising, community engagement, lead generation, retargeting and measurement to support a business objective. It is broader than posting images on Facebook." />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 border border-border rounded-md overflow-hidden bg-card">
+          {["Strategy", "Content", "Audience", "Campaign", "Traffic", "Leads", "Follow-up", "Sales", "Measurement"].map((item, index) => <div key={item} className="relative px-3 py-5 text-center text-xs font-semibold border-b sm:border-b-0 sm:border-r border-border last:border-0">{item}{index < 8 && <ArrowRight className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-accent z-10" />}</div>)}
+        </div>
+      </Section>
 
-        <h3 className="font-heading text-xl font-semibold text-foreground mb-6 text-center">Key Benefits of Social Media Marketing</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          {keyBenefits.map((benefit, i) => (
-            <motion.div
-              key={benefit.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-xl bg-card shadow-card border border-border hover:border-accent/40 transition-all"
-            >
-              <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center mb-3">
-                <benefit.icon className="w-5 h-5 text-primary" />
-              </div>
-              <h4 className="font-heading font-semibold text-foreground mb-1">{benefit.title}</h4>
-              <p className="text-sm text-muted-foreground">{benefit.desc}</p>
-            </motion.div>
-          ))}
+      <Section>
+        <Heading eyebrow="Our methodology" title="Our Social Media Growth Framework" intro="Not every campaign requires every stage. The framework prevents disconnected activity and keeps the campaign tied to the commercial objective." />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {framework.map(([name, copy], index) => <div key={name} className="p-5 bg-card border border-border rounded-md"><span className="text-xs font-bold text-accent">0{index + 1}</span><h3 className="font-bold text-lg mt-2">{name}</h3><p className="text-sm text-muted-foreground mt-2">{copy}</p></div>)}
         </div>
-      </motion.div>
+      </Section>
 
-      {/* Platforms That Drive Results */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16"
-      >
-        <div className="text-center mb-10">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Platforms</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">
-            Platforms That Drive Results in Sri Lanka
-          </h2>
+      <Section>
+        <Heading title="Which Social Media Platforms Should Your Business Use?" intro="Platform selection depends on the audience, industry, objective, creative format and budget. No platform is universally best." />
+        <div className="overflow-x-auto border border-border rounded-md">
+          <table className="w-full min-w-[850px] text-sm bg-card">
+            <thead className="bg-primary text-primary-foreground"><tr>{["Platform", "Best for", "Typical objectives", "Content opportunities", "When we may recommend it"].map((h) => <th key={h} className="p-4 text-left">{h}</th>)}</tr></thead>
+            <tbody>{platforms.map((p) => <tr key={p.name} className="border-t border-border align-top"><td className="p-4"><Link to={p.to} className="font-bold text-accent inline-flex items-center gap-2"><p.icon className="w-4 h-4" />{p.name}</Link></td><td className="p-4 text-muted-foreground">{p.best}</td><td className="p-4 text-muted-foreground">{p.objectives}</td><td className="p-4 text-muted-foreground">{p.content}</td><td className="p-4 text-muted-foreground">{p.recommendation}</td></tr>)}</tbody>
+          </table>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {adPlatforms.map((p, i) => (
-            <motion.div
-              key={p.name}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-6 rounded-xl bg-card shadow-card border border-border text-center"
-            >
-              <div className={`w-14 h-14 rounded-full ${p.color} flex items-center justify-center mx-auto mb-4`}>
-                <Megaphone className="w-7 h-7" />
-              </div>
-              <h3 className="font-heading font-bold text-foreground mb-1">{p.name}</h3>
-              <p className="text-sm text-muted-foreground">{p.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          <div className="p-5 rounded-xl bg-card border border-border">
-            <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-              <Share2 className="w-5 h-5 text-accent" />
-              Facebook Marketing
-            </h4>
-            <p className="text-sm text-muted-foreground">Best for lead generation, brand awareness, and local business promotion. Facebook remains one of the most powerful platforms in Sri Lanka.</p>
-          </div>
-          <div className="p-5 rounded-xl bg-card border border-border">
-            <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-              <Heart className="w-5 h-5 text-accent" />
-              Instagram Marketing
-            </h4>
-            <p className="text-sm text-muted-foreground">Ideal for lifestyle brands, hotels, fashion, beauty, and food businesses. Visual storytelling that converts.</p>
-          </div>
-          <div className="p-5 rounded-xl bg-card border border-border">
-            <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-              <PlayCircle className="w-5 h-5 text-accent" />
-              TikTok Marketing
-            </h4>
-            <p className="text-sm text-muted-foreground">Growing rapidly with massive reach. Best for viral content, younger audiences, and brand awareness.</p>
-          </div>
-          <div className="p-5 rounded-xl bg-card border border-border">
-            <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-              <Globe2 className="w-5 h-5 text-accent" />
-              LinkedIn Marketing
-            </h4>
-            <p className="text-sm text-muted-foreground">Essential for B2B marketing. Best for corporate services, professional branding, and lead generation.</p>
-          </div>
-        </div>
-      </motion.div>
+      </Section>
 
-      {/* Our Services */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16"
-      >
-        <div className="text-center mb-10">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Our Solutions</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">
-            Social Media Marketing Services in Sri Lanka
-          </h2>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">A complete strategy includes multiple services working together for maximum impact.</p>
+      <Section>
+        <Heading eyebrow="Connected capabilities" title="Our Social Media Marketing Services in Sri Lanka" intro="The right scope combines only the services needed for your objective. Each specialist page explains its process and deliverables in more detail." />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map(([title, copy, objective, to]) => <Link key={title} to={to} className="group p-5 bg-card border border-border rounded-md hover:border-accent transition-colors"><h3 className="font-bold group-hover:text-accent">{title}</h3><p className="text-sm text-muted-foreground mt-2">{copy}</p><p className="text-xs font-semibold text-foreground mt-4">Objective: {objective}</p><ArrowRight className="w-4 h-4 text-accent mt-4" /></Link>)}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {smmServices.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-6 rounded-xl bg-card shadow-card border border-border hover:border-accent/40 transition-all"
-            >
-              <div className="w-12 h-12 rounded-xl gradient-accent flex items-center justify-center mb-4">
-                <s.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-heading font-semibold text-foreground mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground">{s.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+        <div className="mt-8 flex flex-wrap gap-3"><Button asChild variant="hero"><a href={waUrl} data-selected-service="Social Media Marketing" target="_blank" rel="noopener noreferrer">Discuss the right service mix <MessageCircle /></a></Button><Button asChild variant="outline"><Link to="/social-media-packages-sri-lanka">Compare packages <ArrowRight /></Link></Button></div>
+      </Section>
 
-      {/* How Social Media Generates Leads */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 p-8 rounded-2xl bg-card shadow-card border border-border"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-4">How Social Media Marketing Generates Leads</h2>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          Social media is not just about likes — it's about results. A strong strategy follows this proven funnel:
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          {leadGenFunnel.map((stage, i) => (
-            <div key={stage.title} className="flex flex-col items-center text-center p-5 rounded-xl bg-muted/30 border border-border relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full gradient-accent flex items-center justify-center text-xs font-bold text-primary">
-                {stage.step}
-              </div>
-              <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mt-3 mb-3">
-                <stage.icon className="w-6 h-6 text-secondary-foreground" />
-              </div>
-              <h4 className="font-heading font-semibold text-foreground mb-1">{stage.title}</h4>
-              <p className="text-xs text-muted-foreground">{stage.desc}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-muted-foreground text-sm italic">
-          👉 This structured approach ensures consistent lead generation and business growth.
-        </p>
-      </motion.div>
+      <Section className="grid lg:grid-cols-2 gap-6">
+        <div className="p-6 bg-card border border-border rounded-md"><h2 className="text-2xl font-bold">Organic Social Media</h2><p className="text-muted-foreground mt-3">Organic activity supports content, community, brand trust and a consistent long-term presence. It gives people something useful to discover when they visit or follow the brand.</p></div>
+        <div className="p-6 bg-primary text-primary-foreground rounded-md"><h2 className="text-2xl font-bold">Paid Social Media</h2><p className="text-primary-foreground/75 mt-3">Paid campaigns add audience targeting, scale, campaign objectives, lead generation, traffic and conversion paths. For many businesses, combining paid campaigns with organic content creates a stronger system—but the right mix depends on the objective, audience, offer and budget.</p><Link to="/social-media-advertising-sri-lanka" className="inline-flex items-center gap-2 text-accent font-semibold mt-4">Explore social media advertising <ArrowRight className="w-4 h-4" /></Link></div>
+      </Section>
 
-      {/* Industries We Serve */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground text-center mb-4">
-          Industries That Benefit Most in Sri Lanka
-        </h2>
-        <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
-          Different industries require different social media strategies. Here's how we help key sectors succeed:
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {industriesServed.map((industry, i) => (
-            <motion.div
-              key={industry.label}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-xl bg-card shadow-card border border-border"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
-                  <industry.icon className="w-6 h-6 text-secondary-foreground" />
-                </div>
-                <h3 className="font-heading font-semibold text-foreground">{industry.label}</h3>
-              </div>
-              <p className="text-sm text-muted-foreground pl-15">{industry.desc}</p>
-            </motion.div>
-          ))}
+      <Section>
+        <Heading eyebrow="Measure what matters" title="We Don’t Build Campaigns Just for Likes" intro="Campaign objectives can include awareness, qualified reach, website traffic, messages, calls, leads, registrations, enquiries, sales, bookings, store visits, event registrations or recruitment applications." />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[["Likes", "Qualified enquiries"], ["Followers", "Relevant audience growth"], ["Reach", "Qualified reach"], ["Clicks", "Conversions"]].map(([vanity, outcome]) => <div key={vanity} className="p-5 bg-card border border-border rounded-md"><p className="text-xs uppercase text-muted-foreground">Vanity metric</p><p className="font-semibold line-through decoration-destructive/60 mt-1">{vanity}</p><ArrowRight className="w-4 h-4 text-accent my-3" /><p className="text-xs uppercase text-muted-foreground">Better business metric</p><p className="font-bold text-accent mt-1">{outcome}</p></div>)}
         </div>
-      </motion.div>
+      </Section>
 
-      {/* Comparison Table */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-4xl mx-auto"
-      >
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Why We're Different</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">
-            Buzz Connect vs Standard Social Media Marketing
-          </h2>
-        </div>
-        <div className="rounded-2xl overflow-hidden border border-border shadow-card">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-secondary">
-                  <th className="text-left p-4 font-heading font-bold text-foreground">Feature</th>
-                  <th className="text-left p-4 font-heading font-bold text-muted-foreground">Standard Agencies</th>
-                  <th className="text-left p-4 font-heading font-bold text-accent">Buzz Connect</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, i) => (
-                  <tr key={row.feature} className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}>
-                    <td className="p-4 font-medium text-foreground">{row.feature}</td>
-                    <td className="p-4 text-muted-foreground">{row.standard}</td>
-                    <td className="p-4 text-foreground font-semibold">{row.bc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <p className="text-center text-muted-foreground text-sm mt-4">
-          👉 Buzz Connect doesn't just manage social media — it multiplies your reach across platforms.
-        </p>
-      </motion.div>
+      <Section className="scroll-mt-24" >
+        <div id="campaign-process" className="scroll-mt-24"><Heading eyebrow="From brief to improvement" title="How Our Social Media Marketing Campaigns Work" /></div>
+        <div className="grid gap-4">{process.map(([number, title, copy]) => <div key={number} className="grid sm:grid-cols-[64px_220px_1fr] gap-3 p-5 border border-border bg-card rounded-md items-center"><span className="text-2xl font-bold text-accent">{number}</span><h3 className="font-bold">{title}</h3><p className="text-sm text-muted-foreground">{copy}</p></div>)}</div>
+        <div className="mt-7"><Button asChild variant="hero"><a href="#campaign-plan">Request a campaign plan <ArrowRight /></a></Button></div>
+      </Section>
 
-      {/* How to Choose */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-4xl mx-auto p-8 rounded-2xl bg-card shadow-card border border-border"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-4">How to Choose the Best Social Media Marketing Service in Sri Lanka</h2>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          Before selecting a provider, consider these critical factors:
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {selectionCriteria.map((criterion, i) => (
-            <div key={criterion.title} className="p-4 rounded-lg bg-muted/30 border border-border">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle className="w-5 h-5 text-accent shrink-0" />
-                <h4 className="font-semibold text-foreground">{criterion.title}</h4>
-              </div>
-              <p className="text-sm text-muted-foreground pl-7">{criterion.desc}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      <Section className="grid lg:grid-cols-[1.1fr_.9fr] gap-8 items-start">
+        <div><Heading title="What Do You Get When You Work With BuzzConnect?" intro="Depending on the agreed package and scope, deliverables can include the following. Your written proposal confirms exactly what is included." /><div className="grid sm:grid-cols-2 gap-3">{["Strategy and campaign planning", "Content concepts", "Creative production", "Advertising setup", "Audience targeting", "Campaign management", "Optimisation", "Performance reporting", "Campaign consultation", "Multi-channel opportunities"].map((item) => <div key={item} className="flex gap-2 text-sm"><CheckCircle2 className="w-5 h-5 text-accent shrink-0" />{item}</div>)}</div></div>
+        <div className="p-7 bg-primary text-primary-foreground rounded-md"><p className="text-sm text-primary-foreground/70">Starting from</p><p className="text-4xl font-bold text-accent mt-2">LKR 50,000</p><h3 className="font-bold text-xl mt-6">Two separate costs</h3><div className="mt-4 space-y-4"><div><p className="font-semibold">BuzzConnect agency fee</p><p className="text-sm text-primary-foreground/70">Strategy, agreed production, management and reporting scope.</p></div><div><p className="font-semibold">Advertising media spend</p><p className="text-sm text-primary-foreground/70">Budget paid to the advertising platform. This is separate unless a written package explicitly says otherwise.</p></div></div><Button asChild variant="hero" className="mt-6"><Link to="/social-media-packages-sri-lanka">View Social Media Packages <ArrowRight /></Link></Button></div>
+      </Section>
 
-      {/* Common Mistakes */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-4xl mx-auto p-8 rounded-2xl bg-destructive/5 border border-destructive/20"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-4">Common Mistakes Businesses Make</h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
-          Avoid these mistakes that can derail your social media marketing efforts:
-        </p>
-        <ul className="space-y-3">
-          {commonMistakes.map((mistake, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span className="w-6 h-6 rounded-full bg-destructive/10 text-destructive flex items-center justify-center text-sm font-bold shrink-0">✕</span>
-              <span className="text-muted-foreground">{mistake}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="text-muted-foreground text-sm mt-4">
-          👉 Avoiding these mistakes can significantly improve your results and ROI.
-        </p>
-      </motion.div>
+      <Section>
+        <Heading title="Who Can Benefit From Social Media Marketing?" intro="The opportunity changes by industry, customer journey and offer. These are practical uses—not promises of a particular result." />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{industries.map(([Icon, title, copy]) => <div key={title as string} className="p-5 bg-card border border-border rounded-md"><Icon className="w-6 h-6 text-accent" /><h3 className="font-bold mt-3">{title as string}</h3><p className="text-sm text-muted-foreground mt-2">{copy as string}</p></div>)}</div>
+        <div className="mt-7"><Button asChild variant="outline"><a href="#campaign-plan">Discuss your industry <ArrowRight /></a></Button></div>
+      </Section>
 
-      {/* Future Trends */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16"
-      >
-        <div className="text-center mb-8">
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
-            Future of Social Media Marketing in Sri Lanka
-          </h2>
-          <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
-            Digital marketing is rapidly evolving. Businesses that adapt early will have a competitive advantage.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {futureTrends.map((trend, i) => (
-            <motion.div
-              key={trend.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-xl bg-card shadow-card border border-border text-center"
-            >
-              <div className="w-12 h-12 rounded-lg gradient-accent flex items-center justify-center mx-auto mb-3">
-                <trend.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h4 className="font-heading font-semibold text-foreground mb-1">{trend.title}</h4>
-              <p className="text-sm text-muted-foreground">{trend.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+      <Section>
+        <Heading eyebrow="Illustrative scenarios" title="What Can a Social Media Campaign Look Like?" intro="These examples show possible campaign structures. They are not presented as client case studies or guaranteed results." />
+        <div className="grid lg:grid-cols-3 gap-5">{examples.map((example) => <article key={example.industry} className="p-6 bg-card border border-border rounded-md"><p className="text-xs font-bold uppercase text-accent">Example: {example.industry}</p><dl className="mt-4 space-y-3 text-sm">{Object.entries(example).filter(([key]) => key !== "industry").map(([key, value]) => <div key={key}><dt className="capitalize font-semibold">{key}</dt><dd className="text-muted-foreground">{value}</dd></div>)}</dl></article>)}</div>
+      </Section>
 
-      {/* Why Multi-Channel Works */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 p-8 rounded-2xl gradient-hero text-primary-foreground"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-4">Why Multi-Channel Marketing Works Better</h2>
-        <p className="text-primary-foreground/80 mb-6">
-          Social media alone is powerful, but combining it with other channels increases results dramatically.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {[
-            { label: "Social Media → Awareness", path: "/social-media-marketing-sri-lanka" },
-            { label: "Email Marketing → Follow-up", path: "/email-marketing" },
-            { label: "SMS Marketing → Instant reach", path: "/sms-marketing" },
-            { label: "WhatsApp → Conversion", path: "/whatsapp-marketing" },
-          ].map((item) => (
-            <Link key={item.path} to={item.path} className="flex items-center gap-3 group">
-              <CheckCircle className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-primary-foreground/90 group-hover:text-accent transition-colors">{item.label}</span>
-            </Link>
-          ))}
-        </div>
-        <p className="text-primary-foreground/70 text-sm mt-4">
-          👉 This creates a complete marketing system with multiple touchpoints and higher conversion rates.
-        </p>
-      </motion.div>
+      <Section className="p-7 sm:p-10 bg-primary text-primary-foreground rounded-md">
+        <Heading eyebrow="A wider campaign system" title="Social Media + More Reach Through BuzzConnect" intro="Findit.lk is not a social network. Where relevant, it can add a separate distribution and visibility opportunity to a coordinated campaign." />
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">{["Social Media", "Findit.lk", "Email", "SMS", "WhatsApp", "Other digital channels"].map((channel, index) => <div key={channel} className="flex items-center gap-2"><span className="px-4 py-3 border border-primary-foreground/20 rounded-md font-semibold text-sm">{channel}</span>{index < 5 && <span className="text-accent text-xl">+</span>}</div>)}</div>
+        <p className="text-primary-foreground/70 mt-6 max-w-3xl">This lets us consider awareness, distribution, lead capture and follow-up together instead of treating social media as an isolated posting activity. Channels are recommended only when they fit the objective and scope.</p>
+        <Button asChild variant="hero" className="mt-6"><Link to="/multi-channel-marketing-sri-lanka">Explore multi-channel marketing <ArrowRight /></Link></Button>
+      </Section>
 
-      {/* Findit.lk Power */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20"
-      >
-        <div className="flex items-center gap-3 mb-4">
-          <Award className="w-8 h-8 text-accent" />
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">Social Media Marketing Powered by Findit.lk</h2>
-        </div>
-        <p className="text-muted-foreground leading-relaxed mb-4">
-          Buzz Connect campaigns are amplified through Findit.lk, giving your business access to a high-intent audience actively searching for services.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {[
-            { icon: Users, value: "200,000+", label: "Monthly Active Users" },
-            { icon: Eye, value: "High-Intent", label: "Audience Searching Services" },
-            { icon: TrendingUp, value: "Extended", label: "Visibility Beyond Social Media" },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border">
-              <item.icon className="w-8 h-8 text-accent shrink-0" />
-              <div>
-                <p className="font-bold text-foreground">{item.value}</p>
-                <p className="text-xs text-muted-foreground">{item.label}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="text-muted-foreground text-sm mt-4 italic">
-          👉 This is your competitive advantage in Sri Lanka.
-        </p>
-      </motion.div>
+      <Section className="grid lg:grid-cols-2 gap-8">
+        <div><Heading title="Why Businesses Choose BuzzConnect" /><ul className="space-y-3">{["Campaigns designed for Sri Lankan audiences and business contexts", "Strategy, creative and advertising coordinated in one workflow", "Lead-generation and follow-up paths considered from the start", "Optional multi-channel opportunities, including Findit.lk", "A transparent published starting price", "Reporting tied to agreed campaign objectives", "Industry-specific planning rather than one template", "Direct campaign consultation"].map((item) => <li key={item} className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent shrink-0" /><span className="text-muted-foreground">{item}</span></li>)}</ul></div>
+        <div className="p-7 border border-accent/30 bg-accent/5 rounded-md"><h2 className="text-2xl font-bold">What We Don’t Believe In</h2><ul className="mt-5 space-y-3">{["Every business needs to be on every platform.", "Followers alone equal business growth.", "Boosting every post is a strategy.", "Every campaign should optimise for clicks.", "A beautiful creative automatically produces sales.", "One fixed channel mix suits every business."].map((item) => <li key={item} className="flex gap-3"><XCircle className="w-5 h-5 text-destructive shrink-0" /><span className="text-sm text-muted-foreground">{item}</span></li>)}</ul><p className="font-semibold mt-5">We believe strategy should follow the business objective.</p></div>
+      </Section>
 
-      {/* Social media cluster hub links */}
-      <SocialClusterNav
-        heading="Our social media services in Sri Lanka"
-        intro="Facebook, Instagram, TikTok and LinkedIn, plus advertising, management, campaigns, content and lead generation — each with its own page."
-        exclude={["/social-media-marketing-sri-lanka"]}
-      />
+      <Section>
+        <Heading title="Before You Spend Money on Social Media Ads, Check These 7 Things" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">{["Is your target customer clearly defined?", "Is the offer strong and specific?", "Is the creative suitable for the platform?", "Is there a clear call to action?", "Does the landing page or message flow work?", "Is the budget sufficient for the objective?", "Can your business follow up quickly on leads?"].map((item, index) => <div key={item} className="p-4 bg-card border border-border rounded-md"><span className="text-accent font-bold">0{index + 1}</span><p className="text-sm font-medium mt-2">{item}</p></div>)}</div>
+      </Section>
 
-      {/* Guides and pricing reading */}
-      <SocialClusterLinks
-        title="Guides: pricing and planning"
-        intro="Read these before choosing a package or setting a budget."
-        links={[
-          { label: "Social media packages and pricing (from LKR 50,000)", to: "/social-media-packages-sri-lanka" },
-          { label: "Social media marketing cost in Sri Lanka (market guide)", to: "/social-media-marketing-cost-sri-lanka" },
-          { label: "Complete 2026 guide to social media marketing in Sri Lanka", to: "/social-media-marketing-sri-lanka-complete-guide-2026" },
-          { label: "How social media marketing works", to: "/how-social-media-marketing-works-sri-lanka" },
-        ]}
-      />
+      <Section className="grid lg:grid-cols-2 gap-8">
+        <div><Heading title="How Much Should a Business Spend on Social Media Marketing in Sri Lanka?" intro="Plan two budgets: the agency or service fee, and the advertising media spend. BuzzConnect service packages start from LKR 50,000; the suitable media budget depends on industry, geography, objective, audience, competition, campaign duration and desired volume." /><div className="flex flex-wrap gap-3"><Button asChild variant="outline"><Link to="/social-media-marketing-cost-sri-lanka">Read the cost guide</Link></Button><Button asChild variant="outline"><Link to="/social-media-packages-sri-lanka">Compare packages</Link></Button></div></div>
+        <div><Heading title="How to Choose a Social Media Marketing Agency in Sri Lanka" /><ul className="grid gap-2 text-sm text-muted-foreground">{["Do they understand your industry and customer journey?", "Can they explain the strategy, not only the posting schedule?", "Do they separate advertising spend from agency fees?", "Can they show relevant, verifiable work?", "Do they measure business outcomes?", "Who creates the content and manages the advertising?", "How often do they report and who owns the advertising accounts?", "What happens after launch and how are leads handled?"].map((item) => <li key={item} className="flex gap-2"><Search className="w-4 h-4 text-accent shrink-0 mt-0.5" />{item}</li>)}</ul></div>
+      </Section>
 
-      {/* Pricing */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-2xl mx-auto"
-      >
-        <div className="text-center mb-8">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Pricing</span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-2">
-            Social Media Marketing Pricing in Sri Lanka
-          </h2>
-          <p className="text-muted-foreground mt-2">
-            Pricing depends on scope of work, ad budget, and campaign complexity.
-          </p>
-          <Link to="/social-media-packages-sri-lanka" className="inline-flex items-center gap-2 mt-3 text-accent font-semibold hover:underline">
-            View our social media marketing packages <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-        <div className="p-8 rounded-2xl bg-card shadow-card border-2 border-accent/30 text-center">
-          <p className="text-muted-foreground mb-3">Social Media Marketing Campaigns</p>
-          <p className="text-3xl font-bold text-foreground mb-1">
-            Starting from <span className="text-accent">LKR 50,000</span>
-          </p>
-          <p className="text-sm text-muted-foreground mb-6">Multi-platform campaigns tailored to your business</p>
-          <div className="text-left space-y-2 mb-6 max-w-sm mx-auto">
-            {[
-              "Multi-platform campaign setup",
-              "Professional content creation",
-              "Audience targeting & segmentation",
-              "Paid ad management & optimization",
-              "Findit.lk integration & visibility",
-              "Performance tracking & reporting",
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-                <span className="text-sm text-muted-foreground">{item}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-muted-foreground mb-4">
-            👉 Instead of focusing on cost, focus on return on investment.
-          </p>
-          <a data-selected-service="Social Media Marketing"
-            href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20your%20social%20media%20marketing%20packages."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-8 py-3 rounded-full bg-accent text-accent-foreground font-bold hover:opacity-90 transition-opacity"
-          >
-            Get a Custom Quote <ArrowRight className="inline w-4 h-4 ml-1" />
-          </a>
-        </div>
-      </motion.div>
+      <Section>
+        <Heading title="Social Media Marketing Results & Campaign Experience" intro="Verified outcomes should be shown with their objective, strategy, platform, period and measurement context. We will not publish invented results or anonymous claims. Until publishable case-study data is available, the clearly labelled scenarios above show how a campaign can be structured without presenting projections as facts." />
+        <div className="flex flex-wrap gap-3"><Button asChild variant="outline"><Link to="/social-media-marketing-sri-lanka-complete-guide-2026">Read the educational 2026 guide <ArrowRight /></Link></Button><Button asChild variant="outline"><Link to="/lead-generation-sri-lanka">Explore lead generation</Link></Button></div>
+      </Section>
 
-      {/* How It Works */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground text-center mb-8">
-          How Our Social Media Marketing Works
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {processSteps.map((step, i) => (
-            <div key={step.title} className="flex flex-col items-center text-center p-5 rounded-xl bg-card shadow-card border border-border relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full gradient-accent flex items-center justify-center text-xs font-bold text-primary">
-                {i + 1}
-              </div>
-              <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mt-3 mb-3">
-                <step.icon className="w-6 h-6 text-secondary-foreground" />
-              </div>
-              <h3 className="font-heading font-semibold text-foreground text-sm mb-1">{step.title}</h3>
-              <p className="text-xs text-muted-foreground">{step.desc}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-center text-muted-foreground text-sm mt-6">
-          👉 Result: More visibility → More engagement → More business growth
-        </p>
-      </motion.div>
+      <Section>
+        <Heading title="Frequently Asked Questions About Social Media Marketing in Sri Lanka" />
+        <div className="grid lg:grid-cols-2 gap-4">{faqs.map((faq) => <article key={faq.q} className="p-5 bg-card border border-border rounded-md"><h3 className="font-bold flex gap-2"><MessageCircle className="w-5 h-5 text-accent shrink-0" />{faq.q}</h3><p className="text-sm text-muted-foreground mt-3 leading-relaxed">{faq.a}</p></article>)}</div>
+        <div className="mt-8 flex flex-wrap gap-3"><Button asChild variant="hero"><a href={waUrl} data-selected-service="Social Media Marketing" target="_blank" rel="noopener noreferrer">Ask BuzzConnect on WhatsApp <MessageCircle /></a></Button><Button asChild variant="outline"><Link to="/social-media-packages-sri-lanka">View packages</Link></Button></div>
+      </Section>
 
-      {/* What You Can Expect */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-3xl mx-auto"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground text-center mb-8">
-          What You Can Expect
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {[
-            "Increased followers and engagement",
-            "Higher brand visibility across platforms",
-            "More website traffic and inquiries",
-            "Increased leads and sales",
-            "Better return on investment",
-            "Measurable campaign performance",
-          ].map((item) => (
-            <div key={item} className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border">
-              <TrendingUp className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-foreground font-medium">{item}</span>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      <Section className="grid lg:grid-cols-[.8fr_1.2fr] gap-8 p-7 sm:p-10 bg-card border border-border rounded-md scroll-mt-24">
+        <div id="campaign-plan" className="scroll-mt-24"><p className="text-sm font-semibold uppercase text-accent">Free campaign planning request</p><h2 className="text-3xl font-bold mt-2">Ready to Turn Social Media Into a Growth Channel?</h2><p className="text-muted-foreground mt-4">Tell us whether you want more awareness, enquiries, leads, bookings, sales or customers. We’ll use your answers to identify a suitable campaign structure.</p><div className="mt-6 p-4 bg-accent/10 border border-accent/30 rounded-md"><p className="text-sm">BuzzConnect service packages</p><p className="text-2xl font-bold text-accent">From LKR 50,000</p><p className="text-xs text-muted-foreground mt-1">Advertising media spend is separate.</p></div></div>
+        <SocialCampaignPlanForm />
+      </Section>
 
-      {/* FAQ */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-3xl mx-auto"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground text-center mb-8">
-          Frequently Asked Questions – Social Media Marketing Sri Lanka
-        </h2>
-        <div className="space-y-4">
-          {faqs.map((faq) => (
-            <div key={faq.q} className="p-5 rounded-xl bg-card shadow-card border border-border">
-              <h3 className="flex items-start gap-2 font-heading font-semibold text-foreground mb-2">
-                <HelpCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                {faq.q}
-              </h3>
-              <p className="text-muted-foreground text-sm pl-7">{faq.a}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Final Thoughts */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16 max-w-4xl mx-auto p-8 rounded-2xl bg-card shadow-card border border-border"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-4">Final Thoughts</h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
-          <strong>Social media marketing in Sri Lanka</strong> is one of the most effective ways to grow your business in today's digital world.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-4">
-          With the right strategy, tools, and execution, you can:
-        </p>
-        <ul className="space-y-2 mb-4">
-          {["Reach the right audience", "Generate high-quality leads", "Increase sales and brand visibility"].map((item, i) => (
-            <li key={i} className="flex items-center gap-2 text-muted-foreground">
-              <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p className="text-muted-foreground leading-relaxed">
-          Investing in professional social media marketing is not just an option — it is a <strong>necessity</strong> for businesses that want to stay competitive.
-        </p>
-      </motion.div>
-
-      {/* Final CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center p-10 rounded-2xl gradient-hero text-primary-foreground"
-      >
-        <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-3">Ready to Grow Your Brand on Social Media?</h2>
-        <p className="text-primary-foreground/80 mb-2 max-w-xl mx-auto">
-          Launch a campaign that goes beyond posts — and delivers real visibility, engagement, and results.
-        </p>
-        <p className="text-primary-foreground/70 text-sm mb-6">
-          👉 Campaigns starting from LKR 50,000 | Multi-platform strategy included
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <a data-selected-service="Social Media Marketing"
-            href="https://wa.me/94771437707?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20your%20social%20media%20marketing%20services."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-bold hover:opacity-90 transition-opacity text-base">
-              Start Your Campaign Today <ArrowRight className="inline w-4 h-4 ml-1" />
-            </button>
-          </a>
-          <Link to="/contact-us">
-            <button className="px-8 py-3 rounded-full border-2 border-accent text-accent font-bold hover:bg-accent/10 transition-colors text-base">
-              Contact Us
-            </button>
-          </Link>
-        </div>
-      </motion.div>
-
-      <RelatedArticles currentPath="/social-media-marketing-sri-lanka" />
-      <DigitalMarketingCTA variant="alt" />
+      <Section className="text-center p-8 sm:p-12 gradient-hero text-primary-foreground rounded-md">
+        <h2 className="text-3xl font-bold">Choose Your Next Step</h2><p className="text-primary-foreground/75 mt-3 max-w-2xl mx-auto">Request a campaign plan, talk to BuzzConnect now, or compare the available social media packages.</p><div className="flex flex-wrap justify-center gap-3 mt-7"><Button asChild variant="hero" size="lg"><a href="#campaign-plan">Get My Free Campaign Plan</a></Button><Button asChild variant="hero-outline" size="lg"><a href={waUrl} data-selected-service="Social Media Marketing" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></Button><Button asChild variant="hero-outline" size="lg"><Link to="/social-media-packages-sri-lanka">View Packages</Link></Button></div>
+      </Section>
     </ServicePageLayout>
   );
 };

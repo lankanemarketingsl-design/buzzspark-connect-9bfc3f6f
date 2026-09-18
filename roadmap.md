@@ -18,4 +18,4 @@
 - [ ] Phase 5: industry pages where genuinely distinct content exists (not started).
 - [ ] Phase 6: off-site authority (needs the user — outside the codebase).
 
-- [ ] Rebuild `/social-media-marketing-sri-lanka` as the definitive commercial social media hub per the approved brief.
+- [x] Rebuild `/social-media-marketing-sri-lanka` as the definitive commercial social media hub per the approved brief.
