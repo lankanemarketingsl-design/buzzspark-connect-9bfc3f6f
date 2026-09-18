@@ -368,7 +368,19 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
               </AccordionItem>
             ))}
           </Accordion>
+          <div className="mt-6 flex flex-wrap items-center gap-3 max-w-4xl">
+            <p className="text-sm text-muted-foreground">Question not answered here?</p>
+            <a href={wa(page.waText)} target="_blank" rel="noopener noreferrer" data-selected-service={page.serviceType}>
+              <Button variant="default">
+                <MessageCircle className="mr-2 w-4 h-4" /> Ask us on WhatsApp
+              </Button>
+            </a>
+            <Link to="/social-media-packages-sri-lanka">
+              <Button variant="outline">Compare packages</Button>
+            </Link>
+          </div>
         </section>
+
 
         {/* Related pages */}
         <section>
