@@ -182,7 +182,9 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
                 </li>
               ))}
             </ul>
-        </section>
+          </section>
+        )}
+
 
         {/* Inline CTA */}
         <section className="rounded-2xl border border-accent/30 bg-accent/5 p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between">
