@@ -552,15 +552,46 @@ const SocialMediaPackages = () => {
           </div>
         </section>
 
+        {/* Agency fee vs ad spend */}
+        <section className="p-6 sm:p-8 rounded-2xl bg-card border border-border">
+          <SectionLabel>How pricing works</SectionLabel>
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Agency fee vs advertising spend</h2>
+          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl">
+            <div>
+              <h3 className="font-heading font-semibold mb-2">Agency fee — from LKR 50,000</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                This is what you pay Buzz Connect: strategy, content and design, posting, campaign setup and management, optimisation and reporting. It is fixed for the package you choose.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-heading font-semibold mb-2">Advertising media spend — separate</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                This is the budget paid to Facebook, Instagram, TikTok or LinkedIn to actually place your ads. It is quoted separately, it is entirely yours, and it is the part that buys reach. We recommend a figure based on the results you need.
+              </p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground mt-5 max-w-4xl">
+            For a general view of what social media costs across the Sri Lankan market — as opposed to our own package pricing — see our{" "}
+            <Link to="/social-media-marketing-cost-sri-lanka" className="text-accent font-semibold hover:underline">social media marketing cost guide</Link>.
+          </p>
+        </section>
+
         {/* Related */}
         <section>
           <SectionLabel>Related</SectionLabel>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
             {[
               ["Social Media Marketing Services", "/social-media-marketing-sri-lanka"],
+              ["Social Media Management", "/social-media-management-sri-lanka"],
+              ["Social Media Advertising", "/social-media-advertising-sri-lanka"],
+              ["Facebook Marketing", "/facebook-marketing-sri-lanka"],
+              ["Instagram Marketing", "/instagram-marketing-sri-lanka"],
+              ["Social Media Campaigns", "/social-media-campaigns-sri-lanka"],
+              ["Social Media Content Creation", "/social-media-content-creation-sri-lanka"],
+              ["Social Media Lead Generation", "/social-media-lead-generation-sri-lanka"],
               ["LinkedIn Marketing", "/linkedin-marketing-sri-lanka"],
               ["TikTok Marketing", "/tiktok-marketing-sri-lanka"],
-              ["Facebook & Instagram Ads", "/online-advertising-sri-lanka"],
+              ["Meta Ads Agency", "/meta-ads-agency-sri-lanka"],
               ["SEO Services", "/seo-sri-lanka"],
             ].map(([label, href]) => (
               <Link key={href} to={href} className="flex items-center justify-between gap-2 p-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-colors">
