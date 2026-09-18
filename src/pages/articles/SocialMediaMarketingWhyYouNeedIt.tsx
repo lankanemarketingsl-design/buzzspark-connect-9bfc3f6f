@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 
 const SocialMediaMarketingWhyYouNeedIt = () => {
   return (
@@ -90,6 +91,17 @@ const SocialMediaMarketingWhyYouNeedIt = () => {
             and how to pick the right partner for your business.
           </p>
         </div>
+        <SocialClusterLinks
+          title="Where to go next"
+          intro="Once you have decided social media is worth it, these pages explain how each part works."
+          links={[
+            { label: "social media marketing services in Sri Lanka", to: "/social-media-marketing-sri-lanka" },
+            { label: "Facebook marketing services", to: "/facebook-marketing-sri-lanka" },
+            { label: "Instagram marketing services", to: "/instagram-marketing-sri-lanka" },
+            { label: "social media management services", to: "/social-media-management-sri-lanka" },
+            { label: "paid social media campaigns", to: "/social-media-advertising-sri-lanka" },
+          ]}
+        />
         <RelatedArticles currentPath="/social-media-marketing-why-your-business-needs-it-sri-lanka" />
       </div>
     </ServicePageLayout>
