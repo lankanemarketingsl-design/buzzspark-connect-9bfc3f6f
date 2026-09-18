@@ -34,6 +34,12 @@ export interface SocialClusterPage {
   process: { step: string; desc: string }[];
   deliverables: string[];
   notIncluded?: string[];
+  /** Who this service is a good fit for. */
+  whoFor?: string[];
+  /** Numbers we report on for this service. */
+  metrics?: { name: string; desc: string }[];
+  /** Common mistakes we see and what we do instead. */
+  mistakes?: { title: string; desc: string }[];
   industriesNote: string;
   industries: ClusterLink[];
   tableHeading?: string;
@@ -99,6 +105,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Photography or video shoots, unless quoted separately",
       "Website or landing page development, unless quoted separately",
     ],
+    whoFor: [
+      "Businesses whose customers already message pages before buying — restaurants, hotels, clinics, showrooms and retailers",
+      "Companies that have spent on boosted posts and cannot say what an enquiry cost them",
+      "Brands with a page that has gone quiet and now looks less established than it is",
+      "Teams that can answer WhatsApp or Messenger enquiries the same day",
+    ],
+    metrics: [
+      { name: "Cost per enquiry", desc: "Total ad spend divided by genuine enquiries — the number that decides whether the campaign is worth repeating." },
+      { name: "Message and lead volume", desc: "How many conversations or form submissions the campaign produced in the period." },
+      { name: "Cost per 1,000 people reached", desc: "Shows whether your creative and audience are getting efficient distribution." },
+      { name: "Click-through rate", desc: "A creative signal: low CTR almost always means the hook or the offer, not the targeting." },
+      { name: "Video hold rate", desc: "How far people watch — the quickest way to tell which video to put more budget behind." },
+      { name: "Page growth and saves", desc: "The slower trust signals that make later campaigns cheaper." },
+    ],
+    mistakes: [
+      { title: "Boosting posts instead of building campaigns", desc: "Boosting defaults to engagement, so you buy likes. We build campaigns with a lead, message or sales objective instead." },
+      { title: "One creative for a whole month", desc: "Facebook audiences fatigue fast. We run several creatives and refresh the winners rather than waiting for results to collapse." },
+      { title: "Sending everyone to a phone number nobody answers", desc: "We route enquiries to WhatsApp or a form your team actually monitors, and agree a response time." },
+      { title: "Changing the campaign every day", desc: "Constant edits reset learning. We give a campaign a defined test window before judging it." },
+      { title: "Agency-owned ad accounts", desc: "We work inside your Business Manager so the pixel, audiences and history stay with you." },
+    ],
     industriesNote:
       "Facebook works differently for a hotel than it does for a property developer. These are the industries we run campaigns for most often:",
     industries: [
@@ -120,6 +147,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       ],
     },
     faqs: [
+      { q: "What is a realistic monthly Facebook ad budget for a small Sri Lankan business?", a: "Most small businesses start with a modest daily budget and increase once the cost per enquiry is known. We recommend a starting figure based on your target number of enquiries and your margin per sale, rather than a fixed number, and we review it after the first two weeks." },
+      { q: "Do you need access to my Facebook page and ad account?", a: "Yes. We request partner access to your Facebook page and ad account inside your own Business Manager. You stay the owner and can remove our access at any time." },
+      { q: "Can you run ads in Sinhala and Tamil?", a: "Yes. We write ad copy and captions in English, Sinhala or Tamil, and often test the same offer in two languages because response rates can differ noticeably." },
+      { q: "What if my page has very few followers?", a: "Paid campaigns do not depend on your follower count — the audience is defined by targeting. A tidy page with recent posts helps conversion, so we usually publish a short run of content alongside the first campaign." },
+      { q: "Do you handle Messenger and WhatsApp replies?", a: "We handle comments and routine page messages during working hours and pass genuine sales enquiries to your team, since pricing and availability answers need to come from you." },
       { q: "How much does Facebook advertising cost in Sri Lanka?", a: "There are two costs: the advertising budget you pay Meta, and the agency fee for managing the campaign. Ad budgets are flexible and can start small, while our social media packages begin at LKR 50,000 as a management fee. We quote both clearly before anything goes live." },
       { q: "Is Facebook marketing still effective for Sri Lankan businesses?", a: "Yes, for most local businesses it remains the widest reach available and the cheapest route to enquiries — provided campaigns are set up with a real objective rather than boosted posts." },
       { q: "Do I need a Facebook and an Instagram campaign separately?", a: "Not necessarily. Both run through Meta Ads, so one campaign can appear on both. We decide the placements based on where your audience actually responds." },
@@ -182,6 +214,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Media spend paid to Meta, TikTok or LinkedIn — this is your advertising budget and is always separate from our fee",
       "Influencer fees, if an influencer campaign is added",
     ],
+    whoFor: [
+      "Businesses that need enquiries or sales within weeks, not a slow organic build",
+      "Brands launching a product, location, intake or seasonal offer",
+      "Advertisers already spending on social who cannot see a cost per result",
+      "Companies with margin to reinvest once a cost per enquiry is proven",
+    ],
+    metrics: [
+      { name: "Cost per result", desc: "Cost per lead, message, purchase or booking, depending on the objective agreed at the start." },
+      { name: "Return on ad spend", desc: "Where sales values can be tracked, revenue attributed to the campaign against the media spend." },
+      { name: "Reach and frequency", desc: "How many people saw the campaign and how often — the check against audience fatigue." },
+      { name: "Click-through rate", desc: "Creative and message performance, compared between variants." },
+      { name: "Landing page conversion rate", desc: "Where a page is involved, whether the traffic actually converts once it arrives." },
+      { name: "Spend pacing", desc: "Whether budget is being delivered evenly or being absorbed by one ad set." },
+    ],
+    mistakes: [
+      { title: "Running every platform at once on a small budget", desc: "Split too thin, nothing gets enough data. We start where your audience is strongest and expand after results." },
+      { title: "Choosing the wrong objective", desc: "Traffic campaigns bring cheap clicks that never enquire. The objective must match the business result." },
+      { title: "No retargeting", desc: "The people who already engaged are the cheapest buyers. We always build a retargeting layer." },
+      { title: "No tracking before launch", desc: "Without pixel or event setup you cannot compare campaigns. Tracking goes in first." },
+      { title: "Judging a campaign in 48 hours", desc: "Early costs are unstable. We agree a fair review window up front." },
+    ],
     industriesNote: "Paid social carries most of the enquiry volume for these industries:",
     industries: [
       { label: "Hotel & travel marketing", to: "/hotel-marketing-sri-lanka" },
@@ -201,6 +254,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       ],
     },
     faqs: [
+      { q: "How is the advertising budget paid?", a: "You can pay the platform directly with your own card, or we can bill media spend at cost as a separate line to our fee. Either way, the amount going to the platform is always shown separately from the agency fee." },
+      { q: "Which platform gives the cheapest results in Sri Lanka?", a: "It depends on your product and audience, not on the platform alone. Facebook usually gives the widest and cheapest local reach, TikTok can be cheaper for attention, and LinkedIn costs more per click but reaches decision makers. We test rather than assume." },
+      { q: "Can you take over an existing campaign mid-flight?", a: "Yes. We start with an audit of the account structure, audiences, creative and tracking, then decide whether to repair or rebuild — and we tell you which, and why." },
+      { q: "How often will I get reports?", a: "Monthly as standard, with a mid-campaign check-in for short promotional pushes. During a launch we share numbers weekly." },
+      { q: "What happens if the campaign is not working?", a: "We change one thing at a time in a defined order: offer, creative, audience, then placement. If the economics cannot work at your price point, we say so instead of quietly spending the budget." },
       { q: "What is the difference between social media marketing and social media advertising?", a: "Marketing is the whole activity — strategy, content, page management and paid campaigns. Advertising is specifically the paid placement of your message. Most businesses need both." },
       { q: "How much should a business spend on social media advertising?", a: "Enough to reach a meaningful share of your audience for long enough to learn what works. Rather than quoting one number, we start from your target number of enquiries and your cost per enquiry, then recommend a budget." },
       { q: "Is the ad budget included in your fee?", a: "No. Our fee covers strategy, creative, setup, management and reporting. The advertising budget is paid to the platform and is fully yours." },
@@ -265,6 +323,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "24/7 inbox cover; community management runs during working hours unless agreed otherwise",
       "Photo and video shoots, unless included in your package",
     ],
+    whoFor: [
+      "Businesses whose customers check the page before visiting or buying",
+      "Teams with no in-house designer or content writer",
+      "Brands posting inconsistently, with long gaps between posts",
+      "Companies with unanswered comments and messages piling up",
+    ],
+    metrics: [
+      { name: "Reach and non-follower reach", desc: "How many people saw your content, and how many were new to your page." },
+      { name: "Saves and shares", desc: "The strongest signal that content was genuinely useful rather than just scrolled past." },
+      { name: "Follower growth", desc: "Steady growth from content, tracked separately from any paid growth." },
+      { name: "Message and comment volume", desc: "How many conversations the page started in the month." },
+      { name: "Response time", desc: "How quickly enquiries were answered during working hours." },
+      { name: "Top and weakest posts", desc: "What to make more of next month, and what to stop making." },
+    ],
+    mistakes: [
+      { title: "Posting for the sake of posting", desc: "Filler content trains the algorithm to show you less. We plan fewer, stronger posts over daily noise." },
+      { title: "Reusing print artwork", desc: "Flyer designs do not read on a phone. Creative is built for the feed, in the right aspect ratio." },
+      { title: "Ignoring the inbox", desc: "Unanswered messages are lost sales. Community management is part of the service, with an agreed response window." },
+      { title: "No approval rhythm", desc: "Last-minute approvals produce rushed content. We work a month ahead on a shared calendar." },
+      { title: "Reporting vanity numbers only", desc: "Reach and likes alone say little. Reports tie content back to enquiries and to next month's plan." },
+    ],
     industriesNote: "Ongoing management matters most where customers check your page before buying:",
     industries: [
       { label: "Hotel & travel marketing", to: "/hotel-marketing-sri-lanka" },
@@ -284,6 +363,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       ],
     },
     faqs: [
+      { q: "How many posts per month do we get?", a: "It depends on the package and platforms. A typical starting scope is a planned mix of designed posts, reels and stories across two platforms; the exact counts are written into your package so there is no ambiguity." },
+      { q: "Who approves the content?", a: "You do. We send next month's calendar with captions and creative for approval, and revisions are handled before anything is published." },
+      { q: "Do we still need ads if you manage our pages?", a: "Organic reach is limited on every platform, so most businesses get their enquiry volume from paid campaigns and their credibility from managed content. Management and advertising are quoted separately so you can start with one." },
+      { q: "What access do you need?", a: "Partner or admin access to your pages inside your own Business Manager, plus your logo files, photos and offer details. Accounts stay in your ownership." },
+      { q: "Can we pause the service and come back later?", a: "Yes. Management is a monthly service. We hand back the content calendar and templates so nothing stalls if you pause." },
       { q: "What is included in social media management?", a: "Strategy, a content calendar, design and captions, publishing, community management and monthly reporting. The exact volume of posts and platforms depends on the package you choose." },
       { q: "How much does social media management cost in Sri Lanka?", a: "Our social media packages start from LKR 50,000. The right tier depends on how many platforms you need, how much content per month, and whether video and paid campaigns are included." },
       { q: "Do you manage messages and comments?", a: "Yes, during working hours. We reply to routine questions, and pass genuine sales enquiries straight to your team." },
@@ -338,6 +422,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Multi-channel support across email, SMS, WhatsApp and Findit.lk where useful",
       "Reporting you can act on",
     ],
+    whoFor: [
+      "Businesses that need one team accountable for strategy, content and ads",
+      "Companies that have cycled through freelancers with inconsistent output",
+      "Brands wanting social joined up with email, SMS, WhatsApp and Findit.lk reach",
+      "Owners who want a monthly report they can actually act on",
+    ],
+    metrics: [
+      { name: "Cost per enquiry", desc: "The headline commercial number across all paid activity." },
+      { name: "Enquiry volume by channel", desc: "Which platform or channel produced which enquiries, so budget follows results." },
+      { name: "Content output delivered", desc: "What was promised versus what was published in the month." },
+      { name: "Reach and audience growth", desc: "Whether your audience is genuinely expanding." },
+      { name: "Response time to enquiries", desc: "Because slow follow-up wastes good campaigns." },
+      { name: "Spend efficiency trend", desc: "Whether cost per result is improving month over month." },
+    ],
+    mistakes: [
+      { title: "Hiring on price alone", desc: "The cheapest quote usually hides a smaller scope. Compare deliverables, not headline fees." },
+      { title: "Letting the agency own your accounts", desc: "Insist your page, ad account and pixel stay in your Business Manager." },
+      { title: "Accepting fee and ad spend as one figure", desc: "You should always see what buys reach and what pays for work as two separate lines." },
+      { title: "No agreed scope in writing", desc: "Post counts, platforms, campaigns and reporting frequency should be documented before you start." },
+      { title: "Reporting without recommendations", desc: "A report should end with what changes next month, otherwise it is just a screenshot." },
+    ],
     industriesNote: "Industries we work with regularly:",
     industries: [
       { label: "Hotels & travel", to: "/hotel-marketing-sri-lanka" },
@@ -348,6 +453,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       { label: "Fashion & clothing", to: "/fashion-marketing-sri-lanka" },
     ],
     faqs: [
+      { q: "Should we hire an agency or an in-house social media person?", a: "An in-house person is often better once you need daily presence and product knowledge. An agency is usually better when you need design, video, copy and paid media skills at once without hiring four people. Many clients do both — in-house content with agency paid media." },
+      { q: "How long is the commitment?", a: "Management is monthly. We usually suggest three months as a fair window to establish content rhythm and a reliable cost per enquiry, but you are not locked into a long contract." },
+      { q: "How do we hand over from our current agency?", a: "We ask for admin transfer of your page and ad account, past campaign data, brand files and the current content calendar. We audit what exists before changing anything." },
+      { q: "Do you share case studies?", a: "We discuss relevant work and the numbers we are permitted to share in a call. We do not publish invented results or testimonials on this site." },
+      { q: "Who will we be dealing with day to day?", a: "You get one point of contact who coordinates the designer, video editor and paid media specialist working on your account." },
       { q: "What does a social media marketing agency do?", a: "It takes responsibility for your social presence: strategy, content, page management, paid campaigns and reporting — so the work happens consistently instead of whenever someone in your team has time." },
       { q: "How do I choose a social media agency in Sri Lanka?", a: "Compare what is actually delivered each month, whether ad spend is separate from the fee, what will be measured, and whether you keep ownership of your accounts. Price alone tells you very little." },
       { q: "How much does a social media agency charge in Sri Lanka?", a: "Fees vary widely with scope. Our packages start from LKR 50,000 as a management fee, with advertising budget quoted separately." },
@@ -405,6 +515,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Enquiry handover to your team",
       "End-of-campaign report",
     ],
+    whoFor: [
+      "Businesses with a date to hit — an opening, an intake, a season or an event",
+      "Brands launching a new product, project or location",
+      "Companies needing a concentrated enquiry push rather than ongoing posting",
+      "Teams that can handle a short spike in enquiries",
+    ],
+    metrics: [
+      { name: "Cost per result", desc: "Cost per lead, registration, booking or sale for the campaign period." },
+      { name: "Total results delivered", desc: "Measured against the target agreed before launch." },
+      { name: "Reach within the target audience", desc: "How much of the audience you actually covered in the window." },
+      { name: "Creative comparison", desc: "Which concept and hook produced results at the lowest cost." },
+      { name: "Daily pacing", desc: "Whether spend and results tracked evenly across the campaign." },
+      { name: "Post-campaign audience", desc: "The engaged and video-viewer audiences left behind for the next campaign to retarget." },
+    ],
+    mistakes: [
+      { title: "Starting too late", desc: "Campaigns launched days before the date have no time to learn. We plan the run-up backwards from the deadline." },
+      { title: "No single objective", desc: "A campaign that must do awareness and sales at once does neither well. One goal per campaign." },
+      { title: "Same creative for every platform", desc: "Feed, story and short video need different framing. We produce per placement." },
+      { title: "No urgency in the offer", desc: "Time-bound campaigns need a real reason to act now — a date, a limit or a deadline." },
+      { title: "No plan for the leads", desc: "We agree the handover and response process before spending, not after enquiries arrive." },
+    ],
     industriesNote: "Campaign-driven industries we work with:",
     industries: [
       { label: "Event marketing", to: "/event-marketing-sri-lanka" },
@@ -414,6 +545,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       { label: "Restaurants & retail", to: "/restaurant-marketing-sri-lanka" },
     ],
     faqs: [
+      { q: "How far in advance should we plan a campaign?", a: "Two to three weeks before launch for a straightforward promotion, and four to six weeks where video production or an event run-up is involved. That allows creative approval, tracking setup and a short testing phase before the main push." },
+      { q: "Can you run a one-off campaign without a monthly contract?", a: "Yes. Campaigns can be quoted as a standalone project with a defined start, end and deliverables. Many clients start this way and add ongoing management later." },
+      { q: "How is a campaign budget split?", a: "Typically a smaller testing phase first, then the majority of the budget behind the creative and audience that proved cheapest per result. The exact split is set out in the campaign plan." },
+      { q: "What do we receive at the end?", a: "A report with results against the target, cost per result, the winning creative, and specific recommendations for the next campaign — plus the audiences built during the campaign, which stay in your account." },
+      { q: "Can a campaign include SMS, email or WhatsApp?", a: "Yes, and multi-channel campaigns usually perform better because the same audience sees a consistent message in more than one place. We quote each channel separately so you can choose." },
       { q: "How long should a social media campaign run?", a: "Most promotional campaigns run two to four weeks — long enough to gather data and optimise, short enough to keep urgency. Launches and seasonal pushes are planned around the date." },
       { q: "What is the difference between a campaign and ongoing management?", a: "A campaign has one objective, a fixed period and its own budget. Management is the continuous content and community work that runs regardless." },
       { q: "Can a campaign run across social and other channels?", a: "Yes, and it usually performs better. We often combine social with email, SMS, WhatsApp and Findit.lk placements in one multi-channel campaign." },
@@ -472,6 +608,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Comment and DM handling during working hours",
       "Monthly report",
     ],
+    whoFor: [
+      "Businesses people choose with their eyes — hotels, villas, restaurants, cafés, salons and interiors",
+      "Fashion, beauty and lifestyle brands selling to urban buyers",
+      "Brands with a steady supply of photos and video from real operations",
+      "Businesses selling through DMs or an online store",
+    ],
+    metrics: [
+      { name: "Non-follower reach", desc: "How much of your reach came from discovery rather than existing followers." },
+      { name: "Saves and shares", desc: "Instagram's clearest quality signals, and the best predictor of continued reach." },
+      { name: "Reel watch time", desc: "How far viewers get before dropping off, used to pick the next hooks." },
+      { name: "Profile visits and link taps", desc: "Whether content actually moves people towards enquiring or buying." },
+      { name: "DM conversations", desc: "Enquiries started in the inbox, which is where most Instagram selling happens locally." },
+      { name: "Cost per result on Instagram placements", desc: "For paid campaigns, what an enquiry or sale costs from Instagram specifically." },
+    ],
+    mistakes: [
+      { title: "Posting text-heavy graphics", desc: "Instagram rewards visuals and video. Information-dense artwork belongs in a carousel, not a single feed post." },
+      { title: "Ignoring reels", desc: "Reels currently carry most of the discovery reach. A feed-only account grows very slowly." },
+      { title: "An unclear profile", desc: "Bio, highlights and action buttons should tell a first-time visitor what you sell and how to buy within seconds." },
+      { title: "Stock imagery", desc: "Real rooms, real plates and real staff outperform stock in almost every local account we manage." },
+      { title: "Leaving DMs unanswered", desc: "On Instagram the inbox is the sales counter. We reply during working hours and hand over real enquiries." },
+    ],
     industriesNote: "Instagram performs particularly well for:",
     industries: [
       { label: "Hotels & travel", to: "/hotel-marketing-sri-lanka" },
@@ -491,6 +648,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       ],
     },
     faqs: [
+      { q: "How often should a business post on Instagram?", a: "Consistency matters more than volume. A workable rhythm for most local businesses is a few strong feed or reel posts a week plus regular stories, rather than daily posts that run out of ideas after a month." },
+      { q: "Do hashtags still help?", a: "They help a little with categorisation, but they are no longer the main driver of reach. The hook, the visual and watch time matter far more, so that is where we spend the effort." },
+      { q: "Can we sell directly through Instagram in Sri Lanka?", a: "Most local brands sell through DMs, WhatsApp or a website link, and we set the profile up for that. Full in-app checkout is not generally available locally, so we optimise the conversation path instead." },
+      { q: "Do we need a professional photoshoot?", a: "Not to start. Good phone footage from your own operation, edited well, performs strongly. We advise on what to capture, and quote a shoot separately if you want one." },
+      { q: "Can Instagram and Facebook run from one budget?", a: "Yes. Both are bought through Meta Ads, so one campaign can place ads on both and let the system find the cheaper placement for your objective." },
       { q: "Should my business use Facebook or Instagram?", a: "If you need the widest local reach and enquiries, start with Facebook. If your product is visual and your buyers are younger and urban, Instagram usually pays back faster. Many businesses run both from one Meta ad account." },
       { q: "How much do Instagram ads cost in Sri Lanka?", a: "Instagram ads run on Meta's auction, so cost depends on audience, placement and creative quality. Budgets are flexible; our management fee starts from LKR 50,000 and is quoted separately from ad spend." },
       { q: "Do reels really matter?", a: "Yes. Short vertical video currently gets the most non-follower reach on Instagram, which makes it the fastest way to be discovered." },
@@ -549,6 +711,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Performance reporting",
     ],
     notIncluded: ["Meta media spend, which you pay to Meta directly or through your own card"],
+    whoFor: [
+      "Businesses already spending on Facebook or Instagram ads without clear reporting",
+      "Advertisers who need proper pixel and conversion tracking on a website or store",
+      "Companies with an inherited or messy ad account that needs an audit",
+      "Brands ready to scale a campaign that is already producing enquiries",
+    ],
+    metrics: [
+      { name: "Cost per result", desc: "Cost per lead, message, add-to-cart or purchase, by campaign and ad set." },
+      { name: "Return on ad spend", desc: "Tracked revenue against spend where pixel or Conversions API data is available." },
+      { name: "Frequency", desc: "How often the same person is being shown the ad, the early warning for fatigue." },
+      { name: "Cost per 1,000 impressions", desc: "Auction pressure and creative quality, compared across audiences." },
+      { name: "Hook and hold rates", desc: "Three-second and full video views, used to decide creative direction." },
+      { name: "Event match quality", desc: "Whether tracking is passing clean data back to Meta so optimisation works." },
+    ],
+    mistakes: [
+      { title: "Too many ad sets on a small budget", desc: "Budget fragments and nothing exits the learning phase. We consolidate structure to fit the spend." },
+      { title: "Broken or missing pixel events", desc: "Meta cannot optimise towards a conversion it cannot see. Tracking is verified before launch." },
+      { title: "Editing during the learning phase", desc: "Every significant edit restarts learning. We batch changes at review points." },
+      { title: "Scaling budget too fast", desc: "Large jumps destabilise a working ad set. We scale in controlled increments." },
+      { title: "Agency-owned assets", desc: "Pixels, audiences and campaign history should live in a Business Manager you own." },
+    ],
     industriesNote: "Meta ads carry most paid volume for:",
     industries: [
       { label: "Real estate", to: "/real-estate-marketing-sri-lanka" },
@@ -558,6 +741,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       { label: "Fashion & clothing", to: "/fashion-marketing-sri-lanka" },
     ],
     faqs: [
+      { q: "What does a Meta ads audit look at?", a: "Account and campaign structure, objectives, audience overlap, creative variety and fatigue, pixel and event setup, attribution settings, and historical cost per result. We come back with what to fix first and the likely impact." },
+      { q: "Do we need a website for Meta ads to work?", a: "No. Lead form, Messenger and WhatsApp campaigns work without a website. A website or landing page with proper tracking gives Meta better data to optimise against, which usually lowers cost per result over time." },
+      { q: "Is a verified business or Business Manager needed?", a: "A Business Manager is strongly recommended so you own your assets. Business verification is required for some ad categories and higher spend limits, and we guide you through it if it applies." },
+      { q: "How do special ad categories affect targeting?", a: "Credit, employment and housing ads face restricted targeting on Meta. If you advertise in those categories we design around the restrictions, usually with broader audiences and sharper creative and copy." },
+      { q: "Can you work alongside our in-house team?", a: "Yes. We often handle campaign structure, tracking and optimisation while an in-house team produces content, with a shared reporting view." },
       { q: "Are Meta ads and Facebook ads the same thing?", a: "Facebook ads are one part of Meta Ads. The same ad account also places ads on Instagram, Messenger and Audience Network." },
       { q: "Do I need my own Business Manager?", a: "Yes, we recommend it. Your page, pixel, audiences and campaign history are valuable assets and should sit in an account you own." },
       { q: "Can you fix a poorly performing existing ad account?", a: "Often, yes. We start with an audit of structure, audiences, creative and tracking before recommending a rebuild or a repair." },
@@ -618,6 +806,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Media spend paid to the platform",
       "Your sales team's follow-up calls, though we advise on scripts and response times",
     ],
+    whoFor: [
+      "Businesses with a sales team or an owner who can call back the same day",
+      "Considered purchases — property, education, finance, medical, vehicles, construction",
+      "Companies that know roughly what a customer is worth and can judge a fair cost per lead",
+      "Brands wanting WhatsApp conversations rather than website form fills",
+    ],
+    metrics: [
+      { name: "Cost per lead", desc: "Media spend divided by the number of leads captured in the period." },
+      { name: "Cost per qualified lead", desc: "The number that matters: cost per lead your team judges worth pursuing." },
+      { name: "Lead-to-appointment rate", desc: "How many enquiries turned into a call, visit or demo." },
+      { name: "Speed to first contact", desc: "Time between the lead arriving and your team responding." },
+      { name: "Form completion rate", desc: "Whether qualifying questions are filtering usefully or driving people away." },
+      { name: "Cost per closed sale", desc: "Where you share outcomes, the full commercial picture back to spend." },
+    ],
+    mistakes: [
+      { title: "Slow follow-up", desc: "Interest fades within the hour. We agree a response process before the campaign launches." },
+      { title: "No qualifying questions", desc: "Cheap leads that cannot afford your product waste sales time. A couple of filters raise quality sharply." },
+      { title: "Hiding the price entirely", desc: "Signalling a price range or eligibility in the ad reduces junk enquiries and improves conversion." },
+      { title: "No retargeting for near-misses", desc: "People who opened the form but did not submit are the cheapest second chance available." },
+      { title: "No feedback loop", desc: "Without knowing which leads closed, targeting cannot improve. We ask for simple weekly feedback." },
+    ],
     industriesNote: "Lead campaigns we run most often:",
     industries: [
       { label: "Real estate leads", to: "/real-estate-marketing-sri-lanka" },
@@ -627,6 +836,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       { label: "General lead generation", to: "/lead-generation-sri-lanka" },
     ],
     faqs: [
+      { q: "How much does a lead cost from Facebook or Instagram in Sri Lanka?", a: "It varies widely by industry, offer and how tightly you qualify. A low-commitment enquiry is far cheaper than a qualified appointment for a high-value purchase. We set an expected range after the first test phase rather than promising a number up front." },
+      { q: "How do leads reach our team?", a: "By WhatsApp notification, email, a shared sheet, or straight into your CRM where one exists. We confirm the route in testing so no lead sits in a platform inbox nobody checks." },
+      { q: "Do you guarantee a number of leads?", a: "No, and we would be cautious of anyone who does without knowing your offer and budget. We set a target based on test data and are accountable for cost per lead against it." },
+      { q: "What if the leads are poor quality?", a: "We tighten targeting, sharpen copy about price or eligibility, add or change qualifying questions, and test a different offer. Quality feedback from your sales team is part of the process." },
+      { q: "Can leads be collected without a website?", a: "Yes. Instant forms and WhatsApp click-to-chat campaigns capture enquiries entirely within the app, which suits many Sri Lankan businesses well." },
       { q: "Can social media really generate leads, not just likes?", a: "Yes — when the campaign objective is set to leads or messages and the offer is specific. Engagement objectives produce likes; lead objectives produce enquiries." },
       { q: "How fast should we follow up on a lead?", a: "Within minutes where possible, and the same day at the latest. Lead quality is judged on conversion, and conversion drops sharply with delay." },
       { q: "Facebook lead forms or WhatsApp?", a: "WhatsApp usually gets a higher response rate in Sri Lanka because the conversation starts immediately. Forms are better when you need structured data for a sales team to work through." },
@@ -684,6 +898,27 @@ export const socialClusterPages: SocialClusterPage[] = [
       "Captions and hashtags",
       "Reusable brand templates",
     ],
+    whoFor: [
+      "Businesses with no in-house designer or video editor",
+      "Brands whose current posts look inconsistent from one week to the next",
+      "Advertisers who need fresh creative regularly because ads fatigue",
+      "Companies with footage and photos sitting unused on a phone",
+    ],
+    metrics: [
+      { name: "Hook rate", desc: "How many viewers stayed past the first three seconds of a video." },
+      { name: "Saves and shares", desc: "Whether the content was useful enough to keep or pass on." },
+      { name: "Non-follower reach", desc: "How much of the reach came from people who did not already follow you." },
+      { name: "Click-through rate on ad creative", desc: "Which creative earns attention when money is behind it." },
+      { name: "Creative lifespan", desc: "How long an asset performs before cost per result rises — this sets the refresh cycle." },
+      { name: "Top formats", desc: "Which format, reel, carousel or single post, earns the best response for your brand." },
+    ],
+    mistakes: [
+      { title: "One design resized for every platform", desc: "Crops cut off text and faces. We produce per placement in the right aspect ratios." },
+      { title: "Burying the message", desc: "The offer or hook should be clear in the first second and the first line. We write for a scrolling reader." },
+      { title: "No template system", desc: "Without templates, every month looks like a different brand. We build a reusable kit." },
+      { title: "Video without captions", desc: "Most feed video is watched muted. Captions are standard on everything we edit." },
+      { title: "Producing only for organic", desc: "Ad creative needs variants for testing. We plan paid versions alongside organic content." },
+    ],
     industriesNote: "Content-led industries we produce for:",
     industries: [
       { label: "Restaurants & retail", to: "/restaurant-marketing-sri-lanka" },
@@ -693,6 +928,11 @@ export const socialClusterPages: SocialClusterPage[] = [
       { label: "Education", to: "/education-marketing-sri-lanka" },
     ],
     faqs: [
+      { q: "What do you need from us to start?", a: "Your logo files and brand colours if you have them, photos or footage of your product, premises or team, your current offers, and any product details or price points you want featured. We can work from phone footage." },
+      { q: "How many revisions are included?", a: "Content is reviewed in batches with a round of revisions before publishing. Substantial re-briefs — a new concept after approval — are quoted separately so the monthly schedule stays on track." },
+      { q: "Do we own the content you produce?", a: "Yes. Final assets are yours to use across social, print and your website. We hand over the files in the formats you need." },
+      { q: "Can you produce content without publishing it?", a: "Yes. Content creation can be delivered as files for your own team to schedule, or bundled with management if you want us to publish as well." },
+      { q: "How quickly can content be delivered?", a: "A standard monthly batch is planned and approved ahead of the month. Urgent single assets for a promotion or announcement can usually be turned around within a couple of working days." },
       { q: "How is this different from social media post design?", a: "Post design is the artwork itself, and we offer it as a standalone service. Content creation is broader: planning, video, copywriting and platform-specific versions as well as the design." },
       { q: "Do you write captions in Sinhala and Tamil?", a: "Yes, we produce captions in English, Sinhala or Tamil depending on the audience you want to reach." },
       { q: "Can you work with our existing brand guidelines?", a: "Yes. If you have a brand kit we follow it; if not, we can build a simple social template set for you." },
