@@ -68,6 +68,50 @@ const parseGraphicDesignSeo = (projectRoot: string): Map<string, { title: string
   return map;
 };
 
+interface ClusterSeo {
+  title: string;
+  description: string;
+  h1: string;
+  answer: string;
+  faqs: { q: string; a: string }[];
+}
+
+// Social media cluster pages share one React template, so their SEO data is
+// parsed from the data file instead of from a literal <SEOHead /> block.
+const parseSocialClusterSeo = (projectRoot: string): Map<string, ClusterSeo> => {
+  const dataFile = path.join(projectRoot, "src", "data", "socialClusterPages.ts");
+  const map = new Map<string, ClusterSeo>();
+  if (!fs.existsSync(dataFile)) return map;
+  const content = fs.readFileSync(dataFile, "utf8");
+
+  const marker = /\n\s{4}slug:\s*"([^"]+)"/g;
+  const positions: { slug: string; index: number }[] = [];
+  for (const m of content.matchAll(marker)) positions.push({ slug: m[1], index: m.index ?? 0 });
+
+  positions.forEach((pos, i) => {
+    const block = content.slice(pos.index, positions[i + 1]?.index ?? content.length);
+    const get = (prop: string) =>
+      block.match(new RegExp(`${prop}:\\s*\\n?\\s*"((?:[^"\\\\]|\\\\.)*)"`))?.[1]?.replace(/\\"/g, '"') ?? "";
+    const title = get("metaTitle");
+    if (!title) return;
+    const faqs: { q: string; a: string }[] = [];
+    const faqBlock = block.match(/faqs:\s*\[([\s\S]*?)\n\s{4}\]/)?.[1] ?? "";
+    const faqRegex = /q:\s*"((?:[^"\\]|\\.)*)",\s*a:\s*"((?:[^"\\]|\\.)*)"/g;
+    for (const f of faqBlock.matchAll(faqRegex)) {
+      faqs.push({ q: f[1].replace(/\\"/g, '"'), a: f[2].replace(/\\"/g, '"') });
+    }
+    map.set(pos.slug, {
+      title,
+      description: get("metaDescription"),
+      h1: get("h1"),
+      answer: get("answer"),
+      faqs,
+    });
+  });
+
+  return map;
+};
+
 const collectRouteSeo = (projectRoot: string): RouteSeoEntry[] => {
   const appFile = path.join(projectRoot, "src", "App.tsx");
   const appContent = fs.readFileSync(appFile, "utf8");
