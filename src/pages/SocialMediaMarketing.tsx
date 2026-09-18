@@ -608,6 +608,13 @@ const SocialMediaMarketing = () => {
         </p>
       </motion.div>
 
+      {/* Social media cluster hub links */}
+      <SocialClusterNav
+        heading="Our social media services in Sri Lanka"
+        intro="Facebook, Instagram, TikTok and LinkedIn, plus advertising, management, campaigns, content and lead generation — each with its own page."
+        exclude={["/social-media-marketing-sri-lanka"]}
+      />
+
       {/* Pricing */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
