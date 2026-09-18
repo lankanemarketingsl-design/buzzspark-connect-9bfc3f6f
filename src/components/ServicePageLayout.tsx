@@ -14,6 +14,9 @@ interface ServicePageLayoutProps {
   title: string;
   subtitle: string;
   children: ReactNode;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  heroHighlights?: string[];
 }
 
 const INDUSTRY_ROUTES = [
@@ -25,7 +28,7 @@ const INDUSTRY_ROUTES = [
   "/brand-blast-360",
 ];
 
-const ServicePageLayout = ({ badge, title, subtitle, children }: ServicePageLayoutProps) => {
+const ServicePageLayout = ({ badge, title, subtitle, children, primaryCta, secondaryCta, heroHighlights }: ServicePageLayoutProps) => {
   const location = useLocation();
   const waNumber = INDUSTRY_ROUTES.includes(location.pathname) ? "94771976351" : "94771437707";
   const pageService = getServiceName(location.pathname);
@@ -47,17 +50,22 @@ const ServicePageLayout = ({ badge, title, subtitle, children }: ServicePageLayo
             <h1 className="font-heading text-2xl sm:text-3xl lg:text-5xl font-bold mb-3 sm:mb-4">{title}</h1>
             <p className="text-primary-foreground/70 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8">{subtitle}</p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact-us">
-                <Button variant="hero" size="lg" className="text-base">
-                  Get a Free Quote <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-              <a data-selected-service={pageService} href={`https://wa.me/${waNumber}?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20your%20marketing%20services.`} target="_blank" rel="noopener noreferrer">
-                <Button variant="hero-outline" size="lg" className="text-base">
-                  <PhoneCall className="mr-1 w-4 h-4" /> Chat on WhatsApp
-                </Button>
-              </a>
+              <Button asChild variant="hero" size="lg" className="text-base">
+                <Link to={primaryCta?.href || "/contact-us"}>
+                  {primaryCta?.label || "Get a Free Quote"} <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="hero-outline" size="lg" className="text-base">
+                <a data-selected-service={pageService} href={secondaryCta?.href || `https://wa.me/${waNumber}?text=Hi%20Buzz%20Connect%2C%20I%27m%20interested%20in%20your%20marketing%20services.`} target="_blank" rel="noopener noreferrer">
+                  <PhoneCall className="mr-1 w-4 h-4" /> {secondaryCta?.label || "Chat on WhatsApp"}
+                </a>
+              </Button>
             </div>
+            {heroHighlights && heroHighlights.length > 0 && (
+              <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-primary-foreground/80">
+                {heroHighlights.map((item) => <li key={item}>✓ {item}</li>)}
+              </ul>
+            )}
           </motion.div>
         </div>
       </section>
