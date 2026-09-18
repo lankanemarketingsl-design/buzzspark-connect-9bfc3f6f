@@ -28,6 +28,7 @@ import SeoServices from "./pages/SeoServices.tsx";
 import WebsiteDesign from "./pages/WebsiteDesign.tsx";
 import LeadGeneration from "./pages/LeadGeneration.tsx";
 import SocialMediaMarketing from "./pages/SocialMediaMarketing.tsx";
+import SocialMediaPackages from "./pages/SocialMediaPackages.tsx";
 import WebBannerAdvertising from "./pages/WebBannerAdvertising.tsx";
 import Resources from "./pages/Resources.tsx";
 
@@ -216,6 +217,7 @@ const App = () => (
               <Route path="/website-design-sri-lanka" element={<WebsiteDesign />} />
               <Route path="/lead-generation-sri-lanka" element={<LeadGeneration />} />
               <Route path="/social-media-marketing-sri-lanka" element={<SocialMediaMarketing />} />
+              <Route path="/social-media-packages-sri-lanka" element={<SocialMediaPackages />} />
               <Route path="/linkedin-marketing-sri-lanka" element={<LinkedInMarketing />} />
               <Route path="/tiktok-marketing-sri-lanka" element={<TikTokMarketing />} />
               <Route path="/web-banner-advertising-sri-lanka" element={<WebBannerAdvertising />} />
