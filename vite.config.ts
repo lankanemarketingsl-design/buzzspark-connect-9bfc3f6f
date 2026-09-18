@@ -127,6 +127,7 @@ const collectRouteSeo = (projectRoot: string): RouteSeoEntry[] => {
   }
 
   const graphicDesignSeo = parseGraphicDesignSeo(projectRoot);
+  const socialClusterSeo = parseSocialClusterSeo(projectRoot);
   const entries: RouteSeoEntry[] = [];
   const routeRegex = /<Route\s+path="([^"]+)"\s+element={<(\w+)\s*\/>}\s*\/>/g;
 
