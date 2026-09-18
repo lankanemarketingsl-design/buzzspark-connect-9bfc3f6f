@@ -332,6 +332,30 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
           </div>
         </section>
 
+        {/* Mistakes */}
+        {page.mistakes && page.mistakes.length > 0 && (
+          <section>
+            <SectionLabel>What goes wrong</SectionLabel>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Common mistakes, and what we do instead</h2>
+            <p className="text-muted-foreground max-w-4xl mb-6">
+              These are the issues we most often find when we audit an existing account in Sri Lanka.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {page.mistakes.map((m) => (
+                <div key={m.title} className="p-6 rounded-2xl bg-card border border-border">
+                  <div className="flex items-start gap-3">
+                    <XCircle className="w-5 h-5 text-destructive mt-0.5 shrink-0" />
+                    <div>
+                      <h3 className="font-heading font-semibold mb-2">{m.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* FAQ */}
         <section>
           <SectionLabel>FAQ</SectionLabel>
