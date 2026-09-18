@@ -159,6 +159,56 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
           </div>
         </section>
 
+        {/* Who it's for */}
+        {page.whoFor && page.whoFor.length > 0 && (
+          <section className="grid lg:grid-cols-2 gap-6 items-start">
+            <div>
+              <SectionLabel>Good fit</SectionLabel>
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Who this is a good fit for</h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                This service works best in the situations below. If none of them describe you, tell us your situation on WhatsApp and we'll point you to the service that fits — even if it isn't this one.
+              </p>
+              <a href={wa(page.waText)} target="_blank" rel="noopener noreferrer" data-selected-service={page.serviceType}>
+                <Button variant="default" size="lg">
+                  <MessageCircle className="mr-2 w-4 h-4" /> Ask if this fits your business
+                </Button>
+              </a>
+            </div>
+            <ul className="space-y-3">
+              {page.whoFor.map((w) => (
+                <li key={w} className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border">
+                  <CheckCircle2 className="w-4 h-4 text-accent mt-1 shrink-0" />
+                  <span className="text-sm text-muted-foreground leading-relaxed">{w}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+
+        {/* Inline CTA */}
+        <section className="rounded-2xl border border-accent/30 bg-accent/5 p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+          <div>
+            <h2 className="font-heading text-xl sm:text-2xl font-bold mb-2">Not sure where to start?</h2>
+            <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
+              Send us your goal and rough budget on WhatsApp. We'll reply with a suggested plan, a recommended advertising budget and a clear fee — usually the same working day.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 shrink-0">
+            <a href={wa(page.waText)} target="_blank" rel="noopener noreferrer" data-selected-service={page.serviceType}>
+              <Button variant="default" size="lg">
+                <MessageCircle className="mr-2 w-4 h-4" /> WhatsApp us
+              </Button>
+            </a>
+            <a href="tel:+94771437707">
+              <Button variant="outline" size="lg">
+                <Phone className="mr-2 w-4 h-4" /> 077 143 7707
+              </Button>
+            </a>
+          </div>
+        </section>
+
+
         {/* Process */}
         <section>
           <SectionLabel>Process</SectionLabel>
@@ -217,6 +267,25 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
           </div>
         </section>
 
+        {/* What we measure */}
+        {page.metrics && page.metrics.length > 0 && (
+          <section>
+            <SectionLabel>Reporting</SectionLabel>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">What we measure and report</h2>
+            <p className="text-muted-foreground max-w-4xl mb-6">
+              Every report ties back to these numbers, plus what we plan to change next. If a number is not trackable for your setup, we say so rather than estimating it.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {page.metrics.map((m) => (
+                <div key={m.name} className="p-6 rounded-2xl bg-card border border-border">
+                  <h3 className="font-heading font-semibold mb-2">{m.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Comparison table */}
         {page.table && (
           <section>
@@ -263,6 +332,30 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
           </div>
         </section>
 
+        {/* Mistakes */}
+        {page.mistakes && page.mistakes.length > 0 && (
+          <section>
+            <SectionLabel>What goes wrong</SectionLabel>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Common mistakes, and what we do instead</h2>
+            <p className="text-muted-foreground max-w-4xl mb-6">
+              These are the issues we most often find when we audit an existing account in Sri Lanka.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {page.mistakes.map((m) => (
+                <div key={m.title} className="p-6 rounded-2xl bg-card border border-border">
+                  <div className="flex items-start gap-3">
+                    <XCircle className="w-5 h-5 text-destructive mt-0.5 shrink-0" />
+                    <div>
+                      <h3 className="font-heading font-semibold mb-2">{m.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* FAQ */}
         <section>
           <SectionLabel>FAQ</SectionLabel>
@@ -275,7 +368,19 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
               </AccordionItem>
             ))}
           </Accordion>
+          <div className="mt-6 flex flex-wrap items-center gap-3 max-w-4xl">
+            <p className="text-sm text-muted-foreground">Question not answered here?</p>
+            <a href={wa(page.waText)} target="_blank" rel="noopener noreferrer" data-selected-service={page.serviceType}>
+              <Button variant="default">
+                <MessageCircle className="mr-2 w-4 h-4" /> Ask us on WhatsApp
+              </Button>
+            </a>
+            <Link to="/social-media-packages-sri-lanka">
+              <Button variant="outline">Compare packages</Button>
+            </Link>
+          </div>
         </section>
+
 
         {/* Related pages */}
         <section>
