@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 
@@ -288,6 +289,18 @@ const LinkedInMarketing = () => {
             </Button>
           </div>
 
+          <SocialClusterLinks
+            title="Other social media services"
+            intro="Part of our wider social media offering for Sri Lankan businesses."
+            links={[
+              { label: "Social media marketing services", to: "/social-media-marketing-sri-lanka" },
+              { label: "Social media packages and pricing", to: "/social-media-packages-sri-lanka" },
+              { label: "Social media management", to: "/social-media-management-sri-lanka" },
+              { label: "Social media lead generation", to: "/social-media-lead-generation-sri-lanka" },
+              { label: "Social media agency services", to: "/social-media-agency-sri-lanka" },
+              { label: "Meta Ads agency", to: "/meta-ads-agency-sri-lanka" },
+            ]}
+          />
           <RelatedArticles currentPath="/linkedin-marketing-sri-lanka" />
         </motion.article>
       </div>

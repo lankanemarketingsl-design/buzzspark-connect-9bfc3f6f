@@ -13,6 +13,7 @@ import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
 import DigitalMarketingCTA from "@/components/DigitalMarketingCTA";
 import SocialClusterNav from "@/components/SocialClusterNav";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 
 const smmServices = [
   { icon: Target, title: "Social Media Strategy Development", desc: "Custom strategies aligned with your business goals and target audience in Sri Lanka." },
@@ -614,6 +615,18 @@ const SocialMediaMarketing = () => {
         heading="Our social media services in Sri Lanka"
         intro="Facebook, Instagram, TikTok and LinkedIn, plus advertising, management, campaigns, content and lead generation — each with its own page."
         exclude={["/social-media-marketing-sri-lanka"]}
+      />
+
+      {/* Guides and pricing reading */}
+      <SocialClusterLinks
+        title="Guides: pricing and planning"
+        intro="Read these before choosing a package or setting a budget."
+        links={[
+          { label: "Social media packages and pricing (from LKR 50,000)", to: "/social-media-packages-sri-lanka" },
+          { label: "Social media marketing cost in Sri Lanka (market guide)", to: "/social-media-marketing-cost-sri-lanka" },
+          { label: "Complete 2026 guide to social media marketing in Sri Lanka", to: "/social-media-marketing-sri-lanka-complete-guide-2026" },
+          { label: "How social media marketing works", to: "/how-social-media-marketing-works-sri-lanka" },
+        ]}
       />
 
       {/* Pricing */}

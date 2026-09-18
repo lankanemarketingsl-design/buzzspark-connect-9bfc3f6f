@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import RelatedArticles from "@/components/RelatedArticles";
+import SocialClusterLinks from "@/components/SocialClusterLinks";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 
@@ -273,6 +274,18 @@ const TikTokMarketing = () => {
             </Button>
           </div>
 
+          <SocialClusterLinks
+            title="Other social media services"
+            intro="Part of our wider social media offering for Sri Lankan businesses."
+            links={[
+              { label: "Social media marketing services", to: "/social-media-marketing-sri-lanka" },
+              { label: "Social media packages and pricing", to: "/social-media-packages-sri-lanka" },
+              { label: "Social media advertising", to: "/social-media-advertising-sri-lanka" },
+              { label: "Social media content creation", to: "/social-media-content-creation-sri-lanka" },
+              { label: "Social media campaigns", to: "/social-media-campaigns-sri-lanka" },
+              { label: "Instagram marketing", to: "/instagram-marketing-sri-lanka" },
+            ]}
+          />
           <RelatedArticles currentPath="/tiktok-marketing-sri-lanka" />
         </motion.article>
       </div>
