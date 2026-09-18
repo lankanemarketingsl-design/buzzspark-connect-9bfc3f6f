@@ -208,8 +208,6 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
           </div>
         </section>
 
-        )}
-
 
         {/* Process */}
         <section>
