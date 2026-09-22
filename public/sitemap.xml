@@ -201,6 +201,12 @@
   <!-- Vertical-specific landing pages for targeted traffic   -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <url>
+    <loc>https://buzzconnect.lk/home-services-construction-marketing-sri-lanka</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://buzzconnect.lk/hotel-marketing-sri-lanka</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>

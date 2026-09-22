@@ -21,6 +21,6 @@
 - [x] Rebuild `/social-media-marketing-sri-lanka` as the definitive commercial social media hub per the approved brief.
 
 ## Home services and construction industry page
-- [ ] Build `/home-services-construction-marketing-sri-lanka` from the supplied page content using the existing Buzz Connect theme.
-- [ ] Add the page to site navigation, search discovery files, static page generation, and enquiry tracking.
+- [x] Build `/home-services-construction-marketing-sri-lanka` from the supplied page content using the existing Buzz Connect theme.
+- [x] Add the page to site navigation, search discovery files, static page generation, and enquiry tracking.
 - [ ] Verify metadata, structured data, Findit Pros links, CTA number `94771437707`, and desktop/mobile layouts.

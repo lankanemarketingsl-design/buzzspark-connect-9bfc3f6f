@@ -39,6 +39,7 @@ const pathLabels: Record<string, string> = {
   "/advertising-sri-lanka": "Advertising",
   "/careers": "Careers",
   "/staff-recruitment-campaigns-sri-lanka": "Staff Recruitment Campaigns",
+  "/home-services-construction-marketing-sri-lanka": "Home Services & Construction Marketing",
 };
 
 // Build graphic design service labels from data

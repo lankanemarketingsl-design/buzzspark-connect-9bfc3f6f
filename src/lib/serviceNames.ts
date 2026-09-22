@@ -26,6 +26,7 @@ export const SERVICE_PATHS: Record<string, string> = {
   "/education-marketing-sri-lanka": "Education Marketing",
   "/event-marketing-sri-lanka": "Event Marketing",
   "/staff-recruitment-campaigns-sri-lanka": "Staff Recruitment",
+  "/home-services-construction-marketing-sri-lanka": "Home Services & Construction Marketing",
 };
 
 const NON_SERVICE = new Set([
