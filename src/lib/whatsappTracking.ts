@@ -42,6 +42,7 @@ const SERVICE_MAP: Record<string, string> = {
   "/digital-marketing-trends-sri-lanka": "Digital Marketing",
   "/event-marketing-sri-lanka": "Event Marketing",
   "/staff-recruitment-campaigns-sri-lanka": "Staff Recruitment Campaigns",
+  "/home-services-construction-marketing-sri-lanka": "Home Services & Construction Marketing",
   "/google-ads-sri-lanka": "Google Ads",
   "/about-us": "Buzz Connect",
   "/why-choose-us": "your services",

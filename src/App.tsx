@@ -151,6 +151,7 @@ import BrandBlast360 from "./pages/BrandBlast360.tsx";
 import BB360ServicePage from "./pages/BB360ServicePage.tsx";
 import BB360Hotels from "./pages/BB360Hotels.tsx";
 import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
+import HomeServicesConstruction from "./pages/HomeServicesConstruction.tsx";
 import SocialClusterPage from "./pages/SocialClusterPage.tsx";
 import GlobalClientLogos from "@/components/GlobalClientLogos";
 
@@ -232,6 +233,7 @@ const App = () => (
               <Route path="/tiktok-marketing-sri-lanka" element={<TikTokMarketing />} />
               <Route path="/web-banner-advertising-sri-lanka" element={<WebBannerAdvertising />} />
               <Route path="/programmatic-advertising-sri-lanka" element={<ProgrammaticAdvertising />} />
+              <Route path="/home-services-construction-marketing-sri-lanka" element={<HomeServicesConstruction />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/why-choose-us" element={<WhyChooseUs />} />
