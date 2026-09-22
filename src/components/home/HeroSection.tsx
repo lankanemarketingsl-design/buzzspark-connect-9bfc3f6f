@@ -100,7 +100,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className="font-heading">#1 Email Marketing, SMS Marketing & WhatsApp Marketing Company in Sri Lanka —</span>{" "}
-            <span className="text-gradient-hero text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">reach 1,000,000+ real people on every channel</span>.
+            <span className="text-gradient-hero text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">reach 1,000,000+ real people in 24 hours, on every channel</span>.
           </motion.h1>
 
           {/* Description */}
