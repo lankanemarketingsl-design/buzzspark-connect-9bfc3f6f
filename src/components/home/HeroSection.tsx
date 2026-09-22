@@ -99,7 +99,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Sri Lanka's <span className="text-gradient-hero">#1 multi-channel</span> platform — your message in front of <span className="text-gradient-hero">1,000,000+ real people</span>, on every channel.
+            #1 Email Marketing, SMS Marketing & WhatsApp Marketing Company in Sri Lanka — reach 1,000,000+ real people on every channel.
           </motion.h1>
 
           {/* Description */}
