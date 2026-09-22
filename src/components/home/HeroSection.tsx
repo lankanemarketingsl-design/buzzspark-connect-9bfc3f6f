@@ -99,7 +99,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            #1 Email Marketing, SMS Marketing & WhatsApp Marketing Company in Sri Lanka — reach 1,000,000+ real people on every channel.
+            #1 Email Marketing, SMS Marketing & WhatsApp Marketing Company in Sri Lanka — <span className="text-gradient-hero">reach 1,000,000+ real people on every channel</span>.
           </motion.h1>
 
           {/* Description */}
