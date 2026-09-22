@@ -94,12 +94,13 @@ const HeroSection = () => {
 
           {/* Headline */}
           <motion.h1
-            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-[1.08] mb-4 sm:mb-5"
+            className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-primary-foreground leading-[1.08] mb-4 sm:mb-5"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            #1 Email Marketing, SMS Marketing & WhatsApp Marketing Company in Sri Lanka — <span className="text-gradient-hero text-2xl sm:text-3xl md:text-4xl lg:text-5xl">reach 1,000,000+ real people on every channel</span>.
+            <span className="font-heading">#1 Email Marketing, SMS Marketing & WhatsApp Marketing Company in Sri Lanka —</span>{" "}
+            <span className="text-gradient-hero text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">reach 1,000,000+ real people on every channel</span>.
           </motion.h1>
 
           {/* Description */}
