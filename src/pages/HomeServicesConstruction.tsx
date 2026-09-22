@@ -308,7 +308,7 @@ export default function HomeServicesConstruction() {
         </div>
       </section>
 
-      <section className="gradient-hero py-16 text-primary-foreground sm:py-20">
+      <section className="gradient-hero py-16 text-primary-foreground [&_h2]:text-primary-foreground [&_p]:text-primary-foreground/65 sm:py-20">
         <div className="container mx-auto px-4">
           <SectionHeading eyebrow="Findit Pros · Powered visibility" title="Get Listed on Sri Lanka’s Verified Home-Services Directory" body="We list and promote your business on the exact trade category page where high-intent customers are already searching. These pages are organised down to the town level, matching customers in Colombo, Kandy, Negombo and across Sri Lanka directly with relevant service providers—without a per-click cost." />
           <div className="grid gap-x-8 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
