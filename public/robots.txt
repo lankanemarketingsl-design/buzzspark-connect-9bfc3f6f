@@ -125,5 +125,5 @@ Disallow: /admin
 Disallow: /admin-login
 
 # --- Discovery ---
-Sitemap: https://buzzconnect.lk/sitemap.xml
+Sitemap: https://buzzspark-connect.lovable.app/sitemap.xml
 Host: https://buzzconnect.lk
