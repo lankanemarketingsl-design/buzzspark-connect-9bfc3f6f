@@ -12,6 +12,7 @@ export const SERVICE_PATHS: Record<string, string> = {
   "/sms-marketing": "SMS Marketing",
   "/whatsapp-marketing": "WhatsApp Marketing",
   "/lead-generation-sri-lanka": "Lead Generation",
+  "/lead-follow-up-services-sri-lanka": "Lead Follow-Up Services",
   "/graphic-designing-in-sri-lanka": "Graphic Design",
   "/online-advertising-sri-lanka": "Online Advertising",
   "/web-banner-advertising-sri-lanka": "Web Banner Advertising",

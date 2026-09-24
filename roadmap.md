@@ -24,3 +24,8 @@
 - [x] Build `/home-services-construction-marketing-sri-lanka` from the supplied page content using the existing Buzz Connect theme.
 - [x] Add the page to site navigation, search discovery files, static page generation, and enquiry tracking.
 - [x] Verify metadata, structured data, Findit Pros links, CTA number `94771437707`, and desktop/mobile layouts.
+
+## Lead follow-up services page
+- [x] Create the dedicated lead follow-up and customer qualification service page.
+- [x] Add footer, route, search discovery, and enquiry tracking links.
+- [x] Verify wording, metadata, contact actions, and responsive layouts.

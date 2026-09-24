@@ -14,6 +14,7 @@ const pathLabels: Record<string, string> = {
   "/sms-marketing": "SMS Marketing",
   "/whatsapp-marketing": "WhatsApp Marketing",
   "/lead-generation-sri-lanka": "Lead Generation",
+  "/lead-follow-up-services-sri-lanka": "Lead Follow-Up Services",
   "/social-media-marketing-sri-lanka": "Social Media Marketing",
   "/multi-channel-marketing-sri-lanka": "Multi-Channel Marketing",
   "/online-advertising-sri-lanka": "Online Advertising",
