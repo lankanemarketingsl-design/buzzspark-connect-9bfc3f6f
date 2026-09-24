@@ -33,17 +33,18 @@ const PAGE_PATH = "/lead-follow-up-services-sri-lanka";
 const WHATSAPP_NUMBER = "94771437707";
 const DISPLAY_NUMBER = "+94 77 143 7707";
 const SERVICE_NAME = "Lead Follow-Up Services";
+const SITE_URL = "https://buzzspark-connect.lovable.app";
 
 const whatsappUrl = (message: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 const processSteps = [
-  { number: "01", title: "You give us your prospect list", text: "Share leads from Facebook, Google, website forms, WhatsApp, events, your CRM or another customer list.", icon: Users },
-  { number: "02", title: "We make the first call", text: "Our multilingual team introduces your company and starts a professional conversation with each prospect.", icon: PhoneCall },
-  { number: "03", title: "We understand the requirement", text: "We ask agreed questions to understand the product, service, timing and information each person needs.", icon: Target },
-  { number: "04", title: "We record outcomes and feedback", text: "We document the call status, interest, requirement, comments and recommended next action.", icon: ClipboardCheck },
-  { number: "05", title: "We identify follow-up opportunities", text: "Prospects are organised by interest and next step so your sales team can prioritise the right conversations.", icon: BadgeCheck },
-  { number: "06", title: "You receive a structured report", text: "Your team gets an organised customer-feedback list with context for the next sales conversation.", icon: BarChart3 },
+  { number: "01", title: "Share your lead list", text: "Send leads from Facebook, Google, website forms, WhatsApp, events, your CRM or another customer list.", icon: Users },
+  { number: "02", title: "We prepare the first-call script", text: "We agree on your introduction, qualification questions, campaign context and required customer details.", icon: ClipboardCheck },
+  { number: "03", title: "We make the first call", text: "Our multilingual team introduces your company and begins a professional conversation with each prospect.", icon: PhoneCall },
+  { number: "04", title: "We understand the requirement", text: "We identify the product or service needed, interest level, questions, timing and useful customer feedback.", icon: Target },
+  { number: "05", title: "We organise each outcome", text: "Every prospect is grouped by status and recommended next action, helping your team set priorities.", icon: BadgeCheck },
+  { number: "06", title: "Your sales team takes over", text: "Your team receives a structured report with the context needed for the next sales conversation.", icon: BarChart3 },
 ];
 
 const statuses = [
@@ -86,6 +87,7 @@ const models = [
 
 const faqs = [
   { q: "What is a lead follow-up service?", a: "It involves contacting prospects generated through marketing, understanding their interest, requirements and feedback, and passing structured information to your sales team." },
+  { q: "How does Buzz Connect help our sales team?", a: "We handle the first conversation, organise each prospect by outcome and give your sales team the requirement, interest level, feedback and recommended next action. Your salespeople can begin with context instead of only a name and phone number." },
   { q: "Is this a traditional call center?", a: "It is a focused form of call center outsourcing. Buzz Connect concentrates on lead follow-up, prospect qualification and customer feedback rather than general inbound support." },
   { q: "Do you make the first call?", a: "Yes. You provide the prospect or customer list, and our team makes the initial call according to the agreed script and campaign requirements." },
   { q: "What information do you collect?", a: "This can include call status, interest level, requirement, questions, feedback, objections, requested follow-up and the next action relevant to your sales process." },
@@ -113,10 +115,12 @@ const LeadFollowUpServices = () => {
       "@type": "Service",
       name: "Lead Follow-Up Services Sri Lanka",
       serviceType: ["Lead follow-up", "Prospect qualification", "Customer feedback calling", "Outbound calling"],
-      provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
+      provider: { "@type": "Organization", name: "Buzz Connect", url: SITE_URL },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      url: `https://buzzconnect.lk${PAGE_PATH}`,
-      description: "Buzz Connect calls your prospects, understands their requirements, records call outcomes and customer feedback, and identifies interested leads for your sales team.",
+      url: `${SITE_URL}${PAGE_PATH}`,
+      description: "Buzz Connect makes the first call to your prospects, understands their requirements, organises customer feedback and gives your sales team clear follow-up opportunities.",
+      audience: { "@type": "BusinessAudience", audienceType: "Sri Lankan businesses with prospect and customer lists" },
+      availableChannel: { "@type": "ServiceChannel", servicePhone: { "@type": "ContactPoint", telephone: DISPLAY_NUMBER, contactType: "sales" } },
     },
     {
       "@context": "https://schema.org",
@@ -134,59 +138,79 @@ const LeadFollowUpServices = () => {
       <SEOHead
         title="Lead Follow-Up Services Sri Lanka | Prospect Qualification | Buzz Connect"
         description="Lead follow-up services in Sri Lanka. We call your prospects, understand their requirements, collect customer feedback and identify interested leads for your sales team."
-        canonical="/lead-follow-up-services-sri-lanka"
+        canonical={`${SITE_URL}${PAGE_PATH}`}
         keywords="lead follow up service sri lanka, lead qualification services sri lanka, prospect follow up services sri lanka, customer feedback calling sri lanka, customer follow up services sri lanka, lead calling service sri lanka, outbound calling services sri lanka, sales calling services sri lanka, telemarketing services sri lanka, call center outsourcing sri lanka, outsourced sales team sri lanka, appointment setting services sri lanka"
         breadcrumbs={[{ name: "Home", url: "/" }, { name: "Lead Follow-Up Services", url: PAGE_PATH }]}
         jsonLd={jsonLd}
       />
 
-      <section className="gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 pb-16 pt-3 sm:pb-24">
+      <section className="bg-background">
+        <div className="container mx-auto px-4 pb-16 pt-3 sm:pb-20">
           <Breadcrumbs />
-          <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="max-w-4xl">
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/15 px-4 py-2 text-xs font-bold uppercase text-accent">
+          <div className="mx-auto max-w-4xl pt-8 text-center sm:pt-12">
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-xs font-bold uppercase text-foreground">
                 <Headphones className="h-4 w-4" /> Sinhala • Tamil • English
               </span>
-              <h1 className="mt-5 font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-                Lead Follow-Up &amp; Customer Qualification Services in Sri Lanka
+              <h1 className="mt-6 font-heading text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+                We Make the First Call. <span className="text-secondary">Your Sales Team Takes It Forward.</span>
               </h1>
-              <p className="mt-5 text-xl font-semibold text-accent sm:text-2xl">We call your prospects. You get the customer feedback. Your sales team gets the opportunities.</p>
-              <p className="mt-5 max-w-3xl text-base leading-relaxed text-primary-foreground/75 sm:text-lg">
-                Give Buzz Connect your prospect list. We make the first call, understand each customer's requirement, identify interest and return a clear, organised feedback report to your sales team.
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                Lead follow-up services in Sri Lanka for companies that need every prospect contacted, understood and organised before the next sales conversation.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild variant="hero" size="lg"><Link to="/contact-us">Get a Free Quote <ArrowRight /></Link></Button>
-                <Button asChild variant="hero-outline" size="lg"><a href={whatsappUrl(quoteMessage)} data-selected-service={SERVICE_NAME} data-wa-placement="hero" target="_blank" rel="noopener noreferrer"><MessageCircle /> Talk to Us on WhatsApp</a></Button>
+                <Button asChild variant="outline" size="lg"><a href={whatsappUrl(quoteMessage)} data-selected-service={SERVICE_NAME} data-wa-placement="hero" target="_blank" rel="noopener noreferrer"><MessageCircle /> Talk to Us on WhatsApp</a></Button>
               </div>
-            </div>
+          </div>
 
-            <div className="rounded-md border border-primary-foreground/15 bg-primary-foreground/5 p-5 backdrop-blur-sm sm:p-7">
-              <p className="text-sm font-bold uppercase text-accent">What your team receives</p>
-              <div className="mt-5 space-y-3">
-                {["Who answered", "What each prospect needs", "Their level of interest", "Customer feedback and comments", "The recommended next action"].map((item) => (
-                  <div key={item} className="flex items-center gap-3 rounded-md border border-primary-foreground/10 bg-primary-foreground/5 p-3">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-accent" /><span className="font-medium">{item}</span>
+          <div className="relative mx-auto mt-14 max-w-6xl">
+            <div className="absolute left-[16.7%] right-[16.7%] top-10 hidden h-px bg-border lg:block" />
+            <div className="relative grid gap-5 lg:grid-cols-3">
+              {[
+                { number: "1", label: "Your leads", title: "You Share the Prospects", text: "Send the enquiries or customer list you want followed up.", icon: Users },
+                { number: "2", label: "Buzz Connect", title: "We Make the First Call", text: "We introduce your business, ask the agreed questions and understand what each prospect needs.", icon: PhoneCall },
+                { number: "3", label: "Your sales team", title: "You Receive Sales Context", text: "Get each outcome, interest level, feedback and recommended next action in a structured report.", icon: BarChart3 },
+              ].map(({ number, label, title, text, icon: Icon }, index) => (
+                <article key={number} className={`relative flex flex-col items-center rounded-md border bg-card p-6 text-center shadow-card sm:p-8 ${index === 1 ? "border-accent shadow-card-hover" : "border-border"}`}>
+                  <div className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full ${index === 1 ? "bg-accent text-accent-foreground shadow-glow" : "bg-primary text-primary-foreground"}`}>
+                    <Icon className="h-7 w-7" />
                   </div>
-                ))}
-              </div>
-              <div className="mt-5 rounded-md border border-accent/30 bg-accent/10 p-4">
-                <p className="font-bold text-accent">Clear campaign reporting</p>
-                <p className="mt-1 text-sm text-primary-foreground/75">Every outcome and customer response is organised for your sales team.</p>
-              </div>
+                  <p className="mt-5 text-xs font-bold uppercase text-secondary">Step {number} · {label}</p>
+                  <h2 className="mt-2 text-2xl font-bold text-foreground">{title}</h2>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{text}</p>
+                </article>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="gradient-hero py-14 text-primary-foreground sm:py-16">
+        <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase text-accent">Answer first</p>
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">What Is a Lead Follow-Up Service?</h2>
+            <p className="mt-5 text-lg leading-relaxed text-primary-foreground/75">A lead follow-up service contacts prospects after they enquire, checks what they need, identifies their interest and gives the business a structured result for sales follow-up.</p>
+            <p className="mt-4 leading-relaxed text-primary-foreground/75">Buzz Connect handles that first customer conversation so your sales team can focus on informed next steps, proposals and closing opportunities.</p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {["Call status", "Customer requirement", "Interest level", "Questions and feedback", "Follow-up priority", "Recommended next action"].map((item) => (
+              <div key={item} className="flex items-center gap-3 rounded-md border border-primary-foreground/15 bg-primary-foreground/5 p-4">
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-accent" /><span className="font-medium">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="From raw data to sales context" title="Turn Your Lead List Into Actionable Customer Feedback" intro="You have already invested in advertising and lead generation. We help make sure the prospects generated by that investment receive a first conversation." />
+          <SectionTitle eyebrow="From enquiry to sales context" title="Why the First Call Matters to Your Sales Team" intro="Marketing creates the enquiry. The first call adds the context your sales team needs to decide who to contact and what to discuss next." />
           <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
             <div>
               <p className="text-lg leading-relaxed text-muted-foreground">When hundreds of enquiries arrive, some are called late or not at all. Your salespeople then start with names and phone numbers but no understanding of what each customer wants.</p>
               <div className="mt-6 border-l-4 border-accent pl-5">
-                <p className="text-xl font-bold text-foreground">That's where LeadConnect by Buzz Connect comes in.</p>
+                <p className="text-xl font-bold text-foreground">Buzz Connect becomes your first-call support team.</p>
                 <p className="mt-2 leading-relaxed text-muted-foreground">We make the first call, understand the requirement, check interest and return structured outcomes to your sales team.</p>
               </div>
             </div>
@@ -201,7 +225,7 @@ const LeadFollowUpServices = () => {
 
       <section className="bg-muted/45 py-16 sm:py-24">
         <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="The process" title="How Our Lead Follow-Up Service Works" intro="A clear six-step workflow turns a list of unknown contacts into useful customer intelligence." />
+          <SectionTitle eyebrow="The complete workflow" title="How Lead Follow-Up Services Work" intro="A clear six-step process turns a prospect list into organised information your sales team can act on." />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {processSteps.map(({ number, title, text, icon: Icon }) => (
               <article key={number} className="rounded-md border border-border bg-card p-6 shadow-card">
