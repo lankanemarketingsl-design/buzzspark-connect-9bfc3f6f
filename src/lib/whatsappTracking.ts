@@ -23,6 +23,7 @@ const SERVICE_MAP: Record<string, string> = {
   "/seo-sri-lanka": "SEO Services",
   "/website-design-sri-lanka": "Website Design",
   "/lead-generation-sri-lanka": "Lead Generation",
+  "/lead-follow-up-services-sri-lanka": "Lead Follow-Up Services",
   "/social-media-marketing-sri-lanka": "Social Media Marketing",
   "/web-banner-advertising-sri-lanka": "Web Banner Advertising",
   "/hotel-marketing-sri-lanka": "Hotel Marketing",

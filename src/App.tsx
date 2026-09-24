@@ -152,6 +152,7 @@ import BB360ServicePage from "./pages/BB360ServicePage.tsx";
 import BB360Hotels from "./pages/BB360Hotels.tsx";
 import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
 import HomeServicesConstruction from "./pages/HomeServicesConstruction.tsx";
+import LeadFollowUpServices from "./pages/LeadFollowUpServices.tsx";
 import SocialClusterPage from "./pages/SocialClusterPage.tsx";
 import GlobalClientLogos from "@/components/GlobalClientLogos";
 
@@ -218,6 +219,7 @@ const App = () => (
               <Route path="/seo-sri-lanka" element={<SeoServices />} />
               <Route path="/website-design-sri-lanka" element={<WebsiteDesign />} />
               <Route path="/lead-generation-sri-lanka" element={<LeadGeneration />} />
+              <Route path="/lead-follow-up-services-sri-lanka" element={<LeadFollowUpServices />} />
               <Route path="/social-media-marketing-sri-lanka" element={<SocialMediaMarketing />} />
               <Route path="/social-media-packages-sri-lanka" element={<SocialMediaPackages />} />
               <Route path="/facebook-marketing-sri-lanka" element={<SocialClusterPage />} />
