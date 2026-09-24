@@ -33,6 +33,7 @@ const PAGE_PATH = "/lead-follow-up-services-sri-lanka";
 const WHATSAPP_NUMBER = "94771437707";
 const DISPLAY_NUMBER = "+94 77 143 7707";
 const SERVICE_NAME = "Lead Follow-Up Services";
+const SITE_URL = "https://buzzspark-connect.lovable.app";
 
 const whatsappUrl = (message: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -114,9 +115,9 @@ const LeadFollowUpServices = () => {
       "@type": "Service",
       name: "Lead Follow-Up Services Sri Lanka",
       serviceType: ["Lead follow-up", "Prospect qualification", "Customer feedback calling", "Outbound calling"],
-      provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
+      provider: { "@type": "Organization", name: "Buzz Connect", url: SITE_URL },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      url: `https://buzzconnect.lk${PAGE_PATH}`,
+      url: `${SITE_URL}${PAGE_PATH}`,
       description: "Buzz Connect makes the first call to your prospects, understands their requirements, organises customer feedback and gives your sales team clear follow-up opportunities.",
       audience: { "@type": "BusinessAudience", audienceType: "Sri Lankan businesses with prospect and customer lists" },
       availableChannel: { "@type": "ServiceChannel", servicePhone: { "@type": "ContactPoint", telephone: DISPLAY_NUMBER, contactType: "sales" } },
@@ -137,7 +138,7 @@ const LeadFollowUpServices = () => {
       <SEOHead
         title="Lead Follow-Up Services Sri Lanka | Prospect Qualification | Buzz Connect"
         description="Lead follow-up services in Sri Lanka. We call your prospects, understand their requirements, collect customer feedback and identify interested leads for your sales team."
-        canonical="/lead-follow-up-services-sri-lanka"
+        canonical={`${SITE_URL}${PAGE_PATH}`}
         keywords="lead follow up service sri lanka, lead qualification services sri lanka, prospect follow up services sri lanka, customer feedback calling sri lanka, customer follow up services sri lanka, lead calling service sri lanka, outbound calling services sri lanka, sales calling services sri lanka, telemarketing services sri lanka, call center outsourcing sri lanka, outsourced sales team sri lanka, appointment setting services sri lanka"
         breadcrumbs={[{ name: "Home", url: "/" }, { name: "Lead Follow-Up Services", url: PAGE_PATH }]}
         jsonLd={jsonLd}
