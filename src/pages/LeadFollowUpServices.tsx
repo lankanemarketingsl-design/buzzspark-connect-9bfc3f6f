@@ -291,7 +291,10 @@ const LeadFollowUpServices = () => {
 
       <section className="gradient-hero py-16 text-primary-foreground sm:py-24">
         <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="The difference" title="A Qualified Prospect Gives Sales a Better Starting Point" />
+          <div className="mx-auto mb-9 max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase text-accent">The difference</p>
+            <h2 className="mt-2 font-heading text-3xl font-bold text-primary-foreground sm:text-4xl">A Qualified Prospect Gives Sales a Better Starting Point</h2>
+          </div>
           <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
             <div className="rounded-md border border-primary-foreground/15 bg-primary-foreground/5 p-6"><p className="text-xs font-bold uppercase text-accent">Raw lead</p><div className="mt-4 space-y-2 text-primary-foreground/75"><p><strong className="text-primary-foreground">Name:</strong> Kasun</p><p><strong className="text-primary-foreground">Phone:</strong> 077 XXX XXXX</p><p><strong className="text-primary-foreground">Source:</strong> Facebook Ad</p></div><p className="mt-5 text-sm">Your salesperson still has to discover everything.</p></div>
             <ArrowRight className="mx-auto h-7 w-7 rotate-90 text-accent md:rotate-0" />
