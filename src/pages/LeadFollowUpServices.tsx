@@ -41,7 +41,7 @@ const processSteps = [
   { number: "01", title: "You give us your prospect list", text: "Share leads from Facebook, Google, website forms, WhatsApp, events, your CRM or another customer list.", icon: Users },
   { number: "02", title: "We make the first call", text: "Our multilingual team introduces your company and starts a professional conversation with each prospect.", icon: PhoneCall },
   { number: "03", title: "We understand the requirement", text: "We ask agreed questions to understand the product, service, timing and information each person needs.", icon: Target },
-  { number: "04", title: "We record outcomes and feedback", text: "We document the call status, interest, requirement, comments and recommended next action—not a recording of the call.", icon: ClipboardCheck },
+  { number: "04", title: "We record outcomes and feedback", text: "We document the call status, interest, requirement, comments and recommended next action.", icon: ClipboardCheck },
   { number: "05", title: "We identify follow-up opportunities", text: "Prospects are organised by interest and next step so your sales team can prioritise the right conversations.", icon: BadgeCheck },
   { number: "06", title: "You receive a structured report", text: "Your team gets an organised customer-feedback list with context for the next sales conversation.", icon: BarChart3 },
 ];
@@ -89,7 +89,6 @@ const faqs = [
   { q: "Is this a traditional call center?", a: "It is a focused form of call center outsourcing. Buzz Connect concentrates on lead follow-up, prospect qualification and customer feedback rather than general inbound support." },
   { q: "Do you make the first call?", a: "Yes. You provide the prospect or customer list, and our team makes the initial call according to the agreed script and campaign requirements." },
   { q: "What information do you collect?", a: "This can include call status, interest level, requirement, questions, feedback, objections, requested follow-up and the next action relevant to your sales process." },
-  { q: "Do you record the calls?", a: "No. We do not record calls. We record the call outcome and customer feedback, such as whether the prospect answered, their interest, requirement, comments and recommended next step." },
   { q: "Can we decide what questions your agents ask?", a: "Yes. The script and qualification questions can be customised around your business, offer, campaign and sales objectives." },
   { q: "Can you call leads from Facebook and Google?", a: "Yes. You can provide leads from Facebook, Google, landing pages, websites, WhatsApp, CRM systems, events or other campaigns." },
   { q: "Can Buzz Connect generate the leads too?", a: "Yes. Buzz Connect can generate leads through Email, SMS, WhatsApp, Findit.lk and digital campaigns, then support the first-call and qualification process." },
@@ -172,8 +171,8 @@ const LeadFollowUpServices = () => {
                 ))}
               </div>
               <div className="mt-5 rounded-md border border-accent/30 bg-accent/10 p-4">
-                <p className="font-bold text-accent">We do not record calls.</p>
-                <p className="mt-1 text-sm text-primary-foreground/75">We record the call outcome and customer feedback in your campaign report.</p>
+                <p className="font-bold text-accent">Clear campaign reporting</p>
+                <p className="mt-1 text-sm text-primary-foreground/75">Every outcome and customer response is organised for your sales team.</p>
               </div>
             </div>
           </div>
@@ -216,7 +215,7 @@ const LeadFollowUpServices = () => {
 
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="Practical reporting" title="A Feedback Report Your Sales Team Can Use" intro="We report conversation outcomes and customer feedback—not recordings of the calls." />
+          <SectionTitle eyebrow="Practical reporting" title="A Feedback Report Your Sales Team Can Use" intro="We report conversation outcomes and customer feedback with clear next steps for your sales team." />
           <div className="mx-auto max-w-6xl overflow-hidden rounded-md border border-border bg-card shadow-card">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[760px] text-left text-sm">
