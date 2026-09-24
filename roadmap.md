@@ -26,6 +26,6 @@
 - [x] Verify metadata, structured data, Findit Pros links, CTA number `94771437707`, and desktop/mobile layouts.
 
 ## Lead follow-up services page
-- [ ] Create the dedicated lead follow-up and customer qualification service page.
-- [ ] Add footer, route, search discovery, and enquiry tracking links.
-- [ ] Verify wording, metadata, contact actions, and responsive layouts.
+- [x] Create the dedicated lead follow-up and customer qualification service page.
+- [x] Add footer, route, search discovery, and enquiry tracking links.
+- [x] Verify wording, metadata, contact actions, and responsive layouts.
