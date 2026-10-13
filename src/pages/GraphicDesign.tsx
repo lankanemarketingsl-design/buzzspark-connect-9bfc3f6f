@@ -113,7 +113,20 @@ const GraphicDesign = () => {
           We create any type of creative graphic design to keep you ahead of the competition. Our designers select designs that best speak for your brand and target audience. High-resolution colorful images, engaging videos and illustrative graphics can help potential buyers better understand your products and services and see the benefits they offer.
         </p>
         <p className="text-muted-foreground mb-8 leading-relaxed">
-          Our graphic department can take you from concept to completion of customized designs just for you.
+          Our graphic department can take you from concept to completion of
+          customized designs just for you. We also stay close to how the wider
+          market works in this field — you can browse the{" "}
+          <a
+            href="https://cypherdigital.lk/careers/graphic-designer-jobs-sri-lanka"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground no-underline hover:no-underline"
+          >
+            graphic design page
+          </a>{" "}
+          to see the roles and skills employers are asking for right now, which
+          keeps our briefs, portfolios and turnaround expectations in step with
+          the industry.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
