@@ -10,6 +10,14 @@ export interface JobRelatedLink {
   to: string;
 }
 
+export interface JobExternalLinkParagraph {
+  heading: string;
+  before: string;
+  linkText: string;
+  href: string;
+  after: string;
+}
+
 export interface Job {
   slug: string;
   title: string;
