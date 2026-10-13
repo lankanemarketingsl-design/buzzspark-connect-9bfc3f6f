@@ -35,6 +35,7 @@ export interface Job {
   sections: JobSection[];
   relatedServices: JobRelatedLink[];
   schemaDescription: string;
+  externalLinkParagraph?: JobExternalLinkParagraph;
 }
 
 const COMMON_LOCATION = "Colombo, Sri Lanka";
