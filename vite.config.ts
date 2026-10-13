@@ -339,17 +339,21 @@ const buildJobHtml = (template: string, job: JobSeoEntry) => {
     employmentType: job.employmentType,
     hiringOrganization: {
       "@type": "Organization",
-      name: "Buzz Connect",
+      name: "BuzzConnect",
       sameAs: SITE_URL,
+      logo: `${SITE_URL}/favicon.ico`,
     },
     jobLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Colombo",
+        addressRegion: "Western Province",
         addressCountry: "LK",
       },
     },
+    applicantLocationRequirements: { "@type": "Country", name: "Sri Lanka" },
+    industry: "Digital Marketing",
     directApply: true,
     url: canonical,
   };
