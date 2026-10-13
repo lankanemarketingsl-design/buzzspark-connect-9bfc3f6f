@@ -184,6 +184,16 @@ The lowest tier on every service is called "Starter" (never "Budget").
 - [Email, SMS & WhatsApp Marketing for Automotive in Sri Lanka](/brand-blast-360/automotive): Promote vehicles, service offers, spare parts and showroom events.
 - [Email, SMS & WhatsApp Marketing for Construction in Sri Lanka](/brand-blast-360/construction): Promote building products, equipment, projects and dealer offers.
 
+## Careers & Job Vacancies
+
+- [Careers at Buzz Connect](/careers): Current job vacancies at Buzz Connect, Colombo, Sri Lanka.
+- [Graphic Designer Jobs in Sri Lanka](/careers/graphic-designer-sri-lanka): Full-time Graphic Designer role in Colombo designing social media creatives, ad banners, email templates and brand visuals for leading Sri Lankan brands. Freshers with strong portfolios welcome. Apply via WhatsApp.
+- [Digital Marketing Intern in Sri Lanka](/careers/digital-marketing-intern-sri-lanka): Hands-on internship in social media, digital advertising and content marketing.
+- [Marketing Intern in Sri Lanka](/careers/marketing-intern-sri-lanka): Marketing internship with campaign and client exposure.
+- [Digital Marketing Specialist in Sri Lanka](/careers/digital-marketing-specialist-sri-lanka): Specialist role managing multi-channel digital campaigns.
+- [Video Editor Jobs in Sri Lanka](/careers/video-editor-sri-lanka): Video editing role for ads, reels and campaign content.
+- [Content Creator Jobs in Sri Lanka](/careers/content-creator-sri-lanka): Content creation role for social media and marketing campaigns.
+
 ## Crawler Guidance
 
 This file (llms.txt) is the canonical index for AI assistants and LLMs crawling buzzconnect.lk.
