@@ -396,6 +396,17 @@ Buzz Connect accepts a company’s prospect or customer list, makes the first ca
 
 ---
 
+## Careers & Job Vacancies
+
+Buzz Connect hires for creative and marketing roles in Colombo, Sri Lanka. Current vacancies are listed at /careers and each role has its own page with requirements, tools and how to apply (via WhatsApp).
+
+- [Graphic Designer Jobs in Sri Lanka](/careers/graphic-designer-sri-lanka): Full-time Graphic Designer in Colombo. Designs social media posts, carousels, Meta and Google ad creatives, email marketing templates, WhatsApp campaign visuals and brand assets for leading Sri Lankan brands. Tools: Adobe Photoshop, Illustrator, Figma, Canva; motion graphics a plus. Freshers with strong portfolios welcome; no degree required. Apply via WhatsApp with CV and portfolio.
+- [Digital Marketing Intern in Sri Lanka](/careers/digital-marketing-intern-sri-lanka)
+- [Marketing Intern in Sri Lanka](/careers/marketing-intern-sri-lanka)
+- [Digital Marketing Specialist in Sri Lanka](/careers/digital-marketing-specialist-sri-lanka)
+- [Video Editor Jobs in Sri Lanka](/careers/video-editor-sri-lanka)
+- [Content Creator Jobs in Sri Lanka](/careers/content-creator-sri-lanka)
+
 ## Crawler Guidance
 
 This file (/llms-full.txt) is the extended companion to /llms.txt for AI assistants crawling buzzconnect.lk.
