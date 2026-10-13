@@ -652,7 +652,7 @@ export const jobs: Job[] = [
       },
     ],
     relatedServices: [
-      { label: "Graphic Design Services", to: "/graphic-design-sri-lanka" },
+      { label: "Graphic Design Services", to: "/graphic-designing-in-sri-lanka" },
       { label: "Social Media Marketing", to: "/social-media-marketing-sri-lanka" },
       { label: "Email Marketing", to: "/email-marketing" },
     ],
