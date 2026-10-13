@@ -544,6 +544,129 @@ export const jobs: Job[] = [
     ],
     schemaDescription: "",
   },
+  {
+    slug: "graphic-designer-sri-lanka",
+    title: "Graphic Designer",
+    cardBlurb: "Design social media, ad and brand creatives for leading Sri Lankan brands.",
+    seoTitle: "Graphic Designer Jobs in Sri Lanka | Careers at BuzzConnect",
+    metaDescription:
+      "Apply for graphic designer jobs in Sri Lanka at BuzzConnect, Colombo. Full-time creative role designing social media posts, ad creatives, email templates and brand visuals for leading Sri Lankan brands.",
+    keywords:
+      "graphic designer jobs Sri Lanka, graphic designer vacancies Colombo, creative jobs Sri Lanka, social media designer jobs, BuzzConnect careers",
+    h1: "Graphic Designer Jobs in Sri Lanka",
+    employmentType: "FULL_TIME",
+    employmentLabel: "Full-time",
+    datePosted: "2026-10-13",
+    validThrough: "2027-01-31",
+    identifier: "BC-GD-006",
+    lead: [
+      "Join BuzzConnect as a Graphic Designer in Colombo and create scroll-stopping social media posts, ad creatives, email templates and brand visuals for some of Sri Lanka's best-known brands.",
+      "BuzzConnect is a fast-growing digital marketing agency in Sri Lanka, trusted since 2014 by brands across banking, hospitality, retail, education, healthcare and real estate. Every campaign we run — whether it's an email newsletter, a WhatsApp broadcast, a Meta ad or a full Brand Blast 360 launch — depends on strong visuals. That's where you come in.",
+      "We're looking for a creative, detail-oriented Graphic Designer who loves turning ideas into designs that people actually stop and look at. You'll work closely with our digital marketing specialists, content creators and video editors to produce creatives that don't just look good, but drive clicks, leads and sales for real clients.",
+    ],
+    sections: [
+      {
+        heading: "What You'll Be Doing",
+        intro: "No two days are the same in an agency. As a Graphic Designer at BuzzConnect, your work will cover a wide range of channels and formats:",
+        bullets: [
+          "Social media creatives — design posts, carousels, stories and cover images for Facebook, Instagram, LinkedIn and TikTok.",
+          "Paid ad creatives — create Meta Ads, Google Display banners and web banner sets in multiple sizes, often with A/B variations for testing.",
+          "Email marketing templates — design eye-catching, mobile-friendly email layouts and newsletter graphics for our email marketing clients.",
+          "WhatsApp and SMS campaign visuals — produce clean, high-impact images that work on small screens and get the message across in seconds.",
+          "Brand assets — help clients with logos, brand guidelines, colour palettes, typography systems and templates they can reuse.",
+          "Print and event materials — occasionally design flyers, brochures, posters, roll-up banners and event backdrops.",
+          "Website and landing page graphics — create hero images, icons and section visuals for client websites and campaign landing pages.",
+          "Collaboration — take briefs from account and marketing teams, present concepts, take feedback well and deliver revisions on time.",
+        ],
+      },
+      {
+        heading: "Tools You'll Use",
+        intro: "We give our designers the tools they need to do great work. Day to day, you'll use:",
+        bullets: [
+          "Adobe Photoshop and Illustrator for social creatives, ads, illustrations and brand assets.",
+          "Figma for landing page visuals, email layouts and collaborative design reviews.",
+          "Canva for quick-turnaround content and editable templates clients can use themselves.",
+          "After Effects or similar for simple motion graphics and animated ads.",
+          "Google Drive and WhatsApp for sharing files, briefs and feedback with the team.",
+        ],
+      },
+      {
+        heading: "Who We're Looking For",
+        intro: "We care more about your eye for design and your attitude than about where you studied. Strong candidates for this role will have:",
+        bullets: [
+          "A portfolio that shows creative thinking, clean layouts and good typography (Behance, Dribbble, Google Drive or a personal site are all fine).",
+          "Solid working knowledge of Adobe Photoshop and Adobe Illustrator. Experience with InDesign is a plus.",
+          "Comfort using Canva and Figma for fast-turnaround work and collaborative design.",
+          "An understanding of social media formats, safe zones and how designs look on mobile.",
+          "Good sense of colour, hierarchy, spacing and brand consistency.",
+          "The ability to manage multiple briefs and meet deadlines without dropping quality.",
+          "Reasonable English for reading briefs and adding copy to designs. Sinhala or Tamil typography skills are a strong advantage for local campaigns.",
+        ],
+        paragraphs: [
+          "Freshers welcome. If you're just finishing a design course and have a strong student portfolio, we'd still love to see your work. High-performing interns and juniors can grow into senior creative roles.",
+        ],
+      },
+      {
+        heading: "Why Work as a Graphic Designer at BuzzConnect?",
+        paragraphs: [
+          "Work on brands people know — our clients include well-known names in banking, hotels, retail, food and education, and the designs you create will be seen by thousands of people across Sri Lanka.",
+          "Learn the marketing side of design — you'll see which creatives drive engagement, which ad designs lower cost per lead and how design decisions affect campaign performance.",
+          "Variety that keeps you sharp — one day you're designing a festive email campaign for a hotel, the next you're creating a lead-generation ad set for a real estate project.",
+          "Fast growth — if you take ownership and deliver great work, you'll get more responsibility, bigger accounts and opportunities to lead creative direction on campaigns.",
+          "A young, supportive team — you'll work alongside marketers, content creators and video editors who share ideas openly and celebrate wins together.",
+        ],
+      },
+      {
+        heading: "Career Path for Graphic Designers",
+        intro: "Graphic design is a career with plenty of room to grow. At BuzzConnect, a typical path looks something like this:",
+        bullets: [
+          "Design Intern / Junior Graphic Designer — learning the workflow, building speed and producing daily social and ad creatives.",
+          "Graphic Designer — owning client accounts, creating campaign concepts and maintaining brand consistency.",
+          "Senior Graphic Designer — leading larger campaigns, mentoring juniors and contributing to creative strategy.",
+          "Art Director / Creative Lead — setting the visual direction for campaigns and overseeing the creative team's output.",
+        ],
+        paragraphs: [
+          "Designers with an interest in strategy can also move into areas like social media management, UI/UX design or brand strategy — and working in a digital marketing agency gives you exposure to all of them.",
+        ],
+      },
+      {
+        heading: "How to Prepare Your Application",
+        intro: "Your portfolio matters more than anything else. Here are a few tips to make your application stand out:",
+        bullets: [
+          "Show 8–15 of your best pieces, not everything you've ever made. Quality beats quantity.",
+          "Include social media and ad work if you have it — that's the core of this role.",
+          "Explain the brief behind a few projects: what was the goal, and how did your design solve it?",
+          "Add personal or concept projects if you're a fresher. A redesigned ad campaign for a real Sri Lankan brand is a great way to show initiative.",
+          "Make sure your links work and are set to public or \"anyone with the link can view\".",
+        ],
+      },
+      {
+        heading: "Our Hiring Process",
+        bullets: [
+          "1. Apply via WhatsApp — send your details, CV and portfolio link.",
+          "2. Portfolio review — our team reviews your work, usually within a few working days.",
+          "3. Short design task — shortlisted candidates may receive a small, practical design brief.",
+          "4. Interview — a friendly conversation about your work, your goals and how you approach briefs.",
+          "5. Offer — successful candidates receive an offer and onboarding details.",
+        ],
+      },
+    ],
+    relatedServices: [
+      { label: "Graphic Design Services", to: "/graphic-design-sri-lanka" },
+      { label: "Social Media Marketing", to: "/social-media-marketing-sri-lanka" },
+      { label: "Email Marketing", to: "/email-marketing" },
+    ],
+    schemaDescription: "",
+    externalLinkParagraph: {
+      heading: "The Graphic Design Job Market in Sri Lanka",
+      before:
+        "Demand for skilled graphic designers in Sri Lanka has grown steadily as more businesses move their marketing online, creating opportunities in creative agencies, in-house marketing teams, e-commerce companies, startups and freelance work for overseas clients. Most graphic design roles are concentrated in Colombo and the surrounding Western Province, though remote and hybrid options are becoming more common. If you're exploring the wider market and want to compare openings across different companies, you can also browse other ",
+      linkText: "graphic designer jobs in Sri Lanka",
+      href: "https://cypherdigital.lk/careers/graphic-designer-jobs-sri-lanka",
+      after:
+        " to see what skills and experience levels employers are currently asking for. Comparing listings is a good way to understand where your portfolio stands and which skills are worth building next. For designers who want long-term growth, an agency environment is often the fastest route — you build a broad portfolio quickly, learn to work under real deadlines and gain experience across many industries.",
+    },
+  },
 ];
 
 export const getJob = (slug?: string) => jobs.find((j) => j.slug === slug);
