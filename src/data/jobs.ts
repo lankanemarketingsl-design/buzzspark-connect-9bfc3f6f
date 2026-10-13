@@ -37,6 +37,8 @@ export interface Job {
   schemaDescription: string;
   externalLinkParagraph?: JobExternalLinkParagraph;
   faqs?: { question: string; answer: string }[];
+  salaryMin?: number;
+  salaryMax?: number;
 }
 
 const COMMON_LOCATION = "Colombo, Sri Lanka";
@@ -560,6 +562,8 @@ export const jobs: Job[] = [
     datePosted: "2026-10-13",
     validThrough: "2027-01-31",
     identifier: "BC-GD-006",
+    salaryMin: 60000,
+    salaryMax: 90000,
     faqs: [
       {
         question: "How do I apply for graphic designer jobs in Sri Lanka at BuzzConnect?",

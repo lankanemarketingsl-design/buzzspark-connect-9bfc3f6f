@@ -1,7 +1,7 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, MapPin, Briefcase, ArrowRight, CheckCircle2 } from "lucide-react";
+import { MessageCircle, MapPin, Briefcase, Banknote, ArrowRight, CheckCircle2 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import {
   Breadcrumb,
@@ -36,6 +36,20 @@ const JobPage = () => {
     datePosted: job.datePosted,
     validThrough: job.validThrough,
     employmentType: job.employmentType,
+    ...(job.salaryMin && job.salaryMax
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "LKR",
+            value: {
+              "@type": "QuantitativeValue",
+              minValue: job.salaryMin,
+              maxValue: job.salaryMax,
+              unitText: "MONTH",
+            },
+          },
+        }
+      : {}),
     identifier: {
       "@type": "PropertyValue",
       name: "BuzzConnect",
@@ -134,6 +148,12 @@ const JobPage = () => {
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-light/20 border border-navy-light/30 text-primary-foreground/80 text-sm">
                 <Briefcase className="w-4 h-4 text-accent" /> {job.employmentLabel}
               </span>
+              {job.salaryMin && job.salaryMax ? (
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-light/20 border border-navy-light/30 text-primary-foreground/80 text-sm">
+                  <Banknote className="w-4 h-4 text-accent" /> LKR {job.salaryMin.toLocaleString()}–
+                  {job.salaryMax.toLocaleString()} / month
+                </span>
+              ) : null}
             </div>
             <p className="text-primary-foreground/75 mb-8">{job.lead[0]}</p>
             <a
