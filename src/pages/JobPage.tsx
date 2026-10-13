@@ -172,6 +172,26 @@ const JobPage = () => {
               </div>
             ))}
 
+            {job.externalLinkParagraph && (
+              <div className="mt-10">
+                <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-3">
+                  {job.externalLinkParagraph.heading}
+                </h3>
+                <p className="text-muted-foreground mb-3">
+                  {job.externalLinkParagraph.before}
+                  <a
+                    href={job.externalLinkParagraph.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground no-underline hover:no-underline"
+                  >
+                    {job.externalLinkParagraph.linkText}
+                  </a>
+                  {job.externalLinkParagraph.after}
+                </p>
+              </div>
+            )}
+
             {/* Location / Employment */}
             <div className="mt-10 grid sm:grid-cols-2 gap-4">
               <div className="p-5 rounded-xl border border-border bg-card">
