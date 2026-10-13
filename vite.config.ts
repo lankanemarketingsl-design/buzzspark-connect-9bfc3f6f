@@ -280,6 +280,8 @@ interface JobSeoEntry {
   datePosted: string;
   validThrough: string;
   identifier: string;
+  salaryMin?: number;
+  salaryMax?: number;
   schemaDescription: string;
 }
 
@@ -295,6 +297,10 @@ const parseJobs = (projectRoot: string): JobSeoEntry[] => {
   positions.forEach((pos, i) => {
     const block = content.slice(pos.index, positions[i + 1]?.index ?? content.length);
     const get = (prop: string) => block.match(new RegExp(`${prop}:\\s*"((?:[^"\\\\]|\\\\.)*)"`))?.[1]?.replace(/\\"/g, '"') ?? "";
+    const getNum = (prop: string) => {
+      const n = block.match(new RegExp(`${prop}:\\s*(\\d+)`))?.[1];
+      return n ? Number(n) : undefined;
+    };
     const seoTitle = get("seoTitle");
     if (!seoTitle) return;
     entries.push({
@@ -307,6 +313,8 @@ const parseJobs = (projectRoot: string): JobSeoEntry[] => {
       datePosted: get("datePosted"),
       validThrough: get("validThrough"),
       identifier: get("identifier"),
+      salaryMin: getNum("salaryMin"),
+      salaryMax: getNum("salaryMax"),
       schemaDescription: get("schemaDescription") || get("metaDescription"),
     });
   });
@@ -337,6 +345,20 @@ const buildJobHtml = (template: string, job: JobSeoEntry) => {
     datePosted: job.datePosted,
     validThrough: job.validThrough,
     employmentType: job.employmentType,
+    ...(job.salaryMin && job.salaryMax
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "LKR",
+            value: {
+              "@type": "QuantitativeValue",
+              minValue: job.salaryMin,
+              maxValue: job.salaryMax,
+              unitText: "MONTH",
+            },
+          },
+        }
+      : {}),
     hiringOrganization: {
       "@type": "Organization",
       name: "BuzzConnect",
