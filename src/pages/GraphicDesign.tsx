@@ -114,19 +114,20 @@ const GraphicDesign = () => {
         </p>
         <p className="text-muted-foreground mb-8 leading-relaxed">
           Our graphic department can take you from concept to completion of
-          customized designs just for you. We also stay close to how the wider
-          market works in this field — you can browse the{" "}
+          customized designs just for you. Design quality also depends on who is
+          doing the work, so we keep close to how this industry hires — the
+          skill level and portfolio depth now expected in{" "}
           <a
             href="https://cypherdigital.lk/careers/graphic-designer-jobs-sri-lanka"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground no-underline hover:no-underline"
           >
-            graphic design page
+            graphic designer jobs in Sri Lanka
           </a>{" "}
-          to see the roles and skills employers are asking for right now, which
-          keeps our briefs, portfolios and turnaround expectations in step with
-          the industry.
+          tells us a lot about what businesses actually need from their visuals
+          today, and it keeps our own briefs, design reviews and turnaround
+          standards in step with the market.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
