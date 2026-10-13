@@ -36,6 +36,7 @@ export interface Job {
   relatedServices: JobRelatedLink[];
   schemaDescription: string;
   externalLinkParagraph?: JobExternalLinkParagraph;
+  faqs?: { question: string; answer: string }[];
 }
 
 const COMMON_LOCATION = "Colombo, Sri Lanka";
@@ -559,6 +560,32 @@ export const jobs: Job[] = [
     datePosted: "2026-10-13",
     validThrough: "2027-01-31",
     identifier: "BC-GD-006",
+    faqs: [
+      {
+        question: "How do I apply for graphic designer jobs in Sri Lanka at BuzzConnect?",
+        answer: "Send your CV, a short introduction and your portfolio link (Behance, Dribbble, Google Drive or a personal site) through the WhatsApp apply button on this page. Our team reviews every application and replies to shortlisted candidates.",
+      },
+      {
+        question: "Is this graphic designer role full-time and based in Colombo?",
+        answer: "Yes. This is a full-time Graphic Designer position based in Colombo, Sri Lanka, working with BuzzConnect's digital marketing, content and video teams on client campaigns.",
+      },
+      {
+        question: "Can freshers apply for this graphic designer vacancy?",
+        answer: "Yes. Freshers with a strong student portfolio are welcome to apply. High-performing juniors and interns can grow into senior creative roles at BuzzConnect.",
+      },
+      {
+        question: "What tools do I need to know for this role?",
+        answer: "You should be comfortable with Adobe Photoshop and Illustrator. Experience with Figma, Canva, InDesign or simple motion graphics tools such as After Effects is an advantage.",
+      },
+      {
+        question: "What kind of design work will I do at BuzzConnect?",
+        answer: "You will design social media posts and carousels, Meta and Google ad creatives, email marketing templates, WhatsApp campaign visuals, brand assets, and occasional print and event materials for leading Sri Lankan brands.",
+      },
+      {
+        question: "Do I need a design degree to apply?",
+        answer: "No. We care more about your portfolio, eye for design and attitude than formal qualifications. A strong portfolio that shows creative thinking, clean layouts and good typography is what matters most.",
+      },
+    ],
     lead: [
       "Join BuzzConnect as a Graphic Designer in Colombo and create scroll-stopping social media posts, ad creatives, email templates and brand visuals for some of Sri Lanka's best-known brands.",
       "BuzzConnect is a fast-growing digital marketing agency in Sri Lanka, trusted since 2014 by brands across banking, hospitality, retail, education, healthcare and real estate. Every campaign we run — whether it's an email newsletter, a WhatsApp broadcast, a Meta ad or a full Brand Blast 360 launch — depends on strong visuals. That's where you come in.",

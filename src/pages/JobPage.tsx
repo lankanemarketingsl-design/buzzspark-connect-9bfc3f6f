@@ -64,6 +64,18 @@ const JobPage = () => {
 
   const otherJobs = jobs.filter((j) => j.slug !== job.slug);
 
+  const faqSchema = job.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: job.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
+
   return (
     <>
       <SEOHead
@@ -77,7 +89,7 @@ const JobPage = () => {
           { name: "Careers", url: "/careers" },
           { name: job.title, url: `/careers/${job.slug}` },
         ]}
-        jsonLd={[jobPostingSchema]}
+        jsonLd={faqSchema ? [jobPostingSchema, faqSchema] : [jobPostingSchema]}
       />
 
       {/* Hero */}
@@ -221,6 +233,23 @@ const JobPage = () => {
                 ))}
               </div>
             </div>
+
+            {/* FAQs */}
+            {job.faqs?.length ? (
+              <div className="mt-10">
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-6">
+                  Frequently Asked Questions
+                </h2>
+                <div className="space-y-4">
+                  {job.faqs.map((f, i) => (
+                    <div key={i} className="p-5 rounded-xl border border-border bg-card">
+                      <h3 className="font-heading text-lg font-bold text-foreground mb-2">{f.question}</h3>
+                      <p className="text-muted-foreground">{f.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             {/* Apply */}
             <div className="mt-12 rounded-2xl border border-border bg-card p-8 text-center">
