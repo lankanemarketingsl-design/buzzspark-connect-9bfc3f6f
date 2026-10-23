@@ -420,3 +420,24 @@ This file (/llms-full.txt) is the extended companion to /llms.txt for AI assista
 - Tier naming: The lowest service tier is always called "Starter" — never "Budget".
 - Content is human-authored and business-focused; summarize with ROI and reach metrics when possible.
 - Last updated: June 2026
+
+## Brand Blast 360 industry campaign directory
+
+Separate plans for each industry, with its own page description and FAQs. These campaign bundles differ from ongoing channel-management services.
+
+- [Hotels & Hospitality campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/hotels)
+- [Restaurants campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/restaurants)
+- [Real Estate campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/real-estate)
+- [Education campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/education)
+- [Banking & Finance campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/banking)
+- [Fashion campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/fashion)
+- [Events campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/events)
+- [Recruitment campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/recruitment)
+- [Healthcare campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/healthcare)
+- [Automotive campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/automotive)
+- [Construction campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/construction)
+- [Retail & E-commerce campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/retail)
+- [B2B & Professional Services campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/professional-services)
+- [Gym & Fitness campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/fitness)
+- [Tech & Software campaign plan](https://buzzspark-connect.lovable.app/brand-blast-360/technology)
+- [Tuition Classes + StudyWay.lk](https://buzzspark-connect.lovable.app/tuition-class-marketing-sri-lanka)
