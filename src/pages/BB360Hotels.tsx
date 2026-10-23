@@ -25,6 +25,7 @@ import {
   Waves,
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import IndustryPageLinks from "@/components/brandblast/IndustryPageLinks";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { bb360Packages } from "@/data/bb360ServicePages";
@@ -146,9 +147,9 @@ export default function BB360Hotels() {
       "@type": "Service",
       name: "Email, SMS & WhatsApp Marketing for Hotels Sri Lanka",
       serviceType: "Hotel promotion campaign",
-      provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
+      provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzspark-connect.lovable.app" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      url: "https://buzzconnect.lk/brand-blast-360/hotels",
+      url: "https://buzzspark-connect.lovable.app/brand-blast-360/hotels",
       description: META_DESCRIPTION,
       offers: bb360Packages.map((pkg) => ({ "@type": "Offer", name: pkg.name, price: pkg.price.replace(/[^\d]/g, ""), priceCurrency: "LKR" })),
     },
@@ -187,7 +188,7 @@ export default function BB360Hotels() {
       <SEOHead
         title={META_TITLE}
         description={META_DESCRIPTION}
-        canonical="/brand-blast-360/hotels"
+        canonical="https://buzzspark-connect.lovable.app/brand-blast-360/hotels"
         keywords="email marketing for hotels sri lanka, sms marketing for hotels, whatsapp marketing for hotels, hotel promotion campaign sri lanka, increase hotel bookings, hotel direct bookings, reduce OTA commission"
         breadcrumbs={[{ name: "Home", url: "/" }, { name: "Brand Blast 360", url: "/brand-blast-360" }, { name: "Hotels", url: "/brand-blast-360/hotels" }]}
         jsonLd={jsonLd}
@@ -252,6 +253,7 @@ export default function BB360Hotels() {
       <section className="py-16 text-center sm:py-20"><div className="container mx-auto max-w-3xl px-4"><span className="inline-flex rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-xs font-bold text-accent">Limited launch slots this month</span><h2 className="mt-5 font-heading text-3xl font-black sm:text-5xl">Your next fully-booked weekend is 24 hours away.</h2><p className="mx-auto mt-4 max-w-2xl text-primary-foreground/65">Send us the offer you want to promote — we'll have it live across all 5 channels within 24 hours. Fixed price. No contract.</p><div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row"><Button variant="hero" size="lg" asChild><a href={whatsappUrl("Hi Buzz Connect, I want to launch a hotel promotion campaign this week. Please help me start.")} target="_blank" rel="noopener noreferrer" data-wa-placement="bb360_hotels_final" data-selected-service="Brand Blast 360 — Hotels"><MessageCircle/>Launch My Hotel Campaign</a></Button><Button variant="hero-outline" size="lg" asChild><Link to="/contact-us">Free Consultation</Link></Button></div><div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-primary-foreground/50"><a href="mailto:infobuzzconnect@gmail.com"><Mail className="mr-1 inline h-4 w-4"/>infobuzzconnect@gmail.com</a><a href="tel:+94771976351"><Phone className="mr-1 inline h-4 w-4"/>+94 77 197 6351</a><span><MapPin className="mr-1 inline h-4 w-4"/>Colombo, Sri Lanka</span></div></div></section>
 
       <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-primary-foreground/15 bg-primary/95 p-3 backdrop-blur lg:hidden"><Button variant="hero" asChild><a href={whatsappUrl(launchMessage)} target="_blank" rel="noopener noreferrer" data-wa-placement="bb360_hotels_sticky_mobile" data-selected-service="Brand Blast 360 — Hotels"><MessageCircle/>WhatsApp us</a></Button><Button variant="hero-outline" asChild><Link to="/contact-us">Free consultation</Link></Button></div>
+      <IndustryPageLinks currentPath="/brand-blast-360/hotels" />
     </main>
   );
 }

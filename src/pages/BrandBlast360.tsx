@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { industries } from "@/data/bb360UseCases";
+import { industryRouteById } from "@/data/bb360IndustryRegistry";
+import IndustryPageLinks from "@/components/brandblast/IndustryPageLinks";
 import {
   Rocket,
   Mail,
@@ -214,11 +216,11 @@ const BrandBlast360 = () => {
       <SEOHead
         title="Brand Blast 360 — 988,000+ Verified Reach Across 5 Channels | Buzz Connect"
         description="Reach 988,000+ Sri Lankan contacts across email, Facebook, LinkedIn, remarketing & Findit.lk for a fixed LKR 15,000. Live in 24 hours guaranteed. No contract."
-        canonical="/brand-blast-360"
+        canonical="https://buzzspark-connect.lovable.app/brand-blast-360"
         keywords="brand blast 360, multi-channel campaign sri lanka, email marketing upsell, brand awareness sri lanka, 988000 reach"
         breadcrumbs={[
-          { name: "Home", url: "https://buzzconnect.lk/" },
-          { name: "Brand Blast 360", url: "https://buzzconnect.lk/brand-blast-360" },
+          { name: "Home", url: "https://buzzspark-connect.lovable.app/" },
+          { name: "Brand Blast 360", url: "https://buzzspark-connect.lovable.app/brand-blast-360" },
         ]}
         jsonLd={jsonLd}
       />
@@ -794,6 +796,7 @@ const BrandBlast360 = () => {
                       <div className="text-xs font-bold uppercase tracking-wider text-accent mb-1">Selected industry</div>
                       <h3 className="font-heading font-black text-2xl sm:text-3xl">{selectedIndustry.name}</h3>
                       <p className="text-primary-foreground/60 text-sm mt-2 leading-relaxed">{selectedIndustry.tagline}</p>
+                      <Link to={industryRouteById[selectedIndustry.id]} className="inline-flex items-center gap-2 text-accent font-semibold mt-4">See the full {selectedIndustry.name} campaign plan <ArrowRight className="w-4 h-4" /></Link>
                     </div>
                   </div>
                   <div className="mt-7 pt-6 border-t border-primary-foreground/10">
