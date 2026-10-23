@@ -1,8 +1,8 @@
 # Roadmap
 
 ## Brand Blast industry search visibility
-- [ ] Audit and preserve all separate industry URLs and unique metadata.
-- [ ] Correct industry canonical/schema alignment and hub/AI discovery links where needed.
+- [x] Audit and preserve all separate industry URLs and unique metadata.
+- [x] Correct industry canonical/schema alignment and hub/AI discovery links where needed.
 - [ ] Verify every industry page's metadata and search links.
 
 ## Tuition class marketing

@@ -1046,7 +1046,7 @@ const BrandBlast360 = () => {
         </section>
 
         <div className="order-[20]"><RelatedServices currentPath="/brand-blast-360" /></div>
-        <div className="order-[21]"><ContactSection /></div>
+        <div className="order-[21]"><IndustryPageLinks currentPath="/brand-blast-360" /><ContactSection /></div>
 
         {/* Sticky mobile CTA bar — WhatsApp + free mockup */}
         <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-background/95 backdrop-blur border-t border-border p-3 flex gap-2">
