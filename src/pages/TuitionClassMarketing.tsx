@@ -8,7 +8,8 @@ import TuitionReachJourney from "@/components/tuition/TuitionReachJourney";
 import ContactSection from "@/components/home/ContactSection";
 import classroom from "@/assets/tuition-classroom.webp";
 import buzzLogo from "@/assets/buzz-logo.webp";
-import finditLogo from "@/assets/finditlk-logo-partner.jpg";
+import finditLogo from "@/assets/findit-logo-trimmed.webp.asset.json";
+import studywayLogo from "@/assets/studyway-logo.webp.asset.json";
 import { tuitionPackages, tuitionFaqs, tuitionServiceSchema, tuitionFaqSchema, tuitionWhatsAppHref } from "@/data/tuitionPackages";
 
 const mainMessage = "Hi Buzz Connect, I'm a tutor and I want to promote my tuition classes with Brand Blast 360 + StudyWay.lk. Please share next steps.";
@@ -59,7 +60,7 @@ export default function TuitionClassMarketing() {
       </section>
       <div className="border-y border-primary-foreground/15 bg-primary-foreground/5">
         <div className="container mx-auto px-4 py-5 flex flex-wrap justify-center items-center gap-4 sm:gap-8">
-          <img src={buzzLogo} width={160} height={64} alt="Buzz Connect" className="w-28 h-12 object-contain"/><span className="text-accent text-xl">+</span><a href="https://studyway.lk/tuition" target="_blank" rel="noopener noreferrer" className="font-heading text-2xl font-bold">StudyWay<span className="text-accent">.lk</span></a><span className="text-accent text-xl">+</span><img src={finditLogo} width={120} height={64} loading="lazy" alt="Findit.lk" className="w-24 h-12 object-contain rounded"/><span className="hidden sm:inline text-primary-foreground/50">=</span><p className="text-sm font-semibold text-center"><span className="text-accent">Class promotion</span><br/> + always-on tutor profile</p>
+          <img src={buzzLogo} width={160} height={64} alt="Buzz Connect" className="w-28 h-12 object-contain"/><span className="text-accent text-xl">+</span><a href="https://studyway.lk/tuition" target="_blank" rel="noopener noreferrer" aria-label="StudyWay.lk tuition section" className="inline-flex items-center justify-center min-h-12"><img src={studywayLogo.url} width={568} height={140} loading="lazy" alt="StudyWay.lk" className="w-36 h-auto"/></a><span className="text-accent text-xl">+</span><a href="https://findit.lk" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk" className="tuition-light px-3 py-2 rounded"><img src={finditLogo.url} width={498} height={182} loading="lazy" alt="Findit.lk — Save money. Save time." className="w-32 h-auto"/></a><span className="hidden sm:inline text-primary-foreground/50">=</span><p className="text-sm font-semibold text-center"><span className="text-accent">Class promotion</span><br/> + always-on tutor profile</p>
         </div>
       </div>
       <section className="container mx-auto px-4 py-14 sm:py-16">
