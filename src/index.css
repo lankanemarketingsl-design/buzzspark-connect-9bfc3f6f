@@ -73,6 +73,9 @@
     --industry-healthcare: 173 80% 40%;
     --industry-automotive: 224 76% 48%;
     --industry-construction: 25 95% 53%;
+    --tuition-background: 215 60% 10%;
+    --tuition-band: 215 52% 14%;
+    --tuition-hero-scrim: linear-gradient(90deg, hsl(215 60% 7% / .97) 0%, hsl(215 60% 7% / .86) 45%, hsl(215 60% 7% / .28) 100%);
   }
 
   .dark {
@@ -190,3 +193,13 @@
   background: linear-gradient(135deg, hsl(var(--accent) / 0.15), hsl(var(--primary) / 0.08), hsl(var(--accent) / 0.15));
   border: 2px solid hsl(var(--accent) / 0.6);
 }
+
+.tuition-page { background: hsl(var(--tuition-background)); color: hsl(var(--primary-foreground)); }
+.tuition-band { background: hsl(var(--tuition-band)); }
+.tuition-light { background: hsl(var(--background)); color: hsl(var(--foreground)); }
+.tuition-hero-scrim { background: var(--tuition-hero-scrim); }
+.tuition-eyebrow { color: hsl(var(--accent)); font-size: .75rem; font-weight: 700; text-transform: uppercase; margin-bottom: .85rem; }
+.tuition-glass { border: 1px solid hsl(var(--primary-foreground) / .15); background: hsl(var(--primary-foreground) / .04); border-radius: 8px; }
+.tuition-number { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid hsl(var(--accent) / .4); color: hsl(var(--accent)); border-radius: 8px; font-weight: 700; flex-shrink: 0; }
+.tuition-profile-tag { display: inline-flex; gap: 3px; align-items: center; font-size: .65rem; font-weight: 600; border-radius: 4px; padding: 3px 6px; }
+@media (max-width: 639px) { .tuition-hero-scrim { background: hsl(var(--tuition-background) / .88); } }

@@ -147,6 +147,11 @@ const EducationMarketing = () => {
         ]}
       />
 
+      <div className="border border-accent/40 bg-accent/5 rounded-lg p-5 my-8 flex flex-wrap gap-4 items-center justify-between">
+        <div><h2 className="text-xl font-bold mb-2">Running tuition classes?</h2><p className="text-muted-foreground text-sm">Promote your next intake with Brand Blast 360 + a StudyWay.lk tutor profile.</p></div>
+        <Link to="/tuition-class-marketing-sri-lanka" className="text-accent font-semibold">See our tuition-specific plan →</Link>
+      </div>
+
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
         <p className="text-lg text-muted-foreground leading-relaxed mb-4">
           Buzz Connect delivers high-impact education marketing campaigns in Sri Lanka, helping universities, schools, and training institutes fill their intakes through targeted multi-channel promotions.

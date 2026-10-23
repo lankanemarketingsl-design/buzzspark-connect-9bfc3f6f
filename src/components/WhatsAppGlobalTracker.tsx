@@ -46,7 +46,10 @@ const WhatsAppGlobalTracker = () => {
         anchor.dataset.service ||
         ctx.service;
 
-      const waNumber = getWhatsAppNumber(pathname);
+      // Tuition has a dedicated campaign contact, but shared office links retain their own number.
+      const waNumber = pathname === "/tuition-class-marketing-sri-lanka"
+        ? new URL(enriched).pathname.replace(/\D/g, "") || getWhatsAppNumber(pathname)
+        : getWhatsAppNumber(pathname);
       trackWhatsAppClick(ctx, waNumber, window.location.href, {
         placement,
         selected_service: selectedService,

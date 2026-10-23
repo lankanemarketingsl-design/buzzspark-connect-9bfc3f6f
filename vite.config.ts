@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import fs from "fs";
 import { componentTagger } from "lovable-tagger";
+import { TUITION_PATH, tuitionFaqs, tuitionServiceSchema, tuitionFaqSchema } from "./src/data/tuitionPackages";
 
 const SITE_URL = "https://buzzconnect.lk";
 
@@ -207,7 +208,7 @@ const collectRouteSeo = (projectRoot: string): RouteSeoEntry[] => {
       if (paragraphs.length >= 12) break;
     }
 
-    entries.push({ route, title, description, canonical, h1, subtitle, faqs, paragraphs });
+    entries.push({ route, title, description, canonical, h1, subtitle, faqs: route === TUITION_PATH ? tuitionFaqs : faqs, paragraphs });
   }
 
   return entries;
@@ -560,7 +561,13 @@ const staticRouteSeoPlugin = (): Plugin => ({
         // Create flat file (e.g. dist/sms-marketing.html)
         const flatPath = path.join(distDir, `${slug}.html`);
         fs.mkdirSync(path.dirname(flatPath), { recursive: true });
-        fs.writeFileSync(flatPath, applyRouteSeo(template, entry), "utf8");
+        let routeHtml = applyRouteSeo(template, entry);
+        if (entry.route === TUITION_PATH) {
+          routeHtml = routeHtml.replace("</head>", `<script type="application/ld+json">${JSON.stringify([tuitionServiceSchema, tuitionFaqSchema]).replace(/</g, "\\u003c")}</script></head>`);
+          // This page's static fallback belongs inside React's root: one H1 after rendering.
+          routeHtml = routeHtml.replace('<div id="root"></div>', '<div id="root">').replace('<div id="seo-content"', '<div id="seo-content"').replace(/(<div id="seo-content"[\s\S]*?<\/div>)/, '$1</div>');
+        }
+        fs.writeFileSync(flatPath, routeHtml, "utf8");
       }
     });
 

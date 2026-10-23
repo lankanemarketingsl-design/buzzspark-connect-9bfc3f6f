@@ -65,6 +65,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li><Link to="/hotel-marketing-sri-lanka" className="hover:text-accent transition-colors">Hotel & Travel</Link></li>
               <li><Link to="/education-marketing-sri-lanka" className="hover:text-accent transition-colors">Education</Link></li>
+              <li><Link to="/tuition-class-marketing-sri-lanka" className="hover:text-accent transition-colors">Tuition Classes</Link></li>
               <li><Link to="/finance-marketing-sri-lanka" className="hover:text-accent transition-colors">Finance & Credit</Link></li>
               <li><Link to="/restaurant-marketing-sri-lanka" className="hover:text-accent transition-colors">Restaurant & Retail</Link></li>
               <li><Link to="/real-estate-marketing-sri-lanka" className="hover:text-accent transition-colors">Real Estate</Link></li>

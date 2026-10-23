@@ -18,6 +18,7 @@ const SERVICE_MAP: Record<string, string> = {
   "/whatsapp-marketing": "WhatsApp Marketing",
   "/multi-channel-marketing-sri-lanka": "Multi-Channel Marketing Packages",
   "/brand-blast-360": "Brand Blast 360",
+  "/tuition-class-marketing-sri-lanka": "Tuition Class Marketing",
   "/online-advertising-sri-lanka": "Online Advertising",
   "/graphic-designing-in-sri-lanka": "Graphic Design",
   "/seo-sri-lanka": "SEO Services",
@@ -70,7 +71,9 @@ export const getServiceName = (pathname: string): string =>
     : SERVICE_MAP[pathname] || titleCaseFromPath(pathname);
 
 export const getWhatsAppNumber = (pathname: string): string =>
-  INDUSTRY_ROUTES.includes(pathname) || pathname.startsWith("/brand-blast-360/")
+  pathname === "/tuition-class-marketing-sri-lanka"
+    ? "94760317477"
+    : INDUSTRY_ROUTES.includes(pathname) || pathname.startsWith("/brand-blast-360/")
     ? "94771976351"
     : "94771437707";
 
@@ -135,7 +138,7 @@ export const buildWhatsAppContext = (
     ),
     utm_campaign: normalizeUtm(
       params.get("utm_campaign"),
-      `${service}_${pageSlug}`,
+      pathname === "/tuition-class-marketing-sri-lanka" ? "tuition_class_marketing" : `${service}_${pageSlug}`,
       "utm_campaign",
     ),
     utm_content: normalizeUtm(

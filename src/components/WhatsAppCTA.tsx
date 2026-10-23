@@ -1,6 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { buildWhatsAppContext, getWhatsAppNumber } from "@/lib/whatsappTracking";
+import { TUITION_PATH, tuitionWhatsAppHref } from "@/data/tuitionPackages";
 
 
 const WhatsAppCTA = () => {
@@ -44,7 +45,10 @@ const WhatsAppCTA = () => {
     utm_term: ctx.utm_term,
   }).toString();
 
-  const href = `https://wa.me/${number}?text=${message}&${utmQuery}`;
+  const isTuition = pathname === TUITION_PATH;
+  const href = isTuition
+    ? tuitionWhatsAppHref(`Hi Buzz Connect, I'd like to promote my tuition classes.\n\nPage: ${pageUrl}\nCampaign: tuition_class_marketing\nName: \nSubject: \nGrade: \nArea: \nClass type: \nMessage: `, "floating_button")
+    : `https://wa.me/${number}?text=${message}&${utmQuery}`;
 
   return (
     <a
@@ -62,7 +66,7 @@ const WhatsAppCTA = () => {
       className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-full bg-[#25D366] text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
     >
       <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-      <span className="hidden sm:inline text-sm">Chat about {service}</span>
+      <span className="hidden sm:inline text-sm">{isTuition ? "Chat about Tuition Marketing" : `Chat about ${service}`}</span>
     </a>
   );
 };
