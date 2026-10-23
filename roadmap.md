@@ -1,5 +1,10 @@
 # Roadmap
 
+## Brand Blast industry search visibility
+- [x] Audit and preserve all separate industry URLs and unique metadata.
+- [x] Correct industry canonical/schema alignment and hub/AI discovery links where needed.
+- [x] Verify every industry page's metadata and search links.
+
 ## Tuition class marketing
 - [x] Build the tuition industry page with StudyWay showcase, packages, campaign ideas and FAQs.
 - [x] Connect Brand Blast 360, Education and footer links; add static SEO, sitemap and AI discovery.

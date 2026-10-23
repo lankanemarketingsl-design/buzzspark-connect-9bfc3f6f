@@ -6,6 +6,7 @@ import { componentTagger } from "lovable-tagger";
 import { TUITION_PATH, tuitionFaqs, tuitionServiceSchema, tuitionFaqSchema } from "./src/data/tuitionPackages";
 
 const SITE_URL = "https://buzzconnect.lk";
+import { additionalBB360Pages, BB360_SITE_URL } from "./src/data/bb360IndustryRegistry";
 
 interface RouteSeoEntry {
   route: string;
@@ -463,7 +464,8 @@ const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => 
     eyebrow: string;
   }>;
   const replacements = new Map(conversionPages.map((page) => [page.slug, page]));
-  return entries.map((entry) => {
+  const extraEntries: Bb360ServiceSeoEntry[] = additionalBB360Pages.map(page => ({ slug: page.slug, metaTitle: page.title, metaDescription: page.description, h1: page.h1, sections: page.services.map(s => ({h2:s.title,body:s.body})), reach:"988,000+", audience:page.reachSub, priceFrom:"LKR 15,000", industry:page.eyebrow.replace("Brand Blast 360 · ",""), hero:page.hero, promotions:[], campaignIdeas:page.useCases.map(u => ({title:u.title,description:u.body})), faqs:page.faqs }));
+  return [...entries, ...extraEntries].map((entry) => {
     const page = replacements.get(entry.slug);
     if (!page) return entry;
     return {
@@ -482,7 +484,7 @@ const parseBb360ServicePages = (projectRoot: string): Bb360ServiceSeoEntry[] => 
 };
 
 const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) => {
-  const canonical = `${SITE_URL}/brand-blast-360/${entry.slug}`;
+  const canonical = `${BB360_SITE_URL}/brand-blast-360/${entry.slug}`;
   const intro = entry.hero || `Promote one ${entry.industry.toLowerCase()} offer through Brand Blast 360 from ${entry.priceFrom}, live in 24 hours.`;
   const faqs = entry.faqs;
 
@@ -507,7 +509,7 @@ const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) =>
       "@type": "Service",
       name: `Brand Blast 360 for ${entry.industry}`,
       serviceType: `${entry.industry} promotion campaign`,
-      provider: { "@type": "Organization", name: "Buzz Connect", url: SITE_URL },
+      provider: { "@type": "Organization", name: "Buzz Connect", url: BB360_SITE_URL },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
       description: entry.metaDescription,
       url: canonical,
@@ -527,7 +529,7 @@ const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) =>
   const jsonLd = schema
     .map((s) => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, "\\u003c")}</script>`)
     .join("\n  ");
-  return html.replace("</head>", `  ${jsonLd}\n  </head>`);
+  return html.replace("</head>", `  ${jsonLd}\n  </head>`).replace('<div id="root"></div>', '<div id="root">').replace(/(<div id="seo-content"[\s\S]*?<\/div>)/, '$1</div>');
 };
 
 const staticRouteSeoPlugin = (): Plugin => ({

@@ -963,4 +963,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://buzzspark-connect.lovable.app/brand-blast-360/retail</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://buzzspark-connect.lovable.app/brand-blast-360/professional-services</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://buzzspark-connect.lovable.app/brand-blast-360/fitness</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://buzzspark-connect.lovable.app/brand-blast-360/technology</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
