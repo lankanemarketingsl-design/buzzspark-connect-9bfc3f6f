@@ -8,8 +8,9 @@ import SEOHead from "@/components/SEOHead";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { bb360Packages } from "@/data/bb360ServicePages";
-import { bb360ConversionPages as conversionPages, BB360_SITE_URL } from "@/data/bb360IndustryRegistry";
+import { bb360ConversionPages as conversionPages, BB360_SITE_URL, industryRouteById } from "@/data/bb360IndustryRegistry";
 import IndustryPageLinks from "@/components/brandblast/IndustryPageLinks";
+import IndustryCampaignIdeas from "@/components/brandblast/IndustryCampaignIdeas";
 import dfccLogo from "@/assets/logos/dfcc.webp";
 import radissonLogo from "@/assets/logos/radisson.webp";
 import huntersLogo from "@/assets/logos/hunters.webp";
@@ -143,6 +144,7 @@ export default function BB360ServicePage() {
   if (!page) return <Navigate to="/brand-blast-360" replace />;
 
   const industryName = page.eyebrow.replace("Brand Blast 360 · ", "");
+  const industryId = Object.entries(industryRouteById).find(([, path]) => path === `/brand-blast-360/${page.slug}`)?.[0];
   const launchMessage = `Hi Buzz Connect, I want to launch a ${industryName} campaign. Please help me choose a package.`;
   const jsonLd = [
     { "@context": "https://schema.org", "@type": "Service", name: page.keywordLine, serviceType: `${industryName} promotion campaign`, provider: { "@type": "Organization", name: "Buzz Connect", url: BB360_SITE_URL }, areaServed: { "@type": "Country", name: "Sri Lanka" }, url: `${BB360_SITE_URL}/brand-blast-360/${page.slug}`, description: page.description, offers: bb360Packages.map((pkg) => ({ "@type": "Offer", name: pkg.name, price: pkg.price.replace(/[^\d]/g, ""), priceCurrency: "LKR" })) },
@@ -158,6 +160,7 @@ export default function BB360ServicePage() {
 
       <section aria-label="Our Clients — Trusted by Leading Brands in Sri Lanka" data-client-logos className="border-y border-primary-foreground/10 bg-primary-foreground/[0.03] py-10"><div className="container mx-auto px-4"><p className="mb-1 text-center text-xs font-semibold uppercase text-primary-foreground/45">Our Clients</p><h2 className="mb-6 text-center font-heading text-xl font-bold sm:text-2xl">Trusted by Leading Brands in Sri Lanka</h2><div className="flex flex-wrap justify-center gap-2 sm:gap-3">{ALL_CLIENT_LOGOS.map((logo)=><span key={logo.name} className="flex h-11 w-24 items-center justify-center rounded-md bg-card p-2 sm:h-12 sm:w-32"><img src={logo.src} alt={`${logo.name} logo`} className="h-full w-full object-contain" loading="lazy" width={128} height={48}/></span>)}</div></div></section>
       <section className="py-12"><div className="container mx-auto px-4"><div className="mx-auto max-w-5xl rounded-xl border border-primary-foreground/10 bg-primary-foreground/[0.04] p-6 text-center text-primary-foreground/65 sm:p-8">{page.definition}</div></div></section>
+      {industryId && <IndustryCampaignIdeas industryId={industryId} industryName={industryName} />}
       <section className="py-14"><div className="container mx-auto px-4"><SectionHeading eyebrow="The problem" title="Sound familiar?"/><div className="grid gap-4 md:grid-cols-3">{page.pains.map((item,index)=>{const Icon=cardIcons[index];return <article key={item.title} className="rounded-lg border border-primary-foreground/10 border-l-industry bg-primary-foreground/[0.04] p-5"><Icon className="mb-4 h-6 w-6 text-industry"/><h3 className="font-heading text-lg font-bold">{item.title}</h3><p className="mt-2 text-sm text-primary-foreground/60">{item.body}</p></article>})}</div></div></section>
       <section className="bg-primary-foreground/[0.03] py-16"><div className="container mx-auto px-4"><SectionHeading eyebrow="The fix" title="One campaign puts your offer everywhere" body="Pick a promotion you already have — we turn it into one coordinated campaign across every channel."/><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{page.useCases.map((item,index)=>{const Icon=cardIcons[index];return <article key={item.title} className="rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.04] p-5"><Icon className="h-7 w-7 text-industry"/><h3 className="mt-4 font-heading font-bold">{item.title}</h3><p className="mt-2 text-sm text-primary-foreground/60">{item.body}</p></article>})}</div></div></section>
       <section className="py-16"><div className="container mx-auto px-4"><SectionHeading eyebrow="Who it's for" title={`Built for every kind of ${industryName.toLowerCase()} business`}/><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{page.types.map((item,index)=>{const Icon=cardIcons[index];return <article key={item.title} className="flex gap-4 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.04] p-5"><Icon className="h-6 w-6 shrink-0 text-industry"/><div><h3 className="font-heading font-bold">{item.title}</h3><p className="mt-1 text-sm text-primary-foreground/60">{item.body}</p></div></article>})}</div></div></section>

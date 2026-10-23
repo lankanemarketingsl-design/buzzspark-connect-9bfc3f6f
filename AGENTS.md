@@ -7,3 +7,4 @@
 - Use project asset pointers for uploaded media and direct imports for generated page images so media follows the existing hosting flow.
 - Keep Brand Blast industry route mappings and additional industry content in the shared industry registry; browser pages, hub links and static HTML generation consume it to prevent missing campaign URLs.
 - Brand Blast industry canonicals and service schema reference the published host consistently; keep static fallback content inside the React root so it does not leave a duplicate H1 after rendering.
+- Derive expanded industry campaign planning details from the hub picker through a shared editorial adapter consumed by browser pages and static SEO generation; this preserves relevant examples without duplicating unverified performance claims.
