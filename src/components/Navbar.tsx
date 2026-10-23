@@ -7,7 +7,6 @@ import { bb360IndustryDirectory } from "@/data/bb360IndustryRegistry";
 
 const navItems = [
   { label: "Home", path: "/" },
-  { label: "Brand Blast 360", path: "/brand-blast-360" },
   { label: "Email Marketing", path: "/email-marketing" },
   { label: "SMS Marketing", path: "/sms-marketing" },
   { label: "WhatsApp Marketing", path: "/whatsapp-marketing" },
@@ -29,21 +28,33 @@ const industryItems = [
   { label: "Home Services & Construction", path: "/home-services-construction-marketing-sri-lanka" },
 ];
 
+const BB360_PATH = "/brand-blast-360";
+
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [industryOpen, setIndustryOpen] = useState(false);
   const [mobileIndustryOpen, setMobileIndustryOpen] = useState(false);
+  const [bb360Open, setBb360Open] = useState(false);
+  const [mobileBb360Open, setMobileBb360Open] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const bb360DropdownRef = useRef<HTMLDivElement>(null);
 
   const isIndustryActive =
     industryItems.some(item => location.pathname === item.path) ||
+    bb360IndustryDirectory.some(item => location.pathname === item.path);
+
+  const isBb360Active =
+    location.pathname === BB360_PATH ||
     bb360IndustryDirectory.some(item => location.pathname === item.path);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIndustryOpen(false);
+      }
+      if (bb360DropdownRef.current && !bb360DropdownRef.current.contains(e.target as Node)) {
+        setBb360Open(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -54,6 +65,8 @@ const Navbar = () => {
     setMobileOpen(false);
     setMobileIndustryOpen(false);
     setIndustryOpen(false);
+    setMobileBb360Open(false);
+    setBb360Open(false);
   }, [location.pathname]);
 
   return (
@@ -65,7 +78,63 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden xl:flex items-center gap-1">
-          {navItems.map((item) => (
+          {navItems.slice(0, 1).map((item) => (
+            <Link key={item.path} to={item.path}>
+              <Button
+                variant="nav"
+                size="sm"
+                className={location.pathname === item.path ? "text-accent" : ""}
+              >
+                {item.label}
+              </Button>
+            </Link>
+          ))}
+
+          {/* Brand Blast 360 Dropdown */}
+          <div className="relative" ref={bb360DropdownRef}>
+            <Button
+              variant="nav"
+              size="sm"
+              className={`flex items-center gap-1 ${isBb360Active ? "text-accent" : ""}`}
+              onClick={() => setBb360Open(!bb360Open)}
+            >
+              Brand Blast 360 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${bb360Open ? "rotate-180" : ""}`} />
+            </Button>
+            {bb360Open && (
+              <div className="absolute top-full left-0 mt-1 w-[26rem] rounded-lg gradient-hero border border-navy-light/30 shadow-xl py-3 px-3 z-50">
+                <Link
+                  to={BB360_PATH}
+                  onClick={() => setBb360Open(false)}
+                  className={`block px-3 py-2 text-sm font-semibold rounded-md transition-colors ${
+                    location.pathname === BB360_PATH
+                      ? "text-accent bg-navy-light/50"
+                      : "text-primary-foreground hover:text-accent hover:bg-navy-light/30"
+                  }`}
+                >
+                  Brand Blast 360 Overview
+                </Link>
+                <div className="my-2 border-t border-navy-light/30" />
+                <div className="grid grid-cols-2 gap-x-2">
+                  {bb360IndustryDirectory.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setBb360Open(false)}
+                      className={`block px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                        location.pathname === item.path
+                          ? "text-accent bg-navy-light/50"
+                          : "text-primary-foreground/80 hover:text-accent hover:bg-navy-light/30"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {navItems.slice(1).map((item) => (
             <Link key={item.path} to={item.path}>
               <Button
                 variant="nav"
@@ -152,7 +221,62 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="xl:hidden gradient-hero border-t border-navy-light/30 pb-4 max-h-[calc(100vh-3.5rem)] sm:max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="container mx-auto px-4 flex flex-col gap-1">
-            {navItems.map((item) => (
+            {navItems.slice(0, 1).map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setMobileOpen(false)}
+                className={`py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                  location.pathname === item.path
+                    ? "text-accent bg-navy-light/50"
+                    : "text-primary-foreground/80 hover:text-accent"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            {/* Mobile Brand Blast 360 Dropdown */}
+            <button
+              onClick={() => setMobileBb360Open(!mobileBb360Open)}
+              className={`py-2 px-3 rounded-md text-sm font-medium transition-colors flex items-center justify-between ${
+                isBb360Active ? "text-accent bg-navy-light/50" : "text-primary-foreground/80 hover:text-accent"
+              }`}
+            >
+              Brand Blast 360
+              <ChevronDown className={`w-4 h-4 transition-transform ${mobileBb360Open ? "rotate-180" : ""}`} />
+            </button>
+            {mobileBb360Open && (
+              <div className="ml-4 flex flex-col gap-1">
+                <Link
+                  to={BB360_PATH}
+                  onClick={() => { setMobileOpen(false); setMobileBb360Open(false); }}
+                  className={`py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                    location.pathname === BB360_PATH
+                      ? "text-accent bg-navy-light/50"
+                      : "text-primary-foreground/80 hover:text-accent"
+                  }`}
+                >
+                  Brand Blast 360 Overview
+                </Link>
+                {bb360IndustryDirectory.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => { setMobileOpen(false); setMobileBb360Open(false); }}
+                    className={`py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? "text-accent bg-navy-light/50"
+                        : "text-primary-foreground/80 hover:text-accent"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {navItems.slice(1).map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
