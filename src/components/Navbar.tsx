@@ -193,6 +193,23 @@ const Navbar = () => {
                     {item.label}
                   </Link>
                 ))}
+                <p className="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
+                  Brand Blast 360 Campaigns
+                </p>
+                {bb360IndustryDirectory.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => { setMobileOpen(false); setMobileIndustryOpen(false); }}
+                    className={`py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? "text-accent bg-navy-light/50"
+                        : "text-primary-foreground/80 hover:text-accent"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </div>
             )}
 
