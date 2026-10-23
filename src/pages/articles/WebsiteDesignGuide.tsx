@@ -15,7 +15,7 @@ const WebsiteDesignGuide = () => {
       publisher: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       datePublished: "2026-04-23",
       dateModified: "2026-04-23",
-      mainEntityOfPage: "https://buzzconnect.lk/website-design-guide-sri-lanka",
+      mainEntityOfPage: "https://buzzspark-connect.lovable.app/website-design-guide-sri-lanka",
     },
   ];
 
@@ -25,7 +25,7 @@ const WebsiteDesignGuide = () => {
         title="Website Design in Sri Lanka: Complete Guide (2026) | Buzz Connect"
         description="Everything Sri Lankan businesses need to know about professional website design in 2026 — features, costs, mobile-first design & marketing integration."
         keywords="website design sri lanka, web design colombo, website cost sri lanka, professional website sri lanka"
-        canonical="https://buzzconnect.lk/website-design-guide-sri-lanka"
+        canonical="/website-design-guide-sri-lanka"
         jsonLd={jsonLd}
       />
 
