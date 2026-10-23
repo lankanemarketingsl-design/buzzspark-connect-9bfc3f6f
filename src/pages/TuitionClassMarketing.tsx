@@ -8,8 +8,8 @@ import TuitionReachJourney from "@/components/tuition/TuitionReachJourney";
 import ContactSection from "@/components/home/ContactSection";
 import classroom from "@/assets/tuition-classroom.webp";
 import buzzLogo from "@/assets/buzz-logo.webp";
-import finditLogo from "@/assets/findit-logo-trimmed.webp.asset.json";
-import studywayLogo from "@/assets/studyway-official.webp.asset.json";
+import finditLogo from "@/assets/findit-supplied-logo.webp.asset.json";
+import studywayLogo from "@/assets/studyway-supplied-logo.webp.asset.json";
 import { tuitionPackages, tuitionFaqs, tuitionServiceSchema, tuitionFaqSchema, tuitionWhatsAppHref } from "@/data/tuitionPackages";
 
 const mainMessage = "Hi Buzz Connect, I'm a tutor and I want to promote my tuition classes with Brand Blast 360 + StudyWay.lk. Please share next steps.";
@@ -58,11 +58,24 @@ export default function TuitionClassMarketing() {
           </div>
         </div>
       </section>
-      <div className="border-y border-primary-foreground/15 bg-primary-foreground/5">
-        <div className="container mx-auto px-4 py-5 flex flex-wrap justify-center items-center gap-4 sm:gap-8">
-          <img src={buzzLogo} width={160} height={64} alt="Buzz Connect" className="w-28 h-12 object-contain"/><span className="text-accent text-xl">+</span><a href="https://studyway.lk/tuition" target="_blank" rel="noopener noreferrer" aria-label="StudyWay.lk tuition section" className="inline-flex items-center justify-center min-h-12"><img src={studywayLogo.url} width={194} height={44} loading="lazy" alt="StudyWay.lk" className="w-40 sm:w-48 h-auto object-contain"/></a><span className="text-accent text-xl">+</span><a href="https://findit.lk" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk" className="tuition-light px-3 py-2 rounded"><img src={finditLogo.url} width={498} height={182} loading="lazy" alt="Findit.lk — Save money. Save time." className="w-32 h-auto"/></a><span className="hidden sm:inline text-primary-foreground/50">=</span><p className="text-sm font-semibold text-center"><span className="text-accent">Class promotion</span><br/> + always-on tutor profile</p>
+      <section aria-labelledby="tuition-partners" className="border-y border-accent/30 bg-primary-foreground/5 py-10 sm:py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-7"><p className="tuition-eyebrow">One tutor campaign. Three ways to be found.</p><h2 id="tuition-partners" className="text-2xl sm:text-4xl font-bold">Buzz Connect + StudyWay.lk + Findit.lk</h2><p className="text-primary-foreground/70 mt-3">Promote your class, add your tutor profile to an education platform and give families another place to discover your offer.</p></div>
+          <div className="grid lg:grid-cols-[.75fr_auto_1.5fr_auto_.9fr] items-stretch gap-4">
+            <div className="tuition-glass p-5 flex flex-col items-center justify-center text-center"><img src={buzzLogo} width={160} height={64} alt="Buzz Connect" className="w-32 h-14 object-contain"/><p className="mt-3 text-sm font-semibold">Campaign creative &amp; promotion</p></div>
+            <span className="flex items-center justify-center text-3xl text-accent font-bold" aria-hidden="true">+</span>
+            <a href="https://studyway.lk/tuition" target="_blank" rel="noopener noreferrer" aria-label="Visit the StudyWay.lk tuition section" className="tuition-light rounded-lg border-2 border-accent p-5 sm:p-7 shadow-glow flex flex-col items-center justify-center text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring">
+              <span className="mb-4 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase text-accent-foreground">Sri Lanka&apos;s No.01 Educational Information Hub</span>
+              <img src={studywayLogo.url} width={1287} height={384} loading="lazy" alt="StudyWay.lk — Sri Lanka's No.01 Educational Information Hub" className="w-full max-w-sm h-auto object-contain"/>
+              <span className="mt-4 inline-flex items-center gap-2 font-semibold text-secondary">Your tutor profile in the Tuition section <ArrowUpRight className="w-4 h-4"/></span>
+            </a>
+            <span className="flex items-center justify-center text-3xl text-accent font-bold" aria-hidden="true">+</span>
+            <a href="https://findit.lk" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk" className="tuition-light rounded-lg p-5 flex flex-col items-center justify-center text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"><img src={finditLogo.url} width={1054} height={397} loading="lazy" alt="Findit.lk — Save money. Save time." className="w-full max-w-56 h-auto object-contain"/><span className="mt-3 text-sm font-semibold">Featured education offer</span></a>
+          </div>
+          <p className="text-center text-sm font-semibold mt-6"><span className="text-accent">Class promotion</span> + education discovery + an always-on tutor profile</p>
+          <p className="text-center text-xs text-primary-foreground/50 mt-2">“Sri Lanka&apos;s No.01 Educational Information Hub” is StudyWay.lk&apos;s brand tagline.</p>
         </div>
-      </div>
+      </section>
       <section className="container mx-auto px-4 py-14 sm:py-16">
         <p className="tuition-eyebrow">A great class deserves to be seen</p><h2 className="text-2xl sm:text-3xl font-bold max-w-2xl mb-8">Posting your class on Facebook alone isn't enough anymore.</h2>
         <div className="grid md:grid-cols-3 gap-5">{[{icon:Users,title:"Parents decide. Students search.",body:"Reach both decision-makers and students, in different places. Your message needs to explain the class and give families a simple next step."},{icon:Target,title:"Every tutor is posting the same week.",body:"A single post can get lost in the intake rush. Put your subject, timetable and offer in front of people through more than one channel."},{icon:Search,title:"Ads stop. Discovery shouldn't.",body:"A StudyWay.lk tutor profile gives parents somewhere to find your details after a campaign ends, while your profile remains active."}].map(({icon:I,title,body}) => <article key={title} className="tuition-glass p-6"><I className="w-6 h-6 text-accent mb-4"/><h3 className="text-lg font-bold mb-3">{title}</h3><p className="text-sm text-primary-foreground/70 leading-relaxed">{body}</p></article>)}</div>
