@@ -1,5 +1,10 @@
 # Roadmap
 
+## Tuition class marketing
+- [ ] Build the tuition industry page with StudyWay showcase, packages, campaign ideas and FAQs.
+- [ ] Connect Brand Blast 360, Education and footer links; add static SEO, sitemap and AI discovery.
+- [ ] Verify package rules, dedicated WhatsApp routing and desktop/360px layouts.
+
 - [x] Expand all 11 Brand Blast 360 industry data records with unique promotion-focused content and metadata.
 - [x] Redesign the reusable industry landing page with campaign, channel, package, process, FAQ, and CTA sections.
 - [x] Update static HTML generation and AI-discovery labels for the expanded intent.
