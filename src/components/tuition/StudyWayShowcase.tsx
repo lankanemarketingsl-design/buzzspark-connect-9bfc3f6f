@@ -1,6 +1,6 @@
 import { BookOpen, MapPin, Monitor, GraduationCap, ShieldCheck, UserRound, ArrowUpRight, Search, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import screenshot from "@/assets/studyway-tuition-showcase.webp.asset.json";
+import studentBrowsing from "@/assets/studyway-student-macbook.webp";
 import { tuitionWhatsAppHref } from "@/data/tuitionPackages";
 
 export default function StudyWayShowcase() {
@@ -8,15 +8,15 @@ export default function StudyWayShowcase() {
     <section className="tuition-light py-16 sm:py-20" id="studyway">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-end justify-between gap-5 mb-9">
-          <div className="max-w-2xl"><p className="tuition-eyebrow">Your always-on classroom window</p><h2 className="text-3xl sm:text-4xl font-bold mb-3">This is where students will find you.</h2><p className="text-muted-foreground">A class promotion gets attention. A complete StudyWay.lk tutor profile gives students and parents the details they need to take the next step.</p></div>
+          <div className="max-w-2xl"><p className="tuition-eyebrow">From browsing to your next batch</p><h2 className="text-3xl sm:text-4xl font-bold mb-3">Your class, on their shortlist.</h2><p className="text-muted-foreground">Students discover a subject. Parents check the location and schedule. Your StudyWay.lk tutor profile brings the details together before they contact you.</p></div>
           <a href="https://studyway.lk/tuition" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-secondary font-semibold">Explore StudyWay Tuition <ArrowUpRight className="w-4 h-4" /></a>
         </div>
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 items-center">
-          <div className="rounded-lg border border-border overflow-hidden shadow-card bg-card">
-            <div className="flex items-center gap-3 border-b border-border bg-muted px-4 py-3"><div className="flex gap-1.5" aria-hidden="true"><span className="w-2 h-2 rounded-full bg-muted-foreground/30"/><span className="w-2 h-2 rounded-full bg-muted-foreground/30"/><span className="w-2 h-2 rounded-full bg-muted-foreground/30"/></div><span className="flex-1 text-xs text-muted-foreground flex justify-center items-center gap-2"><ShieldCheck className="w-3 h-3"/> studyway.lk/tuition</span><ArrowUpRight className="w-4 h-4 text-muted-foreground"/></div>
-            <img src={screenshot.url} width={299} height={323} loading="lazy" alt="StudyWay.lk Tuition directory showing subject and location filters, Featured Premium Tutors and tutor listings" className="w-full h-auto"/>
-            <div className="px-4 py-3 border-t border-border text-xs text-muted-foreground">StudyWay.lk Tuition directory • supplied screenshot</div>
-          </div>
+          <figure className="min-w-0">
+            <img src={studentBrowsing} width={1264} height={848} loading="lazy" alt="Illustrative students and parent browsing the supplied StudyWay.lk tuition directory on a MacBook" className="w-full h-auto rounded-lg"/>
+            <figcaption className="mt-3 text-xs text-muted-foreground">Illustrative browsing scene featuring the supplied StudyWay.lk tuition directory.</figcaption>
+            <div className="grid grid-cols-3 border-t border-border mt-5 pt-5 gap-3">{[[Search,"Find a subject"],[MapPin,"Check the city"],[MessageCircle,"Contact a tutor"]].map(([Icon,label]) => {const I=Icon as typeof Search; return <div key={String(label)} className="flex flex-col gap-2 text-sm font-semibold"><I className="w-5 h-5 text-secondary"/>{String(label)}</div>;})}</div>
+          </figure>
           <div>
             <div className="flex items-center justify-between mb-3"><p className="text-sm font-semibold text-secondary">Sample — your profile</p><span className="text-xs text-muted-foreground">Illustrative tutor listing</span></div>
             <article className="bg-card border border-accent/60 rounded-lg overflow-hidden shadow-card">
