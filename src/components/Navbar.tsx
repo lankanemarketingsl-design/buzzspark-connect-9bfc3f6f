@@ -26,9 +26,12 @@ const industryItems = [
   { label: "Events & Conferences", path: "/event-marketing-sri-lanka" },
   { label: "Staff Recruitment", path: "/staff-recruitment-campaigns-sri-lanka" },
   { label: "Home Services & Construction", path: "/home-services-construction-marketing-sri-lanka" },
+  { label: "Tuition Classes", path: "/tuition-class-marketing-sri-lanka" },
 ];
 
 const BB360_PATH = "/brand-blast-360";
+const TUITION_PATH = "/tuition-class-marketing-sri-lanka";
+const bb360IndustryLinks = bb360IndustryDirectory.filter(item => item.path !== TUITION_PATH);
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -113,9 +116,20 @@ const Navbar = () => {
                 >
                   Brand Blast 360 Overview
                 </Link>
+                <Link
+                  to={TUITION_PATH}
+                  onClick={() => setBb360Open(false)}
+                  className={`mt-1 block px-3 py-2 text-sm font-semibold rounded-md border transition-colors ${
+                    location.pathname === TUITION_PATH
+                      ? "text-accent bg-navy-light/60 border-accent/50"
+                      : "text-accent bg-accent/10 border-accent/30 hover:bg-accent/20"
+                  }`}
+                >
+                  📚 Tuition Classes
+                </Link>
                 <div className="my-2 border-t border-navy-light/30" />
                 <div className="grid grid-cols-2 gap-x-2">
-                  {bb360IndustryDirectory.map((item) => (
+                  {bb360IndustryLinks.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
@@ -181,7 +195,7 @@ const Navbar = () => {
                   <p className="px-3 pb-1 pt-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
                     Brand Blast 360 Campaigns
                   </p>
-                  {bb360IndustryDirectory.map((item) => (
+                  {bb360IndustryLinks.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
@@ -259,7 +273,18 @@ const Navbar = () => {
                 >
                   Brand Blast 360 Overview
                 </Link>
-                {bb360IndustryDirectory.map((item) => (
+                <Link
+                  to={TUITION_PATH}
+                  onClick={() => { setMobileOpen(false); setMobileBb360Open(false); }}
+                  className={`py-2 px-3 rounded-md text-sm font-semibold border transition-colors ${
+                    location.pathname === TUITION_PATH
+                      ? "text-accent bg-navy-light/60 border-accent/50"
+                      : "text-accent bg-accent/10 border-accent/30 hover:bg-accent/20"
+                  }`}
+                >
+                  📚 Tuition Classes
+                </Link>
+                {bb360IndustryLinks.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
@@ -320,7 +345,7 @@ const Navbar = () => {
                 <p className="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
                   Brand Blast 360 Campaigns
                 </p>
-                {bb360IndustryDirectory.map((item) => (
+                {bb360IndustryLinks.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
