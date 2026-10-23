@@ -1,6 +1,7 @@
 # Roadmap
 
 ## Brand Blast industry search visibility
+- [ ] Expand the fifteen industry campaign pages with relevant examples from the Brand Blast 360 picker; preserve tuition-specific content and verify links and layouts.
 - [x] Audit and preserve all separate industry URLs and unique metadata.
 - [x] Correct industry canonical/schema alignment and hub/AI discovery links where needed.
 - [x] Verify every industry page's metadata and search links.
