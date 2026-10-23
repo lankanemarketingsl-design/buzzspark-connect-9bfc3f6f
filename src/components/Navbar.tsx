@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/buzz-logo.webp";
+import { bb360IndustryDirectory } from "@/data/bb360IndustryRegistry";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -35,7 +36,9 @@ const Navbar = () => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const isIndustryActive = industryItems.some(item => location.pathname === item.path);
+  const isIndustryActive =
+    industryItems.some(item => location.pathname === item.path) ||
+    bb360IndustryDirectory.some(item => location.pathname === item.path);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -85,21 +88,45 @@ const Navbar = () => {
               Industries <ChevronDown className={`w-3.5 h-3.5 transition-transform ${industryOpen ? "rotate-180" : ""}`} />
             </Button>
             {industryOpen && (
-              <div className="absolute top-full left-0 mt-1 w-52 rounded-lg gradient-hero border border-navy-light/30 shadow-xl py-2 z-50">
-                {industryItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIndustryOpen(false)}
-                    className={`block px-4 py-2.5 text-sm font-medium transition-colors ${
-                      location.pathname === item.path
-                        ? "text-accent bg-navy-light/50"
-                        : "text-primary-foreground/80 hover:text-accent hover:bg-navy-light/30"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="absolute top-full right-0 mt-1 w-[38rem] rounded-lg gradient-hero border border-navy-light/30 shadow-xl py-3 px-3 z-50 grid grid-cols-2 gap-2">
+                <div className="flex flex-col">
+                  <p className="px-3 pb-1 pt-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
+                    Industry Marketing
+                  </p>
+                  {industryItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIndustryOpen(false)}
+                      className={`block px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                        location.pathname === item.path
+                          ? "text-accent bg-navy-light/50"
+                          : "text-primary-foreground/80 hover:text-accent hover:bg-navy-light/30"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <p className="px-3 pb-1 pt-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
+                    Brand Blast 360 Campaigns
+                  </p>
+                  {bb360IndustryDirectory.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIndustryOpen(false)}
+                      className={`block px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                        location.pathname === item.path
+                          ? "text-accent bg-navy-light/50"
+                          : "text-primary-foreground/80 hover:text-accent hover:bg-navy-light/30"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -164,6 +191,23 @@ const Navbar = () => {
                     }`}
                   >
                     {item.label}
+                  </Link>
+                ))}
+                <p className="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
+                  Brand Blast 360 Campaigns
+                </p>
+                {bb360IndustryDirectory.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => { setMobileOpen(false); setMobileIndustryOpen(false); }}
+                    className={`py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? "text-accent bg-navy-light/50"
+                        : "text-primary-foreground/80 hover:text-accent"
+                    }`}
+                  >
+                    {item.name}
                   </Link>
                 ))}
               </div>
