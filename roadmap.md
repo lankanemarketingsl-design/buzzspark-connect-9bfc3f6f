@@ -6,6 +6,7 @@
 - [x] Verify every industry page's metadata and search links.
 
 ## Tuition class marketing
+- [ ] Add remarketing to tutor packages, a parent/student reach journey, and the updated StudyWay MacBook browsing image; verify pricing and layouts.
 - [x] Build the tuition industry page with StudyWay showcase, packages, campaign ideas and FAQs.
 - [x] Connect Brand Blast 360, Education and footer links; add static SEO, sitemap and AI discovery.
 - [x] Verify package rules, dedicated WhatsApp routing and desktop/360px layouts.
