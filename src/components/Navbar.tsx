@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/buzz-logo.webp";
+import { bb360IndustryDirectory } from "@/data/bb360IndustryRegistry";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -35,7 +36,9 @@ const Navbar = () => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const isIndustryActive = industryItems.some(item => location.pathname === item.path);
+  const isIndustryActive =
+    industryItems.some(item => location.pathname === item.path) ||
+    bb360IndustryDirectory.some(item => location.pathname === item.path);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
