@@ -1,4 +1,4 @@
-import { BookOpen, MapPin, Monitor, GraduationCap, ShieldCheck, UserRound, ArrowUpRight, Search, Check } from "lucide-react";
+import { BookOpen, MapPin, Monitor, GraduationCap, ShieldCheck, UserRound, ArrowUpRight, Search, Check, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import studentBrowsing from "@/assets/studyway-student-macbook.webp";
 import { tuitionWhatsAppHref } from "@/data/tuitionPackages";
