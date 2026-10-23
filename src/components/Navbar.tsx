@@ -108,7 +108,7 @@ const Navbar = () => {
                     </Link>
                   ))}
                 </div>
-                <div className="flex flex-col max-h-[24rem] overflow-y-auto">
+                <div className="flex flex-col">
                   <p className="px-3 pb-1 pt-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
                     Brand Blast 360 Campaigns
                   </p>
