@@ -15,7 +15,7 @@ const EmailMarketingRoiCalculation = () => {
       publisher: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       datePublished: "2026-04-23",
       dateModified: "2026-04-23",
-      mainEntityOfPage: "https://buzzconnect.lk/email-marketing-roi-calculation-sri-lanka",
+      mainEntityOfPage: "https://buzzspark-connect.lovable.app/email-marketing-roi-calculation-sri-lanka",
     },
     {
       "@context": "https://schema.org",
@@ -63,7 +63,7 @@ const EmailMarketingRoiCalculation = () => {
         title="How to Calculate Your Email Marketing ROI in Sri Lanka | Buzz Connect"
         description="Learn how to read your BuzzConnect campaign report and calculate your real email marketing ROI step-by-step — with examples for Sri Lankan businesses."
         keywords="email marketing ROI Sri Lanka, calculate email ROI, email campaign report, BuzzConnect ROI, email marketing return on investment Sri Lanka"
-        canonical="https://buzzconnect.lk/email-marketing-roi-calculation-sri-lanka"
+        canonical="/email-marketing-roi-calculation-sri-lanka"
         jsonLd={jsonLd}
       />
 

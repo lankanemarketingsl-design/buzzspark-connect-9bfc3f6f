@@ -15,7 +15,7 @@ const WhatIsDirectMarketing = () => {
       publisher: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       datePublished: "2026-04-23",
       dateModified: "2026-04-23",
-      mainEntityOfPage: "https://buzzconnect.lk/what-is-direct-marketing-sri-lanka",
+      mainEntityOfPage: "https://buzzspark-connect.lovable.app/what-is-direct-marketing-sri-lanka",
     },
   ];
 
@@ -25,7 +25,7 @@ const WhatIsDirectMarketing = () => {
         title="What is Direct Marketing in Sri Lanka? Complete Guide (2026) | Buzz Connect"
         description="Learn what direct marketing is, how it works in Sri Lanka, what it costs, and why businesses choose Buzz Connect for email, SMS & WhatsApp campaigns."
         keywords="direct marketing sri lanka, what is direct marketing, direct marketing guide, buzz connect direct marketing"
-        canonical="https://buzzconnect.lk/what-is-direct-marketing-sri-lanka"
+        canonical="/what-is-direct-marketing-sri-lanka"
         jsonLd={jsonLd}
       />
 
