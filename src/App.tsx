@@ -148,6 +148,7 @@ import GraphicDesignService from "./pages/GraphicDesignService.tsx";
 import Careers from "./pages/Careers.tsx";
 import JobPage from "./pages/JobPage.tsx";
 import BrandBlast360 from "./pages/BrandBlast360.tsx";
+import TuitionClassMarketing from "./pages/TuitionClassMarketing.tsx";
 import BB360ServicePage from "./pages/BB360ServicePage.tsx";
 import BB360Hotels from "./pages/BB360Hotels.tsx";
 import ProgrammaticAdvertising from "./pages/ProgrammaticAdvertising.tsx";
@@ -353,6 +354,7 @@ const App = () => (
               <Route path="/sms-marketing-sri-lanka-600000-customers-2026" element={<SmsMarketingSriLanka600k2026 />} />
               <Route path="/social-media-marketing-sri-lanka-complete-guide-2026" element={<SocialMediaMarketingSriLankaComplete2026 />} />
               <Route path="/brand-blast-360" element={<BrandBlast360 />} />
+              <Route path="/tuition-class-marketing-sri-lanka" element={<TuitionClassMarketing />} />
               <Route path="/brand-blast-360/hotels" element={<BB360Hotels />} />
               <Route path="/brand-blast-360/:industry" element={<BB360ServicePage />} />
               

@@ -775,6 +775,9 @@ const BrandBlast360 = () => {
                       <span aria-hidden="true">{industry.emoji}</span> {industry.name}
                     </Button>
                   ))}
+                  <Button asChild variant="hero-outline" size="sm" className="rounded-full">
+                    <Link to="/tuition-class-marketing-sri-lanka">📚 Tuition Classes <ArrowRight className="w-4 h-4" /></Link>
+                  </Button>
                 </div>
               </div>
 
