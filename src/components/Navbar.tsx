@@ -88,7 +88,7 @@ const Navbar = () => {
               Industries <ChevronDown className={`w-3.5 h-3.5 transition-transform ${industryOpen ? "rotate-180" : ""}`} />
             </Button>
             {industryOpen && (
-              <div className="absolute top-full left-0 mt-1 w-[38rem] rounded-lg gradient-hero border border-navy-light/30 shadow-xl py-3 px-3 z-50 grid grid-cols-2 gap-2">
+              <div className="absolute top-full right-0 mt-1 w-[38rem] rounded-lg gradient-hero border border-navy-light/30 shadow-xl py-3 px-3 z-50 grid grid-cols-2 gap-2">
                 <div className="flex flex-col">
                   <p className="px-3 pb-1 pt-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground/50">
                     Industry Marketing
