@@ -29,4 +29,7 @@ describe("tuition package rules", () => {
   it("includes featured tutor placement in Institute Dominator", () => {
     expect(tuitionPackages[3].extras).toContain("Featured Premium Tutor placement");
   });
+  it.each(["Class Starter", "Term Booster", "Full Batch", "Institute Dominator"])("includes remarketing in %s", (name) => {
+    expect(tuitionPackages.find(p => p.name === name)?.remarketing).toBe(true);
+  });
 });
