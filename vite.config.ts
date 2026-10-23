@@ -6,7 +6,8 @@ import { componentTagger } from "lovable-tagger";
 import { TUITION_PATH, tuitionFaqs, tuitionServiceSchema, tuitionFaqSchema } from "./src/data/tuitionPackages";
 
 const SITE_URL = "https://buzzconnect.lk";
-import { additionalBB360Pages, BB360_SITE_URL } from "./src/data/bb360IndustryRegistry";
+import { additionalBB360Pages, BB360_SITE_URL, industryRouteById } from "./src/data/bb360IndustryRegistry";
+import { getIndustryCampaigns } from "./src/data/bb360IndustryCampaigns";
 
 interface RouteSeoEntry {
   route: string;
@@ -487,6 +488,8 @@ const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) =>
   const canonical = `${BB360_SITE_URL}/brand-blast-360/${entry.slug}`;
   const intro = entry.hero || `Promote one ${entry.industry.toLowerCase()} offer through Brand Blast 360 from ${entry.priceFrom}, live in 24 hours.`;
   const faqs = entry.faqs;
+  const industryId = Object.entries(industryRouteById).find(([, route]) => route === `/brand-blast-360/${entry.slug}`)?.[0];
+  const campaignPlans = industryId ? getIndustryCampaigns(industryId) : [];
 
   let html = applyRouteSeo(template, {
     route: `/brand-blast-360/${entry.slug}`,
@@ -496,6 +499,7 @@ const buildBb360ServiceHtml = (template: string, entry: Bb360ServiceSeoEntry) =>
     h1: entry.h1,
     paragraphs: [
       intro,
+      ...campaignPlans.map(campaign => `${campaign.title}. ${campaign.points.join(" ")}`),
       ...entry.promotions.map((item) => `${item.title}. ${item.description}`),
       ...entry.campaignIdeas.map((item) => `${item.title}. ${item.description}`),
       ...entry.sections.map((s) => `${s.h2}. ${s.body}`),

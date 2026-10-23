@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import IndustryPageLinks from "@/components/brandblast/IndustryPageLinks";
+import IndustryCampaignIdeas from "@/components/brandblast/IndustryCampaignIdeas";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { bb360Packages } from "@/data/bb360ServicePages";
@@ -228,6 +229,7 @@ export default function BB360Hotels() {
 
       <section className="py-12"><div className="container mx-auto px-4"><div className="mx-auto max-w-5xl rounded-xl border border-primary-foreground/10 bg-primary-foreground/[0.04] p-6 text-center text-primary-foreground/65 sm:p-8"><p><strong className="text-primary-foreground">Email, SMS & WhatsApp marketing for hotels in Sri Lanka</strong> lets your property promote rooms, packages, dining and events to 988,000+ travellers — and win direct bookings without paying OTA commission. Brand Blast 360 combines all five channels into one campaign, live in 24 hours from LKR 15,000 (about LKR 0.015 per person). Available for hotels, resorts, villas and guest houses across Colombo, Kandy, Galle, Bentota, Ella, Negombo and Nuwara Eliya.</p></div></div></section>
 
+      <IndustryCampaignIdeas industryId="hotel" industryName="Hotels & Hospitality" />
       <section className="py-14"><div className="container mx-auto px-4"><SectionHeading eyebrow="The problem" title="Sound familiar?" body="The three things quietly costing hotels the most revenue." /><div className="grid gap-4 md:grid-cols-3">{[[CalendarDays,"Empty rooms Sun–Thu","Midweek gaps drain revenue while your fixed costs stay exactly the same."],[BadgeDollarSign,"OTAs take 15–25%","Every OTA night hands away margin you could have kept with a direct booking."],[Clock3,"Festive dates fill late","Avurudu and December packages sell out at competitors before you even advertise."]].map(([Icon,title,body])=><article key={title as string} className="rounded-lg border border-primary-foreground/10 border-l-accent bg-primary-foreground/[0.04] p-5"><Icon className="mb-4 h-6 w-6 text-accent"/><h3 className="font-heading text-lg font-bold">{title as string}</h3><p className="mt-2 text-sm text-primary-foreground/60">{body as string}</p></article>)}</div></div></section>
 
       <section className="bg-primary-foreground/[0.03] py-16"><div className="container mx-auto px-4"><SectionHeading eyebrow="The fix" title="One campaign puts your offer everywhere travellers look" body="Choose a promotion you already have — we turn it into one coordinated campaign across every channel that drives direct bookings." /><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{useCases.map(([Icon,title,body])=><article key={title} className="rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.04] p-5"><Icon className="h-7 w-7 text-accent"/><h3 className="mt-4 font-heading font-bold">{title}</h3><p className="mt-2 text-sm text-primary-foreground/60">{body}</p></article>)}</div></div></section>
