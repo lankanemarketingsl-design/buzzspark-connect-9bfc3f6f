@@ -3,7 +3,7 @@
 ## Brand Blast industry search visibility
 - [x] Audit and preserve all separate industry URLs and unique metadata.
 - [x] Correct industry canonical/schema alignment and hub/AI discovery links where needed.
-- [ ] Verify every industry page's metadata and search links.
+- [x] Verify every industry page's metadata and search links.
 
 ## Tuition class marketing
 - [x] Build the tuition industry page with StudyWay showcase, packages, campaign ideas and FAQs.
