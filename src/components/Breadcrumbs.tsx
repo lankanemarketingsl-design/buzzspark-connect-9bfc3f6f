@@ -8,6 +8,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { graphicDesignServices } from "@/data/graphicDesignServices";
+import { bb360IndustryDirectory } from "@/data/bb360IndustryRegistry";
 
 const pathLabels: Record<string, string> = {
   "/email-marketing": "Email Marketing",
@@ -63,7 +64,8 @@ const Breadcrumbs = () => {
   const path = location.pathname;
 
   const isGraphicDesignService = !!graphicDesignLabels[path];
-  const currentLabel = pathLabels[path] || graphicDesignLabels[path];
+  const isBB360 = path.startsWith("/brand-blast-360/");
+  const currentLabel = pathLabels[path] || graphicDesignLabels[path] || bb360IndustryDirectory.find(p => p.path === path)?.name;
 
   if (!currentLabel || path === "/") return null;
 
@@ -79,6 +81,7 @@ const Breadcrumbs = () => {
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator className="text-primary-foreground/40" />
+          {isBB360 && <><BreadcrumbItem><BreadcrumbLink asChild><Link to="/brand-blast-360" className="text-primary-foreground/60 hover:text-accent text-xs sm:text-sm">Brand Blast 360</Link></BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator className="text-primary-foreground/40" /></>}
           {isArticle && (
             <>
               <BreadcrumbItem>

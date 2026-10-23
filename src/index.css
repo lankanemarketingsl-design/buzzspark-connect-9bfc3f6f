@@ -73,6 +73,10 @@
     --industry-healthcare: 173 80% 40%;
     --industry-automotive: 224 76% 48%;
     --industry-construction: 25 95% 53%;
+    --industry-retail: 330 81% 60%;
+    --industry-professional-services: 201 96% 36%;
+    --industry-fitness: 173 80% 40%;
+    --industry-technology: 224 76% 48%;
     --tuition-background: 215 60% 10%;
     --tuition-band: 215 52% 14%;
     --tuition-hero-scrim: linear-gradient(90deg, hsl(215 60% 7% / .97) 0%, hsl(215 60% 7% / .86) 45%, hsl(215 60% 7% / .28) 100%);
