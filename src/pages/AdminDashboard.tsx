@@ -471,9 +471,11 @@ const AdminDashboard = () => {
   }, [scoped, search]);
 
   // ----- WhatsApp CTA tracking (per-number proof of clicks) -----
+  // Uses ALL inquiries (not the date-range filter) so all-time + daily counts
+  // per number are always visible regardless of the selected period.
   const waClicks = useMemo(
-    () => scoped.filter((i) => i.inquiry_type === "whatsapp_click"),
-    [scoped],
+    () => inquiries.filter((i) => i.inquiry_type === "whatsapp_click"),
+    [inquiries],
   );
 
   const waNumberFilterLabel = (n: string) => {
@@ -485,17 +487,56 @@ const AdminDashboard = () => {
   };
 
   const waNumberSummary = useMemo(() => {
-    const map = new Map<string, { number: string; clicks: number; withContact: number; last: string | null }>();
+    const todayStart = rangeStart("today");
+    const weekStart = rangeStart("7d");
+    const map = new Map<
+      string,
+      { number: string; clicks: number; today: number; week: number; withContact: number; last: string | null }
+    >();
     waClicks.forEach((i) => {
       const num = i.whatsapp_number || "unknown";
-      const cur = map.get(num) || { number: num, clicks: 0, withContact: 0, last: null };
+      const cur =
+        map.get(num) || { number: num, clicks: 0, today: 0, week: 0, withContact: 0, last: null };
+      const t = new Date(i.created_at);
       cur.clicks += 1;
+      if (t >= todayStart) cur.today += 1;
+      if (t >= weekStart) cur.week += 1;
       if (i.name || i.phone) cur.withContact += 1;
       if (!cur.last || i.created_at > cur.last) cur.last = i.created_at;
       map.set(num, cur);
     });
     return Array.from(map.values()).sort((a, b) => b.clicks - a.clicks);
   }, [waClicks]);
+
+  // Daily breakdown: last 14 days x each WhatsApp number
+  const waDailyBreakdown = useMemo(() => {
+    const numbers = waNumberSummary.map((n) => n.number);
+    const days: { key: string; label: string }[] = [];
+    const cursor = rangeStart("today");
+    for (let d = 13; d >= 0; d--) {
+      const day = new Date(cursor);
+      day.setDate(day.getDate() - d);
+      days.push({
+        key: day.toISOString().slice(0, 10),
+        label: day.toLocaleDateString(undefined, { month: "short", day: "numeric" }),
+      });
+    }
+    return days.map((d) => {
+      const row: { key: string; label: string; counts: Record<string, number>; total: number } = {
+        key: d.key,
+        label: d.label,
+        counts: {},
+        total: 0,
+      };
+      waClicks.forEach((i) => {
+        if (i.created_at.slice(0, 10) !== d.key) return;
+        const num = i.whatsapp_number || "unknown";
+        row.counts[num] = (row.counts[num] || 0) + 1;
+        row.total += 1;
+      });
+      return row;
+    });
+  }, [waClicks, waNumberSummary]);
 
   const waFiltered = useMemo(() => {
     let rows = waClicks;
