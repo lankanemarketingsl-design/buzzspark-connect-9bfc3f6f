@@ -889,6 +889,18 @@ const AdminDashboard = () => {
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3 mb-3">
             <select
+              value={waTypeFilter}
+              onChange={(e) => setWaTypeFilter(e.target.value)}
+              className="h-10 rounded-md border border-border bg-card px-3 text-sm"
+            >
+              <option value="all">All types</option>
+              {CTA_TYPE_META.map((t) => (
+                <option key={t.key} value={t.key}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
+            <select
               value={waNumberFilter}
               onChange={(e) => setWaNumberFilter(e.target.value)}
               className="h-10 rounded-md border border-border bg-card px-3 text-sm"
@@ -907,16 +919,17 @@ const AdminDashboard = () => {
               className="max-w-sm"
             />
             <span className="text-xs text-muted-foreground ml-auto">
-              {waFiltered.length} click{waFiltered.length === 1 ? "" : "s"} shown
+              {waFiltered.length} event{waFiltered.length === 1 ? "" : "s"} shown
             </span>
           </div>
 
-          {/* Detailed click log */}
+          {/* Detailed event log — clicks, calls and messages */}
           <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
             <table className="w-full text-sm">
               <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
                   <th className="p-3">Date & Time</th>
+                  <th className="p-3">Type</th>
                   <th className="p-3">From Page</th>
                   <th className="p-3">Button</th>
                   <th className="p-3">To Number</th>
@@ -928,8 +941,8 @@ const AdminDashboard = () => {
               <tbody>
                 {waFiltered.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="p-8 text-center text-muted-foreground">
-                      No WhatsApp clicks match this filter.
+                    <td colSpan={8} className="p-8 text-center text-muted-foreground">
+                      No events match this filter.
                     </td>
                   </tr>
                 ) : (
@@ -937,6 +950,12 @@ const AdminDashboard = () => {
                     <tr key={i.id} className="border-t border-border align-top">
                       <td className="p-3 whitespace-nowrap text-xs">
                         {new Date(i.created_at).toLocaleString()}
+                      </td>
+                      <td className="p-3 whitespace-nowrap">
+                        <Badge variant={i.inquiry_type === "whatsapp_click" ? "default" : "secondary"}>
+                          {CTA_TYPE_META.find((t) => t.key === i.inquiry_type)?.label ||
+                            i.inquiry_type.replace(/_/g, " ")}
+                        </Badge>
                       </td>
                       <td className="p-3">
                         {cleanPath(i.source_page) ? (
@@ -960,10 +979,14 @@ const AdminDashboard = () => {
                         <Badge variant="outline">{(i.placement || "cta").replace(/_/g, " ")}</Badge>
                       </td>
                       <td className="p-3 whitespace-nowrap">
-                        <span className="inline-flex items-center gap-1.5 font-medium text-emerald-700">
-                          <MessageCircle className="w-3.5 h-3.5" />
-                          {waNumberFilterLabel(i.whatsapp_number || "")}
-                        </span>
+                        {i.inquiry_type === "whatsapp_click" && i.whatsapp_number ? (
+                          <span className="inline-flex items-center gap-1.5 font-medium text-emerald-700">
+                            <MessageCircle className="w-3.5 h-3.5" />
+                            {waNumberFilterLabel(i.whatsapp_number)}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">—</span>
+                        )}
                       </td>
                       <td className="p-3">
                         {i.name || i.phone ? (
