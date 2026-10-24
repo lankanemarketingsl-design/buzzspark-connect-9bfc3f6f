@@ -725,14 +725,14 @@ const AdminDashboard = () => {
         <section className="mb-8">
           <SectionHeader
             title="WhatsApp CTA Tracking"
-            subtitle="Every WhatsApp button click — which page, which button, which number it went to"
+            subtitle="Every WhatsApp button click — which page, which button, which number it went to. Counts below are all-time and daily, not affected by the date filter above."
           />
 
           {/* Per-number summary cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             {waNumberSummary.length === 0 ? (
               <div className="col-span-full rounded-xl border border-border bg-card p-6 text-center text-sm text-muted-foreground shadow-sm">
-                No WhatsApp clicks in this period yet.
+                No WhatsApp clicks recorded yet.
               </div>
             ) : (
               waNumberSummary.map((n) => (
@@ -750,19 +750,60 @@ const AdminDashboard = () => {
                     WhatsApp Number
                   </div>
                   <div className="text-lg font-bold text-foreground">{waNumberFilterLabel(n.number)}</div>
-                  <div className="text-sm text-muted-foreground mt-1">
-                    <span className="font-semibold text-foreground tabular-nums">{n.clicks}</span> clicks ·{" "}
-                    <span className="tabular-nums">{n.withContact}</span> left contact details
-                  </div>
-                  {n.last && (
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Last click: {new Date(n.last).toLocaleString()}
+                  <div className="grid grid-cols-3 gap-2 mt-3 text-center">
+                    <div className="rounded-lg bg-muted/60 py-1.5">
+                      <div className="text-base font-bold tabular-nums">{n.today}</div>
+                      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Today</div>
                     </div>
-                  )}
+                    <div className="rounded-lg bg-muted/60 py-1.5">
+                      <div className="text-base font-bold tabular-nums">{n.week}</div>
+                      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">7 Days</div>
+                    </div>
+                    <div className="rounded-lg bg-emerald-500/10 py-1.5">
+                      <div className="text-base font-bold tabular-nums text-emerald-700">{n.clicks}</div>
+                      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">All Time</div>
+                    </div>
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-2">
+                    <span className="tabular-nums">{n.withContact}</span> left contact details
+                    {n.last && <> · Last: {new Date(n.last).toLocaleString()}</>}
+                  </div>
                 </button>
               ))
             )}
           </div>
+
+          {/* Daily breakdown per number — last 14 days */}
+          {waNumberSummary.length > 0 && (
+            <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm mb-4">
+              <table className="w-full text-sm">
+                <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                  <tr>
+                    <th className="p-3">Date</th>
+                    {waNumberSummary.map((n) => (
+                      <th key={n.number} className="p-3 text-right">
+                        {waNumberFilterLabel(n.number)}
+                      </th>
+                    ))}
+                    <th className="p-3 text-right">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {waDailyBreakdown.map((d) => (
+                    <tr key={d.key} className="border-t border-border">
+                      <td className="p-3 font-medium whitespace-nowrap">{d.label}</td>
+                      {waNumberSummary.map((n) => (
+                        <td key={n.number} className="p-3 text-right tabular-nums">
+                          {d.counts[n.number] || 0}
+                        </td>
+                      ))}
+                      <td className="p-3 text-right font-semibold tabular-nums">{d.total}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3 mb-3">
