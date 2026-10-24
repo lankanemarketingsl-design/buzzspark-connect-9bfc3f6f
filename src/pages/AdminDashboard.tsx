@@ -261,6 +261,7 @@ const AdminDashboard = () => {
   const [range, setRange] = useState<RangeKey>("7d");
   const [search, setSearch] = useState("");
   const [waNumberFilter, setWaNumberFilter] = useState<string>("all");
+  const [waTypeFilter, setWaTypeFilter] = useState<string>("all");
   const [waSearch, setWaSearch] = useState("");
 
   useEffect(() => {
@@ -485,13 +486,43 @@ const AdminDashboard = () => {
     });
   }, [scoped, search]);
 
-  // ----- WhatsApp CTA tracking (per-number proof of clicks) -----
+  // ----- CTA & inquiry tracking (per-number proof of every click) -----
   // Uses ALL inquiries (not the date-range filter) so all-time + daily counts
   // per number are always visible regardless of the selected period.
   const waClicks = useMemo(
     () => inquiries.filter((i) => i.inquiry_type === "whatsapp_click"),
     [inquiries],
   );
+
+  // Every real event (no page-view noise) for the combined log.
+  const ctaEvents = useMemo(
+    () => inquiries.filter((i) => i.inquiry_type !== "page_view"),
+    [inquiries],
+  );
+
+  const CTA_TYPE_META: { key: string; label: string }[] = [
+    { key: "whatsapp_click", label: "WhatsApp" },
+    { key: "call_click", label: "Call" },
+    { key: "form_submission", label: "Message" },
+    { key: "email_click", label: "Email" },
+    { key: "quote_open", label: "Proposal" },
+    { key: "book_consultation", label: "Consultation" },
+  ];
+
+  // Per-type Today / 7 Days / All Time counts.
+  const ctaTypeSummary = useMemo(() => {
+    const todayStart = rangeStart("today");
+    const weekStart = rangeStart("7d");
+    return CTA_TYPE_META.map((t) => {
+      const rows = ctaEvents.filter((i) => i.inquiry_type === t.key);
+      return {
+        ...t,
+        all: rows.length,
+        today: rows.filter((i) => new Date(i.created_at) >= todayStart).length,
+        week: rows.filter((i) => new Date(i.created_at) >= weekStart).length,
+      };
+    });
+  }, [ctaEvents]);
 
   const waNumberFilterLabel = (n: string) => {
     const digits = (n || "").replace(/\D/g, "");
@@ -523,9 +554,8 @@ const AdminDashboard = () => {
     return Array.from(map.values()).sort((a, b) => b.clicks - a.clicks);
   }, [waClicks]);
 
-  // Daily breakdown: last 14 days x each WhatsApp number
+  // Daily breakdown: last 14 days x each WhatsApp number, plus calls & messages
   const waDailyBreakdown = useMemo(() => {
-    const numbers = waNumberSummary.map((n) => n.number);
     const days: { key: string; label: string }[] = [];
     const cursor = rangeStart("today");
     for (let d = 13; d >= 0; d--) {
@@ -537,25 +567,39 @@ const AdminDashboard = () => {
       });
     }
     return days.map((d) => {
-      const row: { key: string; label: string; counts: Record<string, number>; total: number } = {
-        key: d.key,
-        label: d.label,
-        counts: {},
-        total: 0,
-      };
-      waClicks.forEach((i) => {
+      const row: {
+        key: string;
+        label: string;
+        counts: Record<string, number>;
+        calls: number;
+        messages: number;
+        total: number;
+      } = { key: d.key, label: d.label, counts: {}, calls: 0, messages: 0, total: 0 };
+      ctaEvents.forEach((i) => {
         if (i.created_at.slice(0, 10) !== d.key) return;
-        const num = i.whatsapp_number || "unknown";
-        row.counts[num] = (row.counts[num] || 0) + 1;
-        row.total += 1;
+        if (i.inquiry_type === "whatsapp_click") {
+          const num = i.whatsapp_number || "unknown";
+          row.counts[num] = (row.counts[num] || 0) + 1;
+          row.total += 1;
+        } else if (i.inquiry_type === "call_click") {
+          row.calls += 1;
+          row.total += 1;
+        } else if (i.inquiry_type === "form_submission") {
+          row.messages += 1;
+          row.total += 1;
+        }
       });
       return row;
     });
-  }, [waClicks, waNumberSummary]);
+  }, [ctaEvents]);
 
   const waFiltered = useMemo(() => {
-    let rows = waClicks;
-    if (waNumberFilter !== "all") rows = rows.filter((i) => (i.whatsapp_number || "unknown") === waNumberFilter);
+    let rows = ctaEvents;
+    if (waTypeFilter !== "all") rows = rows.filter((i) => i.inquiry_type === waTypeFilter);
+    if (waNumberFilter !== "all")
+      rows = rows.filter(
+        (i) => i.inquiry_type === "whatsapp_click" && (i.whatsapp_number || "unknown") === waNumberFilter,
+      );
     if (waSearch) {
       const q = waSearch.toLowerCase();
       rows = rows.filter((i) =>
@@ -567,7 +611,7 @@ const AdminDashboard = () => {
       );
     }
     return rows;
-  }, [waClicks, waNumberFilter, waSearch]);
+  }, [ctaEvents, waTypeFilter, waNumberFilter, waSearch]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center">Loading…</div>;
   if (!isAdmin) return null;
@@ -736,12 +780,32 @@ const AdminDashboard = () => {
           </div>
         </section>
 
-        {/* WhatsApp CTA tracking — proof of every click per number */}
+        {/* CTA & inquiry tracking — proof of every click, call and message */}
         <section className="mb-8">
           <SectionHeader
-            title="WhatsApp CTA Tracking"
-            subtitle="Every WhatsApp button click — which page, which button, which number it went to. Counts below are all-time and daily, not affected by the date filter above."
+            title="CTA & Inquiry Tracking"
+            subtitle="Every WhatsApp click, call click and message — which page, which button, which number it went to. Counts below are all-time and daily, not affected by the date filter above."
           />
+
+          {/* Per-type totals: Today / 7 Days / All Time */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">
+            {ctaTypeSummary.map((t) => (
+              <button
+                key={t.key}
+                onClick={() => setWaTypeFilter(waTypeFilter === t.key ? "all" : t.key)}
+                className={`text-left rounded-xl border bg-card p-3 shadow-sm transition hover:shadow-md ${
+                  waTypeFilter === t.key ? "border-primary ring-1 ring-primary" : "border-border"
+                }`}
+              >
+                <div className="text-xs uppercase tracking-wide text-muted-foreground mb-1.5">{t.label}</div>
+                <div className="flex items-baseline justify-between gap-1 text-sm">
+                  <span className="tabular-nums font-semibold">{t.today} today</span>
+                  <span className="tabular-nums text-muted-foreground">{t.week} / 7d</span>
+                </div>
+                <div className="text-lg font-bold tabular-nums mt-0.5">{t.all} all time</div>
+              </button>
+            ))}
+          </div>
 
           {/* Per-number summary cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
@@ -788,40 +852,54 @@ const AdminDashboard = () => {
             )}
           </div>
 
-          {/* Daily breakdown per number — last 14 days */}
-          {waNumberSummary.length > 0 && (
-            <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm mb-4">
-              <table className="w-full text-sm">
-                <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
-                  <tr>
-                    <th className="p-3">Date</th>
-                    {waNumberSummary.map((n) => (
-                      <th key={n.number} className="p-3 text-right">
-                        {waNumberFilterLabel(n.number)}
-                      </th>
-                    ))}
-                    <th className="p-3 text-right">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {waDailyBreakdown.map((d) => (
-                    <tr key={d.key} className="border-t border-border">
-                      <td className="p-3 font-medium whitespace-nowrap">{d.label}</td>
-                      {waNumberSummary.map((n) => (
-                        <td key={n.number} className="p-3 text-right tabular-nums">
-                          {d.counts[n.number] || 0}
-                        </td>
-                      ))}
-                      <td className="p-3 text-right font-semibold tabular-nums">{d.total}</td>
-                    </tr>
+          {/* Daily breakdown per number — last 14 days, plus calls & messages */}
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm mb-4">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">Date</th>
+                  {waNumberSummary.map((n) => (
+                    <th key={n.number} className="p-3 text-right">
+                      {waNumberFilterLabel(n.number)}
+                    </th>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+                  <th className="p-3 text-right">Calls</th>
+                  <th className="p-3 text-right">Messages</th>
+                  <th className="p-3 text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {waDailyBreakdown.map((d) => (
+                  <tr key={d.key} className="border-t border-border">
+                    <td className="p-3 font-medium whitespace-nowrap">{d.label}</td>
+                    {waNumberSummary.map((n) => (
+                      <td key={n.number} className="p-3 text-right tabular-nums">
+                        {d.counts[n.number] || 0}
+                      </td>
+                    ))}
+                    <td className="p-3 text-right tabular-nums">{d.calls}</td>
+                    <td className="p-3 text-right tabular-nums">{d.messages}</td>
+                    <td className="p-3 text-right font-semibold tabular-nums">{d.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3 mb-3">
+            <select
+              value={waTypeFilter}
+              onChange={(e) => setWaTypeFilter(e.target.value)}
+              className="h-10 rounded-md border border-border bg-card px-3 text-sm"
+            >
+              <option value="all">All types</option>
+              {CTA_TYPE_META.map((t) => (
+                <option key={t.key} value={t.key}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
             <select
               value={waNumberFilter}
               onChange={(e) => setWaNumberFilter(e.target.value)}
@@ -841,16 +919,17 @@ const AdminDashboard = () => {
               className="max-w-sm"
             />
             <span className="text-xs text-muted-foreground ml-auto">
-              {waFiltered.length} click{waFiltered.length === 1 ? "" : "s"} shown
+              {waFiltered.length} event{waFiltered.length === 1 ? "" : "s"} shown
             </span>
           </div>
 
-          {/* Detailed click log */}
+          {/* Detailed event log — clicks, calls and messages */}
           <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
             <table className="w-full text-sm">
               <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
                 <tr>
                   <th className="p-3">Date & Time</th>
+                  <th className="p-3">Type</th>
                   <th className="p-3">From Page</th>
                   <th className="p-3">Button</th>
                   <th className="p-3">To Number</th>
@@ -862,8 +941,8 @@ const AdminDashboard = () => {
               <tbody>
                 {waFiltered.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="p-8 text-center text-muted-foreground">
-                      No WhatsApp clicks match this filter.
+                    <td colSpan={8} className="p-8 text-center text-muted-foreground">
+                      No events match this filter.
                     </td>
                   </tr>
                 ) : (
@@ -871,6 +950,12 @@ const AdminDashboard = () => {
                     <tr key={i.id} className="border-t border-border align-top">
                       <td className="p-3 whitespace-nowrap text-xs">
                         {new Date(i.created_at).toLocaleString()}
+                      </td>
+                      <td className="p-3 whitespace-nowrap">
+                        <Badge variant={i.inquiry_type === "whatsapp_click" ? "default" : "secondary"}>
+                          {CTA_TYPE_META.find((t) => t.key === i.inquiry_type)?.label ||
+                            i.inquiry_type.replace(/_/g, " ")}
+                        </Badge>
                       </td>
                       <td className="p-3">
                         {cleanPath(i.source_page) ? (
@@ -894,10 +979,14 @@ const AdminDashboard = () => {
                         <Badge variant="outline">{(i.placement || "cta").replace(/_/g, " ")}</Badge>
                       </td>
                       <td className="p-3 whitespace-nowrap">
-                        <span className="inline-flex items-center gap-1.5 font-medium text-emerald-700">
-                          <MessageCircle className="w-3.5 h-3.5" />
-                          {waNumberFilterLabel(i.whatsapp_number || "")}
-                        </span>
+                        {i.inquiry_type === "whatsapp_click" && i.whatsapp_number ? (
+                          <span className="inline-flex items-center gap-1.5 font-medium text-emerald-700">
+                            <MessageCircle className="w-3.5 h-3.5" />
+                            {waNumberFilterLabel(i.whatsapp_number)}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">—</span>
+                        )}
                       </td>
                       <td className="p-3">
                         {i.name || i.phone ? (
