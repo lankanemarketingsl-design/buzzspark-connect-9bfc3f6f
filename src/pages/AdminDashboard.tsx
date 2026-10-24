@@ -292,16 +292,31 @@ const AdminDashboard = () => {
   }, []);
 
   const loadInquiries = async () => {
-    const { data, error } = await supabase
-      .from("inquiries")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(5000);
-    if (error) {
-      toast({ title: "Load failed", description: error.message, variant: "destructive" });
+    // Page views massively outnumber real events, so a single newest-first
+    // limit would push older CTA clicks out. Load them separately: every
+    // non-page-view event (clicks, forms, calls) plus a recent page-view window.
+    const [eventsRes, viewsRes] = await Promise.all([
+      supabase
+        .from("inquiries")
+        .select("*")
+        .neq("inquiry_type", "page_view")
+        .order("created_at", { ascending: false })
+        .limit(5000),
+      supabase
+        .from("inquiries")
+        .select("*")
+        .eq("inquiry_type", "page_view")
+        .order("created_at", { ascending: false })
+        .limit(5000),
+    ]);
+    if (eventsRes.error || viewsRes.error) {
+      const err = eventsRes.error || viewsRes.error;
+      toast({ title: "Load failed", description: err!.message, variant: "destructive" });
       return;
     }
-    setInquiries((data || []) as Inquiry[]);
+    const merged = [...(eventsRes.data || []), ...(viewsRes.data || [])] as Inquiry[];
+    merged.sort((a, b) => (a.created_at < b.created_at ? 1 : -1));
+    setInquiries(merged);
   };
 
   const handleSignOut = async () => {
