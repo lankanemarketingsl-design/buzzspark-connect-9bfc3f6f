@@ -260,6 +260,8 @@ const AdminDashboard = () => {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [range, setRange] = useState<RangeKey>("7d");
   const [search, setSearch] = useState("");
+  const [waNumberFilter, setWaNumberFilter] = useState<string>("all");
+  const [waSearch, setWaSearch] = useState("");
 
   useEffect(() => {
     const init = async () => {
