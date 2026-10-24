@@ -126,6 +126,7 @@ const ContactCaptureDialog = () => {
       return;
     }
     setSubmitting(true);
+    loggedRef.current = true; // form submit logs the click with contact details
     const data = result.data;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -154,12 +155,18 @@ const ContactCaptureDialog = () => {
   };
 
   const handleSkip = () => {
+    logClickWithoutContact();
     openWhatsApp();
     setOpen(false);
   };
 
+  const handleOpenChange = (next: boolean) => {
+    if (!next) logClickWithoutContact(); // closed without submitting still counts as a click
+    setOpen(next);
+  };
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Before we connect on WhatsApp</DialogTitle>
