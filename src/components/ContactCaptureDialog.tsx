@@ -51,6 +51,9 @@ const ContactCaptureDialog = () => {
   const [cached, setCached] = useState(loadCached);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
+  // Tracks whether this click was already logged (form submit or skip),
+  // so closing the dialog without acting still records the click once.
+  const loggedRef = useRef(false);
 
   useEffect(() => {
     const handler = (ev: Event) => {
@@ -58,6 +61,7 @@ const ContactCaptureDialog = () => {
       setDetail(e.detail);
       setErrors({});
       setCached(loadCached());
+      loggedRef.current = false;
       setOpen(true);
     };
     window.addEventListener("wa-capture", handler as EventListener);
