@@ -553,9 +553,8 @@ const AdminDashboard = () => {
     return Array.from(map.values()).sort((a, b) => b.clicks - a.clicks);
   }, [waClicks]);
 
-  // Daily breakdown: last 14 days x each WhatsApp number
+  // Daily breakdown: last 14 days x each WhatsApp number, plus calls & messages
   const waDailyBreakdown = useMemo(() => {
-    const numbers = waNumberSummary.map((n) => n.number);
     const days: { key: string; label: string }[] = [];
     const cursor = rangeStart("today");
     for (let d = 13; d >= 0; d--) {
@@ -567,25 +566,39 @@ const AdminDashboard = () => {
       });
     }
     return days.map((d) => {
-      const row: { key: string; label: string; counts: Record<string, number>; total: number } = {
-        key: d.key,
-        label: d.label,
-        counts: {},
-        total: 0,
-      };
-      waClicks.forEach((i) => {
+      const row: {
+        key: string;
+        label: string;
+        counts: Record<string, number>;
+        calls: number;
+        messages: number;
+        total: number;
+      } = { key: d.key, label: d.label, counts: {}, calls: 0, messages: 0, total: 0 };
+      ctaEvents.forEach((i) => {
         if (i.created_at.slice(0, 10) !== d.key) return;
-        const num = i.whatsapp_number || "unknown";
-        row.counts[num] = (row.counts[num] || 0) + 1;
-        row.total += 1;
+        if (i.inquiry_type === "whatsapp_click") {
+          const num = i.whatsapp_number || "unknown";
+          row.counts[num] = (row.counts[num] || 0) + 1;
+          row.total += 1;
+        } else if (i.inquiry_type === "call_click") {
+          row.calls += 1;
+          row.total += 1;
+        } else if (i.inquiry_type === "form_submission") {
+          row.messages += 1;
+          row.total += 1;
+        }
       });
       return row;
     });
-  }, [waClicks, waNumberSummary]);
+  }, [ctaEvents]);
 
   const waFiltered = useMemo(() => {
-    let rows = waClicks;
-    if (waNumberFilter !== "all") rows = rows.filter((i) => (i.whatsapp_number || "unknown") === waNumberFilter);
+    let rows = ctaEvents;
+    if (waTypeFilter !== "all") rows = rows.filter((i) => i.inquiry_type === waTypeFilter);
+    if (waNumberFilter !== "all")
+      rows = rows.filter(
+        (i) => i.inquiry_type === "whatsapp_click" && (i.whatsapp_number || "unknown") === waNumberFilter,
+      );
     if (waSearch) {
       const q = waSearch.toLowerCase();
       rows = rows.filter((i) =>
@@ -597,7 +610,7 @@ const AdminDashboard = () => {
       );
     }
     return rows;
-  }, [waClicks, waNumberFilter, waSearch]);
+  }, [ctaEvents, waTypeFilter, waNumberFilter, waSearch]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center">Loading…</div>;
   if (!isAdmin) return null;
