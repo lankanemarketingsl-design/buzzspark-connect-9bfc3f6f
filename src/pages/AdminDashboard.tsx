@@ -468,6 +468,49 @@ const AdminDashboard = () => {
     });
   }, [scoped, search]);
 
+  // ----- WhatsApp CTA tracking (per-number proof of clicks) -----
+  const waClicks = useMemo(
+    () => scoped.filter((i) => i.inquiry_type === "whatsapp_click"),
+    [scoped],
+  );
+
+  const waNumberFilterLabel = (n: string) => {
+    const digits = (n || "").replace(/\D/g, "");
+    if (digits.startsWith("94") && digits.length === 11) {
+      return `+${digits.slice(0, 2)} ${digits.slice(2, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`;
+    }
+    return n || "Unknown";
+  };
+
+  const waNumberSummary = useMemo(() => {
+    const map = new Map<string, { number: string; clicks: number; withContact: number; last: string | null }>();
+    waClicks.forEach((i) => {
+      const num = i.whatsapp_number || "unknown";
+      const cur = map.get(num) || { number: num, clicks: 0, withContact: 0, last: null };
+      cur.clicks += 1;
+      if (i.name || i.phone) cur.withContact += 1;
+      if (!cur.last || i.created_at > cur.last) cur.last = i.created_at;
+      map.set(num, cur);
+    });
+    return Array.from(map.values()).sort((a, b) => b.clicks - a.clicks);
+  }, [waClicks]);
+
+  const waFiltered = useMemo(() => {
+    let rows = waClicks;
+    if (waNumberFilter !== "all") rows = rows.filter((i) => (i.whatsapp_number || "unknown") === waNumberFilter);
+    if (waSearch) {
+      const q = waSearch.toLowerCase();
+      rows = rows.filter((i) =>
+        [i.name, i.phone, i.service, i.source_page, i.placement, i.message]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase()
+          .includes(q),
+      );
+    }
+    return rows;
+  }, [waClicks, waNumberFilter, waSearch]);
+
   if (loading) return <div className="min-h-screen flex items-center justify-center">Loading…</div>;
   if (!isAdmin) return null;
 
