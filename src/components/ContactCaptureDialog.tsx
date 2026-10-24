@@ -1,4 +1,4 @@
-import { useEffect, useState, FormEvent } from "react";
+import { useEffect, useRef, useState, FormEvent } from "react";
 import { z } from "zod";
 import {
   Dialog,
@@ -51,6 +51,9 @@ const ContactCaptureDialog = () => {
   const [cached, setCached] = useState(loadCached);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
+  // Tracks whether this click was already logged (form submit or skip),
+  // so closing the dialog without acting still records the click once.
+  const loggedRef = useRef(false);
 
   useEffect(() => {
     const handler = (ev: Event) => {
@@ -58,6 +61,7 @@ const ContactCaptureDialog = () => {
       setDetail(e.detail);
       setErrors({});
       setCached(loadCached());
+      loggedRef.current = false;
       setOpen(true);
     };
     window.addEventListener("wa-capture", handler as EventListener);
@@ -82,6 +86,26 @@ const ContactCaptureDialog = () => {
     window.open(href, "_blank", "noopener,noreferrer");
   };
 
+  // Log the WhatsApp click even when the visitor skips the contact form,
+  // so the admin can prove every CTA click (page → number) happened.
+  const logClickWithoutContact = () => {
+    if (!detail || loggedRef.current) return;
+    loggedRef.current = true;
+    void logInquiry({
+      inquiry_type: "whatsapp_click",
+      service: detail.service,
+      source_page: detail.ctx.pathname,
+      source_url: typeof window !== "undefined" ? window.location.href : "",
+      placement: detail.placement,
+      whatsapp_number: detail.number,
+      utm_source: detail.ctx.utm_source,
+      utm_medium: detail.ctx.utm_medium,
+      utm_campaign: detail.ctx.utm_campaign,
+      utm_content: detail.ctx.utm_content,
+      utm_term: detail.ctx.utm_term,
+    });
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!detail) return;
@@ -102,6 +126,7 @@ const ContactCaptureDialog = () => {
       return;
     }
     setSubmitting(true);
+    loggedRef.current = true; // form submit logs the click with contact details
     const data = result.data;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -130,12 +155,18 @@ const ContactCaptureDialog = () => {
   };
 
   const handleSkip = () => {
+    logClickWithoutContact();
     openWhatsApp();
     setOpen(false);
   };
 
+  const handleOpenChange = (next: boolean) => {
+    if (!next) logClickWithoutContact(); // closed without submitting still counts as a click
+    setOpen(next);
+  };
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Before we connect on WhatsApp</DialogTitle>
