@@ -634,157 +634,11 @@ const AdminDashboard = () => {
             <Button variant="ghost" onClick={handleSignOut}>Sign out</Button>
           </div>
         </div>
-
-        {/* Date filter pills */}
-        <div className="inline-flex rounded-xl border border-border bg-card p-1 mb-6 shadow-sm">
-          {RANGES.map((r) => (
-            <button
-              key={r.key}
-              onClick={() => setRange(r.key)}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition ${
-                range === r.key
-                  ? "bg-primary text-primary-foreground shadow"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {r.label}
-            </button>
-          ))}
-        </div>
-
-        {/* KPI cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <KpiCard
-            icon={<Flame className="w-4 h-4 text-orange-500" />}
-            label="Highest Demand Service"
-            service={topDemand?.service || "No data yet"}
-            value={topDemand ? topDemand.demand.toFixed(1) : "0"}
-            unit="demand score"
-            delta={trendDelta(topDemand?.demand ?? 0, findPrev(topDemand?.service)?.demand ?? 0)}
-            accent="bg-gradient-to-r from-orange-400 to-rose-500"
-          />
-          <KpiCard
-            icon={<Target className="w-4 h-4 text-blue-500" />}
-            label="Highest Converting Service"
-            service={topConv?.service || "No data yet"}
-            value={topConv ? topConv.conversion.toFixed(1) : "0"}
-            unit="%"
-            delta={trendDelta(topConv?.conversion ?? 0, findPrev(topConv?.service)?.conversion ?? 0)}
-            accent="bg-gradient-to-r from-blue-400 to-indigo-500"
-          />
-          <KpiCard
-            icon={<DollarSign className="w-4 h-4 text-emerald-500" />}
-            label="Highest Revenue Opportunity"
-            service={topRevenue?.service || "No data yet"}
-            value={topRevenue ? topRevenue.leadScore.toString() : "0"}
-            unit="lead score"
-            delta={trendDelta(topRevenue?.leadScore ?? 0, findPrev(topRevenue?.service)?.leadScore ?? 0)}
-            accent="bg-gradient-to-r from-emerald-400 to-teal-500"
-          />
-        </div>
-
-        {/* Service demand analytics */}
-        <section className="mb-8">
-          <SectionHeader title="Service Demand Analytics" subtitle="Ranked by demand score" />
-          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
-                <tr>
-                  <th className="p-3">Service</th>
-                  <th className="p-3 text-right">Page Views</th>
-                  <th className="p-3 text-right">CTA Clicks</th>
-                  <th className="p-3 text-right">Inquiries</th>
-                  <th className="p-3 text-right">Conv. Rate</th>
-                  <th className="p-3 text-right">Demand Score</th>
-                </tr>
-              </thead>
-              <tbody>
-                {serviceMetrics.length === 0 ? (
-                  <tr>
-                    <td colSpan={6} className="p-8 text-center text-muted-foreground">
-                      No service activity in this period yet.
-                    </td>
-                  </tr>
-                ) : (
-                  [...serviceMetrics]
-                    .sort((a, b) => b.demand - a.demand)
-                    .map((m) => (
-                      <tr key={m.service} className="border-t border-border">
-                        <td className="p-3 font-medium">
-                          {m.path ? (
-                            <a
-                              href={m.path}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-primary hover:underline"
-                              title={`Open ${m.path}`}
-                            >
-                              {m.service}
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                          ) : (
-                            m.service
-                          )}
-                          {m.path && (
-                            <div className="text-xs text-muted-foreground font-normal truncate max-w-[260px]">
-                              {m.path}
-                            </div>
-                          )}
-                        </td>
-
-                        <td className="p-3 text-right tabular-nums">{m.views}</td>
-                        <td className="p-3 text-right tabular-nums">{m.ctas}</td>
-                        <td className="p-3 text-right tabular-nums">{m.inquiries}</td>
-                        <td className="p-3 text-right tabular-nums">{m.conversion.toFixed(1)}%</td>
-                        <td className="p-3 text-right font-bold tabular-nums">{m.demand.toFixed(1)}</td>
-                      </tr>
-
-                    ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* CTA performance */}
-        <section className="mb-8">
-          <SectionHeader title="CTA Performance" subtitle="Click counts per call-to-action across periods" />
-          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
-                <tr>
-                  <th className="p-3">CTA Type</th>
-                  <th className="p-3 text-right">Today</th>
-                  <th className="p-3 text-right">7 Days</th>
-                  <th className="p-3 text-right">30 Days</th>
-                  <th className="p-3 text-right">All Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ctaMatrix.map((row) => (
-                  <tr key={row.key} className="border-t border-border">
-                    <td className="p-3">
-                      <span className="inline-flex items-center gap-2 font-medium">
-                        <span className="rounded-md bg-muted p-1.5">{row.icon}</span>
-                        {row.label}
-                      </span>
-                    </td>
-                    <td className="p-3 text-right tabular-nums">{row.today}</td>
-                    <td className="p-3 text-right tabular-nums">{row["7d"]}</td>
-                    <td className="p-3 text-right tabular-nums">{row["30d"]}</td>
-                    <td className="p-3 text-right font-semibold tabular-nums">{row.all}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
         {/* CTA & inquiry tracking — proof of every click, call and message */}
         <section className="mb-8">
           <SectionHeader
             title="CTA & Inquiry Tracking"
-            subtitle="Every WhatsApp click, call click and message — which page, which button, which number it went to. Counts below are all-time and daily, not affected by the date filter above."
+            subtitle="Every WhatsApp click, call click and message — which page, which button, which number it went to. Counts below are all-time and daily, not affected by the date filter below."
           />
 
           {/* Per-type totals: Today / 7 Days / All Time */}
@@ -1016,6 +870,153 @@ const AdminDashboard = () => {
             </table>
           </div>
         </section>
+
+
+        {/* Date filter pills */}
+        <div className="inline-flex rounded-xl border border-border bg-card p-1 mb-6 shadow-sm">
+          {RANGES.map((r) => (
+            <button
+              key={r.key}
+              onClick={() => setRange(r.key)}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition ${
+                range === r.key
+                  ? "bg-primary text-primary-foreground shadow"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {r.label}
+            </button>
+          ))}
+        </div>
+
+        {/* KPI cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <KpiCard
+            icon={<Flame className="w-4 h-4 text-orange-500" />}
+            label="Highest Demand Service"
+            service={topDemand?.service || "No data yet"}
+            value={topDemand ? topDemand.demand.toFixed(1) : "0"}
+            unit="demand score"
+            delta={trendDelta(topDemand?.demand ?? 0, findPrev(topDemand?.service)?.demand ?? 0)}
+            accent="bg-gradient-to-r from-orange-400 to-rose-500"
+          />
+          <KpiCard
+            icon={<Target className="w-4 h-4 text-blue-500" />}
+            label="Highest Converting Service"
+            service={topConv?.service || "No data yet"}
+            value={topConv ? topConv.conversion.toFixed(1) : "0"}
+            unit="%"
+            delta={trendDelta(topConv?.conversion ?? 0, findPrev(topConv?.service)?.conversion ?? 0)}
+            accent="bg-gradient-to-r from-blue-400 to-indigo-500"
+          />
+          <KpiCard
+            icon={<DollarSign className="w-4 h-4 text-emerald-500" />}
+            label="Highest Revenue Opportunity"
+            service={topRevenue?.service || "No data yet"}
+            value={topRevenue ? topRevenue.leadScore.toString() : "0"}
+            unit="lead score"
+            delta={trendDelta(topRevenue?.leadScore ?? 0, findPrev(topRevenue?.service)?.leadScore ?? 0)}
+            accent="bg-gradient-to-r from-emerald-400 to-teal-500"
+          />
+        </div>
+
+        {/* Service demand analytics */}
+        <section className="mb-8">
+          <SectionHeader title="Service Demand Analytics" subtitle="Ranked by demand score" />
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">Service</th>
+                  <th className="p-3 text-right">Page Views</th>
+                  <th className="p-3 text-right">CTA Clicks</th>
+                  <th className="p-3 text-right">Inquiries</th>
+                  <th className="p-3 text-right">Conv. Rate</th>
+                  <th className="p-3 text-right">Demand Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {serviceMetrics.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="p-8 text-center text-muted-foreground">
+                      No service activity in this period yet.
+                    </td>
+                  </tr>
+                ) : (
+                  [...serviceMetrics]
+                    .sort((a, b) => b.demand - a.demand)
+                    .map((m) => (
+                      <tr key={m.service} className="border-t border-border">
+                        <td className="p-3 font-medium">
+                          {m.path ? (
+                            <a
+                              href={m.path}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-primary hover:underline"
+                              title={`Open ${m.path}`}
+                            >
+                              {m.service}
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          ) : (
+                            m.service
+                          )}
+                          {m.path && (
+                            <div className="text-xs text-muted-foreground font-normal truncate max-w-[260px]">
+                              {m.path}
+                            </div>
+                          )}
+                        </td>
+
+                        <td className="p-3 text-right tabular-nums">{m.views}</td>
+                        <td className="p-3 text-right tabular-nums">{m.ctas}</td>
+                        <td className="p-3 text-right tabular-nums">{m.inquiries}</td>
+                        <td className="p-3 text-right tabular-nums">{m.conversion.toFixed(1)}%</td>
+                        <td className="p-3 text-right font-bold tabular-nums">{m.demand.toFixed(1)}</td>
+                      </tr>
+
+                    ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* CTA performance */}
+        <section className="mb-8">
+          <SectionHeader title="CTA Performance" subtitle="Click counts per call-to-action across periods" />
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">CTA Type</th>
+                  <th className="p-3 text-right">Today</th>
+                  <th className="p-3 text-right">7 Days</th>
+                  <th className="p-3 text-right">30 Days</th>
+                  <th className="p-3 text-right">All Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ctaMatrix.map((row) => (
+                  <tr key={row.key} className="border-t border-border">
+                    <td className="p-3">
+                      <span className="inline-flex items-center gap-2 font-medium">
+                        <span className="rounded-md bg-muted p-1.5">{row.icon}</span>
+                        {row.label}
+                      </span>
+                    </td>
+                    <td className="p-3 text-right tabular-nums">{row.today}</td>
+                    <td className="p-3 text-right tabular-nums">{row["7d"]}</td>
+                    <td className="p-3 text-right tabular-nums">{row["30d"]}</td>
+                    <td className="p-3 text-right font-semibold tabular-nums">{row.all}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
 
         {/* Traffic source */}
         <section className="mb-8">
