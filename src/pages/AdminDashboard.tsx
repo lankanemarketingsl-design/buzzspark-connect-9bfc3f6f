@@ -852,37 +852,39 @@ const AdminDashboard = () => {
             )}
           </div>
 
-          {/* Daily breakdown per number — last 14 days */}
-          {waNumberSummary.length > 0 && (
-            <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm mb-4">
-              <table className="w-full text-sm">
-                <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
-                  <tr>
-                    <th className="p-3">Date</th>
-                    {waNumberSummary.map((n) => (
-                      <th key={n.number} className="p-3 text-right">
-                        {waNumberFilterLabel(n.number)}
-                      </th>
-                    ))}
-                    <th className="p-3 text-right">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {waDailyBreakdown.map((d) => (
-                    <tr key={d.key} className="border-t border-border">
-                      <td className="p-3 font-medium whitespace-nowrap">{d.label}</td>
-                      {waNumberSummary.map((n) => (
-                        <td key={n.number} className="p-3 text-right tabular-nums">
-                          {d.counts[n.number] || 0}
-                        </td>
-                      ))}
-                      <td className="p-3 text-right font-semibold tabular-nums">{d.total}</td>
-                    </tr>
+          {/* Daily breakdown per number — last 14 days, plus calls & messages */}
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm mb-4">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">Date</th>
+                  {waNumberSummary.map((n) => (
+                    <th key={n.number} className="p-3 text-right">
+                      {waNumberFilterLabel(n.number)}
+                    </th>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+                  <th className="p-3 text-right">Calls</th>
+                  <th className="p-3 text-right">Messages</th>
+                  <th className="p-3 text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {waDailyBreakdown.map((d) => (
+                  <tr key={d.key} className="border-t border-border">
+                    <td className="p-3 font-medium whitespace-nowrap">{d.label}</td>
+                    {waNumberSummary.map((n) => (
+                      <td key={n.number} className="p-3 text-right tabular-nums">
+                        {d.counts[n.number] || 0}
+                      </td>
+                    ))}
+                    <td className="p-3 text-right tabular-nums">{d.calls}</td>
+                    <td className="p-3 text-right tabular-nums">{d.messages}</td>
+                    <td className="p-3 text-right font-semibold tabular-nums">{d.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3 mb-3">
