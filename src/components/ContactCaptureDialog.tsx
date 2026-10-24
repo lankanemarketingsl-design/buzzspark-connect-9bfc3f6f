@@ -86,6 +86,26 @@ const ContactCaptureDialog = () => {
     window.open(href, "_blank", "noopener,noreferrer");
   };
 
+  // Log the WhatsApp click even when the visitor skips the contact form,
+  // so the admin can prove every CTA click (page → number) happened.
+  const logClickWithoutContact = () => {
+    if (!detail || loggedRef.current) return;
+    loggedRef.current = true;
+    void logInquiry({
+      inquiry_type: "whatsapp_click",
+      service: detail.service,
+      source_page: detail.ctx.pathname,
+      source_url: typeof window !== "undefined" ? window.location.href : "",
+      placement: detail.placement,
+      whatsapp_number: detail.number,
+      utm_source: detail.ctx.utm_source,
+      utm_medium: detail.ctx.utm_medium,
+      utm_campaign: detail.ctx.utm_campaign,
+      utm_content: detail.ctx.utm_content,
+      utm_term: detail.ctx.utm_term,
+    });
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!detail) return;
