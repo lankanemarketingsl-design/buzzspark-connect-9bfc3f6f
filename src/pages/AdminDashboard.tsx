@@ -680,6 +680,157 @@ const AdminDashboard = () => {
           </div>
         </section>
 
+        {/* WhatsApp CTA tracking — proof of every click per number */}
+        <section className="mb-8">
+          <SectionHeader
+            title="WhatsApp CTA Tracking"
+            subtitle="Every WhatsApp button click — which page, which button, which number it went to"
+          />
+
+          {/* Per-number summary cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            {waNumberSummary.length === 0 ? (
+              <div className="col-span-full rounded-xl border border-border bg-card p-6 text-center text-sm text-muted-foreground shadow-sm">
+                No WhatsApp clicks in this period yet.
+              </div>
+            ) : (
+              waNumberSummary.map((n) => (
+                <button
+                  key={n.number}
+                  onClick={() => setWaNumberFilter(waNumberFilter === n.number ? "all" : n.number)}
+                  className={`text-left rounded-2xl border bg-card p-4 shadow-sm transition hover:shadow-md ${
+                    waNumberFilter === n.number ? "border-emerald-500 ring-1 ring-emerald-500" : "border-border"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-muted-foreground mb-2">
+                    <span className="rounded-lg bg-emerald-500/10 p-1.5">
+                      <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                    </span>
+                    WhatsApp Number
+                  </div>
+                  <div className="text-lg font-bold text-foreground">{waNumberFilterLabel(n.number)}</div>
+                  <div className="text-sm text-muted-foreground mt-1">
+                    <span className="font-semibold text-foreground tabular-nums">{n.clicks}</span> clicks ·{" "}
+                    <span className="tabular-nums">{n.withContact}</span> left contact details
+                  </div>
+                  {n.last && (
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Last click: {new Date(n.last).toLocaleString()}
+                    </div>
+                  )}
+                </button>
+              ))
+            )}
+          </div>
+
+          {/* Filters */}
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <select
+              value={waNumberFilter}
+              onChange={(e) => setWaNumberFilter(e.target.value)}
+              className="h-10 rounded-md border border-border bg-card px-3 text-sm"
+            >
+              <option value="all">All numbers</option>
+              {waNumberSummary.map((n) => (
+                <option key={n.number} value={n.number}>
+                  {waNumberFilterLabel(n.number)} ({n.clicks})
+                </option>
+              ))}
+            </select>
+            <Input
+              placeholder="Search name, phone, page, message…"
+              value={waSearch}
+              onChange={(e) => setWaSearch(e.target.value)}
+              className="max-w-sm"
+            />
+            <span className="text-xs text-muted-foreground ml-auto">
+              {waFiltered.length} click{waFiltered.length === 1 ? "" : "s"} shown
+            </span>
+          </div>
+
+          {/* Detailed click log */}
+          <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-left text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="p-3">Date & Time</th>
+                  <th className="p-3">From Page</th>
+                  <th className="p-3">Button</th>
+                  <th className="p-3">To Number</th>
+                  <th className="p-3">Visitor</th>
+                  <th className="p-3">Message Sent</th>
+                  <th className="p-3">Campaign</th>
+                </tr>
+              </thead>
+              <tbody>
+                {waFiltered.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className="p-8 text-center text-muted-foreground">
+                      No WhatsApp clicks match this filter.
+                    </td>
+                  </tr>
+                ) : (
+                  waFiltered.map((i) => (
+                    <tr key={i.id} className="border-t border-border align-top">
+                      <td className="p-3 whitespace-nowrap text-xs">
+                        {new Date(i.created_at).toLocaleString()}
+                      </td>
+                      <td className="p-3">
+                        {cleanPath(i.source_page) ? (
+                          <a
+                            href={cleanPath(i.source_page)!}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary hover:underline font-medium"
+                          >
+                            {prettyPath(i.source_page)}
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <span className="font-medium">{prettyPath(i.source_page)}</span>
+                        )}
+                        {i.service && (
+                          <div className="text-xs text-muted-foreground">{i.service}</div>
+                        )}
+                      </td>
+                      <td className="p-3">
+                        <Badge variant="outline">{(i.placement || "cta").replace(/_/g, " ")}</Badge>
+                      </td>
+                      <td className="p-3 whitespace-nowrap">
+                        <span className="inline-flex items-center gap-1.5 font-medium text-emerald-700">
+                          <MessageCircle className="w-3.5 h-3.5" />
+                          {waNumberFilterLabel(i.whatsapp_number || "")}
+                        </span>
+                      </td>
+                      <td className="p-3">
+                        {i.name || i.phone ? (
+                          <>
+                            <div className="font-medium">{i.name || "—"}</div>
+                            {i.phone && <div className="text-xs text-muted-foreground">{i.phone}</div>}
+                          </>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">Skipped contact form</span>
+                        )}
+                      </td>
+                      <td className="p-3 max-w-[280px]">
+                        {i.message ? (
+                          <div className="text-xs whitespace-pre-wrap break-words">{i.message}</div>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">Standard pre-filled message</span>
+                        )}
+                      </td>
+                      <td className="p-3 text-xs text-muted-foreground">
+                        {i.utm_campaign || "—"}
+                        {i.utm_source && <div>{i.utm_source}{i.utm_medium ? ` / ${i.utm_medium}` : ""}</div>}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         {/* Traffic source */}
         <section className="mb-8">
           <SectionHeader title="Traffic Source Analytics" subtitle="Visitors, CTA clicks & conversion by origin" />
