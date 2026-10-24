@@ -485,13 +485,43 @@ const AdminDashboard = () => {
     });
   }, [scoped, search]);
 
-  // ----- WhatsApp CTA tracking (per-number proof of clicks) -----
+  // ----- CTA & inquiry tracking (per-number proof of every click) -----
   // Uses ALL inquiries (not the date-range filter) so all-time + daily counts
   // per number are always visible regardless of the selected period.
   const waClicks = useMemo(
     () => inquiries.filter((i) => i.inquiry_type === "whatsapp_click"),
     [inquiries],
   );
+
+  // Every real event (no page-view noise) for the combined log.
+  const ctaEvents = useMemo(
+    () => inquiries.filter((i) => i.inquiry_type !== "page_view"),
+    [inquiries],
+  );
+
+  const CTA_TYPE_META: { key: string; label: string }[] = [
+    { key: "whatsapp_click", label: "WhatsApp" },
+    { key: "call_click", label: "Call" },
+    { key: "form_submission", label: "Message" },
+    { key: "email_click", label: "Email" },
+    { key: "quote_open", label: "Proposal" },
+    { key: "book_consultation", label: "Consultation" },
+  ];
+
+  // Per-type Today / 7 Days / All Time counts.
+  const ctaTypeSummary = useMemo(() => {
+    const todayStart = rangeStart("today");
+    const weekStart = rangeStart("7d");
+    return CTA_TYPE_META.map((t) => {
+      const rows = ctaEvents.filter((i) => i.inquiry_type === t.key);
+      return {
+        ...t,
+        all: rows.length,
+        today: rows.filter((i) => new Date(i.created_at) >= todayStart).length,
+        week: rows.filter((i) => new Date(i.created_at) >= weekStart).length,
+      };
+    });
+  }, [ctaEvents]);
 
   const waNumberFilterLabel = (n: string) => {
     const digits = (n || "").replace(/\D/g, "");
