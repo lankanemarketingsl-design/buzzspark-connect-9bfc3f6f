@@ -780,12 +780,32 @@ const AdminDashboard = () => {
           </div>
         </section>
 
-        {/* WhatsApp CTA tracking — proof of every click per number */}
+        {/* CTA & inquiry tracking — proof of every click, call and message */}
         <section className="mb-8">
           <SectionHeader
-            title="WhatsApp CTA Tracking"
-            subtitle="Every WhatsApp button click — which page, which button, which number it went to. Counts below are all-time and daily, not affected by the date filter above."
+            title="CTA & Inquiry Tracking"
+            subtitle="Every WhatsApp click, call click and message — which page, which button, which number it went to. Counts below are all-time and daily, not affected by the date filter above."
           />
+
+          {/* Per-type totals: Today / 7 Days / All Time */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">
+            {ctaTypeSummary.map((t) => (
+              <button
+                key={t.key}
+                onClick={() => setWaTypeFilter(waTypeFilter === t.key ? "all" : t.key)}
+                className={`text-left rounded-xl border bg-card p-3 shadow-sm transition hover:shadow-md ${
+                  waTypeFilter === t.key ? "border-primary ring-1 ring-primary" : "border-border"
+                }`}
+              >
+                <div className="text-xs uppercase tracking-wide text-muted-foreground mb-1.5">{t.label}</div>
+                <div className="flex items-baseline justify-between gap-1 text-sm">
+                  <span className="tabular-nums font-semibold">{t.today} today</span>
+                  <span className="tabular-nums text-muted-foreground">{t.week} / 7d</span>
+                </div>
+                <div className="text-lg font-bold tabular-nums mt-0.5">{t.all} all time</div>
+              </button>
+            ))}
+          </div>
 
           {/* Per-number summary cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
