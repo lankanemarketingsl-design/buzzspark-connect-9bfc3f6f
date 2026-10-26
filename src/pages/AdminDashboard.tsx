@@ -487,16 +487,28 @@ const AdminDashboard = () => {
   }, [scoped, search]);
 
   // ----- CTA & inquiry tracking (per-number proof of every click) -----
-  // Uses ALL inquiries (not the date-range filter) so all-time + daily counts
-  // per number are always visible regardless of the selected period.
+  // Career-page events (job applications) are excluded — this section tracks
+  // sales leads only. Uses ALL inquiries (not the date-range filter) so
+  // all-time + daily counts per number are always visible regardless of the
+  // selected period.
+  const isCareerEvent = (i: Inquiry) =>
+    (i.source_page || "").startsWith("/careers") ||
+    (i.service || "").toLowerCase().startsWith("career");
+
   const waClicks = useMemo(
-    () => inquiries.filter((i) => i.inquiry_type === "whatsapp_click"),
+    () =>
+      inquiries.filter(
+        (i) => i.inquiry_type === "whatsapp_click" && !isCareerEvent(i),
+      ),
     [inquiries],
   );
 
   // Every real event (no page-view noise) for the combined log.
   const ctaEvents = useMemo(
-    () => inquiries.filter((i) => i.inquiry_type !== "page_view"),
+    () =>
+      inquiries.filter(
+        (i) => i.inquiry_type !== "page_view" && !isCareerEvent(i),
+      ),
     [inquiries],
   );
 
