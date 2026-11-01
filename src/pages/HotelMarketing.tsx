@@ -868,7 +868,17 @@ const HotelMarketing = () => {
         </div>
       </motion.div>
 
+      {/* Related reference */}
+      <div className="mb-12 max-w-3xl mx-auto">
+        <p className="text-muted-foreground text-sm">
+          Many hotels also work with a{" "}
+          <a href="https://vacationceylon.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground no-underline hover:no-underline">Sri Lanka tour agency</a>{" "}
+          when planning experiences and excursions for their guests, since arrival transfers, day trips and local sightseeing are usually arranged alongside room bookings rather than by the hotel itself.
+        </p>
+      </div>
+
       {/* 📊 Real Campaign Results */}
+
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 max-w-4xl mx-auto">
         <div className="text-center mb-6">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Proven Results</span>
