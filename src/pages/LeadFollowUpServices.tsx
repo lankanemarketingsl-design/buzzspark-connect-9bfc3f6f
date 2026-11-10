@@ -33,7 +33,7 @@ const PAGE_PATH = "/lead-follow-up-services-sri-lanka";
 const WHATSAPP_NUMBER = "94771437707";
 const DISPLAY_NUMBER = "+94 77 143 7707";
 const SERVICE_NAME = "Lead Follow-Up Services";
-const SITE_URL = "https://buzzspark-connect.lovable.app";
+const SITE_URL = "https://buzzconnect.lk";
 
 const whatsappUrl = (message: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

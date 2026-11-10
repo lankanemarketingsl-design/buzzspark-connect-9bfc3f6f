@@ -148,9 +148,9 @@ export default function BB360Hotels() {
       "@type": "Service",
       name: "Email, SMS & WhatsApp Marketing for Hotels Sri Lanka",
       serviceType: "Hotel promotion campaign",
-      provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzspark-connect.lovable.app" },
+      provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       areaServed: { "@type": "Country", name: "Sri Lanka" },
-      url: "https://buzzspark-connect.lovable.app/brand-blast-360/hotels",
+      url: "https://buzzconnect.lk/brand-blast-360/hotels",
       description: META_DESCRIPTION,
       offers: bb360Packages.map((pkg) => ({ "@type": "Offer", name: pkg.name, price: pkg.price.replace(/[^\d]/g, ""), priceCurrency: "LKR" })),
     },
@@ -189,7 +189,7 @@ export default function BB360Hotels() {
       <SEOHead
         title={META_TITLE}
         description={META_DESCRIPTION}
-        canonical="https://buzzspark-connect.lovable.app/brand-blast-360/hotels"
+        canonical="https://buzzconnect.lk/brand-blast-360/hotels"
         keywords="email marketing for hotels sri lanka, sms marketing for hotels, whatsapp marketing for hotels, hotel promotion campaign sri lanka, increase hotel bookings, hotel direct bookings, reduce OTA commission"
         breadcrumbs={[{ name: "Home", url: "/" }, { name: "Brand Blast 360", url: "/brand-blast-360" }, { name: "Hotels", url: "/brand-blast-360/hotels" }]}
         jsonLd={jsonLd}

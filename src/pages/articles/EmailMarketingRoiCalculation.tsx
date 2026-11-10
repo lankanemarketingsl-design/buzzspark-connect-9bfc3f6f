@@ -15,7 +15,7 @@ const EmailMarketingRoiCalculation = () => {
       publisher: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       datePublished: "2026-04-23",
       dateModified: "2026-04-23",
-      mainEntityOfPage: "https://buzzspark-connect.lovable.app/email-marketing-roi-calculation-sri-lanka",
+      mainEntityOfPage: "https://buzzconnect.lk/email-marketing-roi-calculation-sri-lanka",
     },
     {
       "@context": "https://schema.org",

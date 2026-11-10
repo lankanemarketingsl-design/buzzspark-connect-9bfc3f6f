@@ -1,4 +1,6 @@
 import { describe,it,expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { tuitionServiceSchema } from "./tuitionPackages";
 import { industries } from "./bb360UseCases";
 import { BB360_SITE_URL,bb360ConversionPages,bb360IndustryDirectory,industryRouteById } from "./bb360IndustryRegistry";
 describe("Brand Blast industry URLs",()=>{
@@ -14,5 +16,17 @@ describe("Brand Blast industry URLs",()=>{
     expect(new Set(bb360ConversionPages.map(p=>p.title)).size).toBe(bb360ConversionPages.length);
     expect(new Set(bb360ConversionPages.map(p=>p.description)).size).toBe(bb360ConversionPages.length);
   });
-  it("uses the published site for canonicals",()=>expect(BB360_SITE_URL).toBe("https://buzzspark-connect.lovable.app"));
+  it("uses the published site for canonicals",()=>expect(BB360_SITE_URL).toBe("https://buzzconnect.lk"));
+  it("lists only the requested canonical domain in the sitemap",()=>{
+    const sitemap = readFileSync("public/sitemap.xml", "utf8");
+    const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
+    expect(urls).toHaveLength(180);
+    expect(urls.every(url => new URL(url).origin === "https://buzzconnect.lk")).toBe(true);
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+  it("uses the requested domain in tuition service and offer URLs",()=>{
+    expect(tuitionServiceSchema.url).toBe("https://buzzconnect.lk/tuition-class-marketing-sri-lanka");
+    expect(tuitionServiceSchema.provider.url).toBe("https://buzzconnect.lk");
+    expect(tuitionServiceSchema.offers.every(offer => new URL(offer.url).origin === "https://buzzconnect.lk")).toBe(true);
+  });
 });

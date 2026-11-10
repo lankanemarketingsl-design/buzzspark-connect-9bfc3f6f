@@ -15,7 +15,7 @@ const WhatIsDirectMarketing = () => {
       publisher: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       datePublished: "2026-04-23",
       dateModified: "2026-04-23",
-      mainEntityOfPage: "https://buzzspark-connect.lovable.app/what-is-direct-marketing-sri-lanka",
+      mainEntityOfPage: "https://buzzconnect.lk/what-is-direct-marketing-sri-lanka",
     },
   ];
 

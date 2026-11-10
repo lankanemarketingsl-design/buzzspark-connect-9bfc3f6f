@@ -15,7 +15,7 @@ const WebsiteDesignGuide = () => {
       publisher: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
       datePublished: "2026-04-23",
       dateModified: "2026-04-23",
-      mainEntityOfPage: "https://buzzspark-connect.lovable.app/website-design-guide-sri-lanka",
+      mainEntityOfPage: "https://buzzconnect.lk/website-design-guide-sri-lanka",
     },
   ];
 

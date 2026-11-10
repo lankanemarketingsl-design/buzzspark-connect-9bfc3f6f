@@ -10,7 +10,7 @@ import classroom from "@/assets/tuition-classroom.webp";
 import buzzLogo from "@/assets/buzz-logo.webp";
 import finditLogo from "@/assets/findit-supplied-logo.webp.asset.json";
 import studywayLogo from "@/assets/studyway-supplied-logo.webp.asset.json";
-import { BB360_SITE_URL } from "@/data/bb360IndustryRegistry";
+const LOGO_ASSET_ORIGIN = "https://buzzspark-connect.lovable.app";
 import { tuitionPackages, tuitionFaqs, tuitionServiceSchema, tuitionFaqSchema, tuitionWhatsAppHref } from "@/data/tuitionPackages";
 
 const mainMessage = "Hi Buzz Connect, I'm a tutor and I want to promote my tuition classes with Brand Blast 360 + StudyWay.lk. Please share next steps.";
@@ -42,7 +42,7 @@ function WaButton({ label, message = mainMessage, id, outline = false }: { label
 export default function TuitionClassMarketing() {
   return (
     <div className="tuition-page pt-14 sm:pt-16 overflow-x-hidden">
-      <SEOHead title="Tuition Class Marketing Sri Lanka | Fill Your Classes with Brand Blast 360 + StudyWay.lk" description="Promote tuition classes in Sri Lanka with a plan for your city, subject and grade, Facebook visibility and StudyWay.lk tutor discovery. Packages from LKR 15,000." canonical="https://buzzspark-connect.lovable.app/tuition-class-marketing-sri-lanka" keywords="tuition class marketing sri lanka, tuition advertising, tutor marketing, A/L class promotion, O/L class promotion, studyway tuition, tutor profile sri lanka" breadcrumbs={[{name:"Home",url:"/"},{name:"Brand Blast 360",url:"/brand-blast-360"},{name:"Tuition Classes",url:"/tuition-class-marketing-sri-lanka"}]} jsonLd={jsonLd}/>
+      <SEOHead title="Tuition Class Marketing Sri Lanka | Fill Your Classes with Brand Blast 360 + StudyWay.lk" description="Promote tuition classes in Sri Lanka with a plan for your city, subject and grade, Facebook visibility and StudyWay.lk tutor discovery. Packages from LKR 15,000." canonical="https://buzzconnect.lk/tuition-class-marketing-sri-lanka" keywords="tuition class marketing sri lanka, tuition advertising, tutor marketing, A/L class promotion, O/L class promotion, studyway tuition, tutor profile sri lanka" breadcrumbs={[{name:"Home",url:"/"},{name:"Brand Blast 360",url:"/brand-blast-360"},{name:"Tuition Classes",url:"/tuition-class-marketing-sri-lanka"}]} jsonLd={jsonLd}/>
       <section className="relative isolate overflow-hidden">
         <img src={classroom} width={1536} height={1024} alt="Tutor teaching an engaged group of Sri Lankan students in a tuition classroom" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover object-right -z-20"/>
         <div className="absolute inset-0 tuition-hero-scrim -z-10"/>
@@ -67,11 +67,11 @@ export default function TuitionClassMarketing() {
             <span className="flex items-center justify-center text-3xl text-accent font-bold" aria-hidden="true">+</span>
             <a href="https://studyway.lk/tuition" target="_blank" rel="noopener noreferrer" aria-label="Visit the StudyWay.lk tuition section" className="tuition-light rounded-lg border-2 border-accent p-5 sm:p-7 shadow-glow flex flex-col items-center justify-center text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring">
               <span className="mb-4 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase text-accent-foreground">Sri Lanka&apos;s No.01 Educational Information Hub</span>
-              <img src={new URL(studywayLogo.url, BB360_SITE_URL).href} width={1287} height={384} loading="lazy" alt="StudyWay.lk — Sri Lanka's No.01 Educational Information Hub" className="w-full max-w-sm h-auto object-contain"/>
+              <img src={new URL(studywayLogo.url, LOGO_ASSET_ORIGIN).href} width={1287} height={384} loading="lazy" alt="StudyWay.lk — Sri Lanka's No.01 Educational Information Hub" className="w-full max-w-sm h-auto object-contain"/>
               <span className="mt-4 inline-flex items-center gap-2 font-semibold text-secondary">Your tutor profile in the Tuition section <ArrowUpRight className="w-4 h-4"/></span>
             </a>
             <span className="flex items-center justify-center text-3xl text-accent font-bold" aria-hidden="true">+</span>
-            <a href="https://findit.lk" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk" className="tuition-light rounded-lg p-5 flex flex-col items-center justify-center text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"><img src={new URL(finditLogo.url, BB360_SITE_URL).href} width={1054} height={397} loading="lazy" alt="Findit.lk — Save money. Save time." className="w-full max-w-56 h-auto object-contain"/><span className="mt-3 text-sm font-semibold">Featured education offer</span></a>
+            <a href="https://findit.lk" target="_blank" rel="noopener noreferrer" aria-label="Visit Findit.lk" className="tuition-light rounded-lg p-5 flex flex-col items-center justify-center text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"><img src={new URL(finditLogo.url, LOGO_ASSET_ORIGIN).href} width={1054} height={397} loading="lazy" alt="Findit.lk — Save money. Save time." className="w-full max-w-56 h-auto object-contain"/><span className="mt-3 text-sm font-semibold">Featured education offer</span></a>
           </div>
           <p className="text-center text-sm font-semibold mt-6"><span className="text-accent">Class promotion</span> + education discovery + an always-on tutor profile</p>
           <p className="text-center text-xs text-primary-foreground/50 mt-2">“Sri Lanka&apos;s No.01 Educational Information Hub” is StudyWay.lk&apos;s brand tagline.</p>

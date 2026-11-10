@@ -1,5 +1,8 @@
 # Roadmap
 
+## Canonical domain consistency
+- [x] Update sitemap, crawler sitemap reference, page canonicals and related page schemas to the requested domain; keep media hosting unchanged and verify.
+
 ## Brand Blast industry search visibility
 - [x] Expand the fifteen industry campaign pages with relevant examples from the Brand Blast 360 picker; preserve tuition-specific content and verify links and layouts.
 - [x] Audit and preserve all separate industry URLs and unique metadata.

@@ -1,5 +1,5 @@
 import existingPages from "./bb360ConversionPages.json";
-export const BB360_SITE_URL = "https://buzzspark-connect.lovable.app";
+export const BB360_SITE_URL = "https://buzzconnect.lk";
 export const industryRouteById: Record<string, string> = {
   hotel:"/brand-blast-360/hotels", real:"/brand-blast-360/real-estate", construction:"/brand-blast-360/construction", bank:"/brand-blast-360/banking", health:"/brand-blast-360/healthcare", edu:"/brand-blast-360/education", retail:"/brand-blast-360/retail", food:"/brand-blast-360/restaurants", auto:"/brand-blast-360/automotive", event:"/brand-blast-360/events", fashion:"/brand-blast-360/fashion", biz:"/brand-blast-360/professional-services", gym:"/brand-blast-360/fitness", tech:"/brand-blast-360/technology", recruit:"/brand-blast-360/recruitment",
 };

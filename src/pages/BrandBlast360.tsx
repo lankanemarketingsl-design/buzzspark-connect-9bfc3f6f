@@ -216,11 +216,11 @@ const BrandBlast360 = () => {
       <SEOHead
         title="Brand Blast 360 — 988,000+ Verified Reach Across 5 Channels | Buzz Connect"
         description="Reach 988,000+ Sri Lankan contacts across email, Facebook, LinkedIn, remarketing & Findit.lk for a fixed LKR 15,000. Live in 24 hours guaranteed. No contract."
-        canonical="https://buzzspark-connect.lovable.app/brand-blast-360"
+        canonical="https://buzzconnect.lk/brand-blast-360"
         keywords="brand blast 360, multi-channel campaign sri lanka, email marketing upsell, brand awareness sri lanka, 988000 reach"
         breadcrumbs={[
-          { name: "Home", url: "https://buzzspark-connect.lovable.app/" },
-          { name: "Brand Blast 360", url: "https://buzzspark-connect.lovable.app/brand-blast-360" },
+          { name: "Home", url: "https://buzzconnect.lk/" },
+          { name: "Brand Blast 360", url: "https://buzzconnect.lk/brand-blast-360" },
         ]}
         jsonLd={jsonLd}
       />

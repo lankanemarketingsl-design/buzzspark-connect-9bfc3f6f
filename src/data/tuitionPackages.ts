@@ -23,11 +23,11 @@ export const tuitionFaqs = [
 export const tuitionServiceSchema = {
   "@context": "https://schema.org", "@type": "Service",
   name: "Tuition Class Marketing Sri Lanka", serviceType: "Tuition advertising and tutor profile promotion",
-  provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzspark-connect.lovable.app" },
+  provider: { "@type": "Organization", name: "Buzz Connect", url: "https://buzzconnect.lk" },
   areaServed: { "@type": "Country", name: "Sri Lanka" },
-  url: `https://buzzspark-connect.lovable.app${TUITION_PATH}`,
+  url: `https://buzzconnect.lk${TUITION_PATH}`,
   description: "Class-focused Brand Blast 360 tuition promotion planned around location, subject and grade, with Facebook remarketing and StudyWay.lk tutor profile setup for A/L, O/L, scholarship, online and institute classes.",
-  offers: tuitionPackages.map(p => ({ "@type": "Offer", name: p.name, price: p.price, priceCurrency: "LKR", url: `https://buzzspark-connect.lovable.app${TUITION_PATH}#packages` })),
+  offers: tuitionPackages.map(p => ({ "@type": "Offer", name: p.name, price: p.price, priceCurrency: "LKR", url: `https://buzzconnect.lk${TUITION_PATH}#packages` })),
 };
 export const tuitionFaqSchema = {
   "@context": "https://schema.org", "@type": "FAQPage",
