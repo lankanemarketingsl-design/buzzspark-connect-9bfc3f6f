@@ -15,6 +15,7 @@ import {
 import { ArrowRight, CheckCircle2, MessageCircle, Sparkles, XCircle, Phone } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import NotFound from "@/pages/NotFound";
+import SocialPackagesSection from "@/components/social/SocialPackagesSection";
 import {
   socialClusterBySlug,
   SOCIAL_HUB,
@@ -266,6 +267,9 @@ const ClusterBody = ({ page }: { page: ClusterPageData }) => {
             </Link>
           </div>
         </section>
+
+        {/* Campaign packages + monthly management (shared with the packages page) */}
+        {page.slug === "social-media-campaigns-sri-lanka" && <SocialPackagesSection />}
 
         {/* What we measure */}
         {page.metrics && page.metrics.length > 0 && (

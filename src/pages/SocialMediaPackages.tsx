@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import SocialPackagesSection from "@/components/social/SocialPackagesSection";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
@@ -22,126 +23,6 @@ const benefits = [
   { icon: Layers, title: "Multi-platform presence", desc: "Be visible where your customers actually are — Facebook, Instagram, TikTok and LinkedIn — without managing each one yourself." },
   { icon: BarChart3, title: "Measurable results", desc: "Every package includes reporting, so you can see exactly what your money produced: reach, engagement, clicks and leads." },
   { icon: Repeat, title: "Room to scale", desc: "Start small and move up a tier whenever you're ready. No long lock-in contracts, no wasted spend." },
-];
-
-const packages = [
-  {
-    name: "1 Week",
-    price: "LKR 20,000",
-    popular: false,
-    best: "A quick awareness push — perfect for a launch, offer or event.",
-    features: [
-      "1 designed post",
-      "7-day boost on Facebook & Instagram",
-      "Audience targeting",
-      "Findit.lk FB page post + listing",
-      "Results report",
-    ],
-    cta: "Start 1 Week",
-    waText: "Hi Buzz Connect, I'm interested in the 1 Week social media package (LKR 20,000).",
-  },
-  {
-    name: "2 Weeks",
-    price: "LKR 35,000",
-    popular: true,
-    best: "More reach, more platforms — with remarketing to bring people back.",
-    features: [
-      "1 post or short video",
-      "14-day boost on Facebook, Instagram & TikTok",
-      "Targeting + remarketing",
-      "Findit.lk FB page post + featured ad",
-      "Results report",
-    ],
-    cta: "Start 2 Weeks",
-    waText: "Hi Buzz Connect, I'm interested in the 2 Weeks social media package (LKR 35,000).",
-  },
-  {
-    name: "3 Weeks",
-    price: "LKR 75,000",
-    popular: false,
-    badge: "Includes professional video worth LKR 25,000+",
-    best: "A professional video campaign across three platforms, plus direct outreach.",
-    features: [
-      "1 professional video (script, shoot & edit)",
-      "21-day boost on Facebook, Instagram & TikTok",
-      "Full remarketing",
-      "Findit.lk FB page post + featured ad",
-      "WhatsApp/email/SMS to opted-in contacts",
-      "Detailed report",
-    ],
-    cta: "Start 3 Weeks",
-    waText: "Hi Buzz Connect, I'm interested in the 3 Weeks social media package (LKR 75,000) with the professional video.",
-  },
-  {
-    name: "4 Weeks",
-    price: "LKR 100,000",
-    popular: false,
-    best: "The full month — maximum reach, lead ads and a strategy call.",
-    features: [
-      "Hero video + 2 short cuts",
-      "30-day boost on Facebook, Instagram, TikTok & YouTube",
-      "Full remarketing + lead ads",
-      "Findit.lk & StudyWay.lk homepage banner",
-      "WhatsApp/email/SMS to opted-in contacts",
-      "Report + strategy call",
-    ],
-    cta: "Start 4 Weeks",
-    waText: "Hi Buzz Connect, I'm interested in the 4 Weeks social media package (LKR 100,000).",
-  },
-];
-
-const managementPlans = [
-  {
-    name: "Starter Management",
-    price: "LKR 50,000",
-    period: "/ month",
-    popular: false,
-    best: "For businesses that want a consistent, professional presence without hiring in-house.",
-    features: [
-      "8 designed posts per month",
-      "Content calendar & captions",
-      "Page management on Facebook & Instagram",
-      "Monthly boosted campaign (ad spend separate)",
-      "Findit.lk FB page post",
-      "Monthly performance report",
-    ],
-    cta: "Start Starter",
-    waText: "Hi Buzz Connect, I'm interested in the Starter social media management plan (LKR 50,000/month).",
-  },
-  {
-    name: "Growth Management",
-    price: "LKR 95,000",
-    period: "/ month",
-    popular: true,
-    best: "For brands ready to grow reach and generate leads every month.",
-    features: [
-      "12 posts + 2 reels per month",
-      "Facebook, Instagram & TikTok management",
-      "Ongoing ad campaigns with targeting & remarketing",
-      "Findit.lk featured ad each month",
-      "WhatsApp lead integration",
-      "Bi-weekly reports + optimisation",
-    ],
-    cta: "Start Growth",
-    waText: "Hi Buzz Connect, I'm interested in the Growth social media management plan (LKR 95,000/month).",
-  },
-  {
-    name: "Premium Management",
-    price: "LKR 180,000",
-    period: "/ month",
-    popular: false,
-    best: "Full always-on management — content, video, ads and lead generation across all platforms.",
-    features: [
-      "16 posts + 4 reels/videos per month",
-      "FB, IG, TikTok, YouTube & LinkedIn management",
-      "Full-funnel ad campaigns + lead ads",
-      "Findit.lk & StudyWay.lk visibility",
-      "WhatsApp/email/SMS to opted-in contacts",
-      "Weekly reports + monthly strategy call",
-    ],
-    cta: "Start Premium",
-    waText: "Hi Buzz Connect, I'm interested in the Premium social media management plan (LKR 180,000/month).",
-  },
 ];
 
 const included = [
@@ -354,97 +235,8 @@ const SocialMediaPackages = () => {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section id="packages" className="scroll-mt-24">
-          <SectionLabel>Pricing</SectionLabel>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Our social media marketing packages &amp; pricing</h2>
-          <p className="text-muted-foreground max-w-4xl mb-8">
-            Pick a duration — 1, 2, 3 or 4 weeks. Every package runs on Facebook &amp; Instagram (longer packages add TikTok and YouTube) and is amplified through <strong className="text-foreground">Findit.lk</strong> to build awareness beyond the social feeds.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {packages.map((p) => (
-              <div
-                key={p.name}
-                className={`relative flex flex-col p-6 sm:p-7 rounded-2xl border ${p.popular ? "border-accent bg-accent/5 shadow-lg" : "border-border bg-card"}`}
-              >
-                {p.popular && (
-                  <span className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-bold bg-accent text-accent-foreground">Most popular</span>
-                )}
-                <h3 className="font-heading font-semibold text-lg mb-1">{p.name}</h3>
-                {"badge" in p && p.badge && (
-                  <span className="inline-block w-fit px-2.5 py-1 rounded-full text-[11px] font-semibold bg-accent/10 text-accent border border-accent/30 mb-2">{p.badge}</span>
-                )}
-                <div className="font-heading text-2xl font-bold text-accent mb-2">{p.price}</div>
-                <p className="text-sm text-muted-foreground mb-5">{p.best}</p>
-                <ul className="space-y-2.5 mb-6 flex-1">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                      <span className="text-muted-foreground">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a href={wa(p.waText)} target="_blank" rel="noopener noreferrer" data-selected-service="Social Media Packages">
-                  <Button variant={p.popular ? "default" : "outline"} className="w-full">
-                    <MessageCircle className="mr-2 w-4 h-4" /> {p.cta}
-                  </Button>
-                </a>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 p-5 rounded-2xl bg-accent/10 border border-accent/30 max-w-4xl">
-            <p className="text-sm">
-              <strong className="text-foreground">Need longer?</strong> Add an extra week to any package for <strong className="text-foreground">LKR 10,000</strong> — includes the continued boost plus a Findit.lk ad.{" "}
-              <a href={wa("Hi Buzz Connect, I'd like to add an extra week (LKR 10,000) to my social media package.")} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Ask about an extra week</a>.
-            </p>
-          </div>
-          <p className="text-sm text-muted-foreground mt-4 max-w-4xl">
-            Need something bigger or multi-location? We build <strong className="text-foreground">custom enterprise packages</strong> too — {" "}
-            <a href={wa("Hi Buzz Connect, I'd like a custom social media package quote.")} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">ask for a tailored quote</a>.
-          </p>
-        </section>
-
-        {/* Monthly management */}
-        <section id="management" className="scroll-mt-24">
-          <SectionLabel>Monthly management</SectionLabel>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Social media management packages — from LKR 50,000/month</h2>
-          <p className="text-muted-foreground max-w-4xl mb-8">
-            Prefer an always-on presence instead of a one-off campaign? Our <strong className="text-foreground">monthly social media management packages</strong> keep your pages active, your ads running and your leads flowing — content, community management, paid campaigns and reporting handled for you every month.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {managementPlans.map((p) => (
-              <div
-                key={p.name}
-                className={`relative flex flex-col p-6 sm:p-7 rounded-2xl border ${p.popular ? "border-accent bg-accent/5 shadow-lg" : "border-border bg-card"}`}
-              >
-                {p.popular && (
-                  <span className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-bold bg-accent text-accent-foreground">Most popular</span>
-                )}
-                <h3 className="font-heading font-semibold text-lg mb-1">{p.name}</h3>
-                <div className="font-heading text-2xl font-bold text-accent mb-2">
-                  {p.price} <span className="text-sm font-normal text-muted-foreground">{p.period}</span>
-                </div>
-                <p className="text-sm text-muted-foreground mb-5">{p.best}</p>
-                <ul className="space-y-2.5 mb-6 flex-1">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                      <span className="text-muted-foreground">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a href={wa(p.waText)} target="_blank" rel="noopener noreferrer" data-selected-service="Social Media Management">
-                  <Button variant={p.popular ? "default" : "outline"} className="w-full">
-                    <MessageCircle className="mr-2 w-4 h-4" /> {p.cta}
-                  </Button>
-                </a>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-muted-foreground mt-4 max-w-4xl">
-            Ad spend is billed separately at actuals — you always see exactly where your budget goes. No long lock-in contracts; scale up, down or pause with 30 days' notice.
-          </p>
-        </section>
+        {/* Pricing + monthly management (shared with the campaigns page) */}
+        <SocialPackagesSection />
 
         {/* What's included */}
         <section>
