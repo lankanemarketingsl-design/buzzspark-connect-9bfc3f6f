@@ -90,6 +90,60 @@ const packages = [
   },
 ];
 
+const managementPlans = [
+  {
+    name: "Starter Management",
+    price: "LKR 50,000",
+    period: "/ month",
+    popular: false,
+    best: "For businesses that want a consistent, professional presence without hiring in-house.",
+    features: [
+      "8 designed posts per month",
+      "Content calendar & captions",
+      "Page management on Facebook & Instagram",
+      "Monthly boosted campaign (ad spend separate)",
+      "Findit.lk FB page post",
+      "Monthly performance report",
+    ],
+    cta: "Start Starter",
+    waText: "Hi Buzz Connect, I'm interested in the Starter social media management plan (LKR 50,000/month).",
+  },
+  {
+    name: "Growth Management",
+    price: "LKR 95,000",
+    period: "/ month",
+    popular: true,
+    best: "For brands ready to grow reach and generate leads every month.",
+    features: [
+      "12 posts + 2 reels per month",
+      "Facebook, Instagram & TikTok management",
+      "Ongoing ad campaigns with targeting & remarketing",
+      "Findit.lk featured ad each month",
+      "WhatsApp lead integration",
+      "Bi-weekly reports + optimisation",
+    ],
+    cta: "Start Growth",
+    waText: "Hi Buzz Connect, I'm interested in the Growth social media management plan (LKR 95,000/month).",
+  },
+  {
+    name: "Premium Management",
+    price: "LKR 180,000",
+    period: "/ month",
+    popular: false,
+    best: "Full always-on management — content, video, ads and lead generation across all platforms.",
+    features: [
+      "16 posts + 4 reels/videos per month",
+      "FB, IG, TikTok, YouTube & LinkedIn management",
+      "Full-funnel ad campaigns + lead ads",
+      "Findit.lk & StudyWay.lk visibility",
+      "WhatsApp/email/SMS to opted-in contacts",
+      "Weekly reports + monthly strategy call",
+    ],
+    cta: "Start Premium",
+    waText: "Hi Buzz Connect, I'm interested in the Premium social media management plan (LKR 180,000/month).",
+  },
+];
+
 const included = [
   ["Social media strategy", "a plan aligned to your goals and audience"],
   ["Content creation & design", "posts, banners & promotional creatives"],
@@ -189,6 +243,7 @@ const faqs = [
   { q: "Which platforms do the packages cover?", a: "Facebook, Instagram, TikTok and LinkedIn. We help you choose the right mix for your audience rather than spreading your budget across platforms that won't perform." },
   { q: "Do you offer Facebook, Instagram or TikTok-specific packages?", a: "Yes — you can focus a package on a single platform such as Facebook advertising, Instagram marketing or TikTok, or combine platforms. We recommend the mix that best fits where your customers spend their time." },
   { q: "Can I customise a package?", a: "Absolutely. Every package is a starting point — we adjust platforms, post volume, ad spend and add-ons to fit your business and budget, including custom enterprise packages." },
+  { q: "Do you offer monthly social media management?", a: "Yes — ongoing management packages start from LKR 50,000 per month. Monthly plans cover content creation, page management, paid ad campaigns and reporting across Facebook, Instagram, TikTok and more, with no long lock-in contracts." },
   { q: "How soon will I see results?", a: "Paid ads deliver visibility and can generate leads within days. Organic growth and brand building typically show over 3–6 months. Combining both gives the best short- and long-term results." },
   { q: "Is social media marketing worth it for my business?", a: "Yes — done with a clear strategy and paid ads, social media reaches a large audience cost-effectively, builds trust and generates measurable leads. Focus on return on investment rather than cost alone." },
 ];
@@ -346,6 +401,48 @@ const SocialMediaPackages = () => {
           <p className="text-sm text-muted-foreground mt-4 max-w-4xl">
             Need something bigger or multi-location? We build <strong className="text-foreground">custom enterprise packages</strong> too — {" "}
             <a href={wa("Hi Buzz Connect, I'd like a custom social media package quote.")} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">ask for a tailored quote</a>.
+          </p>
+        </section>
+
+        {/* Monthly management */}
+        <section id="management" className="scroll-mt-24">
+          <SectionLabel>Monthly management</SectionLabel>
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Social media management packages — from LKR 50,000/month</h2>
+          <p className="text-muted-foreground max-w-4xl mb-8">
+            Prefer an always-on presence instead of a one-off campaign? Our <strong className="text-foreground">monthly social media management packages</strong> keep your pages active, your ads running and your leads flowing — content, community management, paid campaigns and reporting handled for you every month.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {managementPlans.map((p) => (
+              <div
+                key={p.name}
+                className={`relative flex flex-col p-6 sm:p-7 rounded-2xl border ${p.popular ? "border-accent bg-accent/5 shadow-lg" : "border-border bg-card"}`}
+              >
+                {p.popular && (
+                  <span className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-bold bg-accent text-accent-foreground">Most popular</span>
+                )}
+                <h3 className="font-heading font-semibold text-lg mb-1">{p.name}</h3>
+                <div className="font-heading text-2xl font-bold text-accent mb-2">
+                  {p.price} <span className="text-sm font-normal text-muted-foreground">{p.period}</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-5">{p.best}</p>
+                <ul className="space-y-2.5 mb-6 flex-1">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                      <span className="text-muted-foreground">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href={wa(p.waText)} target="_blank" rel="noopener noreferrer" data-selected-service="Social Media Management">
+                  <Button variant={p.popular ? "default" : "outline"} className="w-full">
+                    <MessageCircle className="mr-2 w-4 h-4" /> {p.cta}
+                  </Button>
+                </a>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-muted-foreground mt-4 max-w-4xl">
+            Ad spend is billed separately at actuals — you always see exactly where your budget goes. No long lock-in contracts; scale up, down or pause with 30 days' notice.
           </p>
         </section>
 
