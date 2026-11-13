@@ -26,38 +26,67 @@ const benefits = [
 
 const packages = [
   {
-    name: "Social Media Campaign",
-    price: "From LKR 50,000",
-    popular: true,
-    best: "A full multi-platform campaign tailored to your business.",
+    name: "1 Week",
+    price: "LKR 20,000",
+    popular: false,
+    best: "A quick awareness push — perfect for a launch, offer or event.",
     features: [
-      "Multi-platform campaign setup",
-      "Professional content creation",
-      "Audience targeting & segmentation",
-      "Paid ad management & optimisation",
-      "Findit.lk integration & visibility",
-      "Performance tracking & reporting",
+      "1 designed post",
+      "7-day boost on Facebook & Instagram",
+      "Audience targeting",
+      "Findit.lk FB page post + listing",
+      "Results report",
     ],
-    cta: "Get a Custom Quote",
-    waText: "Hi Buzz Connect, I'm interested in your social media marketing campaign package (from LKR 50,000).",
+    cta: "Start 1 Week",
+    waText: "Hi Buzz Connect, I'm interested in the 1 Week social media package (LKR 20,000).",
   },
   {
-    name: "Ongoing Management",
-    price: "Custom",
-    popular: false,
-    best: "Continuous monthly content, ads & optimisation across platforms.",
-    features: ["Monthly content & posting", "Ongoing ad campaigns", "Community management", "Monthly reporting", "Continuous optimisation"],
-    cta: "Ask About Monthly",
-    waText: "Hi Buzz Connect, I'd like ongoing monthly social media management.",
+    name: "2 Weeks",
+    price: "LKR 35,000",
+    popular: true,
+    best: "More reach, more platforms — with remarketing to bring people back.",
+    features: [
+      "1 post or short video",
+      "14-day boost on Facebook, Instagram & TikTok",
+      "Targeting + remarketing",
+      "Findit.lk FB page post + featured ad",
+      "Results report",
+    ],
+    cta: "Start 2 Weeks",
+    waText: "Hi Buzz Connect, I'm interested in the 2 Weeks social media package (LKR 35,000).",
   },
   {
-    name: "Enterprise / Custom",
-    price: "Tailored",
+    name: "3 Weeks",
+    price: "LKR 75,000",
     popular: false,
-    best: "For larger brands & multi-location businesses.",
-    features: ["All platforms", "High content & video volume", "Advanced ad campaigns", "Dedicated manager", "Multi-channel support"],
-    cta: "Request a Quote",
-    waText: "Hi Buzz Connect, I'd like a custom enterprise social media package quote.",
+    badge: "Includes professional video worth LKR 25,000+",
+    best: "A professional video campaign across three platforms, plus direct outreach.",
+    features: [
+      "1 professional video (script, shoot & edit)",
+      "21-day boost on Facebook, Instagram & TikTok",
+      "Full remarketing",
+      "Findit.lk FB page post + featured ad",
+      "WhatsApp/email/SMS to opted-in contacts",
+      "Detailed report",
+    ],
+    cta: "Start 3 Weeks",
+    waText: "Hi Buzz Connect, I'm interested in the 3 Weeks social media package (LKR 75,000) with the professional video.",
+  },
+  {
+    name: "4 Weeks",
+    price: "LKR 100,000",
+    popular: false,
+    best: "The full month — maximum reach, lead ads and a strategy call.",
+    features: [
+      "Hero video + 2 short cuts",
+      "30-day boost on Facebook, Instagram, TikTok & YouTube",
+      "Full remarketing + lead ads",
+      "Findit.lk & StudyWay.lk homepage banner",
+      "WhatsApp/email/SMS to opted-in contacts",
+      "Report + strategy call",
+    ],
+    cta: "Start 4 Weeks",
+    waText: "Hi Buzz Connect, I'm interested in the 4 Weeks social media package (LKR 100,000).",
   },
 ];
 
@@ -109,7 +138,7 @@ const priceFactors = [
 const howToChoose = [
   { title: "New to social ads?", desc: "Start with a focused single-platform campaign, measure the response, then expand to more platforms as results come in." },
   { title: "Want a steady presence?", desc: "A managed campaign keeps you posting consistently across platforms so your brand always looks active and professional." },
-  { title: "Want leads & sales?", desc: "The full Social Media Campaign (from LKR 50,000) adds paid ads and targeting across platforms — this is where most businesses see real enquiries." },
+  { title: "Want leads & sales?", desc: "The 2 Weeks package (LKR 35,000) adds remarketing across Facebook, Instagram & TikTok — this is where most businesses see real enquiries." },
   { title: "Established brand?", desc: "A custom enterprise package gives you full management, video content and advanced campaigns across every platform." },
   { title: "Running a promotion?", desc: "Run a short, intensive campaign across Facebook & Instagram to spike reach and enquiries for a launch, sale or event." },
   { title: "Not sure?", desc: "Tell us your goal and budget and we'll recommend the right package — no pressure, no long contracts." },
@@ -152,10 +181,11 @@ const mistakes = [
 ];
 
 const faqs = [
-  { q: "How much do social media marketing packages cost in Sri Lanka?", a: "Buzz Connect social media marketing packages start from LKR 50,000 for a full multi-platform campaign. The exact price depends on how many platforms you want, your ad budget and content volume — we tailor every package to your goals." },
+  { q: "How much do social media marketing packages cost in Sri Lanka?", a: "Buzz Connect social media packages are priced by duration: 1 Week LKR 20,000, 2 Weeks LKR 35,000, 3 Weeks LKR 75,000 (includes a professional video) and 4 Weeks LKR 100,000. You can add an extra week to any package for LKR 10,000." },
   { q: "What's included in a social media package?", a: "Depending on the tier, a package includes strategy, content creation and design, paid advertising, audience targeting, page management, video/reels, WhatsApp integration, Findit.lk visibility and performance reporting." },
-  { q: "Which social media package is best for a small business?", a: "Most businesses start with a single full multi-platform campaign from LKR 50,000, then move to ongoing monthly management once they see results. Tell us your goals and budget and we'll recommend the right fit." },
-  { q: "Do you offer monthly social media management packages?", a: "Yes — we offer both one-off campaigns and ongoing monthly management. Tell us your preference and we'll tailor a package with content, ads and reporting; there are no long lock-in contracts." },
+  { q: "Which social media package is best for a small business?", a: "Most small businesses start with the 1 Week (LKR 20,000) or 2 Weeks (LKR 35,000) package to test the response, then move up to a longer campaign once they see results. Tell us your goals and budget and we'll recommend the right fit." },
+  { q: "Why is the 3 Weeks package more expensive?", a: "The jump from 2 Weeks (LKR 35,000) to 3 Weeks (LKR 75,000) comes from the professional video — script, shoot and edit — which is worth LKR 25,000+ on its own, plus a longer 21-day boost, full remarketing and direct WhatsApp/email/SMS outreach to opted-in contacts." },
+  { q: "Can I extend a package beyond 4 weeks?", a: "Yes — add an extra week to any package for LKR 10,000, which includes the continued boost plus a Findit.lk ad. For always-on monthly management, ask us for a tailored quote." },
   { q: "Which platforms do the packages cover?", a: "Facebook, Instagram, TikTok and LinkedIn. We help you choose the right mix for your audience rather than spreading your budget across platforms that won't perform." },
   { q: "Do you offer Facebook, Instagram or TikTok-specific packages?", a: "Yes — you can focus a package on a single platform such as Facebook advertising, Instagram marketing or TikTok, or combine platforms. We recommend the mix that best fits where your customers spend their time." },
   { q: "Can I customise a package?", a: "Absolutely. Every package is a starting point — we adjust platforms, post volume, ad spend and add-ons to fit your business and budget, including custom enterprise packages." },
@@ -171,8 +201,8 @@ const SocialMediaPackages = () => {
   return (
     <div className="pt-14 sm:pt-16 overflow-x-hidden">
       <SEOHead
-        title="Social Media Marketing Packages Sri Lanka | From LKR 50,000 | Buzz Connect"
-        description="Social media marketing packages in Sri Lanka from LKR 50,000 — Facebook, Instagram, TikTok & LinkedIn campaigns, content, paid ads & reporting. Compare packages & pricing."
+        title="Social Media Marketing Packages Sri Lanka | From LKR 20,000 | Buzz Connect"
+        description="Social media marketing packages in Sri Lanka from LKR 20,000 — Facebook, Instagram, TikTok & LinkedIn campaigns, content, paid ads & reporting. Compare packages & pricing."
         canonical="/social-media-packages-sri-lanka"
         keywords="social media packages sri lanka, social media marketing packages sri lanka, social media management packages, facebook advertising packages sri lanka, instagram marketing packages, tiktok marketing packages, linkedin marketing packages, social media package price sri lanka, social media advertising packages, monthly social media packages"
         breadcrumbs={[
@@ -185,9 +215,9 @@ const SocialMediaPackages = () => {
             "@context": "https://schema.org",
             "@type": "Product",
             name: "Social Media Marketing Packages — Buzz Connect",
-            description: "Social media marketing packages in Sri Lanka from LKR 50,000 — Facebook, Instagram, TikTok & LinkedIn campaigns, content, paid ads and reporting.",
+            description: "Social media marketing packages in Sri Lanka from LKR 20,000 — Facebook, Instagram, TikTok & LinkedIn campaigns, content, paid ads and reporting.",
             brand: { "@type": "Brand", name: "Buzz Connect" },
-            offers: { "@type": "Offer", priceCurrency: "LKR", price: "50000", availability: "https://schema.org/InStock", url: "https://buzzconnect.lk/social-media-packages-sri-lanka" },
+            offers: { "@type": "Offer", priceCurrency: "LKR", price: "20000", availability: "https://schema.org/InStock", url: "https://buzzconnect.lk/social-media-packages-sri-lanka" },
           },
           {
             "@context": "https://schema.org",
@@ -210,7 +240,7 @@ const SocialMediaPackages = () => {
               Social Media Marketing Packages · Sri Lanka
             </span>
             <h1 className="font-heading text-2xl sm:text-3xl lg:text-5xl font-bold mb-3 sm:mb-4">
-              Social media marketing packages in Sri Lanka — from LKR 50,000
+              Social media marketing packages in Sri Lanka — from LKR 20,000
             </h1>
             <p className="text-primary-foreground/70 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8">
               Simple, transparent social media packages for Sri Lankan businesses. Whether you want a one-off multi-platform campaign or ongoing monthly management across Facebook, Instagram, TikTok &amp; LinkedIn, there's a package built for your goals — content, targeting, paid ads and reporting included.
@@ -226,7 +256,7 @@ const SocialMediaPackages = () => {
               </a>
             </div>
             <div className="flex flex-wrap gap-2 mt-6 sm:mt-8">
-              {["From LKR 50,000", "4+ platforms", "Findit.lk integration", "Monthly or one-off"].map((chip) => (
+              {["From LKR 20,000", "1–4 week campaigns", "Findit.lk integration", "Extra week LKR 10,000"].map((chip) => (
                 <span key={chip} className="px-3 py-1.5 rounded-full text-xs sm:text-sm bg-primary-foreground/10 border border-primary-foreground/20">
                   {chip}
                 </span>
@@ -246,7 +276,7 @@ const SocialMediaPackages = () => {
               Every business needs a social media presence — but not every business needs the same thing. A start-up testing its first campaign has very different needs from an established brand running always-on ads across four platforms. That's why we offer <strong className="text-foreground">social media marketing packages</strong> at clear, fixed price points, so you can pick exactly the level of support you need and scale up whenever you're ready.
             </p>
             <p>
-              Our <strong className="text-foreground">social media packages in Sri Lanka</strong> start from <strong className="text-foreground">LKR 50,000</strong> and cover everything from content creation and design to paid advertising, audience targeting and performance reporting — across Facebook, Instagram, TikTok and LinkedIn. Every package is amplified through <strong className="text-foreground">Findit.lk</strong>, giving your brand extra visibility with a high-intent audience actively searching for products and services. Below you'll find each package, what's included, how to choose, and answers to the most common questions about social media package pricing in Sri Lanka.
+              Our <strong className="text-foreground">social media packages in Sri Lanka</strong> start from <strong className="text-foreground">LKR 20,000</strong> and cover everything from content creation and design to paid advertising, audience targeting and performance reporting — across Facebook, Instagram, TikTok and LinkedIn. Every package is amplified through <strong className="text-foreground">Findit.lk</strong>, giving your brand extra visibility with a high-intent audience actively searching for products and services. Below you'll find each package, what's included, how to choose, and answers to the most common questions about social media package pricing in Sri Lanka.
             </p>
           </div>
         </section>
@@ -274,9 +304,9 @@ const SocialMediaPackages = () => {
           <SectionLabel>Pricing</SectionLabel>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Our social media marketing packages &amp; pricing</h2>
           <p className="text-muted-foreground max-w-4xl mb-8">
-            Choose a package that matches your goals. Prices below are starting points — every package can be tailored to your platforms, ad budget and content volume.
+            Pick a duration — 1, 2, 3 or 4 weeks. Every package runs on Facebook &amp; Instagram (longer packages add TikTok and YouTube) and is amplified through <strong className="text-foreground">Findit.lk</strong> to build awareness beyond the social feeds.
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {packages.map((p) => (
               <div
                 key={p.name}
@@ -286,6 +316,9 @@ const SocialMediaPackages = () => {
                   <span className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-bold bg-accent text-accent-foreground">Most popular</span>
                 )}
                 <h3 className="font-heading font-semibold text-lg mb-1">{p.name}</h3>
+                {"badge" in p && p.badge && (
+                  <span className="inline-block w-fit px-2.5 py-1 rounded-full text-[11px] font-semibold bg-accent/10 text-accent border border-accent/30 mb-2">{p.badge}</span>
+                )}
                 <div className="font-heading text-2xl font-bold text-accent mb-2">{p.price}</div>
                 <p className="text-sm text-muted-foreground mb-5">{p.best}</p>
                 <ul className="space-y-2.5 mb-6 flex-1">
@@ -304,8 +337,14 @@ const SocialMediaPackages = () => {
               </div>
             ))}
           </div>
-          <p className="text-sm text-muted-foreground mt-6 max-w-4xl">
-            Need something bigger or multi-location? We build <strong className="text-foreground">custom enterprise packages</strong> too. Prices are starting points and depend on ad budget, content volume &amp; platforms — {" "}
+          <div className="mt-6 p-5 rounded-2xl bg-accent/10 border border-accent/30 max-w-4xl">
+            <p className="text-sm">
+              <strong className="text-foreground">Need longer?</strong> Add an extra week to any package for <strong className="text-foreground">LKR 10,000</strong> — includes the continued boost plus a Findit.lk ad.{" "}
+              <a href={wa("Hi Buzz Connect, I'd like to add an extra week (LKR 10,000) to my social media package.")} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Ask about an extra week</a>.
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-4 max-w-4xl">
+            Need something bigger or multi-location? We build <strong className="text-foreground">custom enterprise packages</strong> too — {" "}
             <a href={wa("Hi Buzz Connect, I'd like a custom social media package quote.")} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">ask for a tailored quote</a>.
           </p>
         </section>
@@ -400,7 +439,7 @@ const SocialMediaPackages = () => {
             ))}
           </div>
           <p className="text-muted-foreground max-w-4xl mt-6">
-            Our campaigns start from <strong className="text-foreground">LKR 50,000</strong>, and we build every package around what your business actually needs — from a single-location café to a national brand. Rather than a one-size-fits-all price, we build the package around what you actually need, so you never pay for services that won't move your business forward. The fastest way to know your exact price is to tell us your goals and budget for a tailored quote.
+            Our campaigns start from <strong className="text-foreground">LKR 20,000</strong>, and we build every package around what your business actually needs — from a single-location café to a national brand. Rather than a one-size-fits-all price, we build the package around what you actually need, so you never pay for services that won't move your business forward. The fastest way to know your exact price is to tell us your goals and budget for a tailored quote.
           </p>
         </section>
 
@@ -530,7 +569,7 @@ const SocialMediaPackages = () => {
           <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">The right social media package pays for itself</h2>
           <div className="max-w-4xl space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              In Sri Lanka's fast-moving digital market, a consistent, well-managed social media presence is no longer optional — it's how customers discover, trust and choose businesses. With full multi-platform campaigns from <strong className="text-foreground">LKR 50,000</strong>, you get a complete, managed push across every channel that reaches new customers, builds trust and generates measurable leads — then you scale up as the results come in.
+              In Sri Lanka's fast-moving digital market, a consistent, well-managed social media presence is no longer optional — it's how customers discover, trust and choose businesses. With full multi-platform campaigns from <strong className="text-foreground">LKR 20,000</strong>, you get a complete, managed push across every channel that reaches new customers, builds trust and generates measurable leads — then you scale up as the results come in.
             </p>
             <p>
               Whether you run a hotel, a restaurant, a retail store, a school or a service business, there's a Buzz Connect social media package sized for your goals and budget — backed by a full multi-channel system and Findit.lk visibility that most agencies can't match. Tell us where you want to grow, and we'll recommend the package that gets you there.
@@ -542,7 +581,7 @@ const SocialMediaPackages = () => {
         <section className="p-6 sm:p-10 rounded-2xl bg-accent/10 border border-accent/30 text-center">
           <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-3">Find the right social media package for your business</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-            Tell us your goal and budget — we'll recommend the perfect package and have your campaign live fast. Campaigns from LKR 50,000. No long contracts.
+            Tell us your goal and budget — we'll recommend the perfect package and have your campaign live fast. Campaigns from LKR 20,000. No long contracts.
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             <a href={wa("Hi Buzz Connect, please recommend a social media package for my business.")} target="_blank" rel="noopener noreferrer" data-selected-service="Social Media Packages">
@@ -558,7 +597,7 @@ const SocialMediaPackages = () => {
           <h2 className="font-heading text-2xl sm:text-3xl font-bold mt-2 mb-4">Agency fee vs advertising spend</h2>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl">
             <div>
-              <h3 className="font-heading font-semibold mb-2">Agency fee — from LKR 50,000</h3>
+              <h3 className="font-heading font-semibold mb-2">Agency fee — from LKR 20,000</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 This is what you pay Buzz Connect: strategy, content and design, posting, campaign setup and management, optimisation and reporting. It is fixed for the package you choose.
               </p>
