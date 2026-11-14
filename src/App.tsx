@@ -10,6 +10,8 @@ import WhatsAppGlobalTracker from "@/components/WhatsAppGlobalTracker";
 import ContactCaptureDialog from "@/components/ContactCaptureDialog";
 import ContactClickTracker from "@/components/ContactClickTracker";
 import PageViewTracker from "@/components/PageViewTracker";
+import MetaPixelTracker from "@/components/MetaPixelTracker";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 
 import ScrollToTop from "@/components/ScrollToTop";
@@ -166,6 +168,7 @@ const SiteChrome = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
       <ScrollToTop />
+      <MetaPixelTracker />
       {!isAdmin && <WhatsAppGlobalTracker />}
       {!isAdmin && <ContactCaptureDialog />}
       {!isAdmin && <ContactClickTracker />}
@@ -190,6 +193,7 @@ const App = () => (
         <SiteChrome>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/reset-password" element={<AdminResetPassword />} />
               <Route path="/admin" element={<AdminDashboard />} />

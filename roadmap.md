@@ -1,5 +1,9 @@
 # Roadmap
 
+## Facebook Pixel
+- [x] Install the supplied PageView pixel with the selected no-banner regional gate, linked privacy notice and opt-out; privacy tests pass and browser checks confirm initialization and regional blocking.
+- [ ] Verify published PageView transmission and Meta receipt (deployment and Meta account access required; localhost loaded the SDK/config but no event request was observed).
+
 ## Canonical domain consistency
 - [x] Update sitemap, crawler sitemap reference, page canonicals and related page schemas to the requested domain; keep media hosting unchanged and verify.
 

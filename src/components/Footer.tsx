@@ -118,6 +118,7 @@ const Footer = () => {
             <a href="https://buzzconnect.lk/whatsapp-marketing" className="hover:text-accent transition-colors">WhatsApp Marketing Sri Lanka</a>
           </p>
           <p>&copy; 2020 Buzz Connect. All rights reserved.</p>
+          <p className="mt-3"><Link to="/privacy-policy" className="hover:text-accent">Privacy policy</Link>{" · "}<Link to="/privacy-policy#advertising-choices" className="hover:text-accent">Advertising choices</Link></p>
         </div>
       </div>
     </footer>
