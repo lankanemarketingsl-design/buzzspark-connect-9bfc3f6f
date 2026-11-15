@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -180,6 +181,11 @@ const ContactUs = () => {
                   </div>
                 ))}
               </div>
+
+              <p className="text-sm text-muted-foreground">
+                Want to change the messages you get from us?{" "}
+                <Link to="/unsubscribe" className="text-accent hover:underline font-medium">Manage your messages</Link>
+              </p>
 
               {/* WhatsApp CTA */}
               <a data-selected-service="your services"

@@ -7,6 +7,7 @@ interface SEOHeadProps {
   ogImage?: string;
   ogType?: string;
   keywords?: string;
+  robots?: string;
   breadcrumbs?: { name: string; url: string }[];
   jsonLd?: object[];
 }
@@ -14,7 +15,7 @@ interface SEOHeadProps {
 const SITE_URL = "https://buzzconnect.lk";
 const DEFAULT_OG_IMAGE = "https://storage.googleapis.com/gpt-engineer-file-uploads/tmIaoo88z2Xx6RhZlq0u8oH6sQ62/social-images/social-1773993015369-logo-dark.webp";
 
-const SEOHead = ({ title, description, canonical, ogImage, ogType = "website", keywords, breadcrumbs, jsonLd = [] }: SEOHeadProps) => {
+const SEOHead = ({ title, description, canonical, ogImage, ogType = "website", keywords, robots, breadcrumbs, jsonLd = [] }: SEOHeadProps) => {
   useEffect(() => {
     document.title = title;
 
@@ -30,7 +31,7 @@ const SEOHead = ({ title, description, canonical, ogImage, ogType = "website", k
 
     // Core meta
     setMeta("description", description);
-    setMeta("robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    setMeta("robots", robots ?? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
     if (keywords) setMeta("keywords", keywords);
     setMeta("author", "Buzz Connect");
     setMeta("publisher", "Buzz Connect");

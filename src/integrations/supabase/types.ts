@@ -83,6 +83,72 @@ export type Database = {
         }
         Relationships: []
       }
+      opt_out_requests: {
+        Row: {
+          admin_notes: string | null
+          channels: string[]
+          comments: string | null
+          consent_confirmed: boolean
+          contact_back: boolean
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          message_text: string | null
+          message_types: string[]
+          phone: string | null
+          processed_at: string | null
+          processed_by: string | null
+          reference: string
+          screenshot_paths: string[]
+          sender_check: string
+          sender_name: string | null
+          status: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          channels?: string[]
+          comments?: string | null
+          consent_confirmed?: boolean
+          contact_back?: boolean
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          message_text?: string | null
+          message_types?: string[]
+          phone?: string | null
+          processed_at?: string | null
+          processed_by?: string | null
+          reference: string
+          screenshot_paths?: string[]
+          sender_check?: string
+          sender_name?: string | null
+          status?: string
+        }
+        Update: {
+          admin_notes?: string | null
+          channels?: string[]
+          comments?: string | null
+          consent_confirmed?: boolean
+          contact_back?: boolean
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          message_text?: string | null
+          message_types?: string[]
+          phone?: string | null
+          processed_at?: string | null
+          processed_by?: string | null
+          reference?: string
+          screenshot_paths?: string[]
+          sender_check?: string
+          sender_name?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -106,7 +172,27 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      do_not_contact_list: {
+        Row: {
+          channels: string[] | null
+          email: string | null
+          phone: string | null
+          processed_at: string | null
+        }
+        Insert: {
+          channels?: string[] | null
+          email?: string | null
+          phone?: string | null
+          processed_at?: string | null
+        }
+        Update: {
+          channels?: string[] | null
+          email?: string | null
+          phone?: string | null
+          processed_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       claim_admin_role: { Args: never; Returns: undefined }

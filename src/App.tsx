@@ -158,6 +158,8 @@ import HomeServicesConstruction from "./pages/HomeServicesConstruction.tsx";
 import LeadFollowUpServices from "./pages/LeadFollowUpServices.tsx";
 import SocialClusterPage from "./pages/SocialClusterPage.tsx";
 import GlobalClientLogos from "@/components/GlobalClientLogos";
+import Unsubscribe from "./pages/Unsubscribe.tsx";
+import AdminOptOuts from "./pages/AdminOptOuts.tsx";
 
 const queryClient = new QueryClient();
 
@@ -197,6 +199,10 @@ const App = () => (
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/reset-password" element={<AdminResetPassword />} />
               <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/opt-outs" element={<AdminOptOuts />} />
+              <Route path="/unsubscribe" element={<Unsubscribe />} />
+              <Route path="/opt-out" element={<Navigate to="/unsubscribe" replace />} />
+              <Route path="/manage-messages" element={<Navigate to="/unsubscribe" replace />} />
               <Route path="/email-marketing" element={<EmailMarketing />} />
               <Route path="/sms-marketing" element={<SmsMarketing />} />
               <Route path="/whatsapp-marketing" element={<WhatsAppMarketing />} />

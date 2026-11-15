@@ -642,6 +642,7 @@ const AdminDashboard = () => {
             </p>
           </div>
           <div className="flex gap-2">
+            <Button variant="outline" onClick={() => navigate("/admin/opt-outs")}>Opt-out requests</Button>
             <Button variant="outline" onClick={loadInquiries}>Refresh</Button>
             <Button variant="ghost" onClick={handleSignOut}>Sign out</Button>
           </div>
