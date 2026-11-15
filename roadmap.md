@@ -1,6 +1,7 @@
 # Roadmap
 
 ## Unsubscribe corrections
+- [x] Add and verify an admin bell for new unsubscribe requests and direct request links.
 - [x] Remove false success without saving, refresh admin requests automatically, correct StudyWay links and verify a real submission in admin.
 - [x] Sweep aliases, attachments, admin saves/replies, exports, navigation and database view for false confirmations; preserve settled records.
 

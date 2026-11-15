@@ -40,6 +40,7 @@ import {
   type TrafficSource,
 } from "@/lib/serviceNames";
 import { ExternalLink } from "lucide-react";
+import OptOutNotificationBell from "@/components/admin/OptOutNotificationBell";
 
 
 type Inquiry = {
@@ -641,7 +642,8 @@ const AdminDashboard = () => {
               Demand, conversion & revenue signals across every service page.
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
+            <OptOutNotificationBell />
             <Button variant="outline" onClick={() => navigate("/admin/opt-outs")}>Opt-out requests</Button>
             <Button variant="outline" onClick={loadInquiries}>Refresh</Button>
             <Button variant="ghost" onClick={handleSignOut}>Sign out</Button>

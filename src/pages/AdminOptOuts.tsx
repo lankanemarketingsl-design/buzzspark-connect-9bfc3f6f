@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
+import OptOutNotificationBell from "@/components/admin/OptOutNotificationBell";
 
 type OptOutRequest = Database["public"]["Tables"]["opt_out_requests"]["Row"];
 
@@ -53,7 +54,7 @@ const AdminOptOuts = () => {
   const [statusFilter, setStatusFilter] = useState("all");
   const [channelFilter, setChannelFilter] = useState("all");
   const [senderFilter, setSenderFilter] = useState("all");
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(() => new URLSearchParams(window.location.search).get("reference") ?? "");
   const [notes, setNotes] = useState("");
   const [saving, setSaving] = useState(false);
 
@@ -246,6 +247,7 @@ const AdminOptOuts = () => {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
+            <OptOutNotificationBell />
             <Button variant="outline" onClick={() => navigate("/admin")}>
               <ArrowLeft className="w-4 h-4 mr-1" /> Dashboard
             </Button>
