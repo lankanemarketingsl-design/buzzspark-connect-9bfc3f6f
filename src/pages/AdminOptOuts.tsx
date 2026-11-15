@@ -162,14 +162,14 @@ const AdminOptOuts = () => {
 
   const updateRequest = async (id: string, patch: Partial<OptOutRequest>) => {
     setSaving(true);
-    const { error } = await supabase.from("opt_out_requests").update(patch).eq("id", id);
+    const { data, error } = await supabase.from("opt_out_requests").update(patch).eq("id", id).select("*").single();
     setSaving(false);
-    if (error) {
-      toast({ title: "Save failed", description: error.message, variant: "destructive" });
+    if (error || !data) {
+      toast({ title: "Save failed", description: error?.message ?? "The request was not updated. Please refresh and try again.", variant: "destructive" });
       return false;
     }
-    setRequests((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
-    setSelected((prev) => (prev && prev.id === id ? { ...prev, ...patch } : prev));
+    setRequests((prev) => prev.map((r) => (r.id === id ? data : r)));
+    setSelected((prev) => (prev && prev.id === id ? data : prev));
     return true;
   };
 
@@ -189,11 +189,15 @@ const AdminOptOuts = () => {
 
   const copyReply = (kind: "done" | "not_from_us") => {
     if (!selected) return;
+    if ((kind === "done" && selected.status !== "done") || (kind === "not_from_us" && selected.status !== "not_from_us")) {
+      toast({ title: "Save the matching status first", variant: "destructive" });
+      return;
+    }
     const channelList = selected.channels.includes("all") ? "email, SMS and WhatsApp" : selected.channels.join(", ");
     const text =
       kind === "done"
         ? `Hi, your preferences have been updated and you won't receive ${channelList} messages from Buzz Connect any more. Reference: ${selected.reference}. Thank you, and you're always welcome to explore findit.lk and StudyWay.lk (https://studyway.lk). – The Buzz Connect team`
-        : `Hi, thank you for letting us know. We checked, and this message didn't come from Buzz Connect, so we're unable to stop it ourselves. You may be able to block the sender or contact the company named in the message. We've also made sure your details aren't on our lists. Reference: ${selected.reference}. – The Buzz Connect team`;
+        : `Hi, thank you for letting us know. We checked, and this message didn't come from Buzz Connect, so we're unable to stop it ourselves. You may be able to block the sender or contact the company named in the message. Reference: ${selected.reference}. – The Buzz Connect team`;
     navigator.clipboard.writeText(text);
     toast({ title: "Reply copied", description: "Paste it into your email reply." });
   };
@@ -427,10 +431,10 @@ const AdminOptOuts = () => {
               <div className="mb-6">
                 <h3 className="font-semibold text-sm mb-2">Copy reply</h3>
                 <div className="flex flex-wrap gap-2">
-                  <Button size="sm" variant="outline" onClick={() => copyReply("done")}>
+                  <Button size="sm" variant="outline" disabled={saving || selected.status !== "done"} onClick={() => copyReply("done")}>
                     <Copy className="w-3.5 h-3.5 mr-1" /> Done reply
                   </Button>
-                  <Button size="sm" variant="outline" onClick={() => copyReply("not_from_us")}>
+                  <Button size="sm" variant="outline" disabled={saving || selected.status !== "not_from_us"} onClick={() => copyReply("not_from_us")}>
                     <Copy className="w-3.5 h-3.5 mr-1" /> Not-from-us reply
                   </Button>
                 </div>

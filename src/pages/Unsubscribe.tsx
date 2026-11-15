@@ -163,7 +163,8 @@ const Unsubscribe = () => {
         const safeName = f.name.replace(/[^a-zA-Z0-9._-]/g, "_");
         const path = `${id}/${i + 1}-${safeName}`;
         const { error: uploadError } = await supabase.storage.from("opt-out-screenshots").upload(path, f);
-        if (!uploadError) paths.push(path);
+        if (uploadError) throw uploadError;
+        paths.push(path);
       }
       const { error } = await supabase.from("opt_out_requests").insert({
         id,
@@ -213,7 +214,7 @@ const Unsubscribe = () => {
             </div>
             <p className="text-sm text-muted-foreground">
               Every email from Buzz Connect includes our footer with an "Unsubscribe" link. One click and you're
-              off that list. Don't see our footer? The email may not be from us. Share a screenshot below and
+              able to request removal from that list. Don't see our footer? The email may not be from us. Share a screenshot below and
               we'll take a look.
             </p>
           </div>

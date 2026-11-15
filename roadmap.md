@@ -2,6 +2,7 @@
 
 ## Unsubscribe corrections
 - [x] Remove false success without saving, refresh admin requests automatically, correct StudyWay links and verify a real submission in admin.
+- [x] Sweep aliases, attachments, admin saves/replies, exports, navigation and database view for false confirmations; preserve settled records.
 
 ## Facebook Pixel
 - [x] Install the supplied PageView pixel with the selected no-banner regional gate, linked privacy notice and opt-out; privacy tests pass and browser checks confirm initialization and regional blocking.
