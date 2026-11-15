@@ -10,3 +10,4 @@
 - Derive expanded industry campaign planning details from the hub picker through a shared editorial adapter consumed by browser pages and static SEO generation; this preserves relevant examples without duplicating unverified performance claims.
 - Keep uploaded logo asset resolution independent of the canonical domain so SEO domain changes do not break hosted images.
 - Gate Meta Pixel initialization and route PageViews through the shared consent adapter; exclude private/sensitive routes and URL parameters, disable automatic collection, and revoke on withdrawal to prevent unauthorized sends.
+- Show unsubscribe confirmation only after a successful saved request, never from hidden-field heuristics; refresh the admin opt-out list on focus and periodically so submissions do not appear missing.

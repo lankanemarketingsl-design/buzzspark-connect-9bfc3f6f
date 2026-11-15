@@ -83,7 +83,6 @@ const Unsubscribe = () => {
   const [channels, setChannels] = useState<string[]>([]);
   const [files, setFiles] = useState<File[]>([]);
   const [consent, setConsent] = useState(false);
-  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState<{ reference: string; email: string; phone: string } | null>(null);
@@ -154,12 +153,6 @@ const Unsubscribe = () => {
     const reference = makeReference();
     const trimmedEmail = email.trim().toLowerCase();
     const normalizedPhone = normalizePhone(phone, countryCode);
-
-    // Honeypot filled → bot: pretend success without storing anything.
-    if (honeypot) {
-      setSuccess({ reference, email: trimmedEmail, phone: normalizedPhone || "" });
-      return;
-    }
 
     setSubmitting(true);
     try {
@@ -275,8 +268,8 @@ const Unsubscribe = () => {
                   findit.lk
                 </a>{" "}
                 ·{" "}
-                <a href="https://study.lk" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">
-                  study.lk
+                <a href="https://studyway.lk" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">
+                  StudyWay.lk
                 </a>
               </p>
             </div>
@@ -289,21 +282,6 @@ const Unsubscribe = () => {
             <h2 className="font-heading text-xl font-bold text-foreground mb-6">
               Enter the email or number you want removed
             </h2>
-
-            {/* Honeypot — invisible to people, tempting to bots */}
-            <div aria-hidden="true" className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden">
-              <label>
-                Company website
-                <input
-                  type="text"
-                  name="company_website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={honeypot}
-                  onChange={(e) => setHoneypot(e.target.value)}
-                />
-              </label>
-            </div>
 
             <div className="mb-5">
               <label htmlFor="optout-email" className="block font-semibold text-foreground mb-2">

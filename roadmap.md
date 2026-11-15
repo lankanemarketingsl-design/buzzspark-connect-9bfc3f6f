@@ -1,5 +1,8 @@
 # Roadmap
 
+## Unsubscribe corrections
+- [x] Remove false success without saving, refresh admin requests automatically, correct StudyWay links and verify a real submission in admin.
+
 ## Facebook Pixel
 - [x] Install the supplied PageView pixel with the selected no-banner regional gate, linked privacy notice and opt-out; privacy tests pass and browser checks confirm initialization and regional blocking.
 - [ ] Verify published PageView transmission and Meta receipt (deployment and Meta account access required; localhost loaded the SDK/config but no event request was observed).

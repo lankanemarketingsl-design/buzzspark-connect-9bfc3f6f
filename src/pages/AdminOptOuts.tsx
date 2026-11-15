@@ -98,6 +98,22 @@ const AdminOptOuts = () => {
     setRequests(data ?? []);
   };
 
+  useEffect(() => {
+    if (!isAdmin) return;
+    const refresh = () => {
+      if (document.visibilityState === "visible") void loadRequests();
+    };
+    const timer = window.setInterval(refresh, 15000);
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", refresh);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", refresh);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAdmin]);
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return requests.filter((r) => {
@@ -176,7 +192,7 @@ const AdminOptOuts = () => {
     const channelList = selected.channels.includes("all") ? "email, SMS and WhatsApp" : selected.channels.join(", ");
     const text =
       kind === "done"
-        ? `Hi, your preferences have been updated and you won't receive ${channelList} messages from Buzz Connect any more. Reference: ${selected.reference}. Thank you, and you're always welcome to explore findit.lk and study.lk. – The Buzz Connect team`
+        ? `Hi, your preferences have been updated and you won't receive ${channelList} messages from Buzz Connect any more. Reference: ${selected.reference}. Thank you, and you're always welcome to explore findit.lk and StudyWay.lk (https://studyway.lk). – The Buzz Connect team`
         : `Hi, thank you for letting us know. We checked, and this message didn't come from Buzz Connect, so we're unable to stop it ourselves. You may be able to block the sender or contact the company named in the message. We've also made sure your details aren't on our lists. Reference: ${selected.reference}. – The Buzz Connect team`;
     navigator.clipboard.writeText(text);
     toast({ title: "Reply copied", description: "Paste it into your email reply." });
