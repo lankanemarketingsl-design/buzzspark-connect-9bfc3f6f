@@ -14,6 +14,8 @@
 - [x] Sweep aliases, attachments, admin saves/replies, exports, navigation and database view for false confirmations; preserve settled records.
 
 ## Facebook Pixel
+- [x] Review the uploaded head-installation instructions and diagnose the published site's detection warning: `/cdn-cgi/trace` returns 404, so fresh visitors fail the regional permission gate; an explicit advertising grant loads the SDK/config only, not verified PageView receipt.
+- [ ] Resolve the published regional gate and requested base-code placement without duplicate events or bypassing privacy choices (waiting for the user's choice: permission banner or repaired no-banner location detection).
 - [x] Install the supplied PageView pixel with the selected no-banner regional gate, linked privacy notice and opt-out; privacy tests pass and browser checks confirm initialization and regional blocking.
 - [ ] Verify published PageView transmission and Meta receipt (deployment and Meta account access required; localhost loaded the SDK/config but no event request was observed).
 
