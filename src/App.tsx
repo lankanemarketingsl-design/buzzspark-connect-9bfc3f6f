@@ -203,7 +203,8 @@ const App = () => (
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/opt-outs" element={<AdminOptOuts />} />
               <Route path="/admin/opt-ins" element={<AdminOptIns />} />
-              <Route path="/opt-in" element={<OptIn />} />
+              <Route path="/subscribe" element={<OptIn />} />
+              <Route path="/opt-in" element={<Navigate to="/subscribe" replace />} />
               <Route path="/unsubscribe" element={<Unsubscribe />} />
               <Route path="/opt-out" element={<Navigate to="/unsubscribe" replace />} />
               <Route path="/manage-messages" element={<Navigate to="/unsubscribe" replace />} />

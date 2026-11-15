@@ -37,9 +37,9 @@ export default function OptIn() {
     finally { setSending(false); }
   };
   return <div className="pt-14 sm:pt-16">
-    <SEOHead title="Opt In to Campaign Updates | Buzz Connect" description="Request Buzz Connect offers, promotions, events and learning opportunities by email, SMS or WhatsApp. Choose your channels and opt out anytime." canonical="/opt-in" robots="noindex, follow" />
+    <SEOHead title="Subscribe to Campaign Updates | Buzz Connect" description="Request Buzz Connect offers, promotions, events and learning opportunities by email, SMS or WhatsApp. Choose your channels and unsubscribe anytime." canonical="/subscribe" robots="noindex, follow" />
     <div className="container mx-auto px-4 py-10 sm:py-16 max-w-3xl">
-      <div className="flex gap-2 mb-7"><Button asChild variant="default"><Link to="/opt-in">Opt in</Link></Button><Button asChild variant="outline"><Link to="/unsubscribe">Opt out</Link></Button></div>
+      <div className="flex gap-2 mb-7"><Button asChild variant="default"><Link to="/subscribe">Subscribe</Link></Button><Button asChild variant="outline"><Link to="/unsubscribe">Unsubscribe</Link></Button></div>
       <h1 className="font-heading text-3xl font-bold mb-4">Get updates from Buzz Connect</h1>
       <p className="text-muted-foreground mb-8">Choose the offers, promotions, events and learning opportunities you'd like to receive by email, SMS or WhatsApp. You can opt out at any time.</p>
       {reference ? <section aria-live="polite" className="border border-border rounded-lg p-6 space-y-4">

@@ -84,7 +84,7 @@ const Footer = () => {
               <li><Link to="/contact-us" className="hover:text-accent transition-colors">Contact Us</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-accent transition-colors">Privacy Policy</Link></li>
               <li><Link to="/unsubscribe" className="hover:text-accent transition-colors">Opt out from campaigns</Link></li>
-              <li><Link to="/opt-in" className="hover:text-accent transition-colors">Opt in to campaigns</Link></li>
+              <li><Link to="/subscribe" className="hover:text-accent transition-colors">Subscribe to campaigns</Link></li>
               <li><Link to="/careers" className="hover:text-accent transition-colors">Careers</Link></li>
             </ul>
           </div>

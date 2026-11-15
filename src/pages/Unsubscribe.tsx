@@ -199,7 +199,7 @@ const Unsubscribe = () => {
       />
 
       <main className="container mx-auto px-4 py-10 sm:py-16 max-w-3xl">
-        <div className="flex gap-2 mb-7"><Button asChild variant="outline"><Link to="/opt-in">Opt in</Link></Button><Button asChild><Link to="/unsubscribe">Opt out</Link></Button></div>
+        <div className="flex gap-2 mb-7"><Button asChild variant="outline"><Link to="/subscribe">Subscribe</Link></Button><Button asChild><Link to="/unsubscribe">Unsubscribe</Link></Button></div>
         <h1 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
           Manage your messages from Buzz Connect
         </h1>

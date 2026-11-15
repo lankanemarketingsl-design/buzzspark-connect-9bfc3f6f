@@ -2,6 +2,10 @@
 /*.html /:splat 301!
 /home / 301
 /classified-advertising-in-sri-lanka /resources 301
+/opt-in /subscribe 301!
+/opt-in/ /subscribe 301!
+/subscribe/ /subscribe 301
+/unsubscribe/ /unsubscribe 301
 
 # Strip trailing slashes (canonical tags handle SEO deduplication)
 /email-marketing/ /email-marketing 301

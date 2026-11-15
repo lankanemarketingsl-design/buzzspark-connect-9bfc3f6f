@@ -43,7 +43,7 @@ describe("Facebook pixel privacy", () => {
   });
   it("excludes private, sensitive and identifying URLs", async () => {
     const { isPixelPageAllowed } = await import("./metaPixel");
-    for (const path of ["/admin", "/opt-in", "/careers/example", "/finance-marketing-sri-lanka", "/healthcare-email-marketing-engagement-sri-lanka"]) expect(isPixelPageAllowed(path, "", "")).toBe(false);
+    for (const path of ["/admin", "/subscribe", "/unsubscribe", "/opt-in", "/careers/example", "/finance-marketing-sri-lanka", "/healthcare-email-marketing-engagement-sri-lanka"]) expect(isPixelPageAllowed(path, "", "")).toBe(false);
     expect(isPixelPageAllowed("/", "?email=example", "")).toBe(false);
     expect(isPixelPageAllowed("/", "", "#phone")).toBe(false);
   });
