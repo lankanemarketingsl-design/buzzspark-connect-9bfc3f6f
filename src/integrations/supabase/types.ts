@@ -83,6 +83,57 @@ export type Database = {
         }
         Relationships: []
       }
+      opt_in_requests: {
+        Row: {
+          admin_notes: string
+          channels: string[]
+          consent_confirmed: boolean
+          consent_text: string
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          notice_version: string
+          phone: string | null
+          reference: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+        }
+        Insert: {
+          admin_notes?: string
+          channels: string[]
+          consent_confirmed: boolean
+          consent_text?: string
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          notice_version?: string
+          phone?: string | null
+          reference: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+        }
+        Update: {
+          admin_notes?: string
+          channels?: string[]
+          consent_confirmed?: boolean
+          consent_text?: string
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          notice_version?: string
+          phone?: string | null
+          reference?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       opt_out_requests: {
         Row: {
           admin_notes: string | null

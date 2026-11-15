@@ -1,5 +1,9 @@
 # Roadmap
 
+## Campaign opt-in
+- [x] Add a saved opt-in request form with explicit channel consent and admin-only review; preserve opt-outs.
+- [x] Link opt-in and opt-out pages from the footer and privacy policy, and verify submission through admin review; remove the verification-only request.
+
 ## Privacy policy update
 - [x] Apply the supplied policy, preserve advertising choices, align unsubscribe information, and add an ordinary footer link.
 - [x] Verify policy actions, mobile layout, and complete static policy content without a duplicate H1.

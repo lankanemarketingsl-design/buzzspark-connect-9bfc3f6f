@@ -10,7 +10,7 @@
     {
       "heading": "The information we use",
       "id": "the-information-we-use",
-      "html": "<p>We keep it simple and only use what we need:</p><ul class=\"list-disc pl-5 space-y-2\"><li><strong>Contact details:</strong> your name, email address and mobile number, and which of our lists you&#x27;re on.</li><li><strong>Your choices:</strong> for example, if you&#x27;ve asked us to stop certain messages.</li><li><strong>Enquiries:</strong> what you tell us when you contact us or fill in a form on our website.</li><li><strong>Website visits:</strong> basic, general information about how people use our website (see &quot;Our website&quot; below).</li></ul><p>We don&#x27;t ask for sensitive information such as bank details, health information or ID numbers in our messages, and we&#x27;ll never ask you to share them by SMS or WhatsApp.</p>"
+      "html": "<p>We keep it simple and only use what we need:</p><ul class=\"list-disc pl-5 space-y-2\"><li><strong>Contact details:</strong> your name, email address and mobile number, and which of our lists you&#x27;re on.</li><li><strong>Your choices:</strong> for example, if you&#x27;ve asked us to stop certain messages.</li><li><strong>Enquiries:</strong> what you tell us when you contact us or fill in a form on our website.</li><li><strong>Website visits:</strong> basic, general information about how people use our website (see &quot;Our website&quot; below).</li></ul><p>We don&#x27;t ask for sensitive information such as bank details, health information or ID numbers in our messages, and we&#x27;ll never ask you to share them by SMS or WhatsApp.</p><p>For opt-in requests, we keep your name, contact details, selected channels, the consent statement and notice version, the request date, and the review status. Marketing consent is separate from website advertising choices. Opt-in requests do not automatically remove earlier opt-outs.</p>"
     },
     {
       "heading": "How we use it",
@@ -45,7 +45,7 @@
     {
       "heading": "Welcome back anytime",
       "id": "welcome-back-anytime",
-      "html": "<p>If you change your mind, the door is always open. Email <a href=\"mailto:infobuzzconnect@gmail.com\" class=\"text-accent hover:underline\">infobuzzconnect@gmail.com</a> with &quot;Please add me back&quot;, and we&#x27;ll be happy to have you with us again.</p><p>You can also discover great offers, events and learning opportunities anytime on <strong><a href=\"https://www.findit.lk\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-accent hover:underline\">findit.lk</a></strong>, with no sign-up needed.</p>"
+      "html": "<p>If you change your mind, request to join at <a href=\"/opt-in\" class=\"text-accent hover:underline\">buzzconnect.lk/opt-in</a>. Choose Email, SMS or WhatsApp and give your consent. Our team reviews requests before adding contacts; submitting does not automatically subscribe you or verify ownership of your contact details.</p><p>If you change your mind, the door is always open. Email <a href=\"mailto:infobuzzconnect@gmail.com\" class=\"text-accent hover:underline\">infobuzzconnect@gmail.com</a> with &quot;Please add me back&quot;, and we&#x27;ll be happy to have you with us again.</p><p>You can also discover great offers, events and learning opportunities anytime on <strong><a href=\"https://www.findit.lk\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-accent hover:underline\">findit.lk</a></strong>, with no sign-up needed.</p>"
     },
     {
       "heading": "Our website",

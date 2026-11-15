@@ -13,3 +13,4 @@
 - Show unsubscribe confirmation only after a successful saved request, never from hidden-field heuristics; refresh the admin opt-out list on focus and periodically so submissions do not appear missing.
 - Share the admin unsubscribe bell across admin pages; count persisted new requests with admin-scoped reads and visibility-aware polling, without changing request status when notifications are opened.
 - Keep privacy policy content and unsubscribe email construction shared between public pages and static HTML; place the complete policy fallback inside React's root to prevent duplicate policy text and H1s.
+- Store campaign opt-in requests separately from opt-outs and sales leads with explicit channel consent and recorded notice evidence; admin review never automatically enrolls contacts or removes suppression records.

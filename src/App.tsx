@@ -160,6 +160,8 @@ import SocialClusterPage from "./pages/SocialClusterPage.tsx";
 import GlobalClientLogos from "@/components/GlobalClientLogos";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
 import AdminOptOuts from "./pages/AdminOptOuts.tsx";
+import OptIn from "./pages/OptIn.tsx";
+import AdminOptIns from "./pages/AdminOptIns.tsx";
 
 const queryClient = new QueryClient();
 
@@ -200,6 +202,8 @@ const App = () => (
               <Route path="/admin/reset-password" element={<AdminResetPassword />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/opt-outs" element={<AdminOptOuts />} />
+              <Route path="/admin/opt-ins" element={<AdminOptIns />} />
+              <Route path="/opt-in" element={<OptIn />} />
               <Route path="/unsubscribe" element={<Unsubscribe />} />
               <Route path="/opt-out" element={<Navigate to="/unsubscribe" replace />} />
               <Route path="/manage-messages" element={<Navigate to="/unsubscribe" replace />} />

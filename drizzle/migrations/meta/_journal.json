@@ -8,6 +8,13 @@
       "when": 1794713221936,
       "tag": "0000_create_opt_out_requests",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794715690212,
+      "tag": "0001_create_campaign_opt_in_requests",
+      "breakpoints": true
     }
   ]
 }

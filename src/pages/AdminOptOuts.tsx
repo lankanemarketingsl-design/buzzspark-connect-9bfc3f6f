@@ -248,6 +248,7 @@ const AdminOptOuts = () => {
           </div>
           <div className="flex flex-wrap gap-2">
             <OptOutNotificationBell />
+            <Button variant="outline" onClick={() => navigate("/admin/opt-ins")}>Opt-in requests</Button>
             <Button variant="outline" onClick={() => navigate("/admin")}>
               <ArrowLeft className="w-4 h-4 mr-1" /> Dashboard
             </Button>

@@ -18,7 +18,7 @@ let lastPage: string | undefined;
 
 export function isPixelPageAllowed(pathname: string, search: string, hash: string) {
   // Never share private routes, sensitive context or URL-carried customer data.
-  return !search && !hash && !/admin|careers|finance|healthcare|privacy|unsubscribe|opt-out|manage-messages/i.test(pathname);
+  return !search && !hash && !/admin|careers|finance|healthcare|privacy|unsubscribe|opt-out|opt-in|manage-messages/i.test(pathname);
 }
 
 export async function trackMetaPageView(pathname: string, search: string, hash: string) {
