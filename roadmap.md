@@ -1,5 +1,9 @@
 # Roadmap
 
+## Privacy policy update
+- [x] Apply the supplied policy, preserve advertising choices, align unsubscribe information, and add an ordinary footer link.
+- [x] Verify policy actions, mobile layout, and complete static policy content without a duplicate H1.
+
 ## Unsubscribe corrections
 - [x] Add and verify an admin bell for new unsubscribe requests and direct request links.
 - [x] Remove false success without saving, refresh admin requests automatically, correct StudyWay links and verify a real submission in admin.

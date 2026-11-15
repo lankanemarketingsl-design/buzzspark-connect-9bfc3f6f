@@ -8,6 +8,7 @@ import { TUITION_PATH, tuitionFaqs, tuitionServiceSchema, tuitionFaqSchema } fro
 const SITE_URL = "https://buzzconnect.lk";
 import { additionalBB360Pages, BB360_SITE_URL, industryRouteById } from "./src/data/bb360IndustryRegistry";
 import { getIndustryCampaigns } from "./src/data/bb360IndustryCampaigns";
+import { privacyPolicyStaticHtml } from "./src/data/privacyPolicy";
 
 interface RouteSeoEntry {
   route: string;
@@ -568,6 +569,11 @@ const staticRouteSeoPlugin = (): Plugin => ({
         const flatPath = path.join(distDir, `${slug}.html`);
         fs.mkdirSync(path.dirname(flatPath), { recursive: true });
         let routeHtml = applyRouteSeo(template, entry);
+        if (entry.route === "/privacy-policy") {
+          // Complete policy replaces the generic fallback inside React's root.
+          routeHtml = routeHtml.replace(/<div id="seo-content"[\s\S]*?<\/div>/, "");
+          routeHtml = routeHtml.replace('<div id="root"></div>', `<div id="root">${privacyPolicyStaticHtml()}</div>`);
+        }
         if (entry.route === TUITION_PATH) {
           routeHtml = routeHtml.replace("</head>", `<script type="application/ld+json">${JSON.stringify([tuitionServiceSchema, tuitionFaqSchema]).replace(/</g, "\\u003c")}</script></head>`);
           // This page's static fallback belongs inside React's root: one H1 after rendering.

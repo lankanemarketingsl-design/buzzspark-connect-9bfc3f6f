@@ -5,6 +5,7 @@ import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
+import { UNSUBSCRIBE_REMOVAL_DAYS, unsubscribeMailto } from "@/data/privacyPolicy";
 
 const CHANNELS = [
   { value: "email", label: "Email" },
@@ -139,7 +140,7 @@ const Unsubscribe = () => {
       next.consent = "Please confirm to continue.";
     }
     if (tooManySubmissions()) {
-      next.rate = "You've sent several requests recently. Please try again in about an hour, or email infobuzzconnect@gmail.com.";
+      next.rate = "You've sent several requests recently. Please try again in about an hour, or email buzzunsubscribe@gmail.com.";
     }
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -180,7 +181,7 @@ const Unsubscribe = () => {
       setSuccess({ reference, email: trimmedEmail, phone: normalizedPhone || "" });
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
-      setErrors({ rate: "Something went wrong while sending your request. Please try again, or email infobuzzconnect@gmail.com." });
+      setErrors({ rate: "Something went wrong while sending your request. Please try again, or email buzzunsubscribe@gmail.com." });
     } finally {
       setSubmitting(false);
     }
@@ -207,7 +208,9 @@ const Unsubscribe = () => {
           less, or not at all, just let us know below. It only takes a minute.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <p className="text-muted-foreground mb-6">Prefer email? Just write to <a href={unsubscribeMailto} className="text-accent hover:underline">buzzunsubscribe@gmail.com</a> with your email address or mobile number, and we'll remove you.</p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
           <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
             <div className="flex items-center gap-2 font-semibold text-foreground mb-2">
               <Mail className="w-4 h-4 text-accent" /> Email
@@ -238,6 +241,8 @@ const Unsubscribe = () => {
           </div>
         </div>
 
+        <p className="text-sm text-muted-foreground mb-10">Your data is safe with us. We never sell it, and every message we send carries the Buzz Connect footer and branding.</p>
+
         {success ? (
           <section aria-live="polite" className="rounded-2xl border border-border bg-card p-8 shadow-sm text-center">
             <div className="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center mx-auto mb-4">
@@ -254,7 +259,7 @@ const Unsubscribe = () => {
               We'll remove: {[success.email, success.phone].filter(Boolean).join(" · ")}
             </p>
             <p className="text-muted-foreground mt-3">
-              We'll update your preferences within 3 working days. A message that was already scheduled may still
+              We'll remove your contact details from our sending lists within {UNSUBSCRIBE_REMOVAL_DAYS} days. A message that was already scheduled may still
               arrive during this time.
             </p>
             <p className="text-sm text-muted-foreground mt-1">
@@ -443,17 +448,18 @@ const Unsubscribe = () => {
             <p className="text-xs text-muted-foreground mt-4">
               We use these details only to update your preferences and to remember your choice, so you aren't
               added again. Questions? Email{" "}
-              <a href="mailto:infobuzzconnect@gmail.com" className="text-accent hover:underline">
-                infobuzzconnect@gmail.com
+              <a href={unsubscribeMailto} className="text-accent hover:underline">
+                buzzunsubscribe@gmail.com
               </a>{" "}
               or read our{" "}
-              <Link to="/privacy-policy#manage-messages" className="text-accent hover:underline">
+              <Link to="/privacy-policy#unsubscribe" className="text-accent hover:underline">
                 privacy policy
               </Link>
               .
             </p>
           </form>
         )}
+        <p className="text-sm text-muted-foreground mt-6">Need help? Call <a href="tel:+94771437707" className="text-accent hover:underline">+94 77 143 7707</a> or <a href="tel:+94112877662" className="text-accent hover:underline">+94 11 287 7662</a>.</p>
       </main>
     </div>
   );
