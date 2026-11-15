@@ -143,6 +143,11 @@ gtag("consent", "default", {
   <meta name="twitter:title" content="Email Marketing Sri Lanka, SMS Marketing, WhatsApp Marketing">
   <meta property="og:description" content="Buzz Connect is the No.1 provider of email marketing Sri Lanka, SMS marketing Sri Lanka, WhatsApp marketing Sri Lanka &amp; SEO packages Sri Lanka.">
   <meta name="twitter:description" content="Buzz Connect is the No.1 provider of email marketing Sri Lanka, SMS marketing Sri Lanka, WhatsApp marketing Sri Lanka &amp; SEO packages Sri Lanka.">
+    <!-- Meta Pixel base entry: the shared adapter loads the SDK only when permitted. -->
+    <script type="module">
+      import { trackMetaPageView } from '/src/lib/metaPixel.ts';
+      void trackMetaPageView(location.pathname, location.search, location.hash);
+    </script>
 </head>
 
   <body>

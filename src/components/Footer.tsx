@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 import footerLogo from "@/assets/buzz-footer-logo.webp";
+import { Button } from "@/components/ui/button";
+import { openCookieSettings } from "@/components/CookieConsent";
 
 const Footer = () => {
   return (
@@ -83,6 +85,7 @@ const Footer = () => {
               <li><Link to="/resources" className="hover:text-accent transition-colors">Resources</Link></li>
               <li><Link to="/contact-us" className="hover:text-accent transition-colors">Contact Us</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-accent transition-colors">Privacy Policy</Link></li>
+              <li><Button variant="ghost" className="h-auto p-0 font-normal text-inherit hover:bg-transparent hover:text-accent" onClick={openCookieSettings}>Cookie settings</Button></li>
               <li><Link to="/unsubscribe" className="hover:text-accent transition-colors">Opt out from campaigns</Link></li>
               <li><Link to="/subscribe" className="hover:text-accent transition-colors">Subscribe to campaigns</Link></li>
               <li><Link to="/careers" className="hover:text-accent transition-colors">Careers</Link></li>

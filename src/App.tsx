@@ -11,6 +11,7 @@ import ContactCaptureDialog from "@/components/ContactCaptureDialog";
 import ContactClickTracker from "@/components/ContactClickTracker";
 import PageViewTracker from "@/components/PageViewTracker";
 import MetaPixelTracker from "@/components/MetaPixelTracker";
+import CookieConsent from "@/components/CookieConsent";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 
@@ -173,6 +174,7 @@ const SiteChrome = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen overflow-x-hidden bg-background">
       <ScrollToTop />
       <MetaPixelTracker />
+      {!isAdmin && <CookieConsent />}
       {!isAdmin && <WhatsAppGlobalTracker />}
       {!isAdmin && <ContactCaptureDialog />}
       {!isAdmin && <ContactClickTracker />}
