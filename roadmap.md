@@ -14,6 +14,7 @@
 - [x] Sweep aliases, attachments, admin saves/replies, exports, navigation and database view for false confirmations; preserve settled records.
 
 ## Facebook Pixel
+- [x] Remove the automatic permission banner; retain manual footer settings and existing tracking permission gates.
 - [x] Review the uploaded head-installation instructions and diagnose the published site's detection warning: `/cdn-cgi/trace` returns 404, so fresh visitors fail the regional permission gate; an explicit advertising grant loads the SDK/config only, not verified PageView receipt.
 - [x] Add the selected permission banner, permanent cookie settings and consent-gated head entry; 17 tests pass, browser acceptance loads the SDK/config, withdrawal blocks it after reload, and mobile settings fit without overflow. PageView transmission and Meta receipt remain unverified below.
 - [x] Install the supplied PageView pixel with the selected no-banner regional gate, linked privacy notice and opt-out; privacy tests pass and browser checks confirm initialization and regional blocking.

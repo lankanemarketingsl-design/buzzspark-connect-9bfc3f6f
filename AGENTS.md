@@ -10,7 +10,7 @@
 - Derive expanded industry campaign planning details from the hub picker through a shared editorial adapter consumed by browser pages and static SEO generation; this preserves relevant examples without duplicating unverified performance claims.
 - Keep uploaded logo asset resolution independent of the canonical domain so SEO domain changes do not break hosted images.
 - Gate Meta Pixel initialization and route PageViews through the shared consent adapter; exclude private/sensitive routes and URL parameters, disable automatic collection, and revoke on withdrawal to prevent unauthorized sends.
-- Use one shared analytics/advertising consent panel and footer settings action; the head Pixel entry and SPA tracker reuse the same deduplicated consent-gated module to avoid unconditional or duplicate sends.
+- Open the shared analytics/advertising settings only from the footer, never automatically; preserve the deduplicated consent-gated head Pixel entry and SPA tracker so removing the banner grants no permission.
 - Show unsubscribe confirmation only after a successful saved request, never from hidden-field heuristics; refresh the admin opt-out list on focus and periodically so submissions do not appear missing.
 - Share the admin unsubscribe bell across admin pages; count persisted new requests with admin-scoped reads and visibility-aware polling, without changing request status when notifications are opened.
 - Keep privacy policy content and unsubscribe email construction shared between public pages and static HTML; place the complete policy fallback inside React's root to prevent duplicate policy text and H1s.

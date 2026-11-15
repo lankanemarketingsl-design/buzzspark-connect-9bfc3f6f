@@ -6,15 +6,21 @@ import { readChoice } from "@/lib/consent";
 
 describe("Cookie permission choices", () => {
   beforeEach(() => { localStorage.clear(); vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false })); });
-  it("accepts analytics and advertising explicitly despite failed location detection", async () => {
+  it("leaves purposes unanswered until visitors open settings and explicitly grant them", async () => {
     render(<MemoryRouter><CookieConsent /></MemoryRouter>);
-    fireEvent.click(await screen.findByRole("button", { name: "Accept all" }));
+    expect(readChoice("analytics")).not.toBe("granted");
+    expect(readChoice("advertising")).not.toBe("granted");
+    act(() => openCookieSettings());
+    fireEvent.click(await screen.findByRole("switch", { name: "Analytics permission" }));
+    fireEvent.click(screen.getByRole("switch", { name: "Advertising permission" }));
+    fireEvent.click(screen.getByRole("button", { name: "Save choices" }));
     expect(readChoice("analytics")).toBe("granted");
     expect(readChoice("advertising")).toBe("granted");
   });
   it("rejects both purposes and allows withdrawal through permanent settings", async () => {
     render(<MemoryRouter><CookieConsent /></MemoryRouter>);
-    fireEvent.click(await screen.findByRole("button", { name: "Reject all" }));
+    act(() => openCookieSettings());
+    fireEvent.click(await screen.findByRole("button", { name: "Save choices" }));
     expect(readChoice("analytics")).toBe("denied");
     expect(readChoice("advertising")).toBe("denied");
     act(() => openCookieSettings());
