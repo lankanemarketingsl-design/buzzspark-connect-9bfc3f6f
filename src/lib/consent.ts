@@ -32,10 +32,20 @@ function isConsentRequiredRegion(): Promise<boolean> {
   return (consentRegion ??= lookupConsentRegion());
 }
 
+// Fallback when the country lookup is unavailable: infer from the device time zone.
+export function timeZoneRequiresConsent(tz?: string): boolean {
+  let zone = tz;
+  try { zone ??= Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { return true; }
+  if (!zone) return true;
+  if (/^(Europe|Atlantic\/(Reykjavik|Canary|Madeira|Azores|Faroe))\//.test(zone)) return true;
+  if (/^(America\/(Toronto|Vancouver|Montreal|Halifax|Winnipeg|Edmonton|Regina|St_Johns|Moncton|Glace_Bay|Goose_Bay|Whitehorse|Dawson|Dawson_Creek|Iqaluit|Yellowknife|Inuvik|Cambridge_Bay|Rankin_Inlet|Resolute|Atikokan|Swift_Current|Fort_Nelson|Creston|Thunder_Bay|Nipigon|Rainy_River|Pangnirtung)|Canada\/)/.test(zone)) return true;
+  return zone === "UTC" || zone === "Etc/UTC" || zone.startsWith("Etc/");
+}
+
 async function lookupConsentRegion(): Promise<boolean> {
   try {
     const res = await fetch("/cdn-cgi/trace", { signal: AbortSignal.timeout(2000) });
-    if (!res.ok) return true;
+    if (!res.ok) return timeZoneRequiresConsent();
     const trace = await res.text();
     // Behind a rewrite proxy the trace answers for the proxy's connection under another host.
     const host = trace
@@ -43,12 +53,12 @@ async function lookupConsentRegion(): Promise<boolean> {
       ?.trim()
       .toLowerCase()
       .replace(/:\d+$/, "");
-    if (host !== location.hostname) return true;
+    if (host !== location.hostname) return timeZoneRequiresConsent();
     const country = trace.match(/^loc=([A-Z0-9]{2})$/m)?.[1];
-    if (!country || country === "XX" || country === "T1") return true;
+    if (!country || country === "XX" || country === "T1") return timeZoneRequiresConsent();
     return CONSENT_COUNTRIES.includes(country);
   } catch {
-    return true;
+    return timeZoneRequiresConsent();
   }
 }
 
