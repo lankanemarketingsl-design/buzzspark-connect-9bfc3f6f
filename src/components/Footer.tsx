@@ -82,7 +82,7 @@ const Footer = () => {
               <li><Link to="/special-advertising-packages" className="hover:text-accent transition-colors">Special Packages</Link></li>
               <li><Link to="/resources" className="hover:text-accent transition-colors">Resources</Link></li>
               <li><Link to="/contact-us" className="hover:text-accent transition-colors">Contact Us</Link></li>
-              <li><Link to="/unsubscribe" className="text-accent font-semibold hover:underline transition-colors">Opt out from campaigns</Link></li>
+              <li><Link to="/unsubscribe" className="hover:text-accent transition-colors">Opt out from campaigns</Link></li>
               <li><Link to="/careers" className="hover:text-accent transition-colors">Careers</Link></li>
             </ul>
           </div>
