@@ -30,7 +30,6 @@ import bhoomiLogo from "@/assets/logos/bhoomi.webp";
 import visioncareLogo from "@/assets/logos/visioncare.webp";
 import lassanaLogo from "@/assets/logos/lassana.webp";
 import cipmLogo from "@/assets/logos/cipm.webp";
-import cinnamonLogo from "@/assets/logos/cinnamon.webp";
 import slimLogo from "@/assets/logos/slim.webp";
 import ninewellsLogo from "@/assets/logos/ninewells.webp";
 
@@ -55,7 +54,6 @@ const BRAND_LOGOS: Record<string, string> = {
   Hunters: huntersLogo,
   "Sala Enterprises": salaLogo,
   Swarnamahal: swarnamahalLogo,
-  Cinnamon: cinnamonLogo,
   "Best Western": bestwesternLogo,
 };
 
@@ -79,7 +77,6 @@ const ALL_CLIENT_LOGOS: { name: string; src: string }[] = [
   { name: "Vision Care", src: visioncareLogo },
   { name: "Lassana.com", src: lassanaLogo },
   { name: "CIPM Sri Lanka", src: cipmLogo },
-  { name: "Cinnamon Hotels", src: cinnamonLogo },
   { name: "SLIM", src: slimLogo },
   { name: "Ninewells Hospital", src: ninewellsLogo },
 ];

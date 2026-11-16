@@ -31,7 +31,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { bb360Packages } from "@/data/bb360ServicePages";
 import radisson from "@/assets/clients/radisson.webp";
-import cinnamon from "@/assets/clients/cinnamon.webp";
 import jetwing from "@/assets/clients/jetwing.webp";
 import kingsbury from "@/assets/clients/kingsbury.webp";
 import araliya from "@/assets/clients/araliya.webp";
@@ -53,7 +52,6 @@ const CHANNELS = [
 
 const hotelLogos = [
   { name: "Radisson", src: radisson },
-  { name: "Cinnamon Hotels", src: cinnamon },
   { name: "Jetwing", src: jetwing },
   { name: "The Kingsbury", src: kingsbury },
   { name: "Araliya", src: araliya },

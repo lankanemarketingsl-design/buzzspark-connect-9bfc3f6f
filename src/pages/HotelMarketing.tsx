@@ -22,7 +22,6 @@ import brownsLogo from "@/assets/clients/browns.webp";
 import kingsburyLogo from "@/assets/clients/kingsbury.webp";
 import tangerineLogo from "@/assets/clients/tangerine.webp";
 import jetwingLogo from "@/assets/clients/jetwing.webp";
-import cinnamonLogo from "@/assets/clients/cinnamon.webp";
 import bestWesternLogo from "@/assets/clients/best-western.webp";
 
 const hotelClients = [
@@ -33,7 +32,6 @@ const hotelClients = [
   { name: "The Kingsbury", logo: kingsburyLogo },
   { name: "Tangerine Beach Hotel", logo: tangerineLogo },
   { name: "Jetwing Hotels", logo: jetwingLogo },
-  { name: "Cinnamon Hotels & Resorts", logo: cinnamonLogo },
   { name: "Best Western", logo: bestWesternLogo },
 ];
 
