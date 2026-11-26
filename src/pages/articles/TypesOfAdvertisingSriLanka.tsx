@@ -120,6 +120,7 @@ const TypesOfAdvertisingSriLanka = () => {
             <h3 className="font-heading text-xl font-semibold text-foreground mt-6 mb-3">8. Traditional Advertising</h3>
             <p>TV, radio, newspapers, and outdoor billboards still reach specific audiences.</p>
             <p>Read our full comparison of <Link to="/online-vs-traditional-advertising-sri-lanka" className="text-accent hover:underline font-semibold">online vs traditional advertising in Sri Lanka</Link>.</p>
+            <p>Traditional reach is often strongest at live brand activations, product launches and corporate events, where people meet the brand in person. Campaigns like these depend on careful <a href="https://cypherevents.lk/event-planning-sri-lanka" target="_blank" rel="noopener noreferrer" className="text-muted-foreground no-underline hover:no-underline">event planning Sri Lanka</a> teams use to set dates, venues and audiences, followed by on-the-day <a href="https://cypherevents.lk/event-management-sri-lanka" target="_blank" rel="noopener noreferrer" className="text-muted-foreground no-underline hover:no-underline">event management Sri Lanka</a> brands rely on to run the experience smoothly. Pairing an event with SMS, WhatsApp and social ads before and after the day turns one-off attendance into lasting leads.</p>
 
             <h2 className="font-heading text-2xl font-bold text-foreground mt-8 mb-4">Side-by-Side Comparison</h2>
             <div className="overflow-x-auto my-6">
